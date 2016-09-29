@@ -10,6 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main\Main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{ED4308A6-FBFA-4BD7-8DF7-11BE5EB4104B}</ProjectGuid>
     <RootNamespace>KingdomCraft</RootNamespace>
