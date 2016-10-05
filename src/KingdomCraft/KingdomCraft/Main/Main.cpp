@@ -1,8 +1,7 @@
 #include <windows.h>
 #include <crtdbg.h>
 #include <d3d11.h>
-#include <d3dx11.h>
-
+//#include <d3dx11.h>
 
 #define DEFAULT_WINDOW_WIDTH 1280
 #define DEFAULT_WINDOW_HEIGHT 720
