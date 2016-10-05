@@ -1,8 +1,7 @@
 #include <windows.h>
 #include <crtdbg.h>
 #include <d3d11.h>
-#include <d3dx11.h>
-
+//#include <d3dx11.h>
 
 #define DEFAULT_WINDOW_WIDTH 1280
 #define DEFAULT_WINDOW_HEIGHT 720
@@ -35,7 +34,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	hwnd = CreateWindow(
 		szAppName, 
 		szAppName, 
-		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
+		WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX | WS_VISIBLE,
 		0,
 		0,
 		DEFAULT_WINDOW_WIDTH, 
