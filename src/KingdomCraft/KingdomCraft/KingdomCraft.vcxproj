@@ -13,17 +13,17 @@
   <ItemGroup>
     <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
     <ClCompile Include="Main\Main.cpp" />
-    <ClCompile Include="SceneManager\SceneManager.cpp" />
-    <ClCompile Include="SceneManager\Scene\GameScene\GameScene.cpp" />
-    <ClCompile Include="SceneManager\Scene\Scene.cpp" />
-    <ClCompile Include="SceneManager\Scene\TitleScene\TitleScene.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\Scene.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SceneManager\SceneManager.h" />
-    <ClInclude Include="SceneManager\Scene\GameScene\GameScene.h" />
-    <ClInclude Include="SceneManager\Scene\Scene.h" />
-    <ClInclude Include="SceneManager\Scene\TitleScene\TitleScene.h" />
+    <ClInclude Include="Main\SceneManager\SceneManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
+    <ClInclude Include="Main\SceneManager\Scene\Scene.h" />
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
