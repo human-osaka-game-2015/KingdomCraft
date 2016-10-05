@@ -25,6 +25,8 @@
     </Filter>
     <Filter Include="stdafx">
       <UniqueIdentifier>{eea47411-877d-410d-8ada-94bf242ef2a3}</UniqueIdentifier>
+    <Filter Include="Library\DX11Manager">
+      <UniqueIdentifier>{f07eecfd-b133-4a8d-8216-d28a6bacf94a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +64,13 @@
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>stdafx</Filter>
+    <ClCompile Include="Library\DX11Manager\DX11Manager.cpp">
+      <Filter>Library\DX11Manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Library\DX11Manager\DX11Manager.h">
+      <Filter>Library\DX11Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

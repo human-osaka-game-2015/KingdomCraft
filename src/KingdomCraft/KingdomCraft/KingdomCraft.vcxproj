@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
     <ClCompile Include="Main\Main.cpp" />
     <ClCompile Include="SceneManager\SceneManager.cpp" />
     <ClCompile Include="SceneManager\Scene\GameScene\GameScene.cpp" />
@@ -24,6 +25,9 @@
     <ClInclude Include="SceneManager\Scene\Scene.h" />
     <ClInclude Include="SceneManager\Scene\TitleScene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Library\DX11Manager\DX11Manager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{ED4308A6-FBFA-4BD7-8DF7-11BE5EB4104B}</ProjectGuid>
@@ -65,6 +69,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;d3d11.lib;d3dx11.lib;d3dx10.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
