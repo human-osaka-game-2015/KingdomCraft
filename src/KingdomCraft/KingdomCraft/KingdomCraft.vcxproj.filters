@@ -11,10 +11,21 @@
     <Filter Include="Library">
       <UniqueIdentifier>{32caf449-5f8a-44de-9c35-12a810a867d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\DX11Manager">
+      <UniqueIdentifier>{f07eecfd-b133-4a8d-8216-d28a6bacf94a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main\Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="Library\DX11Manager\DX11Manager.cpp">
+      <Filter>Library\DX11Manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Library\DX11Manager\DX11Manager.h">
+      <Filter>Library\DX11Manager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
