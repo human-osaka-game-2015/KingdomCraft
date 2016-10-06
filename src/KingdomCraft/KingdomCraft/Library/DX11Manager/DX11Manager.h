@@ -14,6 +14,9 @@ public:
 	bool Init(HWND _hWnd);
 	void Release();
 
+	void BeginScene();
+	void EndScene();
+	
 	ID3D11Device* GetDevice();
 	ID3D11DeviceContext* GetDeviceContext();
 
