@@ -1,8 +1,7 @@
 #ifndef SCENEFACTORY_H
 #define SCENEFACTORY_H
-#include "..//..//..//stdafx.h"
 class Scene;
-
+enum SceneID;
 class SceneFactory
 {
 public:

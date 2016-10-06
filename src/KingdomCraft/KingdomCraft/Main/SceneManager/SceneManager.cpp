@@ -2,17 +2,14 @@
 #include "Scene//Scene.h"
 #include "SceneFactory//SceneFactory.h"
 #include "..//..//Library/DX11Manager/DX11Manager.h"
-#include "..//..//stdafx.h"
 
 SceneManager::SceneManager(HWND _hwnd) :
 m_pScene(NULL),
 m_sceneState(SCENE_CREATE),
 m_nextSceneID(SceneID::SCENE_TITLE),
 m_end(false),
-m_hWnd(_hwnd),
-m_pDX11Manager(new DX11Manager())
+m_hWnd(_hwnd)
 {
-	m_pDX11Manager->Init(m_hWnd);
 }
 
 
@@ -23,12 +20,6 @@ SceneManager::~SceneManager()
 	{
 		delete m_pScene;
 		m_pScene = nullptr;
-	}
-
-	if (m_pDX11Manager != nullptr)
-	{
-		m_pDX11Manager->Release();
-		delete m_pDX11Manager;
 	}
 }
 

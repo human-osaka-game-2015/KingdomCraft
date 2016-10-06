@@ -1,6 +1,7 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
-#include "..//..//stdafx.h"
+#include <Windows.h>
+enum SceneID;
 class Scene;
 class DX11Manager;
 class SceneManager
@@ -29,6 +30,5 @@ private:
 	bool		 m_end; //ゲーム終了フラグ
 	/// ウィンドウハンドル
 	HWND		 m_hWnd;
-	DX11Manager* m_pDX11Manager;
 };
 #endif

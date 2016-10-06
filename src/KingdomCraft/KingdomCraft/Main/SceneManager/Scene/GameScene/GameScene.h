@@ -1,8 +1,7 @@
 #ifndef GAMESCENE_H
 #define GAMESCENE_H
 #include "..//Scene.h"
-#include "..//..//..//..//stdafx.h"
-
+enum SceneID;
 class GameScene :
 	public Scene
 {

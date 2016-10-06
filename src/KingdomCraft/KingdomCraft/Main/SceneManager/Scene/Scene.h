@@ -1,6 +1,6 @@
 #ifndef SCENE_H
 #define SCENE_H
-#include "..//..//..//stdafx.h"
+enum SceneID;
 class Scene
 {
 public:
@@ -11,5 +11,17 @@ public:
 	SceneID GetSceneID(){ return m_sceneID; }
 protected:
 	SceneID m_sceneID;
+};
+
+enum SceneID
+{
+	SCENE_LOGO,
+	SCENE_OPENING,
+	SCENE_TITLE,
+	SCENE_GAME,			// 初めからを選択してゲームに入ったとき
+	SCENE_CONTINUE_GAME,	// 続きからを選択してゲームに入ったとき
+	SCENE_RESULT,
+	SCENE_ENDING,
+	FIN
 };
 #endif

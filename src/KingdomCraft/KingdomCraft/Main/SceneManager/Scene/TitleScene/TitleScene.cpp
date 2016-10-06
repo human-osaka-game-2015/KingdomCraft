@@ -1,7 +1,5 @@
 #include "TitleScene.h"
 #include "..//Scene.h"
-#include "..//..//..//..//stdafx.h"
-
 
 TitleScene::TitleScene() :
 Scene(SceneID::SCENE_TITLE)

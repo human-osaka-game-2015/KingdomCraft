@@ -1,8 +1,7 @@
 #ifndef TITLESCENE_H
 #define TITLESCENE_H
 #include "..//Scene.h"
-#include "..//..//..//..//stdafx.h"
-
+enum SceneID;
 class TitleScene :
 	public Scene
 {

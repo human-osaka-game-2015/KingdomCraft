@@ -14,6 +14,7 @@ SceneID GameScene::Control()
 {
 	return m_sceneID;
 }
+
 void GameScene::Draw()
 {
 
