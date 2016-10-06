@@ -1,14 +1,34 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
+#include <Windows.h>
+enum SceneID;
 class Scene;
+class DX11Manager;
 class SceneManager
 {
 public:
-	SceneManager();
+	SceneManager(HWND _hwnd);
 	~SceneManager();
+	bool Run();
+	void Control();
+	void Draw();
 
 private:
-	Scene* m_pScene;
-	/// シーン番号
+	enum SceneState
+	{
+		/// 生成
+		SCENE_CREATE,
+		/// 処理中
+		SCENE_PROC,
+		/// 解放
+		SCENE_RELEASE
+	};
+
+	Scene*		 m_pScene;
+	SceneState   m_sceneState;
+	SceneID		 m_nextSceneID;
+	bool		 m_end; //ゲーム終了フラグ
+	/// ウィンドウハンドル
+	HWND		 m_hWnd;
 };
 #endif
