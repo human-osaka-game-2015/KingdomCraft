@@ -37,6 +37,20 @@ void DX11Manager::Release()
 	ReleaseDevice();
 }
 
+
+void DX11Manager::BeginScene()
+{
+	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+
+	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, ClearColor);
+	m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+}
+
+void DX11Manager::EndScene()
+{
+	m_pDXGISwapChain->Present(1, 0);
+}
+
 ID3D11Device* DX11Manager::GetDevice()
 {
 	return m_pDevice;
