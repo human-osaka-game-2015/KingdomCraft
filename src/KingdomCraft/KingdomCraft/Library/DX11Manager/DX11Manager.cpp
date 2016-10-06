@@ -1,18 +1,10 @@
 #include "DX11Manager.h"
 
 
-DX11Manager::DX11Manager()
-{
-}
+DX11Manager* DX11Manager::m_pDX11Manager = NULL;
 
-DX11Manager::~DX11Manager()
+DX11Manager::DX11Manager(HWND _hWnd)
 {
-}
-
-bool DX11Manager::Init(HWND _hWnd)
-{
-	bool isSuccess = false;
-	
 	m_hWnd = _hWnd;
 	GetWindowRect(m_hWnd, &m_WindowRect);
 
@@ -20,18 +12,16 @@ bool DX11Manager::Init(HWND _hWnd)
 	{
 		if (InitDisplay())
 		{
-			isSuccess = true;
+
 		}
 		else
 		{
 			ReleaseDevice();
 		}
 	}
-	
-	return isSuccess;
 }
 
-void DX11Manager::Release()
+DX11Manager::~DX11Manager()
 {
 	ReleaseDisplay();
 	ReleaseDevice();
@@ -78,6 +68,8 @@ bool DX11Manager::InitDevice()
 		MessageBox(m_hWnd, "D3D11CreateDevice", "エラー", MB_ICONSTOP);
 	}
 
+	OutputDebugString("デバイス生成成功\n");
+	
 	return true;
 }
 
@@ -88,6 +80,7 @@ bool DX11Manager::InitDisplay()
 		MessageBox(m_hWnd, "DX11のインターフェイスの取得に失敗しました。", "Err", MB_ICONSTOP);
 		return false;
 	}
+	OutputDebugString("DX11のインターフェイス(グラフィック)の取得に成功しました\n");
 
 	if (FAILED(m_pDXGI->GetAdapter(&m_pAdapter)))
 	{
@@ -95,15 +88,17 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("DX11アダプターの取得に成功しました\n");
 
 	m_pAdapter->GetParent(__uuidof(IDXGIFactory), (void**)&m_pDXGIFactory);
 	if (m_pDXGIFactory == NULL)
 	{
-		MessageBox(m_hWnd, "DX11のファクトリーの作成に失敗しました。", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, "DX11のファクトリーの取得に失敗しました。", "Err", MB_ICONSTOP);
 		m_pAdapter->Release();
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("DX11のファクトリー取得に成功しました\n");
 
 	if (FAILED(m_pDXGIFactory->MakeWindowAssociation(m_hWnd, 0)))
 	{
@@ -113,6 +108,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("フルスクリーン対応に成功しました\n");
 
 
 
@@ -140,6 +136,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("スワップチェインの作成に成功しました\n");
 
 	if (FAILED(m_pDXGISwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&m_pBackBuffer)))
 	{
@@ -150,6 +147,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("スワップチェインのバックバッファ取得に成功しました\n");
 
 	if (FAILED(m_pDevice->CreateRenderTargetView(m_pBackBuffer, NULL, &m_pRenderTargetView)))
 	{
@@ -161,6 +159,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("描画ターゲット生成に成功しました\n");
 
 
 	m_DepthDesc.Width  = m_WindowRect.right - m_WindowRect.left;
@@ -186,6 +185,8 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("ステンシルビュー生成に成功しました\n");
+
 	if (FAILED(m_pDevice->CreateDepthStencilView(m_pDepthStencilBuffer, NULL, &m_pDepthStencilView)))
 	{
 		MessageBox(m_hWnd, "ステンシルバッファ生成に失敗しました。", "Err", MB_ICONSTOP);
@@ -198,6 +199,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	OutputDebugString("ステンシルバッファ生成に成功しました\n");
 
 	m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
 
@@ -236,10 +238,12 @@ bool DX11Manager::InitDisplay()
 		m_pDXGIFactory->Release();
 		m_pAdapter->Release();
 		m_pDXGI->Release();
-		MessageBox(m_hWnd, "CreateRasterizerState", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, "RasterizerStateの生成に失敗しました", "Err", MB_ICONSTOP);
 		return false;
 	}
+	OutputDebugString("RasterizerStateの状態の生成に成功しました\n");
 	m_pDeviceContext->RSSetState(m_pRasterizerState);
+
 
 	return true;
 }
