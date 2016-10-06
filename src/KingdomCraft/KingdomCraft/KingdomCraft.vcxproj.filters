@@ -20,6 +20,9 @@
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp">
       <Filter>Main\SceneManager\Scene\TitleScene</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp">
+      <Filter>Main\SceneManager\SceneFactory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -37,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleScene.h">
       <Filter>Main\SceneManager\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h">
+      <Filter>Main\SceneManager\SceneFactory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +63,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\TitleScene">
       <UniqueIdentifier>{f592d59e-a32a-4e66-ab4d-3086b2773ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneFactory">
+      <UniqueIdentifier>{7d2a4205-28be-4fa4-9f16-150acc21428a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

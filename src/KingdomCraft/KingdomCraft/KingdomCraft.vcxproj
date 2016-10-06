@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
     <ClCompile Include="Main\Main.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp" />
     <ClCompile Include="Main\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\Scene.cpp" />
@@ -20,6 +21,7 @@
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Main\SceneManager\SceneManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Main\SceneManager\Scene\Scene.h" />

@@ -5,14 +5,16 @@
 
 #pragma once
 #include <vector>
-//enum SceneID
-//{
-//	SCENE_LOGO,
-//	SCENE_OPENING,
-//	SCENE_TITLE,
-//	SCENE_GAME,			// 初めからを選択してゲームに入ったとき
-//	SCENE_CONTINUE_GAME,	// 続きからを選択してゲームに入ったとき
-//	SCENE_RESULT,
-//	SCENE_ENDING,
-//	FIN
-//};
+#include <Windows.h>
+
+enum SceneID
+{
+	SCENE_LOGO,
+	SCENE_OPENING,
+	SCENE_TITLE,
+	SCENE_GAME,			// 初めからを選択してゲームに入ったとき
+	SCENE_CONTINUE_GAME,	// 続きからを選択してゲームに入ったとき
+	SCENE_RESULT,
+	SCENE_ENDING,
+	FIN
+};
