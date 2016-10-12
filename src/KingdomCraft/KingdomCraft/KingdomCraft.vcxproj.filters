@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Library\DX11Manager\DX11Manager.cpp">
-      <Filter>Library</Filter>
-    </ClCompile>
     <ClCompile Include="Main\Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
@@ -22,11 +19,20 @@
     <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp">
       <Filter>Main\SceneManager\SceneFactory</Filter>
     </ClCompile>
+    <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp">
+      <Filter>Library\InputDeviceManager\MouseDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp">
+      <Filter>Library\InputDeviceManager\KeyDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp">
+      <Filter>Library\InputDeviceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\DX11Manager\DX11Manager.cpp">
+      <Filter>Library\DX11Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Library\DX11Manager\DX11Manager.h">
-      <Filter>Library</Filter>
-    </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
       <Filter>Main\SceneManager</Filter>
     </ClInclude>
@@ -41,6 +47,18 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h">
       <Filter>Main\SceneManager\SceneFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\InputDeviceManager\MouseDevice\MouseDevice.h">
+      <Filter>Library\InputDeviceManager\MouseDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h">
+      <Filter>Library\InputDeviceManager\KeyDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h">
+      <Filter>Library\InputDeviceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DX11Manager\DX11Manager.h">
+      <Filter>Library\DX11Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +82,18 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneFactory">
       <UniqueIdentifier>{7d2a4205-28be-4fa4-9f16-150acc21428a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\InputDeviceManager">
+      <UniqueIdentifier>{629e83d7-00ec-4621-8e77-a060f096164c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\InputDeviceManager\MouseDevice">
+      <UniqueIdentifier>{21c935cd-fbbf-417a-991a-3d9597bdb93c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\InputDeviceManager\KeyDevice">
+      <UniqueIdentifier>{41610920-65ef-4197-af84-f91366fe714c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\DX11Manager">
+      <UniqueIdentifier>{08b44af7-abeb-4719-abdd-3bfce21e592f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
