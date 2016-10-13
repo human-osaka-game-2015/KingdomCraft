@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\DSoundManager\DSoundManager.cpp" />
     <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
@@ -23,6 +24,7 @@
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />
@@ -75,7 +77,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>winmm.lib;d3d11.lib;d3dx11.lib;d3dx10.lib;dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;d3d11.lib;d3dx11.lib;d3dx10.lib;dxguid.lib;dinput8.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
