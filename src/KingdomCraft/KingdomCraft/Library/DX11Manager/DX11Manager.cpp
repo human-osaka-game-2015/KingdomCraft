@@ -3,25 +3,40 @@
 
 DX11Manager* DX11Manager::m_pDX11Manager = NULL;
 
-DX11Manager::DX11Manager(HWND _hWnd)
+DX11Manager::DX11Manager()
+{
+	
+}
+
+DX11Manager::~DX11Manager()
+{
+	
+}
+
+bool DX11Manager::Init(HWND _hWnd)
 {
 	m_hWnd = _hWnd;
 	GetWindowRect(m_hWnd, &m_WindowRect);
 
-	if (InitDevice())
+	if (!InitDevice())
 	{
-		if (InitDisplay())
-		{
-
-		}
-		else
-		{
-			ReleaseDevice();
-		}
+		MessageBox(m_hWnd, "InitDeviceに失敗しました", "エラー", MB_ICONSTOP);
+		return false;
 	}
+
+	if (!InitDisplay())
+	{
+		MessageBox(m_hWnd, "InitDisplayに失敗しました", "エラー", MB_ICONSTOP);
+		ReleaseDevice();
+		return false;
+	}
+
+	OutputDebugString("DX11Managerの初期化に成功\n");
+
+	return true;
 }
 
-DX11Manager::~DX11Manager()
+void DX11Manager::Release()
 {
 	ReleaseDisplay();
 	ReleaseDevice();

@@ -10,11 +10,11 @@ class DX11Manager
 public:
 	~DX11Manager();
 
-	static void Create(HWND _hWnd)
+	static void Create()
 	{
 		if (m_pDX11Manager == NULL)
 		{
-			m_pDX11Manager = new DX11Manager(_hWnd);
+			m_pDX11Manager = new DX11Manager();
 		}
 	}
 
@@ -29,6 +29,8 @@ public:
 		m_pDX11Manager = NULL;
 	}
 
+	bool Init(HWND _hWnd);
+	void Release();
 	void BeginScene();
 	void EndScene();
 	
@@ -36,7 +38,7 @@ public:
 	ID3D11DeviceContext* GetDeviceContext();
 
 private:
-	DX11Manager(HWND _hWnd);
+	DX11Manager();
 	bool InitDevice();
 	bool InitDisplay();
 	void ReleaseDevice();
