@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\DSoundManager\DSoundManager.cpp" />
     <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
@@ -23,6 +24,7 @@
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />
