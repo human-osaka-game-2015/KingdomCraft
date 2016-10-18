@@ -37,6 +37,9 @@
     <ClCompile Include="Library\DebugFont\DebugFont.cpp">
       <Filter>Library\DebugFont</Filter>
     </ClCompile>
+    <ClCompile Include="Library\ResourceManager\ResourceManager.cpp">
+      <Filter>Library\ResourceManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -71,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="Library\DebugFont\DebugFont.h">
       <Filter>Library\DebugFont</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\ResourceManager\ResourceManager.h">
+      <Filter>Library\ResourceManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -121,5 +127,8 @@
     <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
       <Filter>Library\DebugFont\Effect</Filter>
     </FxCompile>
+    <Filter Include="Library\ResourceManager">
+      <UniqueIdentifier>{70e75786-5101-49bc-90d1-117b30a5c88e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
