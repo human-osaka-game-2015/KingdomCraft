@@ -34,6 +34,9 @@
     <ClCompile Include="Library\DSoundManager\DSoundManager.cpp">
       <Filter>Library\DSoundManager</Filter>
     </ClCompile>
+    <ClCompile Include="Library\DebugFont\DebugFont.cpp">
+      <Filter>Library\DebugFont</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -65,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="Library\DSoundManager\DSoundManager.h">
       <Filter>Library\DSoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DebugFont\DebugFont.h">
+      <Filter>Library\DebugFont</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,5 +110,16 @@
     <Filter Include="Library\DSoundManager">
       <UniqueIdentifier>{3ca60592-24e7-4646-9c2e-2fd9e1f448d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\DebugFont">
+      <UniqueIdentifier>{aa5d2fcd-1e03-4df0-bbfd-875eb6b33310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\DebugFont\Effect">
+      <UniqueIdentifier>{c6964899-df0e-4e02-a6e4-fecbd703a11d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
+      <Filter>Library\DebugFont\Effect</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

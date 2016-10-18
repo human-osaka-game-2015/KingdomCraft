@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\DSoundManager\DSoundManager.cpp" />
+    <ClCompile Include="Library\DebugFont\DebugFont.cpp" />
     <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
@@ -25,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
+    <ClInclude Include="Library\DebugFont\DebugFont.h" />
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />
@@ -36,6 +38,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DX11Manager\DX11Manager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+    </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{ED4308A6-FBFA-4BD7-8DF7-11BE5EB4104B}</ProjectGuid>
