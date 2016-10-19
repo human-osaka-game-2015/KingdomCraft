@@ -17,6 +17,7 @@
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
     <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
+    <ClCompile Include="Library\TextureManager\TextureManager.cpp" />
     <ClCompile Include="Main\Main.cpp" />
     <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp" />
     <ClCompile Include="Main\SceneManager\SceneManager.cpp" />
@@ -27,6 +28,7 @@
   <ItemGroup>
     <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
     <ClInclude Include="Library\DebugFont\DebugFont.h" />
+    <ClInclude Include="Library\TextureManager\TextureManager.h" />
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />

@@ -37,6 +37,9 @@
     <ClCompile Include="Library\DebugFont\DebugFont.cpp">
       <Filter>Library\DebugFont</Filter>
     </ClCompile>
+    <ClCompile Include="Library\TextureManager\TextureManager.cpp">
+      <Filter>Library\TextureManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -71,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="Library\DebugFont\DebugFont.h">
       <Filter>Library\DebugFont</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TextureManager\TextureManager.h">
+      <Filter>Library\TextureManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +121,9 @@
     </Filter>
     <Filter Include="Library\DebugFont\Effect">
       <UniqueIdentifier>{c6964899-df0e-4e02-a6e4-fecbd703a11d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\TextureManager">
+      <UniqueIdentifier>{cd29e23a-7b80-48cd-b533-312f947616c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
