@@ -11,7 +11,7 @@ TextureManager::~TextureManager()
 {
 }
 
-bool TextureManager::LoadTexture(int _Key, char* _FilePath)
+bool TextureManager::LoadTexture(int _key, char* _filePath)
 {
 	D3DX11_IMAGE_LOAD_INFO LoadInfo;
 	ZeroMemory(&LoadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
@@ -32,7 +32,7 @@ bool TextureManager::LoadTexture(int _Key, char* _FilePath)
 	ID3D11ShaderResourceView* pResourceView;
 	if (FAILED(D3DX11CreateShaderResourceViewFromFile(
 		m_pDevice,
-		_FilePath,
+		_filePath,
 		&LoadInfo,
 		NULL,
 		&pResourceView,
@@ -42,7 +42,7 @@ bool TextureManager::LoadTexture(int _Key, char* _FilePath)
 		return false;
 	}
 
-	m_pTextureResourceView[_Key] = pResourceView;
+	m_pTextureResourceView[_key] = pResourceView;
 
 	return true;
 }
