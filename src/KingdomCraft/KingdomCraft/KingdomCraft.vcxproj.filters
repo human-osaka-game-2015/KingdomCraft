@@ -40,6 +40,9 @@
     <ClCompile Include="Library\TextureManager\TextureManager.cpp">
       <Filter>Library\TextureManager</Filter>
     </ClCompile>
+    <ClCompile Include="Library\ShaderManager\ShaderManager.cpp">
+      <Filter>Library\ShaderManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -77,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="Library\TextureManager\TextureManager.h">
       <Filter>Library\TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\ShaderManager\ShaderManager.h">
+      <Filter>Library\ShaderManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,9 @@
     </Filter>
     <Filter Include="Library\TextureManager">
       <UniqueIdentifier>{cd29e23a-7b80-48cd-b533-312f947616c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\ShaderManager">
+      <UniqueIdentifier>{b73a1f4b-749e-400f-937e-6bd014c59cfc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
