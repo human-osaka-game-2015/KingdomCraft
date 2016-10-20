@@ -18,6 +18,7 @@
     <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
     <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
     <ClCompile Include="Library\TextureManager\TextureManager.cpp" />
+    <ClCompile Include="Library\ShaderManager\ShaderManager.cpp" />
     <ClCompile Include="Main\Main.cpp" />
     <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp" />
     <ClCompile Include="Main\SceneManager\SceneManager.cpp" />
@@ -29,6 +30,7 @@
     <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
     <ClInclude Include="Library\DebugFont\DebugFont.h" />
     <ClInclude Include="Library\TextureManager\TextureManager.h" />
+    <ClInclude Include="Library\ShaderManager\ShaderManager.h" />
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />
