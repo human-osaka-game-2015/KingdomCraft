@@ -78,7 +78,7 @@ public:
 	 * @param[in] 状態を取得したいキーのDIK
 	 * @return キーの状態
 	 */
-	KEYSTATE GetKeyState(int _DIK);
+	KEYSTATE GetKeyState(int _dik);
 
 	/**
 	 * マウスの状態を取得する
