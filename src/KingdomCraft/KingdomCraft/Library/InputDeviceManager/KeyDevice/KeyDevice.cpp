@@ -82,13 +82,13 @@ void KeyDevice::Update()
 	}
 }
 
-KEYSTATE KeyDevice::GetKeyState(int _DIK)
+KEYSTATE KeyDevice::GetKeyState(int _dik)
 {
 	KEYSTATE KeyState;
 
-	if (m_KeyState[_DIK] & 0x80)
+	if (m_KeyState[_dik] & 0x80)
 	{
-		if (m_OldKeyState[_DIK] == KEY_OFF)
+		if (m_OldKeyState[_dik] == KEY_OFF)
 		{
 			KeyState = KEY_PUSH;
 		}
@@ -96,11 +96,11 @@ KEYSTATE KeyDevice::GetKeyState(int _DIK)
 		{
 			KeyState = KEY_ON;
 		}
-		m_OldKeyState[_DIK] = KEY_ON;
+		m_OldKeyState[_dik] = KEY_ON;
 	}
 	else
 	{
-		if (m_OldKeyState[_DIK] == KEY_ON)
+		if (m_OldKeyState[_dik] == KEY_ON)
 		{
 			KeyState = KEY_RELEASE;
 		}
@@ -108,7 +108,7 @@ KEYSTATE KeyDevice::GetKeyState(int _DIK)
 		{
 			KeyState = KEY_OFF;
 		}
-		m_OldKeyState[_DIK] = KEY_OFF;
+		m_OldKeyState[_dik] = KEY_OFF;
 	}
 
 	return KeyState;
