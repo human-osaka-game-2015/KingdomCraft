@@ -31,7 +31,7 @@ public:
 	 * @param[in] _FontWidth フォントの幅
 	 * @param[in] _FontColor フォントの色
 	 */
-	bool InitFont(float _FontHeight, float _FontWidth, D3DXCOLOR _FontColor);
+	bool InitFont(float _fontHeight, float _fontWidth, D3DXCOLOR _fontColor);
 
 	/**
 	 * フォント描画関数

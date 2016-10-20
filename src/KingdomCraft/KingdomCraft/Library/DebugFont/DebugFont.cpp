@@ -94,10 +94,10 @@ void DebugFont::Release()
 	ReleaseResourceView();
 }
 
-bool DebugFont::InitFont(float _FontHeight, float _FontWidth, D3DXCOLOR _FontColor)
+bool DebugFont::InitFont(float _fontHeight, float _fontWidth, D3DXCOLOR _fontColor)
 {
-	m_FontWidth = _FontWidth;		// フォントの幅
-	m_FontHeight = _FontHeight;     // フォントの高さ
+	m_FontWidth = _fontWidth;		// フォントの幅
+	m_FontHeight = _fontHeight;     // フォントの高さ
 
 	RECT WindowRect;
 	GetWindowRect(m_hWnd, &WindowRect);
@@ -106,10 +106,10 @@ bool DebugFont::InitFont(float _FontHeight, float _FontWidth, D3DXCOLOR _FontCol
 
 	FONT_VERTEX FontVertex[] =
 	{
-		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2, 0),				_FontColor, 0, 0,
-		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2, 0),				_FontColor, FONT_TU, 0,
-		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2 + m_FontHeight, 0), _FontColor, 0, 1,
-		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2 + m_FontHeight, 0), _FontColor, FONT_TU, 1,
+		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2, 0),				_fontColor, 0, 0,
+		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2, 0),				_fontColor, FONT_TU, 0,
+		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2 + m_FontHeight, 0), _fontColor, 0, 1,
+		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2 + m_FontHeight, 0), _fontColor, FONT_TU, 1,
 	};
 
 	D3D11_BUFFER_DESC BufferDesc;
