@@ -3,15 +3,13 @@
 #include <Windows.h>
 enum SceneID;
 class Scene;
-class DX11Manager;
+class SceneFactory;
 class SceneManager
 {
 public:
 	SceneManager(HWND _hwnd);
 	~SceneManager();
 	bool Run();
-	void Control();
-	void Draw();
 
 private:
 	enum SceneState
@@ -24,11 +22,13 @@ private:
 		SCENE_RELEASE
 	};
 
-	Scene*		 m_pScene;
-	SceneState   m_sceneState;
-	SceneID		 m_nextSceneID;
-	bool		 m_end; //ゲーム終了フラグ
-	/// ウィンドウハンドル
-	HWND		 m_hWnd;
+	void		  Control();
+	void		  Draw();
+	SceneFactory* m_pSceneFactory;
+	Scene*		  m_pScene;
+	SceneState    m_sceneState;
+	SceneID		  m_nextSceneID;
+	bool		  m_end;
+	HWND		  m_hWnd;
 };
 #endif
