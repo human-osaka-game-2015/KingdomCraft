@@ -1,14 +1,12 @@
 #ifndef TITLESCENE_H
 #define TITLESCENE_H
 #include "..//Scene.h"
-enum SceneID;
-class TitleScene :
-	public Scene
+class TitleScene : public Scene
 {
 public:
 	TitleScene();
-	~TitleScene();
-	SceneID Control();
-	void Draw();
+	virtual ~TitleScene();
+	virtual SceneID Control();
+	virtual void Draw();
 };
 #endif

@@ -1,18 +1,5 @@
 #ifndef SCENE_H
 #define SCENE_H
-enum SceneID;
-class Scene
-{
-public:
-	Scene(SceneID _sceneID);
-	~Scene();
-	virtual void Draw() = 0;
-	virtual SceneID Control();
-	SceneID GetSceneID(){ return m_sceneID; }
-protected:
-	SceneID m_sceneID;
-};
-
 enum SceneID
 {
 	SCENE_LOGO,
@@ -23,5 +10,16 @@ enum SceneID
 	SCENE_RESULT,
 	SCENE_ENDING,
 	FIN
+};
+class Scene
+{
+public:
+	Scene(SceneID _sceneID);
+	virtual ~Scene();
+	virtual void Draw() = 0;
+	virtual SceneID Control() = 0;
+	SceneID GetSceneID(){ return m_sceneID; }
+protected:
+	SceneID m_sceneID;
 };
 #endif
