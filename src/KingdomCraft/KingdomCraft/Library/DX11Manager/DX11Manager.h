@@ -10,6 +10,9 @@ class DX11Manager
 public:
 	~DX11Manager();
 
+	/**
+	 * インスタンスを生成
+	 */
 	static void Create()
 	{
 		if (m_pDX11Manager == NULL)
@@ -18,23 +21,56 @@ public:
 		}
 	}
 
+	/**
+	 * インスタンスを取得する
+	 * @return インスタンスが返る
+	 */
 	static DX11Manager* GetInstance()
 	{
 		return m_pDX11Manager;
 	}
 
+	/**
+	 * DX11Managerインスタンスを破棄する
+	 */
 	static void Delete()
 	{
 		delete m_pDX11Manager;
 		m_pDX11Manager = NULL;
 	}
 
+	/**
+	 * DX11Managerの初期化関数
+	 * @param[in] _hWnd DX11Managerが対応するウィンドウのハンドル
+	 * @return 初期化に成功したらtrue
+	 */
 	bool Init(HWND _hWnd);
+
+	/**
+	 * DX11Managerの解放関数
+	 */
 	void Release();
+
+	/**
+	 * 描画前処理を行う関数
+	 */
 	void BeginScene();
+
+	/**
+	 * 描画後処理を行う関数
+	 */	
 	void EndScene();
 	
+	/**
+	 * DirectX11デバイスを取得する関数
+	 * @return DirectX11デバイス
+	 */
 	ID3D11Device* GetDevice();
+
+	/**
+	 * DirectX11デバイスコンテキストを取得する関数
+	 * @return DirectX11デバイスコンテキスト
+	 */
 	ID3D11DeviceContext* GetDeviceContext();
 
 private:
