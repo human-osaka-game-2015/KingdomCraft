@@ -43,6 +43,9 @@
     <ClCompile Include="Library\ShaderManager\ShaderManager.cpp">
       <Filter>Library\ShaderManager</Filter>
     </ClCompile>
+    <ClCompile Include="Library\Vertex2D\Vertex2D.cpp">
+      <Filter>Library\Vertex2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -83,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="Library\ShaderManager\ShaderManager.h">
       <Filter>Library\ShaderManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Vertex2D\Vertex2D.h">
+      <Filter>Library\Vertex2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +144,14 @@
   <ItemGroup>
     <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
       <Filter>Library\DebugFont\Effect</Filter>
+    </FxCompile>
+    <Filter Include="Library\Vertex2D">
+      <UniqueIdentifier>{e30530c9-00d8-4131-8996-5b30a6349c95}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Library\Vertex2D\Vertex2D.hlsl">
+      <Filter>Library\Vertex2D</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
