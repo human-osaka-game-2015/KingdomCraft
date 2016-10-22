@@ -1,27 +1,32 @@
 #include "DSoundManager.h"
 #include <mmsystem.h>
 
-#pragma comment(lib,"dsound.lib")
-#pragma comment(lib,"dxguid.lib")
 DSoundManager* DSoundManager::m_pSoundManager = NULL;
 
-DSoundManager::DSoundManager(HWND _hWnd)
+DSoundManager::DSoundManager(HWND _hWnd) :
+m_hWnd(_hWnd)
 {
-	if (FAILED(DirectSoundCreate8(NULL, &m_pDSound8, NULL)))
-	{
-		MessageBox(0, "サウンドデバイスの生成に失敗しました", "DSoundManager.cpp", MB_OK);
-	}
-
-	if (FAILED(m_pDSound8->SetCooperativeLevel(_hWnd, DSSCL_PRIORITY)))
-	{
-		MessageBox(0, "協調レベルの設定に失敗しました", "DSoundManager.cpp", MB_OK);
-	}
 }
 
 
 DSoundManager::~DSoundManager()
 {
-	m_pDSound8->Release();
+}
+
+bool DSoundManager::Init()
+{
+	if (FAILED(DirectSoundCreate8(NULL, &m_pDSound8, NULL)))
+	{
+		MessageBox(m_hWnd, "サウンドデバイスの生成に失敗しました", "Error", MB_ICONSTOP);
+		return false;
+	}
+
+	if (FAILED(m_pDSound8->SetCooperativeLevel(m_hWnd, DSSCL_PRIORITY)))
+	{
+		MessageBox(m_hWnd, "協調レベルの設定に失敗しました", "Error", MB_ICONSTOP);
+		return false;
+	}
+	return true;
 }
 
 bool DSoundManager::OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWaveData, DWORD &_waveSize)
@@ -101,45 +106,46 @@ bool DSoundManager::OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWav
 	return true;
 }
 
-void DSoundManager::ReleaseSound(int _Key)
+void DSoundManager::ReleaseSound(int _key)
 {
-	m_SoundMap[_Key]->Release();
-	m_SoundMap.erase(_Key);
+	m_SoundMap[_key]->Release();
+	m_SoundMap.erase(_key);
 }
 
-void DSoundManager::SoundOperation(int _Key, SOUND_OPERATION operation)
+void DSoundManager::SoundOperation(int _key, SOUND_OPERATION operation)
 {
 	switch (operation)
 	{
 	case SOUND_PLAY:
-		m_SoundMap[_Key]->Play(0, 0, 0);
+		m_SoundMap[_key]->Play(0, 0, 0);
 		break;
 	case SOUND_LOOP:
-		m_SoundMap[_Key]->Play(0, 0, DSBPLAY_LOOPING);
+		m_SoundMap[_key]->Play(0, 0, DSBPLAY_LOOPING);
 		break;
 	case SOUND_STOP:
-		m_SoundMap[_Key]->Stop();
+		m_SoundMap[_key]->Stop();
 		break;
 	case SOUND_RESET:
-		m_SoundMap[_Key]->SetCurrentPosition(0);
+		m_SoundMap[_key]->SetCurrentPosition(0);
 		break;
 	case SOUND_STOP_RESET:
-		m_SoundMap[_Key]->Stop();
-		m_SoundMap[_Key]->SetCurrentPosition(0);
+		m_SoundMap[_key]->Stop();
+		m_SoundMap[_key]->SetCurrentPosition(0);
 		break;
 	}
 }
 
-int DSoundManager::SoundLoad(int _Key, char* _filename)
+bool DSoundManager::SoundLoad(int _key, char* _filename)
 {
 	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
 	WAVEFORMATEX wFmt;
 	char *pWaveData = 0;
 	DWORD waveSize = 0;
 
-	if (!OpenWave((_filename), wFmt, &pWaveData, waveSize))
+	if (!OpenWave(_filename, wFmt, &pWaveData, waveSize))
 	{
-		return 0;
+		MessageBox(m_hWnd, "waveファイルが開けませんでした", "Error", MB_ICONSTOP);
+		return false;
 	}
 
 	DSBUFFERDESC DSBufferDesc;
@@ -158,7 +164,7 @@ int DSoundManager::SoundLoad(int _Key, char* _filename)
 	if (pDSBuffer == NULL)
 	{
 		m_pDSound8->Release();
-		return 0;
+		return false;
 	}
 
 
@@ -173,10 +179,10 @@ int DSoundManager::SoundLoad(int _Key, char* _filename)
 		pDSBuffer->Unlock(lpvWrite, dwLength, NULL, 0);
 	}
 
-	delete[] pWaveData; // 元音はもういらない
+	delete[] pWaveData;
 
 
-	m_SoundMap[_Key] = pDSBuffer;
+	m_SoundMap[_key] = pDSBuffer;
 
-	return 0;
+	return true;
 }
