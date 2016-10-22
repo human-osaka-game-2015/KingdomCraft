@@ -16,25 +16,38 @@ enum SOUND_OPERATION
 class DSoundManager
 {
 public:
+	
+	/**
+	* 初期化処理
+	* @return 成功したらtrue
+	*/
+	bool Init();
+
+	/**
+	* 解放処理
+	*/
+	void Release(){ m_pDSound8->Release(); };
+
 	/**
 	* 音声の読み込み
+	* @param[in] _key 格納先のキー
 	* @param[in] _filename 読み込むファイルの名前
-	* @param[in] _Key 格納先のキー
+	* @return 成功したらtrue
 	*/
-	int SoundLoad(int _Key, char* _filename);
+	bool SoundLoad(int _key, char* _filename);
 	
 	/**
 	* 音声の開放
-	* @param[in] _Key 開放先のキー
+	* @param[in] _key 開放先のキー
 	*/
-	void ReleaseSound(int _Key);
+	void ReleaseSound(int _key);
 
 	/**
 	* サウンドの操作関数
-	* @param[in] _Key 操作するサウンドの格納先のキー
+	* @param[in] _key 操作するサウンドの格納先のキー
 	* @param[in] operation どのような操作をするか
 	*/
-	void SoundOperation(int _Key, SOUND_OPERATION _operation);
+	void SoundOperation(int _key, SOUND_OPERATION _operation);
 
 	/**
 	* インスタンス生成関数
@@ -47,7 +60,10 @@ public:
 			m_pSoundManager = new DSoundManager(_hWnd);
 		}
 	}
-
+	
+	/**
+	* @return インスタンスの破棄
+	*/
 	static void Destroy()
 	{
 		if (m_pSoundManager != NULL)
@@ -58,9 +74,9 @@ public:
 	}
 
 	/**
-	* インスタンス取得関数
+	* @return インスタンスが返る
 	*/
-	static DSoundManager* getInstance()
+	static DSoundManager* GetInstance()
 	{
 		return m_pSoundManager;
 	}
@@ -68,7 +84,7 @@ public:
 private:
 	DSoundManager(HWND _hWnd);
 	~DSoundManager();
-
+	HWND								m_hWnd;
 	IDirectSound8*						m_pDSound8;
 	std::map<int, LPDIRECTSOUNDBUFFER8> m_SoundMap;
 	static DSoundManager*				m_pSoundManager;
