@@ -1,4 +1,4 @@
-#ifndef KEYDEVICE_H
+﻿#ifndef KEYDEVICE_H
 #define KEYDEVICE_H
 
 #define DIRECTINPUT_VERSION 0x0800
@@ -8,16 +8,16 @@
 
 enum KEYSTATE
 {
-	//! �L�[�������ꂽ�u�Ԃ̏��
+	//! キーが押された瞬間の状態
 	KEY_PUSH,
 
-	//! �L�[�������ꂽ�u�Ԃ̏��
+	//! キーが離された瞬間の状態
 	KEY_RELEASE,
 
-	//! �L�[�������ꑱ���Ă�����
+	//! キーが押され続けている状態
 	KEY_ON,
 
-	//! �L�[��������Ă��Ȃ����
+	//! キーが押されていない状態
 	KEY_OFF
 };
 
@@ -28,27 +28,27 @@ public:
 	~KeyDevice();
 
 	/**
-	 * KeyDevice�̏������֐�
-	 * @param[in] _pDInput8 DirectInput�I�u�W�F�N�g
-	 * @param[in] _hWnd KeyDevice�ɑΉ�������E�B���h�E�n���h��
-	 * @return �f�o�C�X�̏������ɐ���������true���Ԃ�
+	 * KeyDeviceの初期化関数
+	 * @param[in] _pDInput8 DirectInputオブジェクト
+	 * @param[in] _hWnd KeyDeviceに対応させるウィンドウハンドル
+	 * @return デバイスの初期化に成功したらtrueが返る
 	 */
 	bool Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd);
 
 	/**
-	 * KeyDevice�̉���֐�
+	 * KeyDeviceの解放関数
 	 */
 	void Release();
 
 	/**
-	 * �L�[�̏�Ԃ��X�V����
+	 * キーの状態を更新する
 	 */
 	void Update();
 
 	/**
-	 * �L�[�̏�Ԃ��擾����
-	 * @param[in] ��Ԃ��擾�������L�[��DIK
-	 * @return �L�[�̏��
+	 * キーの状態を取得する
+	 * @param[in] 状態を取得したいキーのDIK
+	 * @return キーの状態
 	 */
 	KEYSTATE GetKeyState(int _dik);
 

@@ -1,4 +1,4 @@
-#include "MouseDevice.h"
+ï»¿#include "MouseDevice.h"
 
 
 MouseDevice::MouseDevice() :
@@ -22,19 +22,19 @@ bool MouseDevice::Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd)
 
 	if (m_pDInput8 == NULL)
 	{
-		MessageBox(m_hWnd, "DirectInput8ƒIƒuƒWƒFƒNƒg‚ª—LŒø‚Å‚Í‚ ‚è‚Ü‚¹‚ñ", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DirectInput8ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæœ‰åŠ¹ã§ã¯ã‚ã‚Šã¾ã›ã‚“"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
 	if (FAILED(m_pDInput8->CreateDevice(GUID_SysMouse, &m_pDInputDevice8, NULL))) 
 	{
-		MessageBox(m_hWnd, "DirectInput8ƒ}ƒEƒXƒfƒoƒCƒX‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DirectInput8ãƒã‚¦ã‚¹ãƒ‡ãƒã‚¤ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
 	if (FAILED(m_pDInputDevice8->SetDataFormat(&c_dfDIMouse))) 
 	{
-		MessageBox(m_hWnd, "DirectInput8ƒ}ƒEƒXƒfƒoƒCƒX‚Ìƒf[ƒ^ƒtƒH[ƒ}ƒbƒg‚Ìİ’è‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DirectInput8ãƒã‚¦ã‚¹ãƒ‡ãƒã‚¤ã‚¹ã®ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDInputDevice8->Release();
 		return false;
 	}
@@ -47,21 +47,21 @@ bool MouseDevice::Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd)
 	diprop.dwData = 1000;
 	if (FAILED(m_pDInputDevice8->SetProperty(DIPROP_BUFFERSIZE, &diprop.diph))) 
 	{
-		MessageBox(m_hWnd, "DirectInput8ƒ}ƒEƒXƒfƒoƒCƒX‚Ìƒoƒbƒtƒ@İ’è‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DirectInput8ãƒã‚¦ã‚¹ãƒ‡ãƒã‚¤ã‚¹ã®ãƒãƒƒãƒ•ã‚¡è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDInputDevice8->Release();
 		return false;
 	}
 
 	if (FAILED(m_pDInputDevice8->SetCooperativeLevel(m_hWnd, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND))) 
 	{
-		MessageBox(m_hWnd, "DirectInput8ƒ}ƒEƒXƒfƒoƒCƒX‚Ì‹¦’²ƒŒƒxƒ‹‚Ìİ’è‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DirectInput8ãƒã‚¦ã‚¹ãƒ‡ãƒã‚¤ã‚¹ã®å”èª¿ãƒ¬ãƒ™ãƒ«ã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDInputDevice8->Release();
 		return false;
 	}
 
 	m_pDInputDevice8->Acquire();
 
-	OutputDebugString("DirectInput‚ÌMouseDevice‚Ì‰Šú‰»‚É¬Œ÷‚µ‚½\n");
+	OutputDebugString(TEXT("DirectInputã®MouseDeviceã®åˆæœŸåŒ–ã«æˆåŠŸã—ãŸ\n"));
 
 	return true;
 }
@@ -70,7 +70,7 @@ void MouseDevice::Release()
 {
 	m_pDInputDevice8->Release();
 
-	OutputDebugString("DirectInput‚ÌMouseDevice‚ğ‰ğ•ú‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DirectInputã®MouseDeviceã‚’è§£æ”¾ã—ã¾ã—ãŸ\n"));
 }
 
 void MouseDevice::Update()

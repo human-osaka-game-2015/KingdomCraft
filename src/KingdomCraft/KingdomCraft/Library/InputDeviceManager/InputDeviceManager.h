@@ -1,4 +1,4 @@
-#ifndef INPUTDEVICEMANAGER_H
+ï»¿#ifndef INPUTDEVICEMANAGER_H
 #define INPUTDEVICEMANAGER_H
 
 #define DIRECTINPUT_VERSION 0x0800
@@ -12,7 +12,7 @@ public:
 	~InputDeviceManager();
 
 	/**
-	 * InputDeviceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é
+	 * InputDeviceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹
 	 */
 	static void Create()
 	{
@@ -23,8 +23,8 @@ public:
 	}
 
 	/**
-	 * InputDeviceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é
-	 * @return InputDeviceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	 * InputDeviceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹
+	 * @return InputDeviceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	 */
 	static InputDeviceManager* GetInstance()
 	{
@@ -32,7 +32,7 @@ public:
 	}
 
 	/**
-	 * InputDeviceManager‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ”jŠü‚·‚é
+	 * InputDeviceManagerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç ´æ£„ã™ã‚‹
 	 */
 	static void Delete()
 	{
@@ -41,48 +41,48 @@ public:
 	}
 
 	/**
-	 * InputDeviceManager‚Ì‰Šú‰»ŠÖ”
-	 * InputDeviceManager‚ğ¶¬‚µ‚½Œã‚É•K‚¸ŒÄ‚Î‚È‚¢‚Æ‚¢‚¯‚È‚¢
-	 * @param[in] _hWnd “ü—ÍƒfƒoƒCƒX‚É‘Î‰‚³‚¹‚éƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
+	 * InputDeviceManagerã®åˆæœŸåŒ–é–¢æ•°
+	 * InputDeviceManagerã‚’ç”Ÿæˆã—ãŸå¾Œã«å¿…ãšå‘¼ã°ãªã„ã¨ã„ã‘ãªã„
+	 * @param[in] _hWnd å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã«å¯¾å¿œã•ã›ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
 	 */
 	bool Init(HWND _hWnd);
 
 	/**
-	 * InputDeviceManager‚Ì‰ğ•úŠÖ”
-	 * InputDeviceManager‚ğ”jŠü‚·‚é‘O‚É•K‚¸ŒÄ‚Î‚È‚¢‚Æ‚¢‚¯‚È‚¢
+	 * InputDeviceManagerã®è§£æ”¾é–¢æ•°
+	 * InputDeviceManagerã‚’ç ´æ£„ã™ã‚‹å‰ã«å¿…ãšå‘¼ã°ãªã„ã¨ã„ã‘ãªã„
 	 */
 	void Release();
 
 	/**
-	 * KeyDevice‚Ì¶¬ŠÖ”
+	 * KeyDeviceã®ç”Ÿæˆé–¢æ•°
 	 */
 	bool CreateKeyDevice();
 
 	/**
-	 * MouseDevice‚Ì¶¬ŠÖ”
+	 * MouseDeviceã®ç”Ÿæˆé–¢æ•°
 	 */
 	bool CreateMouseDevice();
 
 	/**
-	 * ƒL[‚Ìó‘Ô‚ğXV‚·‚é
+	 * ã‚­ãƒ¼ã®çŠ¶æ…‹ã‚’æ›´æ–°ã™ã‚‹
 	 */
 	void KeyUpdate();
 
 	/**
-	 * ƒ}ƒEƒX‚Ìó‘Ô‚ğXV‚·‚é
+	 * ãƒã‚¦ã‚¹ã®çŠ¶æ…‹ã‚’æ›´æ–°ã™ã‚‹
 	 */
 	void MouseUpdate();
 
 	/**
-	 * ƒL[‚Ìó‘Ô‚ğæ“¾‚·‚é
-	 * @param[in] ó‘Ô‚ğæ“¾‚µ‚½‚¢ƒL[‚ÌDIK
-	 * @return ƒL[‚Ìó‘Ô
+	 * ã‚­ãƒ¼ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹
+	 * @param[in] çŠ¶æ…‹ã‚’å–å¾—ã—ãŸã„ã‚­ãƒ¼ã®DIK
+	 * @return ã‚­ãƒ¼ã®çŠ¶æ…‹
 	 */
 	KEYSTATE GetKeyState(int _dik);
 
 	/**
-	 * ƒ}ƒEƒX‚Ìó‘Ô‚ğæ“¾‚·‚é
-	 * @return ƒ}ƒEƒX‚Ìó‘Ô‚ªŠi”[‚³‚ê‚Ä‚¢‚é\‘¢‘Ì
+	 * ãƒã‚¦ã‚¹ã®çŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹
+	 * @return ãƒã‚¦ã‚¹ã®çŠ¶æ…‹ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹æ§‹é€ ä½“
 	 */
 	MOUSESTATE GetMouseState();
 
