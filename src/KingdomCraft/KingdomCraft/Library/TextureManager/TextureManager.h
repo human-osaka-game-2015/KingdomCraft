@@ -1,4 +1,4 @@
-#ifndef TEXTUREMANAGER_H
+ï»¿#ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
 #include <d3d11.h>
 #include <map>
@@ -10,17 +10,17 @@ public:
 	~TextureManager();
 
 	/**
-	 * ƒeƒNƒXƒ`ƒƒ‚ğ“Ç‚İ‚Ş
-	 * @param[in] _key “Ç‚İ‚ñ‚¾ƒeƒNƒXƒ`ƒƒ‚ÌŠi”[æ‚Ö‚ÌƒL[
-	 * @param[in] _filePath “Ç‚İ‚ŞƒeƒNƒXƒ`ƒƒ
-	 * @return ƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ‚É¬Œ÷‚µ‚½‚çtrue
+	 * ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’èª­ã¿è¾¼ã‚€
+	 * @param[in] _key èª­ã¿è¾¼ã‚“ã ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®æ ¼ç´å…ˆã¸ã®ã‚­ãƒ¼
+	 * @param[in] _filePath èª­ã¿è¾¼ã‚€ãƒ†ã‚¯ã‚¹ãƒãƒ£
+	 * @return ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®èª­ã¿è¾¼ã¿ã«æˆåŠŸã—ãŸã‚‰true
 	 */
-	bool LoadTexture(int _key, char* _filePath);
+	bool LoadTexture(int _key, LPCTCH _filePath);
 
 	/**
-	 * Ši”[‚µ‚Ä‚¢‚éƒeƒNƒXƒ`ƒƒ‚ğæ“¾‚·‚é
-	 * @param[in] _key æ“¾‚µ‚½‚¢ƒeƒNƒXƒ`ƒƒ‚ÌƒL[
-	 * @return ƒeƒNƒXƒ`ƒƒ‚ÌƒŠƒ\[ƒXƒrƒ…[
+	 * æ ¼ç´ã—ã¦ã„ã‚‹ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’å–å¾—ã™ã‚‹
+	 * @param[in] _key å–å¾—ã—ãŸã„ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ã‚­ãƒ¼
+	 * @return ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ãƒªã‚½ãƒ¼ã‚¹ãƒ“ãƒ¥ãƒ¼
 	 */
 	inline ID3D11ShaderResourceView* GetTexture(int _key)
 	{ 
@@ -28,8 +28,8 @@ public:
 	}
 	
 	/**
-	 * Ši”[‚µ‚Ä‚¢‚éƒeƒNƒXƒ`ƒƒ‚ğ‰ğ•ú‚·‚é
-	 * @param[in] _key ‰ğ•ú‚µ‚½‚¢ƒeƒNƒXƒ`ƒƒ‚ÌƒL[
+	 * æ ¼ç´ã—ã¦ã„ã‚‹ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’è§£æ”¾ã™ã‚‹
+	 * @param[in] _key è§£æ”¾ã—ãŸã„ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ã‚­ãƒ¼
 	 */
 	inline void ReleaseTexture(int _key)
 	{ 

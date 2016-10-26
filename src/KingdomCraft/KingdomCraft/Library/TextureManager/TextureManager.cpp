@@ -1,4 +1,4 @@
-#include "TextureManager.h"
+ï»¿#include "TextureManager.h"
 #include <d3dx11.h>
 
 
@@ -11,7 +11,7 @@ TextureManager::~TextureManager()
 {
 }
 
-bool TextureManager::LoadTexture(int _key, char* _filePath)
+bool TextureManager::LoadTexture(int _key, LPCTCH _filePath)
 {
 	D3DX11_IMAGE_LOAD_INFO LoadInfo;
 	ZeroMemory(&LoadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
@@ -38,7 +38,7 @@ bool TextureManager::LoadTexture(int _key, char* _filePath)
 		&pResourceView,
 		NULL)))
 	{
-		OutputDebugString("ƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½\n");
+		OutputDebugString(TEXT("ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ\n"));
 		return false;
 	}
 
