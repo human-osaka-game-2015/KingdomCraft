@@ -1,4 +1,4 @@
-#ifndef MOUSEDEVICE_H
+﻿#ifndef MOUSEDEVICE_H
 #define MOUSEDEVICE_H
 
 #define DIRECTINPUT_VERSION 0x0800
@@ -7,26 +7,26 @@
 
 enum MOUSEBUTTONSTATE
 {
-	//! �}�E�X�̃{�^���������ꂽ�u�Ԃ̏��
+	//! マウスのボタンが押された瞬間の状態
 	MOUSEBUTTON_PUSH,
 
-	//! �}�E�X�̃{�^���������ꂽ�u�Ԃ̏��
+	//! マウスのボタンが離された瞬間の状態
 	MOUSEBUTTON_RELEASE,
 
-	//! �}�E�X�̃{�^���������ꑱ���Ă�����
+	//! マウスのボタンが押され続けている状態
 	MOUSEBUTTON_ON,
 
-	//! �}�E�X�̃{�^����������Ă�����
+	//! マウスのボタンが離されている状態
 	MOUSEBUTTON_OFF
 };
 
 struct MOUSESTATE
 {
-	LONG    lX;						// �}�E�X��X�����̈ړ���
-	LONG    lY;						// �}�E�X��Y�����̈ړ���
-	LONG    lZ;						// �}�E�X��Z�����̈ړ���
-	MOUSEBUTTONSTATE rgbButtons[4];	// �}�E�X�̃{�^���̏��
-	POINT	CursorPos;				// �E�B���h�E���̃J�[�\���ʒu
+	LONG    lX;						// マウスのX方向の移動量
+	LONG    lY;						// マウスのY方向の移動量
+	LONG    lZ;						// マウスのZ方向の移動量
+	MOUSEBUTTONSTATE rgbButtons[4];	// マウスのボタンの状態
+	POINT	CursorPos;				// ウィンドウ内のカーソル位置
 };
 
 class MouseDevice
@@ -36,26 +36,26 @@ public:
 	~MouseDevice();
 
 	/**
-	 * MouseDevice�̏������֐�
-	 * @param[in] _pDInput8 DirectInput�I�u�W�F�N�g
-	 * @param[in] _hWnd KeyDevice�ɑΉ�������E�B���h�E�n���h��
-	 * @return �f�o�C�X�̏������ɐ���������true���Ԃ�
+	 * MouseDeviceの初期化関数
+	 * @param[in] _pDInput8 DirectInputオブジェクト
+	 * @param[in] _hWnd KeyDeviceに対応させるウィンドウハンドル
+	 * @return デバイスの初期化に成功したらtrueが返る
 	 */
 	bool Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd);
 
 	/**
-	 * MouseDevice�̉���֐�
+	 * MouseDeviceの解放関数
 	 */
 	void Release();
 
 	/**
-	 * �}�E�X�̏�Ԃ��X�V����
+	 * マウスの状態を更新する
 	 */
 	void Update();
 
 	/**
-	 * �}�E�X�̏�Ԃ��擾����
-	 * @return �}�E�X�̏�Ԃ��i�[����Ă���\����
+	 * マウスの状態を取得する
+	 * @return マウスの状態が格納されている構造体
 	 */
 	MOUSESTATE GetMouseState();
 
