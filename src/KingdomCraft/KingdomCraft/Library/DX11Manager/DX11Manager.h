@@ -1,4 +1,4 @@
-#ifndef DX11MANAGER_H
+ï»¿#ifndef DX11MANAGER_H
 #define DX11MANAGER_H
 
 #include <Windows.h>
@@ -11,7 +11,7 @@ public:
 	~DX11Manager();
 
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ
 	 */
 	static void Create()
 	{
@@ -22,8 +22,8 @@ public:
 	}
 
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é
-	 * @return ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•Ô‚é
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹
+	 * @return ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¿”ã‚‹
 	 */
 	static DX11Manager* GetInstance()
 	{
@@ -31,7 +31,7 @@ public:
 	}
 
 	/**
-	 * DX11ManagerƒCƒ“ƒXƒ^ƒ“ƒX‚ğ”jŠü‚·‚é
+	 * DX11Managerã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç ´æ£„ã™ã‚‹
 	 */
 	static void Delete()
 	{
@@ -40,36 +40,36 @@ public:
 	}
 
 	/**
-	 * DX11Manager‚Ì‰Šú‰»ŠÖ”
-	 * @param[in] _hWnd DX11Manager‚ª‘Î‰‚·‚éƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹
-	 * @return ‰Šú‰»‚É¬Œ÷‚µ‚½‚çtrue
+	 * DX11Managerã®åˆæœŸåŒ–é–¢æ•°
+	 * @param[in] _hWnd DX11ManagerãŒå¯¾å¿œã™ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«
+	 * @return åˆæœŸåŒ–ã«æˆåŠŸã—ãŸã‚‰true
 	 */
 	bool Init(HWND _hWnd);
 
 	/**
-	 * DX11Manager‚Ì‰ğ•úŠÖ”
+	 * DX11Managerã®è§£æ”¾é–¢æ•°
 	 */
 	void Release();
 
 	/**
-	 * •`‰æ‘Oˆ—‚ğs‚¤ŠÖ”
+	 * æç”»å‰å‡¦ç†ã‚’è¡Œã†é–¢æ•°
 	 */
 	void BeginScene();
 
 	/**
-	 * •`‰æŒãˆ—‚ğs‚¤ŠÖ”
+	 * æç”»å¾Œå‡¦ç†ã‚’è¡Œã†é–¢æ•°
 	 */	
 	void EndScene();
 	
 	/**
-	 * DirectX11ƒfƒoƒCƒX‚ğæ“¾‚·‚éŠÖ”
-	 * @return DirectX11ƒfƒoƒCƒX
+	 * DirectX11ãƒ‡ãƒã‚¤ã‚¹ã‚’å–å¾—ã™ã‚‹é–¢æ•°
+	 * @return DirectX11ãƒ‡ãƒã‚¤ã‚¹
 	 */
 	ID3D11Device* GetDevice();
 
 	/**
-	 * DirectX11ƒfƒoƒCƒXƒRƒ“ƒeƒLƒXƒg‚ğæ“¾‚·‚éŠÖ”
-	 * @return DirectX11ƒfƒoƒCƒXƒRƒ“ƒeƒLƒXƒg
+	 * DirectX11ãƒ‡ãƒã‚¤ã‚¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹é–¢æ•°
+	 * @return DirectX11ãƒ‡ãƒã‚¤ã‚¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
 	 */
 	ID3D11DeviceContext* GetDeviceContext();
 
