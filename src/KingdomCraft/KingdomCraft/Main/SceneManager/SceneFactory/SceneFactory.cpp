@@ -1,4 +1,4 @@
-#include "SceneFactory.h"
+﻿#include "SceneFactory.h"
 #include "..//Scene//GameScene//GameScene.h"
 #include "..//Scene//TitleScene//TitleScene.h"
 #include <Windows.h>
