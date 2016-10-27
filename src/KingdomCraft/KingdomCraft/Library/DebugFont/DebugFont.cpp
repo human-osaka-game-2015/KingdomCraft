@@ -1,4 +1,4 @@
-#include "DebugFont.h"
+ï»¿#include "DebugFont.h"
 #include <d3dx11.h>
 
 
@@ -30,20 +30,20 @@ bool DebugFont::Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContex
 
 	if (!InitResourceView())
 	{
-		MessageBox(m_hWnd, "InitResourceView‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitResourceViewãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
 	if (!InitConstantBuffer())
 	{
-		MessageBox(m_hWnd, "InitConstantBuffer‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitConstantBufferãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		ReleaseResourceView();
 		return false;
 	}
 
 	if (!InitShader())
 	{
-		MessageBox(m_hWnd, "InitShader‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitShaderãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		ReleaseConstantBuffer();
 		ReleaseResourceView();
 		return false;
@@ -51,7 +51,7 @@ bool DebugFont::Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContex
 
 	if (!InitSamplerState())
 	{
-		MessageBox(m_hWnd, "InitSamplerState‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitSamplerStateãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		ReleaseShader();
 		ReleaseConstantBuffer();
 		ReleaseResourceView();
@@ -60,7 +60,7 @@ bool DebugFont::Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContex
 
 	if (!InitBlendState())
 	{
-		MessageBox(m_hWnd, "InitBlendState‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitBlendStateãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		ReleaseSamplerState();
 		ReleaseShader();
 		ReleaseConstantBuffer();
@@ -70,7 +70,7 @@ bool DebugFont::Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContex
 	
 	if (!InitDepthStencilState())
 	{
-		MessageBox(m_hWnd, "InitDepthStencilState‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitDepthStencilStateãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		ReleaseBlendState();
 		ReleaseSamplerState();
 		ReleaseShader();
@@ -79,7 +79,7 @@ bool DebugFont::Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContex
 		return false;
 	}
 
-	OutputDebugString("DebugFont‚Ì‰Šú‰»‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFontã®åˆæœŸåŒ–ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -96,8 +96,8 @@ void DebugFont::Release()
 
 bool DebugFont::InitFont(float _fontHeight, float _fontWidth, D3DXCOLOR _fontColor)
 {
-	m_FontWidth = _fontWidth;		// ƒtƒHƒ“ƒg‚Ì•
-	m_FontHeight = _fontHeight;     // ƒtƒHƒ“ƒg‚Ì‚‚³
+	m_FontWidth = _fontWidth;		// ãƒ•ã‚©ãƒ³ãƒˆã®å¹…
+	m_FontHeight = _fontHeight;     // ãƒ•ã‚©ãƒ³ãƒˆã®é«˜ã•
 
 	RECT WindowRect;
 	GetWindowRect(m_hWnd, &WindowRect);
@@ -128,7 +128,7 @@ bool DebugFont::InitFont(float _fontHeight, float _fontWidth, D3DXCOLOR _fontCol
 
 	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &ResourceData, &m_pVertexBuffer)))
 	{
-		MessageBox(m_hWnd, "’¸“_ƒf[ƒ^‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("é ‚ç‚¹ãƒ‡ãƒ¼ã‚¿ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -211,17 +211,17 @@ bool DebugFont::InitResourceView()
 
 	if (FAILED(D3DX11CreateShaderResourceViewFromFile(
 		m_pDevice,
-		"Library//DebugFont//Resource//Font.png",
+		TEXT("Library//DebugFont//Resource//Font.png"),
 		&LoadInfo,
 		NULL,
 		&m_pResourceView,
 		NULL)))
 	{
-		MessageBox(m_hWnd, "ƒeƒNƒXƒ`ƒƒƒŠ[ƒ\[ƒXƒrƒ…[‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒªãƒ¼ã‚½ãƒ¼ã‚¹ãƒ“ãƒ¥ãƒ¼ã®ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
-	OutputDebugString("DebugFont ƒtƒHƒ“ƒgƒeƒNƒXƒ`ƒƒ‚ÌResourceView‚Ì¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont ãƒ•ã‚©ãƒ³ãƒˆãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ResourceViewã®ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -230,19 +230,19 @@ bool DebugFont::InitConstantBuffer()
 {
 	D3D11_BUFFER_DESC ConstantBufferDesc;
 	ZeroMemory(&ConstantBufferDesc, sizeof(ConstantBufferDesc));
-	ConstantBufferDesc.ByteWidth = sizeof(CONSTANT_BUFFER);         // ƒoƒbƒtƒ@‚ÌƒTƒCƒY
-	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;					// “®“IƒŠƒ\[ƒX‚ğw’è(CPU‚É‚æ‚é‘‚«‚İ‚ÆGPU‚É‚æ‚é“Ç‚İæ‚è‚ª‚³‚ê‚é)
-	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;		// ƒoƒbƒtƒ@‚Ìí—Ş(’è”ƒoƒbƒtƒ@‚ğw’è)
-	ConstantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;		// CPU‚ÌƒAƒNƒZƒX(CPU ‚É‚æ‚é‘‚«‚İ‚ğ‹–‰Â)
-	ConstantBufferDesc.MiscFlags = 0;								// ‚»‚Ì‘¼‚Ìƒtƒ‰ƒO‚Íİ’è‚µ‚È‚¢
+	ConstantBufferDesc.ByteWidth = sizeof(CONSTANT_BUFFER);         // ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚º
+	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;					// å‹•çš„ãƒªã‚½ãƒ¼ã‚¹ã‚’æŒ‡å®š(CPUã«ã‚ˆã‚‹æ›¸ãè¾¼ã¿ã¨GPUã«ã‚ˆã‚‹èª­ã¿å–ã‚ŠãŒã•ã‚Œã‚‹)
+	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;		// ãƒãƒƒãƒ•ã‚¡ã®ç¨®é¡(å®šæ•°ãƒãƒƒãƒ•ã‚¡ã‚’æŒ‡å®š)
+	ConstantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;		// CPUã®ã‚¢ã‚¯ã‚»ã‚¹(CPU ã«ã‚ˆã‚‹æ›¸ãè¾¼ã¿ã‚’è¨±å¯)
+	ConstantBufferDesc.MiscFlags = 0;								// ãã®ä»–ã®ãƒ•ãƒ©ã‚°ã¯è¨­å®šã—ãªã„
 
 	if (FAILED(m_pDevice->CreateBuffer(&ConstantBufferDesc, NULL, &m_pConstantBuffer)))
 	{
-		MessageBox(m_hWnd, "ƒRƒ“ƒXƒ^ƒ“ƒgƒoƒbƒtƒ@‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚³ãƒ³ã‚¹ã‚¿ãƒ³ãƒˆãƒãƒƒãƒ•ã‚¡ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
-	OutputDebugString("DebugFont ’è”ƒoƒbƒtƒ@‚Ì¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont å®šæ•°ãƒãƒƒãƒ•ã‚¡ã®ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -251,18 +251,18 @@ bool DebugFont::InitShader()
 {
 	if (!InitVertexShader())
 	{
-		MessageBox(m_hWnd, "InitVertexShader‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitVertexShaderãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
 	if (!InitPixelShader())
 	{
-		MessageBox(m_hWnd, "InitPixelShader‚ª¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitPixelShaderãŒå¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		ReleaseVertexShader();
 		return false;
 	}
 
-	OutputDebugString("DebugFont ƒVƒF[ƒ_[‚Ì‰Šú‰»‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®åˆæœŸåŒ–ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -272,7 +272,7 @@ bool DebugFont::InitVertexShader()
 	ID3DBlob* pCompiledVertexShader = NULL;
 	ID3DBlob* pVertexShaderErrors = NULL;
 	if (FAILED(D3DX11CompileFromFile(
-		"Library//DebugFont//Effect//DebugFont.fx",
+		TEXT("Library//DebugFont//Effect//DebugFont.fx"),
 		NULL,
 		NULL,
 		"VS",
@@ -284,7 +284,7 @@ bool DebugFont::InitVertexShader()
 		&pVertexShaderErrors,
 		NULL)))
 	{
-		MessageBox(m_hWnd, "VertexShader‚ÌƒRƒ“ƒpƒCƒ‹‚É¸”s", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("VertexShaderã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¤±æ•—"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		if (pVertexShaderErrors != NULL) pVertexShaderErrors->Release();
 		return false;
 	}
@@ -299,7 +299,7 @@ bool DebugFont::InitVertexShader()
 		NULL,
 		&m_pVertexShader)))
 	{
-		MessageBox(m_hWnd, "VertexShader‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("VertexShaderã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		pCompiledVertexShader->Release();
 		return false;
 	}
@@ -320,7 +320,7 @@ bool DebugFont::InitVertexShader()
 		pCompiledVertexShader->GetBufferSize(),
 		&m_pLayout)))
 	{
-		MessageBox(m_hWnd, "InputLayout‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InputLayoutã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pVertexShader->Release();
 		pCompiledVertexShader->Release();
 		return false;
@@ -328,7 +328,7 @@ bool DebugFont::InitVertexShader()
 
 	pCompiledVertexShader->Release();
 
-	OutputDebugString("DebugFont ƒo[ƒeƒbƒNƒXƒVƒF[ƒ_[‚Ì‰Šú‰»‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®åˆæœŸåŒ–ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -338,7 +338,7 @@ bool DebugFont::InitPixelShader()
 	ID3DBlob* pCompiledPixelShader = NULL;
 	ID3DBlob* pPixelShaderErrors = NULL;
 	if (FAILED(D3DX11CompileFromFile(
-		"Library//DebugFont//Effect//DebugFont.fx",
+		TEXT("Library//DebugFont//Effect//DebugFont.fx"),
 		NULL,
 		NULL,
 		"PS",
@@ -350,7 +350,7 @@ bool DebugFont::InitPixelShader()
 		&pPixelShaderErrors,
 		NULL)))
 	{
-		MessageBox(m_hWnd, "PixelShader‚ÌƒRƒ“ƒpƒCƒ‹‚É¸”s", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("PixelShaderã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¤±æ•—"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		if (pPixelShaderErrors != NULL) pPixelShaderErrors->Release();
 		return false;
 	}
@@ -365,12 +365,12 @@ bool DebugFont::InitPixelShader()
 		NULL,
 		&m_pPixelShader)))
 	{
-		MessageBox(m_hWnd, "PixelShader‚ÌƒRƒ“ƒpƒCƒ‹‚É¸”s", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("PixelShaderã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¤±æ•—"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		pCompiledPixelShader->Release();
 		return false;
 	}
 
-	OutputDebugString("DebugFont ƒsƒNƒZƒ‹ƒVƒF[ƒ_[‚Ì‰Šú‰»‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®åˆæœŸåŒ–ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -379,27 +379,27 @@ bool DebugFont::InitSamplerState()
 {
 	D3D11_SAMPLER_DESC samplerDesc;
 	ZeroMemory(&samplerDesc, sizeof(samplerDesc));
-	samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;	// ƒTƒ“ƒvƒŠƒ“ƒO‚Ég—p‚·‚éƒtƒBƒ‹ƒ^B‚±‚±‚Å‚ÍˆÙ•û«ƒtƒBƒ‹ƒ^[‚ğg—p‚·‚éB
-	samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ` 1 ‚Ì”ÍˆÍŠO‚É‚ ‚é u ƒeƒNƒXƒ`ƒƒ[À•W‚Ì•`‰æ•û–@
-	samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ` 1 ‚Ì”ÍˆÍŠO‚É‚ ‚é v ƒeƒNƒXƒ`ƒƒ[À•W‚Ì•`‰æ•û–@
-	samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ` 1 ‚Ì”ÍˆÍŠO‚É‚ ‚é w ƒeƒNƒXƒ`ƒƒ[À•W‚Ì•`‰æ•û–@
-	samplerDesc.MipLODBias = 0;								// ŒvZ‚³‚ê‚½ƒ~ƒbƒvƒ}ƒbƒv ƒŒƒxƒ‹‚©‚ç‚ÌƒoƒCƒAƒX
-	samplerDesc.MaxAnisotropy = 0;							// ƒTƒ“ƒvƒŠƒ“ƒO‚ÉˆÙ•û«•âŠÔ‚ğg—p‚µ‚Ä‚¢‚éê‡‚ÌŒÀŠE’lB—LŒø‚È’l‚Í 1 ` 16 B
-	samplerDesc.ComparisonFunc = D3D11_COMPARISON_ALWAYS;	// ”äŠrƒIƒvƒVƒ‡ƒ“B
+	samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;	// ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°æ™‚ã«ä½¿ç”¨ã™ã‚‹ãƒ•ã‚£ãƒ«ã‚¿ã€‚ã“ã“ã§ã¯ç•°æ–¹æ€§ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹ã€‚
+	samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ï½ 1 ã®ç¯„å›²å¤–ã«ã‚ã‚‹ u ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼åº§æ¨™ã®æç”»æ–¹æ³•
+	samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ï½ 1 ã®ç¯„å›²å¤–ã«ã‚ã‚‹ v ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼åº§æ¨™ã®æç”»æ–¹æ³•
+	samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ï½ 1 ã®ç¯„å›²å¤–ã«ã‚ã‚‹ w ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼åº§æ¨™ã®æç”»æ–¹æ³•
+	samplerDesc.MipLODBias = 0;								// è¨ˆç®—ã•ã‚ŒãŸãƒŸãƒƒãƒ—ãƒãƒƒãƒ— ãƒ¬ãƒ™ãƒ«ã‹ã‚‰ã®ãƒã‚¤ã‚¢ã‚¹
+	samplerDesc.MaxAnisotropy = 0;							// ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ã«ç•°æ–¹æ€§è£œé–“ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹å ´åˆã®é™ç•Œå€¤ã€‚æœ‰åŠ¹ãªå€¤ã¯ 1 ï½ 16 ã€‚
+	samplerDesc.ComparisonFunc = D3D11_COMPARISON_ALWAYS;	// æ¯”è¼ƒã‚ªãƒ—ã‚·ãƒ§ãƒ³ã€‚
 	for (int i = 0; i < 4; i++)
 	{
-		samplerDesc.BorderColor[i] = 0.0f;					// ‹«ŠEF
+		samplerDesc.BorderColor[i] = 0.0f;					// å¢ƒç•Œè‰²
 	}
-	samplerDesc.MinLOD = 0;									// ƒAƒNƒZƒX‰Â”\‚Èƒ~ƒbƒvƒ}ƒbƒv‚Ì‰ºŒÀ’l
-	samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;					// ƒAƒNƒZƒX‰Â”\‚Èƒ~ƒbƒvƒ}ƒbƒv‚ÌãŒÀ’l
+	samplerDesc.MinLOD = 0;									// ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒŸãƒƒãƒ—ãƒãƒƒãƒ—ã®ä¸‹é™å€¤
+	samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;					// ã‚¢ã‚¯ã‚»ã‚¹å¯èƒ½ãªãƒŸãƒƒãƒ—ãƒãƒƒãƒ—ã®ä¸Šé™å€¤
 
 	if (FAILED(m_pDevice->CreateSamplerState(&samplerDesc, &m_pSamplerState)))
 	{
-		MessageBox(m_hWnd, "ƒTƒ“ƒvƒ‰[ƒXƒe[ƒg‚Ì¶¬‚É¸”s", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚µãƒ³ãƒ—ãƒ©ãƒ¼ã‚¹ãƒ†ãƒ¼ãƒˆã®ç”Ÿæˆã«å¤±æ•—"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
-	OutputDebugString("DebugFont ƒTƒ“ƒvƒ‰[ƒXƒe[ƒg‚Ì¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont ã‚µãƒ³ãƒ—ãƒ©ãƒ¼ã‚¹ãƒ†ãƒ¼ãƒˆã®ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -421,11 +421,11 @@ bool DebugFont::InitBlendState()
 
 	if (FAILED(m_pDevice->CreateBlendState(&BlendDesc, &m_pBlendState)))
 	{
-		MessageBox(m_hWnd, "ƒuƒŒƒ“ƒhƒXƒe[ƒg‚Ì¶¬‚É¸”s", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ãƒ–ãƒ¬ãƒ³ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆã®ç”Ÿæˆã«å¤±æ•—"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
-	OutputDebugString("DebugFont ƒuƒŒƒ“ƒhƒXƒe[ƒg‚Ì¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont ãƒ–ãƒ¬ãƒ³ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆã®ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }
@@ -441,11 +441,11 @@ bool DebugFont::InitDepthStencilState()
 
 	if (FAILED(m_pDevice->CreateDepthStencilState(&ddsDesc, &m_pDepthStencilState)))
 	{
-		OutputDebugString("DebugFont ƒfƒvƒXƒXƒeƒ“ƒVƒ‹ƒXƒe[ƒg‚Ì¶¬‚É¸”s\n");
+		OutputDebugString(TEXT("DebugFont ãƒ‡ãƒ—ã‚¹ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã‚¹ãƒ†ãƒ¼ãƒˆã®ç”Ÿæˆã«å¤±æ•—\n"));
 		return false;
 	}
 
-	OutputDebugString("DebugFont ƒfƒvƒXƒXƒeƒ“ƒVƒ‹ƒXƒe[ƒg‚Ì¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DebugFont ãƒ‡ãƒ—ã‚¹ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã‚¹ãƒ†ãƒ¼ãƒˆã®ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	return true;
 }

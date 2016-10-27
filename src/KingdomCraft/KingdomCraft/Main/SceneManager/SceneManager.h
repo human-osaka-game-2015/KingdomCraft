@@ -1,4 +1,4 @@
-#ifndef SCENEMANAGER_H
+ï»¿#ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 #include <Windows.h>
 enum SceneID;
@@ -14,11 +14,11 @@ public:
 private:
 	enum SceneState
 	{
-		/// ¶¬
+		/// ç”Ÿæˆ
 		SCENE_CREATE,
-		/// ˆ—’†
+		/// å‡¦ç†ä¸­
 		SCENE_PROC,
-		/// ‰ğ•ú
+		/// è§£æ”¾
 		SCENE_RELEASE
 	};
 

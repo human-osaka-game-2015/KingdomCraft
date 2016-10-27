@@ -1,4 +1,4 @@
-#include "GameScene.h"
+﻿#include "GameScene.h"
 #include "..//Scene.h"
 GameScene::GameScene() :
 Scene(SceneID::SCENE_GAME)

@@ -1,4 +1,4 @@
-#ifndef SCENEFACTORY_H
+ï»¿#ifndef SCENEFACTORY_H
 #define SCENEFACTORY_H
 class Scene;
 enum SceneID;
@@ -9,9 +9,9 @@ public:
 	~SceneFactory(){}
 
 	/**
-	* ƒV[ƒ“ƒNƒ‰ƒX‚Ì¶¬
-	* @param _sceneID ¶¬‚·‚éƒNƒ‰ƒX‚ÌƒV[ƒ“ID
-	* @return ƒV[ƒ“ƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	* ã‚·ãƒ¼ãƒ³ã‚¯ãƒ©ã‚¹ã®ç”Ÿæˆ
+	* @param _sceneID ç”Ÿæˆã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚·ãƒ¼ãƒ³ID
+	* @return ã‚·ãƒ¼ãƒ³ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	*/
 	Scene* CreateScene(SceneID _sceneID);
 };

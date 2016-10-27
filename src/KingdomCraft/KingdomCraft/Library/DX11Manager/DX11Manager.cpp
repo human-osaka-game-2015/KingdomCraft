@@ -1,4 +1,4 @@
-#include "DX11Manager.h"
+ï»¿#include "DX11Manager.h"
 
 
 DX11Manager* DX11Manager::m_pDX11Manager = NULL;
@@ -20,18 +20,18 @@ bool DX11Manager::Init(HWND _hWnd)
 
 	if (!InitDevice())
 	{
-		MessageBox(m_hWnd, "InitDevice‚ÉŽ¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitDeviceã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
 
 	if (!InitDisplay())
 	{
-		MessageBox(m_hWnd, "InitDisplay‚ÉŽ¸”s‚µ‚Ü‚µ‚½", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("InitDisplayã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		ReleaseDevice();
 		return false;
 	}
 
-	OutputDebugString("DX11Manager‚Ì‰Šú‰»‚É¬Œ÷\n");
+	OutputDebugString(TEXT("DX11Managerã®åˆæœŸåŒ–ã«æˆåŠŸ\n"));
 
 	return true;
 }
@@ -80,10 +80,10 @@ bool DX11Manager::InitDevice()
 		&m_pDeviceContext)))
 	{
 		return false;
-		MessageBox(m_hWnd, "D3D11CreateDevice", "ƒGƒ‰[", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("D3D11CreateDeviceã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 	}
 
-	OutputDebugString("ƒfƒoƒCƒX¶¬¬Œ÷\n");
+	OutputDebugString(TEXT("ãƒ‡ãƒã‚¤ã‚¹ç”ŸæˆæˆåŠŸ\n"));
 	
 	return true;
 }
@@ -92,38 +92,38 @@ bool DX11Manager::InitDisplay()
 {
 	if (FAILED(m_pDevice->QueryInterface(__uuidof(IDXGIDevice1), (void**)&m_pDXGI)))
 	{
-		MessageBox(m_hWnd, "DX11‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX‚ÌŽæ“¾‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DX11ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
-	OutputDebugString("DX11‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX(ƒOƒ‰ƒtƒBƒbƒN)‚ÌŽæ“¾‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DX11ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹(ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯)ã®å–å¾—ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	if (FAILED(m_pDXGI->GetAdapter(&m_pAdapter)))
 	{
-		MessageBox(m_hWnd, "DX11‚ÌƒAƒ_ƒvƒ^[‚ÌŽæ“¾‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DX11ã®ã‚¢ãƒ€ãƒ—ã‚¿ãƒ¼ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("DX11ƒAƒ_ƒvƒ^[‚ÌŽæ“¾‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DX11ã‚¢ãƒ€ãƒ—ã‚¿ãƒ¼ã®å–å¾—ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	m_pAdapter->GetParent(__uuidof(IDXGIFactory), (void**)&m_pDXGIFactory);
 	if (m_pDXGIFactory == NULL)
 	{
-		MessageBox(m_hWnd, "DX11‚Ìƒtƒ@ƒNƒgƒŠ[‚ÌŽæ“¾‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("DX11ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pAdapter->Release();
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("DX11‚Ìƒtƒ@ƒNƒgƒŠ[Žæ“¾‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("DX11ã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼å–å¾—ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	if (FAILED(m_pDXGIFactory->MakeWindowAssociation(m_hWnd, 0)))
 	{
-		MessageBox(m_hWnd, "ƒtƒ‹ƒXƒNƒŠ[ƒ“‰»‚ÉŽ¸”s‚µ‚Ü‚µ‚½", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åŒ–ã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDXGIFactory->Release();
 		m_pAdapter->Release();
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("ƒtƒ‹ƒXƒNƒŠ[ƒ“‘Î‰ž‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("ãƒ•ãƒ«ã‚¹ã‚¯ãƒªãƒ¼ãƒ³å¯¾å¿œã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 
 
@@ -145,28 +145,28 @@ bool DX11Manager::InitDisplay()
 
 	if (FAILED(m_pDXGIFactory->CreateSwapChain(m_pDevice, &m_DXGISwapChainDesc, &m_pDXGISwapChain)))
 	{
-		MessageBox(m_hWnd, "ƒXƒƒbƒvƒ`ƒFƒCƒ“‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDXGIFactory->Release();
 		m_pAdapter->Release();
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("ƒXƒƒbƒvƒ`ƒFƒCƒ“‚Ìì¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã®ä½œæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	if (FAILED(m_pDXGISwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&m_pBackBuffer)))
 	{
-		MessageBox(m_hWnd, "ƒXƒƒbƒvƒ`ƒFƒCƒ“‚ÌƒoƒbƒNƒoƒbƒtƒ@Žæ“¾‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã®ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDXGISwapChain->Release();
 		m_pDXGIFactory->Release();
 		m_pAdapter->Release();
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("ƒXƒƒbƒvƒ`ƒFƒCƒ“‚ÌƒoƒbƒNƒoƒbƒtƒ@Žæ“¾‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã®ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡å–å¾—ã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	if (FAILED(m_pDevice->CreateRenderTargetView(m_pBackBuffer, NULL, &m_pRenderTargetView)))
 	{
-		MessageBox(m_hWnd, "•`‰æƒ^[ƒQƒbƒg¶¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("æç”»ã‚¿ãƒ¼ã‚²ãƒƒãƒˆç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pBackBuffer->Release();
 		m_pDXGISwapChain->Release();
 		m_pDXGIFactory->Release();
@@ -174,7 +174,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("•`‰æƒ^[ƒQƒbƒg¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("æç”»ã‚¿ãƒ¼ã‚²ãƒƒãƒˆç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 
 	m_DepthDesc.Width  = m_WindowRect.right - m_WindowRect.left;
@@ -191,7 +191,7 @@ bool DX11Manager::InitDisplay()
 
 	if (FAILED(m_pDevice->CreateTexture2D(&m_DepthDesc, NULL, &m_pDepthStencilBuffer)))
 	{
-		MessageBox(m_hWnd, "ƒXƒeƒ“ƒVƒ‹ƒrƒ…[¶¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ãƒ“ãƒ¥ãƒ¼ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pRenderTargetView->Release();
 		m_pBackBuffer->Release();
 		m_pDXGISwapChain->Release();
@@ -200,11 +200,11 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("ƒXƒeƒ“ƒVƒ‹ƒrƒ…[¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ãƒ“ãƒ¥ãƒ¼ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	if (FAILED(m_pDevice->CreateDepthStencilView(m_pDepthStencilBuffer, NULL, &m_pDepthStencilView)))
 	{
-		MessageBox(m_hWnd, "ƒXƒeƒ“ƒVƒ‹ƒoƒbƒtƒ@¶¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½B", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ãƒãƒƒãƒ•ã‚¡ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		m_pDepthStencilBuffer->Release();
 		m_pRenderTargetView->Release();
 		m_pBackBuffer->Release();
@@ -214,7 +214,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
-	OutputDebugString("ƒXƒeƒ“ƒVƒ‹ƒoƒbƒtƒ@¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ãƒãƒƒãƒ•ã‚¡ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 
 	m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
 
@@ -249,10 +249,10 @@ bool DX11Manager::InitDisplay()
 		m_pDXGIFactory->Release();
 		m_pAdapter->Release();
 		m_pDXGI->Release();
-		MessageBox(m_hWnd, "RasterizerState‚Ì¶¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½", "Err", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("RasterizerStateã®ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("ã‚¨ãƒ©ãƒ¼"), MB_ICONSTOP);
 		return false;
 	}
-	OutputDebugString("RasterizerState‚Ìó‘Ô‚Ì¶¬‚É¬Œ÷‚µ‚Ü‚µ‚½\n");
+	OutputDebugString(TEXT("RasterizerStateã®çŠ¶æ…‹ã®ç”Ÿæˆã«æˆåŠŸã—ã¾ã—ãŸ\n"));
 	m_pDeviceContext->RSSetState(m_pRasterizerState);
 
 

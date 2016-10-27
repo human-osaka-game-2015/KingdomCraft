@@ -1,4 +1,4 @@
-#ifndef DXSOUNDMANAGER_H
+ï»¿#ifndef DXSOUNDMANAGER_H
 #define DXSOUNDMANAGER_H
 #include <windows.h>
 #include <dsound.h>
@@ -18,40 +18,40 @@ class DSoundManager
 public:
 	
 	/**
-	* ‰Šú‰»ˆ—
-	* @return ¬Œ÷‚µ‚½‚çtrue
+	* åˆæœŸåŒ–å‡¦ç†
+	* @return æˆåŠŸã—ãŸã‚‰true
 	*/
 	bool Init();
 
 	/**
-	* ‰ğ•úˆ—
+	* è§£æ”¾å‡¦ç†
 	*/
 	void Release(){ m_pDSound8->Release(); };
 
 	/**
-	* ‰¹º‚Ì“Ç‚İ‚İ
-	* @param[in] _key Ši”[æ‚ÌƒL[
-	* @param[in] _filename “Ç‚İ‚Şƒtƒ@ƒCƒ‹‚Ì–¼‘O
-	* @return ¬Œ÷‚µ‚½‚çtrue
+	* éŸ³å£°ã®èª­ã¿è¾¼ã¿
+	* @param[in] _key æ ¼ç´å…ˆã®ã‚­ãƒ¼
+	* @param[in] _filename èª­ã¿è¾¼ã‚€ãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰
+	* @return æˆåŠŸã—ãŸã‚‰true
 	*/
 	bool SoundLoad(int _key, char* _filename);
 	
 	/**
-	* ‰¹º‚ÌŠJ•ú
-	* @param[in] _key ŠJ•úæ‚ÌƒL[
+	* éŸ³å£°ã®é–‹æ”¾
+	* @param[in] _key é–‹æ”¾å…ˆã®ã‚­ãƒ¼
 	*/
 	void ReleaseSound(int _key);
 
 	/**
-	* ƒTƒEƒ“ƒh‚Ì‘€ìŠÖ”
-	* @param[in] _key ‘€ì‚·‚éƒTƒEƒ“ƒh‚ÌŠi”[æ‚ÌƒL[
-	* @param[in] operation ‚Ç‚Ì‚æ‚¤‚È‘€ì‚ğ‚·‚é‚©
+	* ã‚µã‚¦ãƒ³ãƒ‰ã®æ“ä½œé–¢æ•°
+	* @param[in] _key æ“ä½œã™ã‚‹ã‚µã‚¦ãƒ³ãƒ‰ã®æ ¼ç´å…ˆã®ã‚­ãƒ¼
+	* @param[in] operation ã©ã®ã‚ˆã†ãªæ“ä½œã‚’ã™ã‚‹ã‹
 	*/
 	void SoundOperation(int _key, SOUND_OPERATION _operation);
 
 	/**
-	* ƒCƒ“ƒXƒ^ƒ“ƒX¶¬ŠÖ”
-	* @param[in] _hWnd ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹BƒRƒ“ƒXƒgƒ‰ƒNƒ^“à‚Åg‚¤
+	* ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆé–¢æ•°
+	* @param[in] _hWnd ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã€‚ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿å†…ã§ä½¿ã†
 	*/
 	static void Create(HWND _hWnd)
 	{
@@ -62,7 +62,7 @@ public:
 	}
 	
 	/**
-	* @return ƒCƒ“ƒXƒ^ƒ“ƒX‚Ì”jŠü
+	* @return ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç ´æ£„
 	*/
 	static void Destroy()
 	{
@@ -74,7 +74,7 @@ public:
 	}
 
 	/**
-	* @return ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•Ô‚é
+	* @return ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¿”ã‚‹
 	*/
 	static DSoundManager* GetInstance()
 	{

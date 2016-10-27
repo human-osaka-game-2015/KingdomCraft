@@ -10,9 +10,9 @@ SamplerState  Sampler : register(s0);
 
 struct VS_IN
 {
-	float3 pos   : POSITION;   // ’¸“_À•W
-	float4 color : COLOR;      // ’¸“_ƒJƒ‰[
-	float2 texel : TEXCOORD;   // ƒeƒNƒZƒ‹
+	float3 pos   : POSITION;   // é ‚ç‚¹åº§æ¨™
+	float4 color : COLOR;      // é ‚ç‚¹ã‚«ãƒ©ãƒ¼
+	float2 texel : TEXCOORD;   // ãƒ†ã‚¯ã‚»ãƒ«
 };
 
 struct VS_OUT
