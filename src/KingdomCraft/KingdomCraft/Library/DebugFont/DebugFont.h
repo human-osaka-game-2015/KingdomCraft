@@ -1,4 +1,4 @@
-#ifndef DEBUGFONT_H
+ï»¿#ifndef DEBUGFONT_H
 #define DEBUGFONT_H
 #include <d3d11.h>
 #include <d3dx10.h>
@@ -12,31 +12,31 @@ public:
 	~DebugFont();
 
 	/**
-	 * DebugFontƒNƒ‰ƒX‚Ì‰Šú‰»ŠÖ”
-	 * @param[in] _pDevice DirectX11‚ÌƒfƒoƒCƒX
-	 * @param[in] _pDeviceContext DirectX11‚ÌƒfƒoƒCƒXƒRƒ“ƒeƒLƒXƒg
-	 * @param[in] _hWnd DebugFontƒNƒ‰ƒX‚ª‘Î‰‚·‚éWindow‚Ìƒnƒ“ƒhƒ‹
-	 * @return ‰Šú‰»‚É¬Œ÷‚µ‚½‚çtrue‚ª•Ô‚é
+	 * DebugFontã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–é–¢æ•°
+	 * @param[in] _pDevice DirectX11ã®ãƒ‡ãƒã‚¤ã‚¹
+	 * @param[in] _pDeviceContext DirectX11ã®ãƒ‡ãƒã‚¤ã‚¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+	 * @param[in] _hWnd DebugFontã‚¯ãƒ©ã‚¹ãŒå¯¾å¿œã™ã‚‹Windowã®ãƒãƒ³ãƒ‰ãƒ«
+	 * @return åˆæœŸåŒ–ã«æˆåŠŸã—ãŸã‚‰trueãŒè¿”ã‚‹
 	 */
 	bool Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND _hWnd);
 
 	/**
-	 * DebugFontƒNƒ‰ƒX‚Ì‰ğ•úŠÖ”
+	 * DebugFontã‚¯ãƒ©ã‚¹ã®è§£æ”¾é–¢æ•°
 	 */
 	void Release();
 
 	/**
-	 * ƒtƒHƒ“ƒg‚Ì‰Šú‰»
-	 * @param[in] _FontHeight ƒtƒHƒ“ƒg‚Ì‚‚³
-	 * @param[in] _FontWidth ƒtƒHƒ“ƒg‚Ì•
-	 * @param[in] _FontColor ƒtƒHƒ“ƒg‚ÌF
+	 * ãƒ•ã‚©ãƒ³ãƒˆã®åˆæœŸåŒ–
+	 * @param[in] _FontHeight ãƒ•ã‚©ãƒ³ãƒˆã®é«˜ã•
+	 * @param[in] _FontWidth ãƒ•ã‚©ãƒ³ãƒˆã®å¹…
+	 * @param[in] _FontColor ãƒ•ã‚©ãƒ³ãƒˆã®è‰²
 	 */
 	bool InitFont(float _fontHeight, float _fontWidth, D3DXCOLOR _fontColor);
 
 	/**
-	 * ƒtƒHƒ“ƒg•`‰æŠÖ”
-	 * @param[in] _DrawPos ƒtƒHƒ“ƒg‚ğ•\¦‚·‚éˆÊ’u
-	 * @param[in] _pStr •\¦‚·‚é•¶š—ñ
+	 * ãƒ•ã‚©ãƒ³ãƒˆæç”»é–¢æ•°
+	 * @param[in] _DrawPos ãƒ•ã‚©ãƒ³ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ä½ç½®
+	 * @param[in] _pStr è¡¨ç¤ºã™ã‚‹æ–‡å­—åˆ—
 	 */
 	void DrawFont(D3DXVECTOR2* _pDrawPos, char* _pStr);
 
