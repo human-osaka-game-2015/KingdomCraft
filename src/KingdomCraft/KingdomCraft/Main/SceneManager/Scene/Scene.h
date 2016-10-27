@@ -1,12 +1,12 @@
-#ifndef SCENE_H
+ï»¿#ifndef SCENE_H
 #define SCENE_H
 enum SceneID
 {
 	SCENE_LOGO,
 	SCENE_OPENING,
 	SCENE_TITLE,
-	SCENE_GAME,			// ‰‚ß‚©‚ç‚ð‘I‘ð‚µ‚ÄƒQ[ƒ€‚É“ü‚Á‚½‚Æ‚«
-	SCENE_CONTINUE_GAME,	// ‘±‚«‚©‚ç‚ð‘I‘ð‚µ‚ÄƒQ[ƒ€‚É“ü‚Á‚½‚Æ‚«
+	SCENE_GAME,			// åˆã‚ã‹ã‚‰ã‚’é¸æŠžã—ã¦ã‚²ãƒ¼ãƒ ã«å…¥ã£ãŸã¨ã
+	SCENE_CONTINUE_GAME,	// ç¶šãã‹ã‚‰ã‚’é¸æŠžã—ã¦ã‚²ãƒ¼ãƒ ã«å…¥ã£ãŸã¨ã
 	SCENE_RESULT,
 	SCENE_ENDING,
 	FIN
