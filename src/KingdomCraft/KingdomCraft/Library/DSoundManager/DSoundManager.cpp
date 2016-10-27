@@ -1,4 +1,4 @@
-#include "DSoundManager.h"
+ï»¿#include "DSoundManager.h"
 #include <mmsystem.h>
 
 DSoundManager* DSoundManager::m_pSoundManager = NULL;
@@ -17,13 +17,13 @@ bool DSoundManager::Init()
 {
 	if (FAILED(DirectSoundCreate8(NULL, &m_pDSound8, NULL)))
 	{
-		MessageBox(m_hWnd, "ƒTƒEƒ“ƒhƒfƒoƒCƒX‚Ì¶¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚µã‚¦ãƒ³ãƒ‰ãƒ‡ãƒã‚¤ã‚¹ã®ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
 	if (FAILED(m_pDSound8->SetCooperativeLevel(m_hWnd, DSSCL_PRIORITY)))
 	{
-		MessageBox(m_hWnd, "‹¦’²ƒŒƒxƒ‹‚ÌÝ’è‚ÉŽ¸”s‚µ‚Ü‚µ‚½", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("å”èª¿ãƒ¬ãƒ™ãƒ«ã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 	return true;
@@ -47,7 +47,7 @@ bool DSoundManager::OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWav
 	}
 
 
-	// RIFFƒ`ƒƒƒ“ƒNŒŸõ
+	// RIFFãƒãƒ£ãƒ³ã‚¯æ¤œç´¢
 	MMRESULT mmRes;
 	MMCKINFO riffChunk;
 	riffChunk.fccType = mmioFOURCC('W', 'A', 'V', 'E');
@@ -59,7 +59,7 @@ bool DSoundManager::OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWav
 	}
 
 
-	// ƒtƒH[ƒ}ƒbƒgƒ`ƒƒƒ“ƒNŒŸõ
+	// ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆãƒãƒ£ãƒ³ã‚¯æ¤œç´¢
 	MMCKINFO formatChunk;
 	formatChunk.ckid = mmioFOURCC('f', 'm', 't', ' ');
 	mmRes = mmioDescend(hMmio, &formatChunk, &riffChunk, MMIO_FINDCHUNK);
@@ -81,7 +81,7 @@ bool DSoundManager::OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWav
 	mmioAscend(hMmio, &formatChunk, 0);
 
 
-	// ƒf[ƒ^ƒ`ƒƒƒ“ƒNŒŸõ
+	// ãƒ‡ãƒ¼ã‚¿ãƒãƒ£ãƒ³ã‚¯æ¤œç´¢
 	MMCKINFO dataChunk;
 	dataChunk.ckid = mmioFOURCC('d', 'a', 't', 'a');
 	mmRes = mmioDescend(hMmio, &dataChunk, &riffChunk, MMIO_FINDCHUNK);
@@ -144,7 +144,7 @@ bool DSoundManager::SoundLoad(int _key, char* _filename)
 
 	if (!OpenWave(_filename, wFmt, &pWaveData, waveSize))
 	{
-		MessageBox(m_hWnd, "waveƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("waveãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“ã§ã—ãŸ"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -168,10 +168,10 @@ bool DSoundManager::SoundLoad(int _key, char* _filename)
 	}
 
 
-	// ƒZƒJƒ“ƒ_ƒŠƒoƒbƒtƒ@‚ÉWaveƒf[ƒ^‘‚«ž‚Ý
-	//‰¹ºƒf[ƒ^
+	// ã‚»ã‚«ãƒ³ãƒ€ãƒªãƒãƒƒãƒ•ã‚¡ã«Waveãƒ‡ãƒ¼ã‚¿æ›¸ãè¾¼ã¿
+	//éŸ³å£°ãƒ‡ãƒ¼ã‚¿
 	LPVOID lpvWrite = 0;
-	//‰¹ºƒf[ƒ^‚Ì‘å‚«‚³
+	//éŸ³å£°ãƒ‡ãƒ¼ã‚¿ã®å¤§ãã•
 	DWORD dwLength = 0;
 	if (DS_OK == pDSBuffer->Lock(0, 0, &lpvWrite, &dwLength, NULL, NULL, DSBLOCK_ENTIREBUFFER))
 	{
