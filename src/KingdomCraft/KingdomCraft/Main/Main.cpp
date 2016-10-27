@@ -1,4 +1,4 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include <crtdbg.h>
 #include <d3d11.h>
 //#include <d3dx11.h>
@@ -16,7 +16,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	HWND hwnd = NULL;
 	WNDCLASSEX  wndclass;
-	static TCHAR* szAppName = ("KingdomCraft");
+	static TCHAR* szAppName = TEXT("KingdomCraft");
 	
 	wndclass.cbSize = sizeof(wndclass);
 	wndclass.style = CS_HREDRAW | CS_VREDRAW;
@@ -47,12 +47,12 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	ShowWindow(hwnd, SW_SHOW);
 	UpdateWindow(hwnd);
-	SetWindowText(hwnd, "KingdomCraft");
+	SetWindowText(hwnd, TEXT("KingdomCraft"));
 
 
-	//ƒ‰ƒCƒuƒ‰ƒŠŠÖŒW
+	//ãƒ©ã‚¤ãƒ–ãƒ©ãƒªé–¢ä¿‚
 
-	// ƒV[ƒ“ƒ}ƒl[ƒWƒƒ[¶¬
+	// ã‚·ãƒ¼ãƒ³ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ç”Ÿæˆ
 	SceneManager* pSceneManager = new SceneManager(hwnd);
 
 	MSG msg;
@@ -72,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 			}
 		}
 	}
-	// SceneManager‚Ì‰ğ•ú
+	// SceneManagerã®è§£æ”¾
 	delete pSceneManager;
 
 	return (INT)msg.wParam;
