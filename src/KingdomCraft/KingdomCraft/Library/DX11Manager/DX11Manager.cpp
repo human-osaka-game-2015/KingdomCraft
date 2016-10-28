@@ -228,20 +228,16 @@ bool DX11Manager::InitDisplay()
 	m_ViewPort.MaxDepth = 1.0f;
 	m_pDeviceContext->RSSetViewports(1, &m_ViewPort);
 
-
-	m_RasterizerDesc =
-	{
-		D3D11_FILL_SOLID,
-		D3D11_CULL_BACK,
-		FALSE,
-		0,
-		0.0f,
-		FALSE,
-		FALSE,
-		FALSE,
-		FALSE,
-		FALSE
-	};
+	m_RasterizerDesc.FillMode = D3D11_FILL_SOLID;
+	m_RasterizerDesc.CullMode = D3D11_CULL_BACK;
+	m_RasterizerDesc.FrontCounterClockwise = FALSE;
+	m_RasterizerDesc.DepthBias = 0;
+	m_RasterizerDesc.DepthBiasClamp = 0.0f;
+	m_RasterizerDesc.SlopeScaledDepthBias = 0.0f;
+	m_RasterizerDesc.DepthClipEnable = FALSE;
+	m_RasterizerDesc.ScissorEnable = FALSE;
+	m_RasterizerDesc.MultisampleEnable = FALSE;
+	m_RasterizerDesc.AntialiasedLineEnable = FALSE;
 
 	if (FAILED(m_pDevice->CreateRasterizerState(&m_RasterizerDesc, &m_pRasterizerState)))
 	{
