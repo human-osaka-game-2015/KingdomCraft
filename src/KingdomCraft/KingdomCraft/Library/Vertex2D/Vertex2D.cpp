@@ -1,6 +1,7 @@
-#include "Vertex2D.h"
+ï»¿#include "Vertex2D.h"
 #include <Windows.h>
 #define VERTEX_NUM 4
+#define COLORMASK 0xffffffff //æŠœãè‰²
 Vertex2D::Vertex2D(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND _hwnd) :
 m_pDevice(_pDevice),
 m_pDeviceContext(_pDeviceContext),
@@ -26,7 +27,7 @@ void Vertex2D::Release()
 	ReleaseVertexShader();
 }
 
-bool Vertex2D::Init(RECT* _pScale, char* _textureFileName, D3DXVECTOR2* _pUV)
+bool Vertex2D::Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pUV)
 {
 	RECT WindowRect;
 	GetWindowRect(m_hWnd, &WindowRect);
@@ -56,7 +57,7 @@ bool Vertex2D::Init(RECT* _pScale, char* _textureFileName, D3DXVECTOR2* _pUV)
 		return false;
 	}
 
-	if (!InitVertexBuffer(_pScale, _pUV))
+	if (!InitVertexBuffer(_pRectSize, _pUV))
 	{
 		ReleaseTexture();
 		ReleasePixelShader();
@@ -87,7 +88,7 @@ void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos, float _angle)
 	D3DXMatrixTranslation(&matTranslate, _pDrawPos->x, _pDrawPos->y, 0);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matTranslate);
 
-	//g—p‚·‚éƒVƒF[ƒ_[‚ÌƒZƒbƒg
+	//ä½¿ç”¨ã™ã‚‹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®ã‚»ãƒƒãƒˆ
 	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
 	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
 
@@ -95,10 +96,10 @@ void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos, float _angle)
 	SHADER_CONSTANT_BUFFER	 constantBuffer;
 	if (SUCCEEDED(m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
 	{
-		//ƒ[ƒ‹ƒhs—ñ‚ğ“n‚·
+		//ãƒ¯ãƒ¼ãƒ«ãƒ‰è¡Œåˆ—ã‚’æ¸¡ã™
 		constantBuffer.matWorld = matWorld;
 		D3DXMatrixTranspose(&constantBuffer.matWorld, &constantBuffer.matWorld);
-		//ƒrƒ…[ƒ|[ƒgƒTƒCƒY‚ğ“n‚·iƒNƒ‰ƒCƒAƒ“ƒg—Ìˆæ‚Ì‰¡‚Æcj
+		//ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã‚µã‚¤ã‚ºã‚’æ¸¡ã™ï¼ˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆé ˜åŸŸã®æ¨ªã¨ç¸¦ï¼‰
 		constantBuffer.viewPort.x = m_WindowWidth;
 		constantBuffer.viewPort.y = m_WindowHeight;
 
@@ -106,34 +107,34 @@ void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos, float _angle)
 		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
 	}
 
-	//‚±‚ÌƒRƒ“ƒXƒ^ƒ“ƒgƒoƒbƒtƒ@[‚ğ‚Ç‚ÌƒVƒF[ƒ_[‚Åg‚¤‚©
+	//ã“ã®ã‚³ãƒ³ã‚¹ã‚¿ãƒ³ãƒˆãƒãƒƒãƒ•ã‚¡ãƒ¼ã‚’ã©ã®ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã§ä½¿ã†ã‹
 	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 	m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
-		//’¸“_ƒCƒ“ƒvƒbƒgƒŒƒCƒAƒEƒg‚ğƒZƒbƒg
+	//é ‚ç‚¹ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’ã‚»ãƒƒãƒˆ
 	m_pDeviceContext->IASetInputLayout(m_pVertexLayout);
-	//ƒvƒŠƒ~ƒeƒBƒuEƒgƒ|ƒƒW[‚ğƒZƒbƒg
+	//ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–ãƒ»ãƒˆãƒãƒ­ã‚¸ãƒ¼ã‚’ã‚»ãƒƒãƒˆ
 	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-	//ƒeƒNƒXƒ`ƒƒ[‚ğƒVƒF[ƒ_[‚É“n‚·
+	//ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ã‚’ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã«æ¸¡ã™
 	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSampler);
 	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTexture);
 	
-	//ƒvƒŠƒ~ƒeƒBƒu‚ğƒŒƒ“ƒ_ƒŠƒ“ƒO
+	//ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–ã‚’ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°
 	m_pDeviceContext->Draw(VERTEX_NUM, 0);
 }
 
 
-bool Vertex2D::InitVertexBuffer(RECT* _pScale, D3DXVECTOR2* _pUV)
+bool Vertex2D::InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV)
 {
 	Vertex vertex[] =
 	{
-		D3DXVECTOR3(-_pScale->left, -_pScale->top, 0.f), D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
-		D3DXVECTOR3(+_pScale->right, -_pScale->top, 0.f), D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
-		D3DXVECTOR3(-_pScale->left, +_pScale->bottom, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
-		D3DXVECTOR3(+_pScale->right, +_pScale->bottom, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y),
+		D3DXVECTOR3(-_pRectSize->left , -_pRectSize->top, 0.f)   , D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
+		D3DXVECTOR3(+_pRectSize->right, -_pRectSize->top, 0.f)   , D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
+		D3DXVECTOR3(-_pRectSize->left , +_pRectSize->bottom, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
+		D3DXVECTOR3(+_pRectSize->right, +_pRectSize->bottom, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y),
 	};
 
-	//’¸“_ƒoƒbƒtƒ@ì¬
+	//é ‚ç‚¹ãƒãƒƒãƒ•ã‚¡ä½œæˆ
 	D3D11_BUFFER_DESC BufferDesc;
 	BufferDesc.ByteWidth = sizeof(Vertex) * VERTEX_NUM;
 	BufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -147,11 +148,11 @@ bool Vertex2D::InitVertexBuffer(RECT* _pScale, D3DXVECTOR2* _pUV)
 	ID3D11Buffer* pBuffer;
 	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &pBuffer)))
 	{
-		MessageBox(m_hWnd, "ƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@[‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡ãƒ¼ã®ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
-	//ƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@[‚ğƒZƒbƒg
+	//ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡ãƒ¼ã‚’ã‚»ãƒƒãƒˆ
 	UINT stride = sizeof(Vertex);
 	UINT offset = 0;
 	m_pDeviceContext->IASetVertexBuffers(0, 1, &pBuffer, &stride, &offset);
@@ -163,9 +164,9 @@ bool Vertex2D::InitVertexShader()
 {
 	ID3DBlob *pErrors = NULL;
 
-	// ’¸“_ƒVƒF[ƒ_[‚Ì“Ç‚İ‚İ‚ÆƒŒƒCƒAƒEƒgì¬
+	// é ‚ç‚¹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®èª­ã¿è¾¼ã¿ã¨ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆä½œæˆ
 	if (FAILED(D3DX11CompileFromFile(
-		"Library//Vertex2D//Vertex2D.hlsl",
+		TEXT("Library//Vertex2D//Vertex2D.hlsl"),
 		NULL,
 		NULL,
 		"VS",
@@ -177,7 +178,7 @@ bool Vertex2D::InitVertexShader()
 		&pErrors,
 		NULL)))
 	{
-		MessageBox(0, "VertexShader‚ÌƒRƒ“ƒpƒCƒ‹‚É¸”s", "Error", MB_ICONSTOP);
+		MessageBox(0, TEXT("VertexShaderã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¤±æ•—"), TEXT("Error"), MB_ICONSTOP);
 		pErrors->Release();
 		return false;
 	}
@@ -205,7 +206,7 @@ bool Vertex2D::InitPixelShader()
 	ID3DBlob *pErrors = NULL;
 	m_pPixelShader = NULL;
 	if (FAILED(D3DX11CompileFromFile(
-		"Library//Vertex2D//Vertex2D.hlsl",
+		TEXT("Library//Vertex2D//Vertex2D.hlsl"),
 		NULL,
 		NULL,
 		"PS",
@@ -217,7 +218,7 @@ bool Vertex2D::InitPixelShader()
 		&pErrors,
 		NULL)))
 	{
-		MessageBox(m_hWnd, "PixelShader‚ÌƒRƒ“ƒpƒCƒ‹‚É¸”s", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("PixelShaderã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¤±æ•—"), TEXT("Error"), MB_ICONSTOP);
 		pErrors->Release();
 		return false;
 	}
@@ -237,14 +238,14 @@ void Vertex2D::ReleasePixelShader()
 
 bool Vertex2D::CreateVertexLayout()
 {
-	//’¸“_ƒŒƒCƒAƒEƒg’è‹`
+	//é ‚ç‚¹ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆå®šç¾©
 	D3D11_INPUT_ELEMENT_DESC InElementDesc[] =
 	{
 		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	};
 
-	//’¸“_ƒCƒ“ƒvƒbƒgƒŒƒCƒAƒEƒg‚ğì¬
+	//é ‚ç‚¹ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’ä½œæˆ
 	if (FAILED(m_pDevice->CreateInputLayout(
 		InElementDesc,
 		sizeof(InElementDesc) / sizeof(InElementDesc[0]),
@@ -252,7 +253,7 @@ bool Vertex2D::CreateVertexLayout()
 		m_pVertexCompiledShader->GetBufferSize(),
 		&m_pVertexLayout)))
 	{
-		MessageBox(m_hWnd, "PixelShader‚ÌƒRƒ“ƒpƒCƒ‹‚É¸”s", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("PixelShaderã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã«å¤±æ•—"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -268,9 +269,9 @@ void Vertex2D::ReleaseVertexLayout()
 	}
 }
 
-bool Vertex2D::LoadTexture(char* _textureFileName)
+bool Vertex2D::LoadTexture(LPCTSTR _textureFileName)
 {
-	//ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒh—pƒuƒŒƒ“ƒhƒXƒe[ƒgì¬
+	//ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰ç”¨ãƒ–ãƒ¬ãƒ³ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆä½œæˆ
 	D3D11_BLEND_DESC BlendDesc;
 	ZeroMemory(&BlendDesc, sizeof(D3D11_BLEND_DESC));
 	BlendDesc.IndependentBlendEnable = false;
@@ -286,14 +287,13 @@ bool Vertex2D::LoadTexture(char* _textureFileName)
 
 	if (FAILED(m_pDevice->CreateBlendState(&BlendDesc, &m_pBlendState)))
 	{
-		MessageBox(m_hWnd, "ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒhƒXƒe[ƒgì¬‚É¸”s‚µ‚Ü‚µ‚½", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
-	UINT mask = 0xffffffff;
-	m_pDeviceContext->OMSetBlendState(m_pBlendState, NULL, mask);
+	m_pDeviceContext->OMSetBlendState(m_pBlendState, NULL, COLORMASK);
 
-	//ƒeƒNƒXƒ`ƒƒ[—pƒTƒ“ƒvƒ‰[ì¬
+	//ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ç”¨ã‚µãƒ³ãƒ—ãƒ©ãƒ¼ä½œæˆ
 	D3D11_SAMPLER_DESC SamDesc;
 	ZeroMemory(&SamDesc, sizeof(D3D11_SAMPLER_DESC));
 	SamDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
@@ -303,13 +303,13 @@ bool Vertex2D::LoadTexture(char* _textureFileName)
 
 	if (FAILED(m_pDevice->CreateSamplerState(&SamDesc, &m_pSampler)))
 	{
-		MessageBox(m_hWnd, "ƒTƒ“ƒvƒ‰[ƒXƒe[ƒg‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚µãƒ³ãƒ—ãƒ©ãƒ¼ã‚¹ãƒ†ãƒ¼ãƒˆã®ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
 	if (FAILED(D3DX11CreateShaderResourceViewFromFile(m_pDevice, _textureFileName, NULL, NULL, &m_pTexture, NULL)))
 	{
-		MessageBox(m_hWnd, "ƒeƒNƒXƒ`ƒƒ[‚ğ“Ç‚İ‚ß‚Ü‚¹‚ñ", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ã‚’èª­ã¿è¾¼ã‚ã¾ã›ã‚“"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 	return true;
@@ -348,7 +348,7 @@ bool Vertex2D::InitConstantBuffer()
 
 	if (FAILED(m_pDevice->CreateBuffer(&ConstantBufferDesc, NULL, &m_pConstantBuffer)))
 	{
-		MessageBox(m_hWnd, "ƒRƒ“ƒXƒ^ƒ“ƒgƒoƒbƒtƒ@[‚Ì¶¬‚É¸”s‚µ‚Ü‚µ‚½", "Error", MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ã‚³ãƒ³ã‚¹ã‚¿ãƒ³ãƒˆãƒãƒƒãƒ•ã‚¡ãƒ¼ã®ç”Ÿæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 	return true;

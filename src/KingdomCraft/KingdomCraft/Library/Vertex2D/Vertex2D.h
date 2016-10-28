@@ -1,4 +1,4 @@
-#ifndef VERTEX2D_H
+ï»¿#ifndef VERTEX2D_H
 #define VERTEX2D_H
 #include <D3DX11.h>
 #include <d3dx10.h>
@@ -10,34 +10,34 @@ public:
 	~Vertex2D();
 	
 	/**
-	* ‰Šú‰»
-	* @param[in] _scale ƒXƒP[ƒ‹ƒTƒCƒY 
-	* @param[in] _textureFileName ƒeƒNƒXƒ`ƒƒ‚Ìƒtƒ@ƒCƒ‹ƒpƒX
-	* @param[in] _pUV ƒeƒNƒXƒ`ƒƒ‚Ì4’¸“_•ª‚ÌUV’l
-	* @return ¬Œ÷‚µ‚½‚çtrue
+	* åˆæœŸåŒ–
+	* @param[in] _pRectSize çŸ©å½¢ã®ã‚µã‚¤ã‚º 
+	* @param[in] _textureFileName ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹
+	* @param[in] _pUV ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®4é ‚ç‚¹åˆ†ã®UVå€¤
+	* @return æˆåŠŸã—ãŸã‚‰true
 	*/
-	bool Init(RECT* _scale,char* _textureFileName, D3DXVECTOR2* _pUV);
+	bool Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pUV);
 
 	/**
-	* •`‰æˆ—
-	* @param[in] _pDrawPos •`‰æ‚·‚éˆÊ’u
-	* @param[in] _angle •`‰æ‚·‚éŠp“x
+	* æç”»å‡¦ç†
+	* @param[in] _pDrawPos æç”»ã™ã‚‹ä½ç½®
+	* @param[in] _angle æç”»ã™ã‚‹è§’åº¦
 	*/
 	void Draw(D3DXVECTOR2* _pDrawPos, float _angle);
 
 	/**
-	* ŠJ•úˆ—
+	* é–‹æ”¾å‡¦ç†
 	*/
 	void Release();
 private:
 	struct Vertex
 	{
-		D3DXVECTOR3 pos; //ˆÊ’u
-		D3DXVECTOR2 UV; //ƒeƒNƒXƒ`ƒƒ[À•W
+		D3DXVECTOR3 pos; //ä½ç½®
+		D3DXVECTOR2 UV; //ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼åº§æ¨™
 	};
 	struct SHADER_CONSTANT_BUFFER
 	{
-		D3DXMATRIX matWorld;
+		D3DXMATRIX  matWorld;
 		D3DXVECTOR4 viewPort;
 	};
 
@@ -45,10 +45,10 @@ private:
 	void ReleaseVertexShader();
 	bool InitPixelShader();
 	void ReleasePixelShader();
-	bool InitVertexBuffer(RECT* _pScale, D3DXVECTOR2* _pUV);
+	bool InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV);
 	bool InitConstantBuffer();
 	void ReleaseConstantBuffer();
-	bool LoadTexture(char* _textureFileName);
+	bool LoadTexture(LPCTSTR _textureFileName);
 	void ReleaseTexture();
 	bool CreateVertexLayout();
 	void ReleaseVertexLayout();
@@ -65,7 +65,8 @@ private:
 
 	float					  m_WindowWidth;
 	float					  m_WindowHeight;
-	//’¸“_ƒŒƒCƒAƒEƒg‚Ìİ’è‚Ég‚¤
+
+	//é ‚ç‚¹ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã®è¨­å®šã«ä½¿ã†
 	ID3DBlob*		   m_pVertexCompiledShader;
 	ID3D11InputLayout* m_pVertexLayout;
 
