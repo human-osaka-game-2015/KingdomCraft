@@ -14,6 +14,9 @@
     <ClCompile Include="Library\DSoundManager\DSoundManager.cpp" />
     <ClCompile Include="Library\DebugFont\DebugFont.cpp" />
     <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
+    <ClCompile Include="Library\FbxFileManager\FbxFileManager.cpp" />
+    <ClCompile Include="Library\FbxFileManager\FbxLoader\FbxLoader.cpp" />
+    <ClCompile Include="Library\FbxFileManager\FbxModel\FbxModel.cpp" />
     <ClCompile Include="Library\InputDeviceManager\InputDeviceManager.cpp" />
     <ClCompile Include="Library\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
     <ClCompile Include="Library\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
@@ -30,6 +33,9 @@
   <ItemGroup>
     <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
     <ClInclude Include="Library\DebugFont\DebugFont.h" />
+    <ClInclude Include="Library\FbxFileManager\FbxFileManager.h" />
+    <ClInclude Include="Library\FbxFileManager\FbxLoader\FbxLoader.h" />
+    <ClInclude Include="Library\FbxFileManager\FbxModel\FbxModel.h" />
     <ClInclude Include="Library\TextureManager\TextureManager.h" />
     <ClInclude Include="Library\ShaderManager\ShaderManager.h" />
     <ClInclude Include="Library\Vertex2D\Vertex2D.h" />
@@ -95,13 +101,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\include;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;d3d11.lib;d3dx11.lib;d3dx10.lib;dxguid.lib;dinput8.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\debug;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winmm.lib;d3d11.lib;d3dx11.lib;d3dx10.lib;dxguid.lib;dinput8.lib;libfbxsdk-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -112,11 +121,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2016.1\lib\vs2013\x86\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
