@@ -43,6 +43,15 @@
     <ClCompile Include="Library\ShaderManager\ShaderManager.cpp">
       <Filter>Library\ShaderManager</Filter>
     </ClCompile>
+    <ClCompile Include="Library\FbxFileManager\FbxLoader\FbxLoader.cpp">
+      <Filter>Library\FbxFileManager\FbxLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\FbxFileManager\FbxModel\FbxModel.cpp">
+      <Filter>Library\FbxFileManager\FbxModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\FbxFileManager\FbxFileManager.cpp">
+      <Filter>Library\FbxFileManager</Filter>
+    </ClCompile>
     <ClCompile Include="Library\Vertex2D\Vertex2D.cpp">
       <Filter>Library\Vertex2D</Filter>
     </ClCompile>
@@ -89,6 +98,15 @@
     </ClInclude>
     <ClInclude Include="Library\Vertex2D\Vertex2D.h">
       <Filter>Library\Vertex2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FbxFileManager\FbxLoader\FbxLoader.h">
+      <Filter>Library\FbxFileManager\FbxLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FbxFileManager\FbxModel\FbxModel.h">
+      <Filter>Library\FbxFileManager\FbxModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FbxFileManager\FbxFileManager.h">
+      <Filter>Library\FbxFileManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +157,15 @@
     </Filter>
     <Filter Include="Library\ShaderManager">
       <UniqueIdentifier>{b73a1f4b-749e-400f-937e-6bd014c59cfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\FbxFileManager">
+      <UniqueIdentifier>{03a4a9fa-3e08-4a2c-94ba-b890f7724074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\FbxFileManager\FbxLoader">
+      <UniqueIdentifier>{359a9ee0-2597-4ce1-ac0f-1ff78e4666b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\FbxFileManager\FbxModel">
+      <UniqueIdentifier>{d7172336-c39a-4df8-9792-6f6c8220d7c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
