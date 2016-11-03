@@ -1,23 +1,18 @@
-//ƒOƒ[ƒoƒ‹
-
 Texture2D g_Texture: register(t0);
 SamplerState g_Sampler : register(s0);
 
 cbuffer global
 {
-	matrix g_W; //ƒ[ƒ‹ƒh‚©‚çË‰e‚Ü‚Å‚Ì•ÏŠ·s—ñ
-	float4 g_ViewPort;//ƒrƒ…[ƒ|[ƒgiƒXƒNƒŠ[ƒ“j‰¡ƒTƒCƒY
+	matrix g_W; //ãƒ¯ãƒ¼ãƒ«ãƒ‰ã‹ã‚‰å°„å½±ã¾ã§ã®å¤‰æ›è¡Œåˆ—
+	float4 g_ViewPort;//ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆï¼ˆã‚¹ã‚¯ãƒªãƒ¼ãƒ³ï¼‰æ¨ªã‚µã‚¤ã‚º
 };
-//\‘¢‘Ì
+
 struct PS_INPUT
 {
 	float4 Pos : SV_POSITION;
 	float2 UV : TEXCOORD;
 };
 
-//
-//
-//ƒo[ƒeƒbƒNƒXƒVƒF[ƒ_[
 PS_INPUT VS(float4 Pos : POSITION, float2 UV : TEXCOORD)
 {
 	PS_INPUT Out;
@@ -30,9 +25,7 @@ PS_INPUT VS(float4 Pos : POSITION, float2 UV : TEXCOORD)
 
 	return Out;
 }
-//
-//
-//ƒsƒNƒZƒ‹ƒVƒF[ƒ_[
+
 float4 PS(PS_INPUT Input) : SV_Target
 {
 	return g_Texture.Sample(g_Sampler, Input.UV);
