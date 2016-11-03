@@ -1,9 +1,9 @@
-#include <windows.h>
+﻿#include <windows.h>
 #include <crtdbg.h>
 #include <d3d11.h>
-#include <d3dx11.h>
+//#include <d3dx11.h>
 
-
+#include "SceneManager//SceneManager.h"
 #define DEFAULT_WINDOW_WIDTH 1280
 #define DEFAULT_WINDOW_HEIGHT 720
 
@@ -16,7 +16,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	HWND hwnd = NULL;
 	WNDCLASSEX  wndclass;
-	static TCHAR* szAppName = ("KingdomCraft");
+	static TCHAR* szAppName = TEXT("KingdomCraft");
 	
 	wndclass.cbSize = sizeof(wndclass);
 	wndclass.style = CS_HREDRAW | CS_VREDRAW;
@@ -35,7 +35,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	hwnd = CreateWindow(
 		szAppName, 
 		szAppName, 
-		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
+		WS_OVERLAPPEDWINDOW & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX | WS_VISIBLE,
 		0,
 		0,
 		DEFAULT_WINDOW_WIDTH, 
@@ -47,11 +47,13 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 
 	ShowWindow(hwnd, SW_SHOW);
 	UpdateWindow(hwnd);
-	SetWindowText(hwnd, "KingdomCraft");
+	SetWindowText(hwnd, TEXT("KingdomCraft"));
 
 
-	//���C�u�����֌W
+	//ライブラリ関係
 
+	// シーンマネージャー生成
+	SceneManager* pSceneManager = new SceneManager(hwnd);
 
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));
@@ -64,9 +66,14 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 		}
 		else
 		{
-			// SceneManager
+			if (pSceneManager->Run())
+			{
+				break;
+			}
 		}
 	}
+	// SceneManagerの解放
+	delete pSceneManager;
 
 	return (INT)msg.wParam;
 }
