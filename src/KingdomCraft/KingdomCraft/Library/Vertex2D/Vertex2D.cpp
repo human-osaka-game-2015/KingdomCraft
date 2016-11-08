@@ -1,7 +1,13 @@
-﻿#include "Vertex2D.h"
+﻿/**
+ * @file   Vertex2D.h
+ * @brief  Vertex2Dクラスのcppファイル
+ * @author kotani
+ */
+#include "Vertex2D.h"
 #include <Windows.h>
 #define VERTEX_NUM 4
 #define COLORMASK 0xffffffff //抜き色
+
 Vertex2D::Vertex2D(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND _hwnd) :
 m_pDevice(_pDevice),
 m_pDeviceContext(_pDeviceContext),
@@ -20,14 +26,16 @@ Vertex2D::~Vertex2D()
 
 void Vertex2D::Release()
 {
+	ReleaseVertexBuffer();
 	ReleaseConstantBuffer();
-	ReleaseTexture();
+	ReleaseSamplerState();
+	ReleaseBlendState();
 	ReleasePixelShader();
 	ReleaseVertexLayout();
 	ReleaseVertexShader();
 }
 
-bool Vertex2D::Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pUV)
+bool Vertex2D::Init(RECT* _pRectSize, D3DXVECTOR2* _pUV)
 {
 	RECT WindowRect;
 	GetWindowRect(m_hWnd, &WindowRect);
@@ -49,8 +57,17 @@ bool Vertex2D::Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pU
 		return false;
 	}
 
-	if (!LoadTexture(_textureFileName))
+	if (!InitBlendState())
 	{
+		ReleasePixelShader();
+		ReleaseVertexLayout();
+		ReleaseVertexShader();
+		return false;
+	}
+
+	if (!InitSamplerState())
+	{
+		ReleaseBlendState();
 		ReleasePixelShader();
 		ReleaseVertexLayout();
 		ReleaseVertexShader();
@@ -59,7 +76,8 @@ bool Vertex2D::Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pU
 
 	if (!InitVertexBuffer(_pRectSize, _pUV))
 	{
-		ReleaseTexture();
+		ReleaseSamplerState();
+		ReleaseBlendState();
 		ReleasePixelShader();
 		ReleaseVertexLayout();
 		ReleaseVertexShader();
@@ -68,7 +86,9 @@ bool Vertex2D::Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pU
 
 	if (!InitConstantBuffer())
 	{
-		ReleaseTexture();
+		ReleaseVertexBuffer();
+		ReleaseSamplerState();
+		ReleaseBlendState();
 		ReleasePixelShader();
 		ReleaseVertexLayout();
 		ReleaseVertexShader();
@@ -79,15 +99,15 @@ bool Vertex2D::Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pU
 }
 
 
-void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos, float _angle)
+void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos,float _alpha, D3DXVECTOR3* _pScale, float _angle)
 {
 	D3DXMATRIX matWorld	,matTranslate ,matRotate;
 	D3DXMatrixIdentity(&matWorld);
+	D3DXMatrixScaling(&matWorld, _pScale->x, _pScale->y, _pScale->z);
 	D3DXMatrixRotationZ(&matRotate, _angle);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matRotate);
 	D3DXMatrixTranslation(&matTranslate, _pDrawPos->x, _pDrawPos->y, 0);
 	D3DXMatrixMultiply(&matWorld, &matWorld, &matTranslate);
-
 	//使用するシェーダーのセット
 	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
 	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
@@ -96,12 +116,13 @@ void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos, float _angle)
 	SHADER_CONSTANT_BUFFER	 constantBuffer;
 	if (SUCCEEDED(m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
 	{
-		//ワールド行列を渡す
 		constantBuffer.matWorld = matWorld;
 		D3DXMatrixTranspose(&constantBuffer.matWorld, &constantBuffer.matWorld);
 		//ビューポートサイズを渡す（クライアント領域の横と縦）
 		constantBuffer.viewPort.x = m_WindowWidth;
 		constantBuffer.viewPort.y = m_WindowHeight;
+
+		constantBuffer.alpha.a = _alpha;
 
 		memcpy_s(pData.pData, pData.RowPitch, (void*)(&constantBuffer), sizeof(constantBuffer));
 		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
@@ -117,8 +138,12 @@ void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos, float _angle)
 	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 	//テクスチャーをシェーダーに渡す
 	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSampler);
-	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTexture);
-	
+	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTextureResourceView);
+	//バーテックスバッファーをセット
+	UINT stride = sizeof(Vertex);
+	UINT offset = 0;
+	m_pDeviceContext->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &stride, &offset);
+
 	//プリミティブをレンダリング
 	m_pDeviceContext->Draw(VERTEX_NUM, 0);
 }
@@ -128,10 +153,10 @@ bool Vertex2D::InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV)
 {
 	Vertex vertex[] =
 	{
-		D3DXVECTOR3(-_pRectSize->left , -_pRectSize->top, 0.f)   , D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
-		D3DXVECTOR3(+_pRectSize->right, -_pRectSize->top, 0.f)   , D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
-		D3DXVECTOR3(-_pRectSize->left , +_pRectSize->bottom, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
-		D3DXVECTOR3(+_pRectSize->right, +_pRectSize->bottom, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y),
+		D3DXVECTOR3(-_pRectSize->right / 2, -_pRectSize->bottom / 2, 0.f), D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
+		D3DXVECTOR3(_pRectSize->right / 2 , -_pRectSize->bottom / 2, 0.f), D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
+		D3DXVECTOR3(-_pRectSize->right / 2, _pRectSize->bottom / 2 , 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
+		D3DXVECTOR3(_pRectSize->right / 2 , _pRectSize->bottom / 2 , 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y)
 	};
 
 	//頂点バッファ作成
@@ -145,19 +170,22 @@ bool Vertex2D::InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV)
 
 	D3D11_SUBRESOURCE_DATA InitVertexData;
 	InitVertexData.pSysMem = vertex;
-	ID3D11Buffer* pBuffer;
-	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &pBuffer)))
+	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &m_pVertexBuffer)))
 	{
-		MessageBox(m_hWnd, TEXT("バーテックスバッファーの生成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("VertexBufferの生成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
-	//バーテックスバッファーをセット
-	UINT stride = sizeof(Vertex);
-	UINT offset = 0;
-	m_pDeviceContext->IASetVertexBuffers(0, 1, &pBuffer, &stride, &offset);
-	pBuffer->Release();
 	return true;
+}
+
+void Vertex2D::ReleaseVertexBuffer()
+{
+	if (m_pVertexBuffer != NULL)
+	{
+		m_pVertexBuffer->Release();
+		m_pVertexBuffer = NULL;
+	}
 }
 
 bool Vertex2D::InitVertexShader()
@@ -190,13 +218,13 @@ void Vertex2D::ReleaseVertexShader()
 {
 	if (m_pVertexShader != NULL)
 	{
-		m_pVertexShader = NULL;
 		m_pVertexShader->Release();
+		m_pVertexShader = NULL;
 	}
 	if (m_pVertexCompiledShader != NULL)
 	{
-		m_pVertexCompiledShader = NULL;
 		m_pVertexCompiledShader->Release();
+		m_pVertexCompiledShader = NULL;
 	}
 }
 
@@ -231,8 +259,8 @@ void Vertex2D::ReleasePixelShader()
 {
 	if (m_pPixelShader != NULL)
 	{
-		m_pPixelShader = NULL;
 		m_pPixelShader->Release();
+		m_pPixelShader = NULL;
 	}
 }
 
@@ -253,7 +281,7 @@ bool Vertex2D::CreateVertexLayout()
 		m_pVertexCompiledShader->GetBufferSize(),
 		&m_pVertexLayout)))
 	{
-		MessageBox(m_hWnd, TEXT("PixelShaderのコンパイルに失敗"), TEXT("Error"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("CreateInputLayoutに失敗"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -269,7 +297,7 @@ void Vertex2D::ReleaseVertexLayout()
 	}
 }
 
-bool Vertex2D::LoadTexture(LPCTSTR _textureFileName)
+bool Vertex2D::InitBlendState()
 {
 	//アルファブレンド用ブレンドステート作成
 	D3D11_BLEND_DESC BlendDesc;
@@ -287,12 +315,25 @@ bool Vertex2D::LoadTexture(LPCTSTR _textureFileName)
 
 	if (FAILED(m_pDevice->CreateBlendState(&BlendDesc, &m_pBlendState)))
 	{
-		MessageBox(m_hWnd, TEXT("アルファブレンドステート作成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("CreateBlendStateに失敗しました"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
 	m_pDeviceContext->OMSetBlendState(m_pBlendState, NULL, COLORMASK);
+	return true;
+}
 
+void Vertex2D::ReleaseBlendState()
+{
+	if (m_pBlendState != NULL)
+	{
+		m_pBlendState->Release();
+		m_pBlendState = NULL;
+	}
+}
+
+bool Vertex2D::InitSamplerState()
+{
 	//テクスチャー用サンプラー作成
 	D3D11_SAMPLER_DESC SamDesc;
 	ZeroMemory(&SamDesc, sizeof(D3D11_SAMPLER_DESC));
@@ -303,35 +344,18 @@ bool Vertex2D::LoadTexture(LPCTSTR _textureFileName)
 
 	if (FAILED(m_pDevice->CreateSamplerState(&SamDesc, &m_pSampler)))
 	{
-		MessageBox(m_hWnd, TEXT("サンプラーステートの生成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
-		return false;
-	}
-
-	if (FAILED(D3DX11CreateShaderResourceViewFromFile(m_pDevice, _textureFileName, NULL, NULL, &m_pTexture, NULL)))
-	{
-		MessageBox(m_hWnd, TEXT("テクスチャーを読み込めません"), TEXT("Error"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("CreateSamplerStateに失敗しました"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 	return true;
 }
 
-void Vertex2D::ReleaseTexture()
+void Vertex2D::ReleaseSamplerState()
 {
-	if (m_pTexture != NULL)
-	{
-		m_pTexture->Release();
-		m_pTexture = NULL;
-	}
-
 	if (m_pSampler != NULL)
 	{
 		m_pSampler->Release();
 		m_pSampler = NULL;
-	}
-	if (m_pBlendState != NULL)
-	{
-		m_pBlendState = NULL;
-		m_pBlendState->Release();
 	}
 }
 
@@ -348,7 +372,7 @@ bool Vertex2D::InitConstantBuffer()
 
 	if (FAILED(m_pDevice->CreateBuffer(&ConstantBufferDesc, NULL, &m_pConstantBuffer)))
 	{
-		MessageBox(m_hWnd, TEXT("コンスタントバッファーの生成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("ConstantBufferの生成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 	return true;
