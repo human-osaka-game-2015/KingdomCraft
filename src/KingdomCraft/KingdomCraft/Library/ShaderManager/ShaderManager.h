@@ -6,8 +6,36 @@
 class ShaderManager
 {
 public:
-	ShaderManager(ID3D11Device* _pDevice);
 	~ShaderManager();
+
+	/**
+	 * インスタンスを生成
+	 */
+	static void Create(ID3D11Device* _pDevice)
+	{
+		if (m_pShaderManager == NULL)
+		{
+			m_pShaderManager = new ShaderManager(_pDevice);
+		}
+	}
+
+	/**
+	 * インスタンスを取得する
+	 * @return インスタンスが返る
+	 */
+	static ShaderManager* GetInstance()
+	{
+		return m_pShaderManager;
+	}
+
+	/**
+	 * ShaderManagerインスタンスを破棄する
+	 */
+	static void Delete()
+	{
+		delete m_pShaderManager;
+		m_pShaderManager = NULL;
+	}
 
 	/**
 	 * 頂点シェーダーを読み込む(頂点シェーダーのバージョンはvs_5_0)
@@ -108,6 +136,9 @@ public:
 	}
 
 private:
+	ShaderManager(ID3D11Device* _pDevice);
+
+	static ShaderManager* m_pShaderManager;
 	ID3D11Device* m_pDevice;
 	std::map<int, ID3D11VertexShader*>	m_pVertexShader;
 	std::map<int, ID3D11PixelShader*>	m_pPixelShader;

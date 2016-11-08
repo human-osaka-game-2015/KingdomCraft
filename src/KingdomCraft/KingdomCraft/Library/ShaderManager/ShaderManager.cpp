@@ -2,6 +2,8 @@
 #include "d3dx11.h"
 
 
+ShaderManager* ShaderManager::m_pShaderManager = NULL;
+
 ShaderManager::ShaderManager(ID3D11Device* _pDevice) :
 m_pDevice(_pDevice)
 {
