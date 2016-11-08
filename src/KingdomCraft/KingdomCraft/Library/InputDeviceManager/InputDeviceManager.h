@@ -1,4 +1,9 @@
-﻿#ifndef INPUTDEVICEMANAGER_H
+﻿/**
+ * @file   InputDeviceManager.h
+ * @brief  InputDeviceManagerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef INPUTDEVICEMANAGER_H
 #define INPUTDEVICEMANAGER_H
 
 #define DIRECTINPUT_VERSION 0x0800
@@ -6,6 +11,9 @@
 #include "KeyDevice\KeyDevice.h"
 #include "MouseDevice\MouseDevice.h"
 
+/**
+ * @brief  入力デバイスを管理するクラス
+ */
 class InputDeviceManager
 {
 public:

@@ -1,4 +1,9 @@
-﻿#include "MouseDevice.h"
+﻿/**
+ * @file   MouseDevice.cpp
+ * @brief  MouseDeviceクラスの実装
+ * @author morimoto
+ */
+#include "MouseDevice.h"
 
 
 MouseDevice::MouseDevice() :

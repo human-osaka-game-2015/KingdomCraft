@@ -1,4 +1,9 @@
-﻿#ifndef MOUSEDEVICE_H
+﻿/**
+ * @file   MouseDevice.h
+ * @brief  MouseDeviceクラスのヘッダー
+ * @author morimoto
+ */
+#ifndef MOUSEDEVICE_H
 #define MOUSEDEVICE_H
 
 #define DIRECTINPUT_VERSION 0x0800

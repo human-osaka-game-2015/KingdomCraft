@@ -1,4 +1,9 @@
-﻿#include "InputDeviceManager.h"
+﻿/**
+ * @file   InputDeviceManager.cpp
+ * @brief  InputDeviceManagerクラスの実装
+ * @author morimoto
+ */
+#include "InputDeviceManager.h"
 #include "KeyDevice\KeyDevice.h"
 #include "MouseDevice\MouseDevice.h"
 
