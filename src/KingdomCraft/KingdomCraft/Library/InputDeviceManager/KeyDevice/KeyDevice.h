@@ -1,4 +1,9 @@
-﻿#ifndef KEYDEVICE_H
+﻿/**
+ * @file   KeyDevice.h
+ * @brief  KeyDeviceクラスのヘッダー
+ * @author morimoto
+ */
+#ifndef KEYDEVICE_H
 #define KEYDEVICE_H
 
 #define DIRECTINPUT_VERSION 0x0800
