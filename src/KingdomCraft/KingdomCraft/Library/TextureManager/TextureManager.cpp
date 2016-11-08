@@ -13,7 +13,7 @@ TextureManager::~TextureManager()
 {
 }
 
-bool TextureManager::LoadTexture(int _key, LPCTCH _filePath)
+bool TextureManager::LoadTexture(LPCTCH _filePath, int* _pkey)
 {
 	D3DX11_IMAGE_LOAD_INFO LoadInfo;
 	ZeroMemory(&LoadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
@@ -44,7 +44,8 @@ bool TextureManager::LoadTexture(int _key, LPCTCH _filePath)
 		return false;
 	}
 
-	m_pTextureResourceView[_key] = pResourceView;
+	*_pkey = m_pTextureResourceView.size();
+	m_pTextureResourceView.push_back(pResourceView);
 
 	return true;
 }
