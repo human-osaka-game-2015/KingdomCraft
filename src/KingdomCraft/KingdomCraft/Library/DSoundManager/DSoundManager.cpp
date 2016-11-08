@@ -1,4 +1,9 @@
-﻿#include "DSoundManager.h"
+﻿/**
+ * @file   DSoundManager.cpp
+ * @brief  DSoundManagerクラスのcppファイル
+ * @author kotani
+ */
+#include "DSoundManager.h"
 #include <mmsystem.h>
 
 DSoundManager* DSoundManager::m_pSoundManager = NULL;
@@ -7,7 +12,6 @@ DSoundManager::DSoundManager(HWND _hWnd) :
 m_hWnd(_hWnd)
 {
 }
-
 
 DSoundManager::~DSoundManager()
 {
