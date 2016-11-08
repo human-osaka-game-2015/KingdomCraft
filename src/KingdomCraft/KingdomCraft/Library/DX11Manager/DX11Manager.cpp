@@ -1,9 +1,15 @@
-﻿#include "DX11Manager.h"
+﻿/**
+ * @file   DX11Manager.cpp
+ * @brief  DX11Managerクラスの実装
+ * @author morimoto
+ */
+#include "DX11Manager.h"
 
 
 DX11Manager* DX11Manager::m_pDX11Manager = NULL;
 
-DX11Manager::DX11Manager()
+DX11Manager::DX11Manager() :
+m_hWnd(NULL)
 {
 	
 }
@@ -55,14 +61,16 @@ void DX11Manager::EndScene()
 	m_pDXGISwapChain->Present(1, 0);
 }
 
-ID3D11Device* DX11Manager::GetDevice()
+void DX11Manager::SetDepthStencilTest(bool _isStencil)
 {
-	return m_pDevice;
-}
-
-ID3D11DeviceContext* DX11Manager::GetDeviceContext()
-{
-	return m_pDeviceContext;
+	if (_isStencil)
+	{
+		m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
+	}
+	else
+	{
+		m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, NULL);
+	}
 }
 
 bool DX11Manager::InitDevice()

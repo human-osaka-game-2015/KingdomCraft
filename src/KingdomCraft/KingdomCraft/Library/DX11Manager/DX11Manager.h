@@ -1,10 +1,22 @@
-﻿#ifndef DX11MANAGER_H
+﻿/**
+ * @file   DX11Manager.h
+ * @brief  DX11Managerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef DX11MANAGER_H
 #define DX11MANAGER_H
 
 #include <Windows.h>
 #include <d3d11.h>
 #include <d3dx11.h>	
 
+/**
+ * @brief  DirectX11関係のオブジェクトを管理しているクラス
+ *
+ * DirectX11のデバイスやデバイスコンテキストなどを管理している。\n
+ * デバイスなどを利用して描画前のバッファのクリアやバッファの表示なども行う。\n
+ * 複数実体を作る必要がないのでシングルトンにしている。
+ */
 class DX11Manager
 {
 public:
@@ -60,18 +72,39 @@ public:
 	 * 描画後処理を行う関数
 	 */	
 	void EndScene();
+
+	/**
+	 * 深度テストのオンオフを切り替える関数
+	 * @param[in] _isStencil 深度テストを使用するかのフラグ
+	 */
+	void SetDepthStencilTest(bool _isStencil);
 	
 	/**
 	 * DirectX11デバイスを取得する関数
 	 * @return DirectX11デバイス
 	 */
-	ID3D11Device* GetDevice();
+	inline ID3D11Device* GetDevice()
+	{
+		return m_pDevice;
+	}
 
 	/**
 	 * DirectX11デバイスコンテキストを取得する関数
 	 * @return DirectX11デバイスコンテキスト
 	 */
-	ID3D11DeviceContext* GetDeviceContext();
+	inline ID3D11DeviceContext* GetDeviceContext()
+	{
+		return m_pDeviceContext;
+	}
+
+	/**
+	 * DX11Managerが対応しているウィンドウハンドルを取得する関数
+	 * @return ウィンドウハンドル
+	 */
+	inline HWND GetWindowHandle()
+	{
+		return m_hWnd;
+	}
 
 private:
 	DX11Manager();
