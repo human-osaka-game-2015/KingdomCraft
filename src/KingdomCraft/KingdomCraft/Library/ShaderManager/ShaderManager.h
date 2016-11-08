@@ -1,8 +1,18 @@
-﻿#ifndef SHADERMANAGER_H
+﻿/**
+ * @file   ShaderManager.h
+ * @brief  ShaderManagerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef SHADERMANAGER_H
 #define SHADERMANAGER_H
 #include <d3d11.h>
 #include <map>
 
+/**
+ * @brief エフェクトファイルを管理するクラス
+ *
+ * シェーダーの読み込みから破棄まで管理している
+ */
 class ShaderManager
 {
 public:
