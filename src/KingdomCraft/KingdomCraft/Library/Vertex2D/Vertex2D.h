@@ -1,8 +1,16 @@
-﻿#ifndef VERTEX2D_H
+﻿/**
+ * @file   Vertex2D.h
+ * @brief  Vertex2Dクラスのヘッダファイル
+ * @author kotani
+ */
+#ifndef VERTEX2D_H
 #define VERTEX2D_H
 #include <D3DX11.h>
 #include <d3dx10.h>
 
+/**
+ * @brief テクスチャを貼って矩形を描画するクラス
+ */
 class Vertex2D
 {
 public:
@@ -10,24 +18,24 @@ public:
 	~Vertex2D();
 	
 	/**
-	* 初期化
-	* @param[in] _pRectSize 矩形のサイズ 
-	* @param[in] _textureFileName テクスチャのファイルパス
-	* @param[in] _pUV テクスチャの4頂点分のUV値
-	* @return 成功したらtrue
-	*/
+	 * 初期化
+	 * @param[in] _pRectSize 矩形のサイズ 
+	 * @param[in] _textureFileName テクスチャのファイルパス
+	 * @param[in] _pUV テクスチャの4頂点分のUV値
+	 * @return 成功したらtrue
+	 */
 	bool Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pUV);
 
 	/**
-	* 描画処理
-	* @param[in] _pDrawPos 描画する位置
-	* @param[in] _angle 描画する角度
-	*/
+	 * 描画処理
+	 * @param[in] _pDrawPos 描画する位置
+	 * @param[in] _angle 描画する角度
+	 */
 	void Draw(D3DXVECTOR2* _pDrawPos, float _angle);
 
 	/**
-	* 開放処理
-	*/
+	 * 開放処理
+	 */
 	void Release();
 private:
 	struct Vertex

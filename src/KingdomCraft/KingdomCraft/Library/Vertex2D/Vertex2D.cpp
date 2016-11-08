@@ -1,7 +1,13 @@
-﻿#include "Vertex2D.h"
+﻿/**
+ * @file   Vertex2D.h
+ * @brief  Vertex2Dクラスのcppファイル
+ * @author kotani
+ */
+#include "Vertex2D.h"
 #include <Windows.h>
 #define VERTEX_NUM 4
 #define COLORMASK 0xffffffff //抜き色
+
 Vertex2D::Vertex2D(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND _hwnd) :
 m_pDevice(_pDevice),
 m_pDeviceContext(_pDeviceContext),
