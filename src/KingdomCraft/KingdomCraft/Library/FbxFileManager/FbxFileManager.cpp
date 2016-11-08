@@ -1,5 +1,12 @@
-﻿#include "FbxFileManager.h"
+﻿/**
+ * @file   FbxFileManager.cpp
+ * @brief  FbxFileManagerクラスの実装
+ * @author morimoto
+ */
+#include "FbxFileManager.h"
 #include "FbxLoader\FbxLoader.h"
+
+FbxFileManager* FbxFileManager::m_pFbxFileManager = NULL;
 
 FbxFileManager::FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext) :
 m_pDevice(_pDevice),
@@ -23,7 +30,7 @@ void FbxFileManager::Release()
 	m_pFbxLoader->Release();
 }
 
-bool FbxFileManager::LoadFbxModel(int _key, LPCTSTR _filePath)
+bool FbxFileManager::LoadFbxModel(LPCTSTR _filePath, int* _pOutKey)
 {
 	FbxModel* pModel = new FbxModel(m_pDevice, m_pDeviceContext);
 	if (!m_pFbxLoader->LoadFbxModel(pModel, _filePath))
@@ -34,7 +41,8 @@ bool FbxFileManager::LoadFbxModel(int _key, LPCTSTR _filePath)
 	}
 
 	pModel->Init();
-	m_pFbxModel[_key] = pModel;
+	*_pOutKey = m_pFbxModel.size();
+	m_pFbxModel.push_back(pModel);
 
 	return true;
 }
