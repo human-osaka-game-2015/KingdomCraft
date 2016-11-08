@@ -1,4 +1,9 @@
-﻿#include "FbxFileManager.h"
+﻿/**
+ * @file   FbxFileManager.cpp
+ * @brief  FbxFileManagerクラスの実装
+ * @author morimoto
+ */
+#include "FbxFileManager.h"
 #include "FbxLoader\FbxLoader.h"
 
 FbxFileManager::FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext) :

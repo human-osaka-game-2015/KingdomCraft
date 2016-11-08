@@ -1,4 +1,9 @@
-﻿#ifndef FBXFILEMANAGER_H
+﻿/**
+ * @file   FbxFileManager.h
+ * @brief  FbxFileManagerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef FBXFILEMANAGER_H
 #define FBXFILEMANAGER_H
 #include <d3d11.h>
 #include <map>
@@ -6,6 +11,9 @@
 
 class FbxLoader;
 
+/**
+ * @brief  Fbxファイルを管理するクラス
+ */
 class FbxFileManager
 {
 public:

@@ -1,9 +1,17 @@
-﻿#ifndef FBXMODEL_H
+﻿/**
+ * @file   FbxModel.h
+ * @brief  FbxModelクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef FBXMODEL_H
 #define FBXMODEL_H
 #include <D3DX11.h>
 #include <D3DX10.h>
 #include <vector>
 
+/**
+ * @brief  Fbxファイルのモデル情報を管理するクラス
+ */
 class FbxModel
 {
 public:
