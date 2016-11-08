@@ -1,4 +1,9 @@
-﻿#include "ShaderManager.h"
+﻿/**
+　* @file   ShaderManager.cpp
+　* @brief  ShaderManagerクラスの実装
+　* @author morimoto
+　*/
+#include "ShaderManager.h"
 #include "d3dx11.h"
 
 
