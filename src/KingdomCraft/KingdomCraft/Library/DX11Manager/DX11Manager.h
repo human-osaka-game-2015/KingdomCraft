@@ -1,10 +1,22 @@
-﻿#ifndef DX11MANAGER_H
+﻿/**
+ * @file   DX11Manager.h
+ * @brief  DX11Managerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef DX11MANAGER_H
 #define DX11MANAGER_H
 
 #include <Windows.h>
 #include <d3d11.h>
 #include <d3dx11.h>	
 
+/**
+ * @brief  DirectX11関係のオブジェクトを管理しているクラス
+ *
+ * DirectX11のデバイスやデバイスコンテキストなどを管理している。\n
+ * デバイスなどを利用して描画前のバッファのクリアやバッファの表示なども行う。\n
+ * 複数実体を作る必要がないのでシングルトンにしている。
+ */
 class DX11Manager
 {
 public:

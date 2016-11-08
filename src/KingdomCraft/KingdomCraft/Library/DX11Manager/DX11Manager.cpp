@@ -1,4 +1,9 @@
-﻿#include "DX11Manager.h"
+﻿/**
+ * @file   DX11Manager.cpp
+ * @brief  DX11Managerクラスの実装
+ * @author morimoto
+ */
+#include "DX11Manager.h"
 
 
 DX11Manager* DX11Manager::m_pDX11Manager = NULL;
