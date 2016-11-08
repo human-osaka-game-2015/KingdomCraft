@@ -1,4 +1,9 @@
-﻿#include "FbxModel.h"
+﻿/**
+ * @file   FbxModel.cpp
+ * @brief  FbxModelクラスの実装
+ * @author morimoto
+ */
+#include "FbxModel.h"
 
 
 FbxModel::FbxModel(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext) :

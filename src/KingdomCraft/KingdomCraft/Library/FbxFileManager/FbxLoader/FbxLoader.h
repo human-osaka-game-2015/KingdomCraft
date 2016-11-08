@@ -1,9 +1,17 @@
-﻿#ifndef FBXLOADER_H
+﻿/**
+ * @file   FbxLoader.h
+ * @brief  FbxLoaderクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef FBXLOADER_H
 #define FBXLOADER_H
 #include <d3d11.h>
 #include <fbxsdk.h>
 #include "../FbxModel/FbxModel.h"
 
+/**
+ * @brief  Fbxの読み込み処理を管理するクラス
+ */
 class FbxLoader
 {
 public:

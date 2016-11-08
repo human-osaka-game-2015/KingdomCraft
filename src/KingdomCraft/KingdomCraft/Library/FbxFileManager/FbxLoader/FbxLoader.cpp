@@ -1,4 +1,9 @@
-﻿#include "FbxLoader.h"
+﻿/**
+ * @file   FbxLoader.cpp
+ * @brief  FbxLoaderクラスの実装
+ * @author morimoto
+ */
+#include "FbxLoader.h"
 
 FbxLoader::FbxLoader(ID3D11Device* _pDevice):
 m_pDevice(_pDevice),
