@@ -1,7 +1,7 @@
 ﻿#ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
 #include <d3d11.h>
-#include <map>
+#include <vector>
 
 class TextureManager
 {
@@ -39,11 +39,11 @@ public:
 
 	/**
 	 * テクスチャを読み込む
-	 * @param[in] _key 読み込んだテクスチャの格納先へのキー
 	 * @param[in] _filePath 読み込むテクスチャ
+	 * @param[out] _pkey 読み込んだテクスチャが格納されている先のキー
 	 * @return テクスチャの読み込みに成功したらtrue
 	 */
-	bool LoadTexture(int _key, LPCTCH _filePath);
+	bool LoadTexture(LPCTCH _filePath, int* _pkey);
 
 	/**
 	 * 格納しているテクスチャを取得する
@@ -62,7 +62,17 @@ public:
 	inline void ReleaseTexture(int _key)
 	{ 
 		m_pTextureResourceView[_key]->Release();
-		m_pTextureResourceView.erase(_key);
+	}
+
+	/**
+	 * テクスチャを確保しているバッファをクリアする
+	 *
+	 * vectorを使用しているのでバッファ領域は解放されない。\n
+	 * バッファ領域はTextureManagerが破棄されたときに解放される。
+	 */
+	inline void ClearBuffer()
+	{
+		m_pTextureResourceView.clear();
 	}
 
 private:
@@ -70,7 +80,7 @@ private:
 
 	static TextureManager*						m_pTextureManager;
 	ID3D11Device*								m_pDevice;
-	std::map<int, ID3D11ShaderResourceView*>	m_pTextureResourceView;
+	std::vector<ID3D11ShaderResourceView*>		m_pTextureResourceView;
 
 };
 
