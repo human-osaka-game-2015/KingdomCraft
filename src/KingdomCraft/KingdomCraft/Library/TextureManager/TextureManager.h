@@ -6,8 +6,36 @@
 class TextureManager
 {
 public:
-	TextureManager(ID3D11Device* _pDevice);
 	~TextureManager();
+
+	/**
+	 * インスタンスを生成
+	 */
+	static void Create(ID3D11Device* _pDevice)
+	{
+		if (m_pTextureManager == NULL)
+		{
+			m_pTextureManager = new TextureManager(_pDevice);
+		}
+	}
+
+	/**
+	 * インスタンスを取得する
+	 * @return インスタンスが返る
+	 */
+	static TextureManager* GetInstance()
+	{
+		return m_pTextureManager;
+	}
+
+	/**
+	 * TextureManagerインスタンスを破棄する
+	 */
+	static void Delete()
+	{
+		delete m_pTextureManager;
+		m_pTextureManager = NULL;
+	}
 
 	/**
 	 * テクスチャを読み込む
@@ -38,6 +66,9 @@ public:
 	}
 
 private:
+	TextureManager(ID3D11Device* _pDevice);
+
+	static TextureManager*						m_pTextureManager;
 	ID3D11Device*								m_pDevice;
 	std::map<int, ID3D11ShaderResourceView*>	m_pTextureResourceView;
 

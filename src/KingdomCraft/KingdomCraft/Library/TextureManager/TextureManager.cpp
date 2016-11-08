@@ -2,6 +2,8 @@
 #include <d3dx11.h>
 
 
+TextureManager* TextureManager::m_pTextureManager = NULL;
+
 TextureManager::TextureManager(ID3D11Device* _pDevice):
 m_pDevice(_pDevice)
 {
