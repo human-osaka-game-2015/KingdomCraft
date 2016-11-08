@@ -1,4 +1,9 @@
-﻿#include "KeyDevice.h"
+﻿/**
+ * @file   KeyDevice.cpp
+ * @brief  KeyDeviceクラスの実装
+ * @author morimoto
+ */
+#include "KeyDevice.h"
 
 
 KeyDevice::KeyDevice() :

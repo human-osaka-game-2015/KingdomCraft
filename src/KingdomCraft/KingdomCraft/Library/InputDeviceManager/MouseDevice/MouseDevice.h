@@ -1,4 +1,9 @@
-﻿#ifndef MOUSEDEVICE_H
+﻿/**
+ * @file   MouseDevice.h
+ * @brief  MouseDeviceクラスのヘッダー
+ * @author morimoto
+ */
+#ifndef MOUSEDEVICE_H
 #define MOUSEDEVICE_H
 
 #define DIRECTINPUT_VERSION 0x0800
@@ -57,14 +62,15 @@ public:
 	 * マウスの状態を取得する
 	 * @return マウスの状態が格納されている構造体
 	 */
-	MOUSESTATE GetMouseState();
+	const MOUSESTATE& GetMouseState();
 
 private:
 	LPDIRECTINPUT8			m_pDInput8;
 	HWND					m_hWnd;
 	LPDIRECTINPUTDEVICE8	m_pDInputDevice8;
-	DIMOUSESTATE			m_MouseState;
-	DIMOUSESTATE			m_OldMouseState;
+	MOUSESTATE				m_MouseState;
+	DIMOUSESTATE			m_DIMouseState;
+	DIMOUSESTATE			m_OldDIMouseState;
 
 };
 
