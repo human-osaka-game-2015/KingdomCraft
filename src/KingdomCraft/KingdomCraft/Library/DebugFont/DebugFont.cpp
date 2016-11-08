@@ -1,4 +1,9 @@
-﻿#include "DebugFont.h"
+﻿/**
+ * @file   DebugFont.cpp
+ * @brief  DebugFontクラスの実装
+ * @author morimoto
+ */
+#include "DebugFont.h"
 #include <d3dx11.h>
 
 

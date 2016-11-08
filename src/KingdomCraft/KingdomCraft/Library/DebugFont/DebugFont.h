@@ -1,10 +1,18 @@
-﻿#ifndef DEBUGFONT_H
+﻿/**
+ * @file   DebugFont.h
+ * @brief  DebugFontクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef DEBUGFONT_H
 #define DEBUGFONT_H
 #include <d3d11.h>
 #include <d3dx10.h>
 
 #define FONT_TU 1.0f / 95
 
+/**
+ * @brief  デバッグ情報を表示するクラス
+ */
 class DebugFont
 {
 public:
