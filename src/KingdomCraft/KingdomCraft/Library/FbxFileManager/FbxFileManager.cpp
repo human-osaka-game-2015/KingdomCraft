@@ -28,7 +28,7 @@ void FbxFileManager::Release()
 	m_pFbxLoader->Release();
 }
 
-bool FbxFileManager::LoadFbxModel(int _key, LPCTSTR _filePath)
+bool FbxFileManager::LoadFbxModel(LPCTSTR _filePath, int* _pOutKey)
 {
 	FbxModel* pModel = new FbxModel(m_pDevice, m_pDeviceContext);
 	if (!m_pFbxLoader->LoadFbxModel(pModel, _filePath))
@@ -39,7 +39,8 @@ bool FbxFileManager::LoadFbxModel(int _key, LPCTSTR _filePath)
 	}
 
 	pModel->Init();
-	m_pFbxModel[_key] = pModel;
+	*_pOutKey = m_pFbxModel.size();
+	m_pFbxModel.push_back(pModel);
 
 	return true;
 }
