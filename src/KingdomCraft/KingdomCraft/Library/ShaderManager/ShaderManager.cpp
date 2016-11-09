@@ -18,7 +18,7 @@ ShaderManager::~ShaderManager()
 {
 }
 
-bool ShaderManager::LoadVertexShader(int _key, char* _fileName, char* _funcName)
+bool ShaderManager::LoadVertexShader(LPCTSTR _fileName, LPCTSTR _funcName, int* _pOutKey)
 {
 	ID3D11VertexShader* pVertexShader = NULL;
 	ID3DBlob* pShaderErrors = NULL;
@@ -53,13 +53,14 @@ bool ShaderManager::LoadVertexShader(int _key, char* _fileName, char* _funcName)
 		return false;
 	}
 
-	m_pVertexShader[_key] = pVertexShader;
-	m_pCompiledVertexShader[_key] = pCompiledShader;
+	*_pOutKey = m_pVertexShader.size();
+	m_pVertexShader.push_back(pVertexShader);
+	m_pCompiledVertexShader.push_back(pCompiledShader);
 
 	return true;
 }
 
-bool ShaderManager::LoadPixelShader(int _key, char* _fileName, char* _funcName)
+bool ShaderManager::LoadPixelShader(LPCTSTR _fileName, LPCTSTR _funcName, int* _pOutKey)
 {
 	ID3D11PixelShader* pPixelShader = NULL;
 	ID3DBlob* pShaderErrors = NULL;
@@ -94,8 +95,9 @@ bool ShaderManager::LoadPixelShader(int _key, char* _fileName, char* _funcName)
 		return false;
 	}
 
-	m_pPixelShader[_key] = pPixelShader;
-	m_pCompiledPixelShader[_key] = pCompiledShader;
+	*_pOutKey = m_pPixelShader.size();
+	m_pPixelShader.push_back(pPixelShader);
+	m_pCompiledPixelShader.push_back(pCompiledShader);
 
 	return true;
 }
