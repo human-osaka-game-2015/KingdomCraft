@@ -1,8 +1,16 @@
-﻿#ifndef TEXTUREMANAGER_H
+﻿/**
+ * @file   TextureManager.h
+ * @brief  TextureManagerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
 #include <d3d11.h>
 #include <vector>
 
+/**
+ * @brief  テクスチャの管理クラス
+ */
 class TextureManager
 {
 public:
@@ -68,7 +76,7 @@ public:
 	 * テクスチャを確保しているバッファをクリアする
 	 *
 	 * vectorを使用しているのでバッファ領域は解放されない。\n
-	 * バッファ領域はTextureManagerが破棄されたときに解放される。
+	 * バッファ領域はTextureManagerのDelete関数が呼ばれて破棄されたときに解放される。
 	 */
 	inline void ClearBuffer()
 	{

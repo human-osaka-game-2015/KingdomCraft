@@ -1,4 +1,9 @@
-﻿#include "TextureManager.h"
+﻿/**
+ * @file   TextureManager.cpp
+ * @brief  TextureManagerクラスの実装
+ * @author morimoto
+ */
+#include "TextureManager.h"
 #include <d3dx11.h>
 
 
