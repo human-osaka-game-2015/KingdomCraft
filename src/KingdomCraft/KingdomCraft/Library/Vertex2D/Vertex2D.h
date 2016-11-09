@@ -20,18 +20,25 @@ public:
 	/**
 	 * 初期化
 	 * @param[in] _pRectSize 矩形のサイズ 
-	 * @param[in] _textureFileName テクスチャのファイルパス
 	 * @param[in] _pUV テクスチャの4頂点分のUV値
 	 * @return 成功したらtrue
 	 */
-	bool Init(RECT* _pRectSize, LPCTSTR _textureFileName, D3DXVECTOR2* _pUV);
+	bool Init(RECT* _pRectSize, D3DXVECTOR2* _pUV);
 
 	/**
 	 * 描画処理
 	 * @param[in] _pDrawPos 描画する位置
-	 * @param[in] _angle 描画する角度
+	 * @param[in] _alpha アルファ値
+	 * @param[in] _scale スケール
+	 * @param[in] _angle 角度
 	 */
-	void Draw(D3DXVECTOR2* _pDrawPos, float _angle);
+	void Draw(D3DXVECTOR2* _pDrawPos,float _alpha = 1.f,D3DXVECTOR3* _pScale = &D3DXVECTOR3(1.f, 1.f, 1.f), float _angle = 0.f);
+
+	/**
+	* テクスチャをセットする
+	* @param[in] _pTextureResourceView セットするテクスチャ
+	*/
+	void SetTexture(ID3D11ShaderResourceView* _pTextureResourceView){ m_pTextureResourceView = _pTextureResourceView; }
 
 	/**
 	 * 開放処理
@@ -40,24 +47,35 @@ public:
 private:
 	struct Vertex
 	{
-		D3DXVECTOR3 pos; //位置
-		D3DXVECTOR2 UV; //テクスチャー座標
+		D3DXVECTOR3 pos;
+		D3DXVECTOR2 UV;
 	};
+
+	//コンスタントバッファは16バイト区切りじゃないとCreateBufferに失敗する
 	struct SHADER_CONSTANT_BUFFER
 	{
 		D3DXMATRIX  matWorld;
+		D3DXCOLOR   alpha; //アルファ値しか使わない
 		D3DXVECTOR4 viewPort;
 	};
 
 	bool InitVertexShader();
 	void ReleaseVertexShader();
+
 	bool InitPixelShader();
 	void ReleasePixelShader();
+
 	bool InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV);
+
 	bool InitConstantBuffer();
 	void ReleaseConstantBuffer();
-	bool LoadTexture(LPCTSTR _textureFileName);
-	void ReleaseTexture();
+
+	bool InitBlendState();
+	void ReleaseBlendState();
+
+	bool InitSamplerState();
+	void ReleaseSamplerState();
+
 	bool CreateVertexLayout();
 	void ReleaseVertexLayout();
 
@@ -68,7 +86,7 @@ private:
 	ID3D11Buffer*			  m_pConstantBuffer;
 	ID3D11BlendState*		  m_pBlendState;
 	ID3D11SamplerState*		  m_pSampler;
-	ID3D11ShaderResourceView* m_pTexture;
+	ID3D11ShaderResourceView* m_pTextureResourceView;
 	HWND					  m_hWnd;
 
 	float					  m_WindowWidth;
@@ -77,7 +95,5 @@ private:
 	//頂点レイアウトの設定に使う
 	ID3DBlob*		   m_pVertexCompiledShader;
 	ID3D11InputLayout* m_pVertexLayout;
-
-
 };
 #endif

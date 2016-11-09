@@ -1,32 +1,44 @@
-Texture2D g_Texture: register(t0);
-SamplerState g_Sampler : register(s0);
+Texture2D Texture: register(t0);
+SamplerState Sampler : register(s0);
 
 cbuffer global
 {
-	matrix g_W; //ワールドから射影までの変換行列
+	matrix g_WorldMat;
+	float4 g_Alpha;
 	float4 g_ViewPort;//ビューポート（スクリーン）横サイズ
 };
 
 struct PS_INPUT
 {
-	float4 Pos : SV_POSITION;
-	float2 UV : TEXCOORD;
+	float4 Pos   : SV_POSITION;
+	float4 Color : COLOR;
+	float2 UV    : TEXCOORD;
 };
 
-PS_INPUT VS(float4 Pos : POSITION, float2 UV : TEXCOORD)
+struct VS_OUTPUT
 {
-	PS_INPUT Out;
+	float4 Pos	 : SV_POSITION;
+	float4 Color : COLOR;
+	float2 UV	 : TEXCOORD;
+};
 
-	Out.Pos = mul(Pos, g_W);
+VS_OUTPUT VS(float4 Pos : POSITION, float2 UV : TEXCOORD)
+{
+	VS_OUTPUT Out;
+	
+	Out.Pos   = mul(Pos, g_WorldMat);
 
 	Out.Pos.x = (Out.Pos.x / g_ViewPort.x) * 2 - 1;
 	Out.Pos.y = 1 - (Out.Pos.y / g_ViewPort.y) * 2;
-	Out.UV = UV;
+	Out.UV	  = UV;
 
 	return Out;
 }
 
 float4 PS(PS_INPUT Input) : SV_Target
 {
-	return g_Texture.Sample(g_Sampler, Input.UV);
+	PS_INPUT Out;
+	Out.Color = Texture.Sample(Sampler, Input.UV);
+	Out.Color.a = g_Alpha.a;
+	return Out.Color;
 }
