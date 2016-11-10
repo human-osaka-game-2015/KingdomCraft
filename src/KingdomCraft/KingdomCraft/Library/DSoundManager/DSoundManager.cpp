@@ -110,36 +110,30 @@ bool DSoundManager::OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWav
 	return true;
 }
 
-void DSoundManager::ReleaseSound(int _key)
+void DSoundManager::SoundOperation(int _key, SOUND_OPERATION _operation)
 {
-	m_SoundMap[_key]->Release();
-	m_SoundMap.erase(_key);
-}
-
-void DSoundManager::SoundOperation(int _key, SOUND_OPERATION operation)
-{
-	switch (operation)
+	switch (_operation)
 	{
 	case SOUND_PLAY:
-		m_SoundMap[_key]->Play(0, 0, 0);
+		m_pSound[_key]->Play(0, 0, 0);
 		break;
 	case SOUND_LOOP:
-		m_SoundMap[_key]->Play(0, 0, DSBPLAY_LOOPING);
+		m_pSound[_key]->Play(0, 0, DSBPLAY_LOOPING);
 		break;
 	case SOUND_STOP:
-		m_SoundMap[_key]->Stop();
+		m_pSound[_key]->Stop();
 		break;
 	case SOUND_RESET:
-		m_SoundMap[_key]->SetCurrentPosition(0);
+		m_pSound[_key]->SetCurrentPosition(0);
 		break;
 	case SOUND_STOP_RESET:
-		m_SoundMap[_key]->Stop();
-		m_SoundMap[_key]->SetCurrentPosition(0);
+		m_pSound[_key]->Stop();
+		m_pSound[_key]->SetCurrentPosition(0);
 		break;
 	}
 }
 
-bool DSoundManager::SoundLoad(int _key, char* _filename)
+bool DSoundManager::LoadSound(char* _filename, int* _pKey)
 {
 	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
 	WAVEFORMATEX wFmt;
@@ -185,8 +179,8 @@ bool DSoundManager::SoundLoad(int _key, char* _filename)
 
 	delete[] pWaveData;
 
-
-	m_SoundMap[_key] = pDSBuffer;
+	*_pKey = m_pSound.size();
+	m_pSound.push_back(pDSBuffer);
 
 	return true;
 }

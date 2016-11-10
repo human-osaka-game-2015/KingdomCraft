@@ -7,7 +7,7 @@
 #define DXSOUNDMANAGER_H
 #include <windows.h>
 #include <dsound.h>
-#include <map>
+#include <vector>
 
 enum SOUND_OPERATION
 {
@@ -36,26 +36,26 @@ public:
 	/**
 	 * 解放処理
 	 */
-	void Release(){ m_pDSound8->Release(); };
+	inline void Release(){ m_pDSound8->Release(); }
 
 	/**
 	 * 音声の読み込み
-	 * @param[in] _key 格納先のキー
-	 * @param[in] _filename 読み込むファイルの名前
-	 * @return 成功したらtrue
+	 * @param[in]  _filename 読み込むファイルの名前
+	 * @param[out] _pKey データの格納先のキー
+	 * @return	   成功したらtrue
 	 */
-	bool SoundLoad(int _key, char* _filename);
+	bool LoadSound(char* _filename, int* _pKey);
 	
 	/**
 	 * 音声の開放
 	 * @param[in] _key 開放先のキー
 	 */
-	void ReleaseSound(int _key);
+	inline void ReleaseSound(int _key){ m_pSound[_key]->Release(); }
 
 	/**
 	 * サウンドの操作関数
 	 * @param[in] _key 操作するサウンドの格納先のキー
-	 * @param[in] operation どのような操作をするか
+	 * @param[in] _operation どのような操作をするか
 	 */
 	void SoundOperation(int _key, SOUND_OPERATION _operation);
 
@@ -70,6 +70,11 @@ public:
 			m_pSoundManager = new DSoundManager(_hWnd);
 		}
 	}
+
+	/**
+	 * サウンドのバッファーを開放する
+	 */
+	inline void ClearBuffer(){ m_pSound.clear(); }
 	
 	/**
 	 * インスタンスの破棄
@@ -84,6 +89,7 @@ public:
 	}
 
 	/**
+	 * インスタンスを取得する
 	 * @return インスタンスが返る
 	 */
 	static DSoundManager* GetInstance()
@@ -94,10 +100,10 @@ public:
 private:
 	DSoundManager(HWND _hWnd);
 	~DSoundManager();
-	HWND								m_hWnd;
-	IDirectSound8*						m_pDSound8;
-	std::map<int, LPDIRECTSOUNDBUFFER8> m_SoundMap;
-	static DSoundManager*				m_pSoundManager;
-	bool								OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWaveData, DWORD &_waveSize);
+	HWND							  m_hWnd;
+	IDirectSound8*					  m_pDSound8;
+	std::vector<LPDIRECTSOUNDBUFFER8> m_pSound;
+	static DSoundManager*			  m_pSoundManager;
+	bool							  OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWaveData, DWORD &_waveSize);
 };
 #endif
