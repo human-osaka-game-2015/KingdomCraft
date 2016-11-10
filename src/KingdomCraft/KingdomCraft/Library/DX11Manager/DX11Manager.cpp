@@ -8,7 +8,8 @@
 
 DX11Manager* DX11Manager::m_pDX11Manager = NULL;
 
-DX11Manager::DX11Manager()
+DX11Manager::DX11Manager() :
+m_hWnd(NULL)
 {
 	
 }
@@ -58,16 +59,6 @@ void DX11Manager::BeginScene()
 void DX11Manager::EndScene()
 {
 	m_pDXGISwapChain->Present(1, 0);
-}
-
-ID3D11Device* DX11Manager::GetDevice()
-{
-	return m_pDevice;
-}
-
-ID3D11DeviceContext* DX11Manager::GetDeviceContext()
-{
-	return m_pDeviceContext;
 }
 
 bool DX11Manager::InitDevice()

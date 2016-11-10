@@ -77,13 +77,28 @@ public:
 	 * DirectX11デバイスを取得する関数
 	 * @return DirectX11デバイス
 	 */
-	ID3D11Device* GetDevice();
+	inline ID3D11Device* GetDevice()
+	{
+		return m_pDevice;
+	}
 
 	/**
 	 * DirectX11デバイスコンテキストを取得する関数
 	 * @return DirectX11デバイスコンテキスト
 	 */
-	ID3D11DeviceContext* GetDeviceContext();
+	inline ID3D11DeviceContext* GetDeviceContext()
+	{
+		return m_pDeviceContext;
+	}
+
+	/**
+	 * DX11Managerが対応しているウィンドウハンドルを取得する関数
+	 * @return ウィンドウハンドル
+	 */
+	inline HWND GetWindowHandle()
+	{
+		return m_hWnd;
+	}
 
 private:
 	DX11Manager();
