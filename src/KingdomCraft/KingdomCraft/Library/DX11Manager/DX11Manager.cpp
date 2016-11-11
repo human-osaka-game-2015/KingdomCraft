@@ -61,6 +61,18 @@ void DX11Manager::EndScene()
 	m_pDXGISwapChain->Present(1, 0);
 }
 
+void DX11Manager::SetDepthStencilTest(bool _isStencil)
+{
+	if (_isStencil)
+	{
+		m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
+	}
+	else
+	{
+		m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, NULL);
+	}
+}
+
 bool DX11Manager::InitDevice()
 {
 	if (FAILED(D3D11CreateDevice(

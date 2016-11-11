@@ -72,6 +72,12 @@ public:
 	 * 描画後処理を行う関数
 	 */	
 	void EndScene();
+
+	/**
+	 * 深度テストのオンオフを切り替える関数
+	 * @param[in] _isStencil 深度テストを使用するかのフラグ
+	 */
+	void SetDepthStencilTest(bool _isStencil);
 	
 	/**
 	 * DirectX11デバイスを取得する関数
