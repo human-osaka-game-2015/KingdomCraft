@@ -17,10 +17,46 @@ class FbxLoader;
 class FbxFileManager
 {
 public:
-	FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext);
 	~FbxFileManager();
 
+	/**
+	 * インスタンスを生成
+	 */
+	static void Create(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext)
+	{
+		if (m_pFbxFileManager == NULL)
+		{
+			m_pFbxFileManager = new FbxFileManager(_pDevice, _pDeviceContext);
+		}
+	}
+
+	/**
+	 * インスタンスを取得する
+	 * @return インスタンスが返る
+	 */
+	static FbxFileManager* GetInstance()
+	{
+		return m_pFbxFileManager;
+	}
+
+	/**
+	 * FbxFileManagerインスタンスを破棄する
+	 */
+	static void Delete()
+	{
+		delete m_pFbxFileManager;
+		m_pFbxFileManager = NULL;
+	}
+
+	/**
+	 * FbxFileManagerクラスの初期化関数
+	 * @return 初期化が成功したかのフラグ
+	 */
 	bool Init();
+
+	/**
+	 * FbxFileManagerクラスの解放関数
+	 */
 	void Release();
 
 	/**
@@ -63,6 +99,9 @@ public:
 	}
 
 private:
+	FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext);
+
+	static FbxFileManager*		m_pFbxFileManager;
 	ID3D11Device*				m_pDevice;
 	ID3D11DeviceContext*		m_pDeviceContext;
 	std::vector<FbxModel*>		m_pFbxModel;
