@@ -27,7 +27,7 @@ public:
 
 	/**
 	 * 描画処理
-	 * @param[in] _pDrawPos 描画する位置
+	 * @param[in] _pDrawPos 描画するスクリーン座標位置
 	 * @param[in] _alpha アルファ値
 	 * @param[in] _scale スケール
 	 * @param[in] _angle 角度
@@ -66,6 +66,7 @@ private:
 	void ReleasePixelShader();
 
 	bool InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV);
+	void ReleaseVertexBuffer();
 
 	bool InitConstantBuffer();
 	void ReleaseConstantBuffer();
@@ -84,6 +85,7 @@ private:
 	ID3D11PixelShader*		  m_pPixelShader;
 	ID3D11VertexShader*		  m_pVertexShader;
 	ID3D11Buffer*			  m_pConstantBuffer;
+	ID3D11Buffer*			  m_pVertexBuffer;
 	ID3D11BlendState*		  m_pBlendState;
 	ID3D11SamplerState*		  m_pSampler;
 	ID3D11ShaderResourceView* m_pTextureResourceView;
