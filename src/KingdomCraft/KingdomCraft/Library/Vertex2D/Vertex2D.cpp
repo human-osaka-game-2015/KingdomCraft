@@ -153,10 +153,10 @@ bool Vertex2D::InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV)
 {
 	Vertex vertex[] =
 	{
-		D3DXVECTOR3(-_pRectSize->left , -_pRectSize->top, 0.f)   , D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
-		D3DXVECTOR3(+_pRectSize->right, -_pRectSize->top, 0.f)   , D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
-		D3DXVECTOR3(-_pRectSize->left , +_pRectSize->bottom, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
-		D3DXVECTOR3(+_pRectSize->right, +_pRectSize->bottom, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y)
+		D3DXVECTOR3(-_pRectSize->right / 2, -_pRectSize->bottom / 2, 0.f), D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
+		D3DXVECTOR3(_pRectSize->right / 2 , -_pRectSize->bottom / 2, 0.f), D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
+		D3DXVECTOR3(-_pRectSize->right / 2, _pRectSize->bottom / 2 , 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
+		D3DXVECTOR3(_pRectSize->right / 2 , _pRectSize->bottom / 2 , 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y)
 	};
 
 	//頂点バッファ作成
