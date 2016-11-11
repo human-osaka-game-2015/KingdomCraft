@@ -10,7 +10,6 @@
 
 SceneManager::SceneManager(HWND _hwnd) :
 m_pScene(NULL),
-m_pSceneFactory(new SceneFactory()),
 m_sceneState(SCENE_CREATE),
 m_nextSceneID(SceneID::SCENE_TITLE),
 m_end(false),
@@ -32,10 +31,15 @@ m_hWnd(_hwnd)
 
 	FbxFileManager::Create(DX11Manager::GetInstance()->GetDevice(), DX11Manager::GetInstance()->GetDeviceContext());
 	FbxFileManager::GetInstance()->Init();
+
+	m_pSceneFactory = new SceneFactory();
 }
 
 SceneManager::~SceneManager()
 {
+	delete m_pScene;
+	delete m_pSceneFactory;
+
 	FbxFileManager::GetInstance()->Release();
 	FbxFileManager::Delete();
 
@@ -50,9 +54,6 @@ SceneManager::~SceneManager()
 
 	DX11Manager::GetInstance()->Release();
 	DX11Manager::Delete();
-
-	delete m_pScene;
-	delete m_pSceneFactory;
 }
 
 void SceneManager::Control()
