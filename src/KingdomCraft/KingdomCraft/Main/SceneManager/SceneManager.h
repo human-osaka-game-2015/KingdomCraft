@@ -1,9 +1,11 @@
 ﻿#ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 #include <Windows.h>
+
 enum SceneID;
 class Scene;
 class SceneFactory;
+
 class SceneManager
 {
 public:
@@ -30,5 +32,6 @@ private:
 	SceneID		  m_nextSceneID;
 	bool		  m_end;
 	HWND		  m_hWnd;
+
 };
 #endif
