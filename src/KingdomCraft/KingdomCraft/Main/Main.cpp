@@ -1,9 +1,8 @@
 ﻿#include <windows.h>
 #include <crtdbg.h>
 #include <d3d11.h>
-//#include <d3dx11.h>
-
 #include "SceneManager//SceneManager.h"
+
 #define DEFAULT_WINDOW_WIDTH 1280
 #define DEFAULT_WINDOW_HEIGHT 720
 
@@ -50,9 +49,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 	SetWindowText(hwnd, TEXT("KingdomCraft"));
 
 
-	//ライブラリ関係
-
-	// シーンマネージャー生成
 	SceneManager* pSceneManager = new SceneManager(hwnd);
 
 	MSG msg;
@@ -72,7 +68,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdSh
 			}
 		}
 	}
-	// SceneManagerの解放
+
 	delete pSceneManager;
 
 	return (INT)msg.wParam;
