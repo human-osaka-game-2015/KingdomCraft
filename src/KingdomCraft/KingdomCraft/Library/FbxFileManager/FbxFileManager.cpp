@@ -6,6 +6,8 @@
 #include "FbxFileManager.h"
 #include "FbxLoader\FbxLoader.h"
 
+FbxFileManager* FbxFileManager::m_pFbxFileManager = NULL;
+
 FbxFileManager::FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext) :
 m_pDevice(_pDevice),
 m_pDeviceContext(_pDeviceContext),
