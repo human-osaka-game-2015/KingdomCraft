@@ -20,7 +20,7 @@ public:
 	/**
 	 * 初期化
 	 * @param[in] _pRectSize 矩形のサイズ 
-	 * @param[in] _pUV テクスチャの4頂点分のUV値
+	 * @param[in] _pUV テクスチャの4頂点分のUV値 指定順番 左上->右上->左下->右下
 	 * @return 成功したらtrue
 	 */
 	bool Init(RECT* _pRectSize, D3DXVECTOR2* _pUV);
@@ -93,7 +93,6 @@ private:
 
 	float					  m_WindowWidth;
 	float					  m_WindowHeight;
-
 	//頂点レイアウトの設定に使う
 	ID3DBlob*		   m_pVertexCompiledShader;
 	ID3D11InputLayout* m_pVertexLayout;
