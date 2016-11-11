@@ -26,6 +26,7 @@ Vertex2D::~Vertex2D()
 
 void Vertex2D::Release()
 {
+	ReleaseVertexBuffer();
 	ReleaseConstantBuffer();
 	ReleaseSamplerState();
 	ReleaseBlendState();
@@ -85,6 +86,7 @@ bool Vertex2D::Init(RECT* _pRectSize, D3DXVECTOR2* _pUV)
 
 	if (!InitConstantBuffer())
 	{
+		ReleaseVertexBuffer();
 		ReleaseSamplerState();
 		ReleaseBlendState();
 		ReleasePixelShader();
@@ -137,7 +139,11 @@ void Vertex2D::Draw(D3DXVECTOR2* _pDrawPos,float _alpha, D3DXVECTOR3* _pScale, f
 	//テクスチャーをシェーダーに渡す
 	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSampler);
 	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTextureResourceView);
-	
+	//バーテックスバッファーをセット
+	UINT stride = sizeof(Vertex);
+	UINT offset = 0;
+	m_pDeviceContext->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &stride, &offset);
+
 	//プリミティブをレンダリング
 	m_pDeviceContext->Draw(VERTEX_NUM, 0);
 }
@@ -164,19 +170,22 @@ bool Vertex2D::InitVertexBuffer(RECT* _pRectSize, D3DXVECTOR2* _pUV)
 
 	D3D11_SUBRESOURCE_DATA InitVertexData;
 	InitVertexData.pSysMem = vertex;
-	ID3D11Buffer* pBuffer;
-	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &pBuffer)))
+	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &m_pVertexBuffer)))
 	{
 		MessageBox(m_hWnd, TEXT("VertexBufferの生成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
 		return false;
 	}
 
-	//バーテックスバッファーをセット
-	UINT stride = sizeof(Vertex);
-	UINT offset = 0;
-	m_pDeviceContext->IASetVertexBuffers(0, 1, &pBuffer, &stride, &offset);
-	pBuffer->Release();
 	return true;
+}
+
+void Vertex2D::ReleaseVertexBuffer()
+{
+	if (m_pVertexBuffer != NULL)
+	{
+		m_pVertexBuffer->Release();
+		m_pVertexBuffer = NULL;
+	}
 }
 
 bool Vertex2D::InitVertexShader()
