@@ -11,6 +11,9 @@ class Scene;
 class SceneFactory;
 enum SceneID;
 
+/**
+ * @brife　シーンを管理するクラス
+ */
 class SceneManager
 {
 public:
@@ -34,14 +37,9 @@ public:
 private:
 	enum SceneState
 	{
-		//! シーンの生成状態
-		SCENE_CREATE,
-
-		//! シーンの処理状態
-		SCENE_PROC,
-
-		//! シーンの解放状態
-		SCENE_RELEASE
+		SCENE_CREATE,	//!< シーンの生成状態
+		SCENE_PROC,		//!< シーンの処理状態		
+		SCENE_RELEASE	//!< シーンの解放状態
 	};
 
 	void Control();

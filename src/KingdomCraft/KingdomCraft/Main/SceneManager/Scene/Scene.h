@@ -8,31 +8,19 @@
 
 enum SceneID
 {
-	//! ロゴシーンID
-	SCENE_LOGO,
-	
-	//! オープニングシーンID
-	SCENE_OPENING,
-
-	//! タイトルシーンID
-	SCENE_TITLE,
-
-	//! ゲームシーンID
-	SCENE_GAME,
-
-	//! 続きからゲームを始めるときのシーンID
-	SCENE_CONTINUE_GAME,
-
-	//! リザルトシーンID
-	SCENE_RESULT,
-
-	//! エンディングシーンID
-	SCENE_ENDING,
-
-	//! シーン終了のID
-	FIN
+	SCENE_LOGO,			//!< ロゴシーンID
+	SCENE_OPENING,		//!< オープニングシーンID
+	SCENE_TITLE,		//!< タイトルシーンID
+	SCENE_GAME,			//!< ゲームシーンID
+	SCENE_CONTINUE_GAME,//!< 続きからゲームを始めるときのシーンID
+	SCENE_RESULT,		//!< リザルトシーンID
+	SCENE_ENDING,		//!< エンディングシーンID
+	FIN					//!< シーン終了のID
 };
 
+/**
+ * @brife　シーンクラス
+ */
 class Scene
 {
 public:

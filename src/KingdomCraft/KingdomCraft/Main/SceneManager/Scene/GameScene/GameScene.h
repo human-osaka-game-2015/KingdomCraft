@@ -7,6 +7,9 @@
 #define GAMESCENE_H
 #include "..//Scene.h"
 
+/**
+ * @brife　ゲームシーンを管理するクラス
+ */
 class GameScene : public Scene
 {
 public:
@@ -16,7 +19,7 @@ public:
 	GameScene();
 
 	/**
-	 * GameSceneのコンストラクタ
+	 * GameSceneのデストラクタ
 	 */
 	virtual ~GameScene();
 

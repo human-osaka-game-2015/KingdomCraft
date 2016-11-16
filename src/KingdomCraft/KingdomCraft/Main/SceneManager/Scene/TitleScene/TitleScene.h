@@ -7,6 +7,9 @@
 #define TITLESCENE_H
 #include "..//Scene.h"
 
+/**
+ * @brife　タイトルシーンを管理するクラス
+ */
 class TitleScene : public Scene
 {
 public:
