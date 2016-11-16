@@ -8,7 +8,7 @@
 #include "..//Scene.h"
 
 /**
- * @brife　タイトルシーンを管理するクラス
+ * タイトルシーンを管理するクラス
  */
 class TitleScene : public Scene
 {

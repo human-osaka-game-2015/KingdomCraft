@@ -10,7 +10,7 @@ class Scene;
 enum SceneID;
 
 /**
- * @brief Sceneの生成管理するクラス
+ * Sceneの生成管理するクラス
  */
 class SceneFactory
 {

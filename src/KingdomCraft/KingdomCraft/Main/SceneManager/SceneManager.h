@@ -12,7 +12,7 @@ class SceneFactory;
 enum SceneID;
 
 /**
- * @brife　シーンを管理するクラス
+ * シーンを管理するクラス
  */
 class SceneManager
 {
@@ -35,6 +35,9 @@ public:
 	bool Run();
 
 private:
+	/**
+	 * SceneManagerの状態
+	 */
 	enum SceneState
 	{
 		SCENE_CREATE,	//!< シーンの生成状態

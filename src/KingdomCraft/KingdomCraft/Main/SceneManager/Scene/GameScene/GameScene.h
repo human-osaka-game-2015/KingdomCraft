@@ -8,7 +8,7 @@
 #include "..//Scene.h"
 
 /**
- * @brife　ゲームシーンを管理するクラス
+ * ゲームシーンを管理するクラス
  */
 class GameScene : public Scene
 {

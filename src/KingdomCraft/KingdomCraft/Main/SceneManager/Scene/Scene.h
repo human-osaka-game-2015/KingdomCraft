@@ -6,6 +6,9 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+/**
+ * シーンのID
+ */
 enum SceneID
 {
 	SCENE_LOGO,			//!< ロゴシーンID
@@ -19,7 +22,7 @@ enum SceneID
 };
 
 /**
- * @brife　シーンクラス
+ * シーンクラス
  */
 class Scene
 {
