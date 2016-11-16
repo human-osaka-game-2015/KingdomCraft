@@ -1,4 +1,9 @@
-﻿#include "SceneManager.h"
+﻿/**
+ * @file   SceneManager.cpp
+ * @brief  SceneManagerクラスの実装
+ * @author kotani
+ */
+#include "SceneManager.h"
 #include "Scene\Scene.h"
 #include "SceneFactory\SceneFactory.h"
 #include "DX11Manager\DX11Manager.h"

@@ -1,4 +1,9 @@
-﻿#include "SceneFactory.h"
+﻿/**
+ * @file   SceneFactory.cpp
+ * @brief  SceneFactoryクラスの実装
+ * @author kotani
+ */
+#include "SceneFactory.h"
 #include "..//Scene//GameScene//GameScene.h"
 #include "..//Scene//TitleScene//TitleScene.h"
 #include <Windows.h>
