@@ -1,18 +1,37 @@
-﻿#ifndef SCENEFACTORY_H
+﻿/**
+ * @file   SceneFactory.h
+ * @brief  SceneFactoryクラスのヘッダファイル
+ * @author kotani
+ */
+#ifndef SCENEFACTORY_H
 #define SCENEFACTORY_H
+
 class Scene;
 enum SceneID;
+
 class SceneFactory
 {
 public:
-	SceneFactory(){}
-	~SceneFactory(){}
+	/**
+	 * SceneFactoryのコンストラクタ
+	 */
+	SceneFactory()
+	{
+	}
+	
+	/**
+	 * SceneFactoryのデストラクタ
+	 */
+	~SceneFactory()
+	{
+	}
 
 	/**
-	* シーンクラスの生成
-	* @param _sceneID 生成するクラスのシーンID
-	* @return シーンクラスのインスタンス
-	*/
+	 * シーンクラスの生成
+	 * @param _sceneID 生成するクラスのシーンID
+	 * @return シーンクラスのインスタンス
+	 */
 	Scene* CreateScene(SceneID _sceneID);
+
 };
 #endif
