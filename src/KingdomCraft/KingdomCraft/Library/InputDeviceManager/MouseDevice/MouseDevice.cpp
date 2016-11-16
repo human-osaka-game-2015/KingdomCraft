@@ -11,8 +11,8 @@ m_pDInput8(NULL)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		m_MouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
-		m_OldMouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
+		m_DIMouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
+		m_OldDIMouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
 	}
 }
 
@@ -83,47 +83,49 @@ void MouseDevice::Update()
 	HRESULT hr = m_pDInputDevice8->Acquire();
 	if ((hr == DI_OK) || (hr == S_FALSE))
 	{
-		m_pDInputDevice8->GetDeviceState(sizeof(m_MouseState), &m_MouseState);
+		m_pDInputDevice8->GetDeviceState(sizeof(m_DIMouseState), &m_DIMouseState);
 	}
-}
 
-MOUSESTATE MouseDevice::GetMouseState()
-{
-	MOUSESTATE MouseState;
-	MouseState.lX = m_MouseState.lX;
-	MouseState.lY = m_MouseState.lY;
-	MouseState.lZ = m_MouseState.lZ;
-	GetCursorPos(&MouseState.CursorPos);
-	ScreenToClient(m_hWnd, &MouseState.CursorPos);
+	m_MouseState.lX = m_DIMouseState.lX;
+	m_MouseState.lY = m_DIMouseState.lY;
+	m_MouseState.lZ = m_DIMouseState.lZ;
+	GetCursorPos(&m_MouseState.CursorPos);
+
+	RECT WindowRect;
+	GetWindowRect(m_hWnd, &WindowRect);
+	m_MouseState.CursorPos.x -= WindowRect.left;
+	m_MouseState.CursorPos.y -= WindowRect.top;
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (m_MouseState.rgbButtons[i])
+		if (m_DIMouseState.rgbButtons[i])
 		{
-			if (m_OldMouseState.rgbButtons[i] == MOUSEBUTTON_OFF)
+			if (m_OldDIMouseState.rgbButtons[i] == MOUSEBUTTON_OFF)
 			{
-				MouseState.rgbButtons[i] = MOUSEBUTTON_PUSH;
+				m_MouseState.rgbButtons[i] = MOUSEBUTTON_PUSH;
 			}
 			else
 			{
-				MouseState.rgbButtons[i] = MOUSEBUTTON_ON;
+				m_MouseState.rgbButtons[i] = MOUSEBUTTON_ON;
 			}
-			m_OldMouseState.rgbButtons[i] = MOUSEBUTTON_ON;
+			m_OldDIMouseState.rgbButtons[i] = MOUSEBUTTON_ON;
 		}
 		else
 		{
-			if (m_OldMouseState.rgbButtons[i] == MOUSEBUTTON_ON)
+			if (m_OldDIMouseState.rgbButtons[i] == MOUSEBUTTON_ON)
 			{
-				MouseState.rgbButtons[i] = MOUSEBUTTON_RELEASE;
+				m_MouseState.rgbButtons[i] = MOUSEBUTTON_RELEASE;
 			}
 			else
 			{
-				MouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
+				m_MouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
 			}
-			m_OldMouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
+			m_OldDIMouseState.rgbButtons[i] = MOUSEBUTTON_OFF;
 		}
 	}
+}
 
-
-	return MouseState;
+const MOUSESTATE& MouseDevice::GetMouseState()
+{
+	return m_MouseState;
 }
