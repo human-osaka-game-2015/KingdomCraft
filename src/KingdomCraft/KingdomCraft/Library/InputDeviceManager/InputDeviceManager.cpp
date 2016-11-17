@@ -118,9 +118,14 @@ void InputDeviceManager::MouseUpdate()
 	m_pMouseDevice->Update();
 }
 
-KEYSTATE InputDeviceManager::GetKeyState(int _dik)
+void InputDeviceManager::KeyCheck(int _dik)
 {
-	return m_pKeyDevice->GetKeyState(_dik);
+	m_pKeyDevice->KeyCheck(_dik);
+}
+
+const KEYSTATE* InputDeviceManager::GetKeyState()
+{
+	return m_pKeyDevice->GetKeyState();
 }
 
 MOUSESTATE InputDeviceManager::GetMouseState()

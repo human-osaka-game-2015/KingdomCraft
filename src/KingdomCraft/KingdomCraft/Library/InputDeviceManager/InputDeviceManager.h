@@ -72,21 +72,26 @@ public:
 	bool CreateMouseDevice();
 
 	/**
-	 * キーの状態を更新する
+	 * KeyDeviceの状態を更新する
 	 */
 	void KeyUpdate();
 
 	/**
-	 * マウスの状態を更新する
+	 * MouseDeviceの状態を更新する
 	 */
 	void MouseUpdate();
 
 	/**
-	 * キーの状態を取得する
-	 * @param[in] 状態を取得したいキーのDIK
-	 * @return キーの状態
+	 * キーの状態を更新する
+	 * @param[in] 更新したいキーのDIK
 	 */
-	KEYSTATE GetKeyState(int _dik);
+	void KeyCheck(int _dik);
+
+	/**
+	 * キーの状態が格納されている配列を取得する
+	 * @return キーの状態が格納されている配列
+	 */
+	const KEYSTATE* GetKeyState();
 
 	/**
 	 * マウスの状態を取得する
