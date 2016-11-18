@@ -28,6 +28,12 @@
     <ClCompile Include="Main\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\Scene.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenu.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +52,12 @@
     <ClInclude Include="Main\SceneManager\SceneManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Main\SceneManager\Scene\Scene.h" />
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.h" />
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.h" />
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenu.h" />
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.h" />
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h" />
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>

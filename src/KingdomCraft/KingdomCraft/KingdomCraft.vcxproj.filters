@@ -55,6 +55,24 @@
     <ClCompile Include="Library\Vertex2D\Vertex2D.cpp">
       <Filter>Library\Vertex2D</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.cpp">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleLogo</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.cpp">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenu.cpp">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.cpp">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -107,6 +125,24 @@
     </ClInclude>
     <ClInclude Include="Library\FbxFileManager\FbxFileManager.h">
       <Filter>Library\FbxFileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.h">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleLogo</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.h">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenu.h">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.h">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h">
+      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +202,24 @@
     </Filter>
     <Filter Include="Library\FbxFileManager\FbxModel">
       <UniqueIdentifier>{d7172336-c39a-4df8-9792-6f6c8220d7c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleLogo">
+      <UniqueIdentifier>{953daab7-b099-4148-b12e-9d810fefe12e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleBackground">
+      <UniqueIdentifier>{e27cdcb0-3f8b-4a46-9573-f1567375e269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu">
+      <UniqueIdentifier>{52ce621f-8063-45a9-9acb-2501be1f88cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu">
+      <UniqueIdentifier>{7c32c86f-0164-460c-ae17-09da5fd65eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton">
+      <UniqueIdentifier>{9d424ac1-403c-4008-ad6e-1ec143af7912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton">
+      <UniqueIdentifier>{dee953b7-9ea4-428e-9fb9-12a257bf5e5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
