@@ -1,11 +1,16 @@
 ﻿/**
- * @file   TitleScene.h
- * @brief  TitleSceneクラスのヘッダファイル
- * @author kotani
+ * @file TitleScene.h
+ * @brief TitleSceneクラスのヘッダファイル
+ * @author morimoto
  */
 #ifndef TITLESCENE_H
 #define TITLESCENE_H
-#include "..//Scene.h"
+
+#include "..\Scene.h"
+
+class TitleMenu;
+class TitleBackground;
+class TitleLogo;
 
 /**
  * タイトルシーンを管理するクラス
@@ -33,6 +38,14 @@ public:
 	 * TitleSceneの描画関数
 	 */
 	virtual void Draw();
+
+private:
+	TitleScene(const TitleScene&);
+	void operator=(const TitleScene&);
+
+	TitleBackground*	m_pTitleBackground;
+	TitleLogo*			m_pTitleLogo;
+	TitleMenu*			m_pTitleMenu;
 
 };
 
