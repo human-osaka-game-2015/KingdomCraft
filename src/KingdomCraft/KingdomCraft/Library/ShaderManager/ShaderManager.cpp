@@ -1,33 +1,39 @@
 ﻿/**
-　* @file   ShaderManager.cpp
-　* @brief  ShaderManagerクラスの実装
-　* @author morimoto
-　*/
+ * @file   ShaderManager.cpp
+ * @brief  ShaderManagerクラスの実装
+ * @author morimoto
+ */
 #include "ShaderManager.h"
 #include "d3dx11.h"
 
-
 ShaderManager* ShaderManager::m_pShaderManager = NULL;
+const int ShaderManager::m_InvalidIndex = 0;
+
 
 ShaderManager::ShaderManager(ID3D11Device* _pDevice) :
 m_pDevice(_pDevice)
 {
+	// 読み込みに失敗した際に参照する値としてNULLを追加
+	m_pVertexShader.push_back(NULL);
+	m_pPixelShader.push_back(NULL);
+	m_pCompiledVertexShader.push_back(NULL);
+	m_pCompiledPixelShader.push_back(NULL);
 }
 
 ShaderManager::~ShaderManager()
 {
 }
 
-bool ShaderManager::LoadVertexShader(LPCTSTR _fileName, LPCTSTR _funcName, int* _pOutKey)
+bool ShaderManager::LoadVertexShader(LPCTSTR _pFileName, LPCTSTR _pFuncName, int* _pIndex)
 {
 	ID3D11VertexShader* pVertexShader = NULL;
 	ID3DBlob* pShaderErrors = NULL;
 	ID3DBlob* pCompiledShader = NULL;
 	if (FAILED(D3DX11CompileFromFile(
-		_fileName,
+		_pFileName,
 		NULL,
 		NULL,
-		_funcName,
+		_pFuncName,
 		"vs_5_0",
 		D3D10_SHADER_DEBUG | D3D10_SHADER_SKIP_OPTIMIZATION,
 		0,
@@ -37,6 +43,7 @@ bool ShaderManager::LoadVertexShader(LPCTSTR _fileName, LPCTSTR _funcName, int* 
 		NULL)))
 	{
 		if (pShaderErrors != NULL) pShaderErrors->Release();
+		*_pIndex = m_InvalidIndex;
 		return false;
 	}
 
@@ -50,26 +57,27 @@ bool ShaderManager::LoadVertexShader(LPCTSTR _fileName, LPCTSTR _funcName, int* 
 		&pVertexShader)))
 	{
 		pCompiledShader->Release();
+		*_pIndex = m_InvalidIndex;
 		return false;
 	}
 
-	*_pOutKey = m_pVertexShader.size();
+	*_pIndex = m_pVertexShader.size();
 	m_pVertexShader.push_back(pVertexShader);
 	m_pCompiledVertexShader.push_back(pCompiledShader);
 
 	return true;
 }
 
-bool ShaderManager::LoadPixelShader(LPCTSTR _fileName, LPCTSTR _funcName, int* _pOutKey)
+bool ShaderManager::LoadPixelShader(LPCTSTR _pFileName, LPCTSTR _pFuncName, int* _pIndex)
 {
 	ID3D11PixelShader* pPixelShader = NULL;
 	ID3DBlob* pShaderErrors = NULL;
 	ID3DBlob* pCompiledShader = NULL;
 	if (FAILED(D3DX11CompileFromFile(
-		_fileName,
+		_pFileName,
 		NULL,
 		NULL,
-		_funcName,
+		_pFuncName,
 		"ps_5_0",
 		D3D10_SHADER_DEBUG | D3D10_SHADER_SKIP_OPTIMIZATION,
 		0,
@@ -79,6 +87,7 @@ bool ShaderManager::LoadPixelShader(LPCTSTR _fileName, LPCTSTR _funcName, int* _
 		NULL)))
 	{
 		if (pShaderErrors != NULL) pShaderErrors->Release();
+		*_pIndex = m_InvalidIndex;
 		return false;
 	}
 
@@ -92,12 +101,31 @@ bool ShaderManager::LoadPixelShader(LPCTSTR _fileName, LPCTSTR _funcName, int* _
 		&pPixelShader)))
 	{
 		pCompiledShader->Release();
+		*_pIndex = m_InvalidIndex;
 		return false;
 	}
 
-	*_pOutKey = m_pPixelShader.size();
+	*_pIndex = m_pPixelShader.size();
 	m_pPixelShader.push_back(pPixelShader);
 	m_pCompiledPixelShader.push_back(pCompiledShader);
 
 	return true;
+}
+
+void ShaderManager::ReleaseVertexShader(int _index)
+{
+	if (m_pVertexShader[_index] != NULL)
+	{
+		m_pVertexShader[_index]->Release();
+		m_pCompiledVertexShader[_index]->Release();
+	}
+}
+
+void ShaderManager::ReleasePixelShader(int _index)
+{
+	if (m_pPixelShader[_index] != NULL)
+	{
+		m_pPixelShader[_index]->Release();
+		m_pCompiledPixelShader[_index]->Release();
+	}
 }
