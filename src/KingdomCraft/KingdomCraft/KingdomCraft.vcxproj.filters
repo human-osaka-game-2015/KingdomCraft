@@ -221,6 +221,9 @@
     <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton">
       <UniqueIdentifier>{dee953b7-9ea4-428e-9fb9-12a257bf5e5f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\Vertex2D\Effect">
+      <UniqueIdentifier>{573df6be-f38e-4174-90e5-a99325fbf189}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
@@ -229,10 +232,8 @@
     <Filter Include="Library\Vertex2D">
       <UniqueIdentifier>{e30530c9-00d8-4131-8996-5b30a6349c95}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="Library\Vertex2D\Vertex2D.hlsl">
-      <Filter>Library\Vertex2D</Filter>
+    <FxCompile Include="Library\Vertex2D\Effect\Vertex2D.fx">
+      <Filter>Library\Vertex2D\Effect</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
