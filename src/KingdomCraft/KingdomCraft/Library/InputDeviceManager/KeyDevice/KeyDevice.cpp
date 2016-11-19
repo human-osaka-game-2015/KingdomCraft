@@ -11,8 +11,8 @@ m_pDInput8(NULL)
 {
 	for (int i = 0; i < 256; i++)
 	{
-		m_KeyState[i] = KEY_OFF;
-		m_OldKeyState[i] = KEY_OFF;
+		m_DIKeyState[i] = KEY_OFF;
+		m_OldDIKeyState[i] = KEY_OFF;
 	}
 }
 
@@ -83,38 +83,39 @@ void KeyDevice::Update()
 	HRESULT hr = m_pDInputDevice8->Acquire();
 	if ((hr == DI_OK) || (hr == S_FALSE))
 	{
-		m_pDInputDevice8->GetDeviceState(sizeof(m_KeyState), &m_KeyState);
+		m_pDInputDevice8->GetDeviceState(sizeof(m_DIKeyState), &m_DIKeyState);
 	}
 }
 
-KEYSTATE KeyDevice::GetKeyState(int _dik)
+void KeyDevice::KeyCheck(int _dik)
 {
-	KEYSTATE KeyState;
-
-	if (m_KeyState[_dik] & 0x80)
+	if (m_DIKeyState[_dik] & 0x80)
 	{
-		if (m_OldKeyState[_dik] == KEY_OFF)
+		if (m_OldDIKeyState[_dik] == KEY_OFF)
 		{
-			KeyState = KEY_PUSH;
+			m_KeyState[_dik] = KEY_PUSH;
 		}
 		else
 		{
-			KeyState = KEY_ON;
+			m_KeyState[_dik] = KEY_ON;
 		}
-		m_OldKeyState[_dik] = KEY_ON;
+		m_OldDIKeyState[_dik] = KEY_ON;
 	}
 	else
 	{
-		if (m_OldKeyState[_dik] == KEY_ON)
+		if (m_OldDIKeyState[_dik] == KEY_ON)
 		{
-			KeyState = KEY_RELEASE;
+			m_KeyState[_dik] = KEY_RELEASE;
 		}
 		else
 		{
-			KeyState = KEY_OFF;
+			m_KeyState[_dik] = KEY_OFF;
 		}
-		m_OldKeyState[_dik] = KEY_OFF;
+		m_OldDIKeyState[_dik] = KEY_OFF;
 	}
+}
 
-	return KeyState;
+const KeyDevice::KEYSTATE* KeyDevice::GetKeyState() const
+{
+	return m_KeyState;
 }

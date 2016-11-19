@@ -9,55 +9,25 @@
 #include <dsound.h>
 #include <vector>
 
-enum SOUND_OPERATION
-{
-	SOUND_PLAY,
-	SOUND_STOP,
-	SOUND_LOOP,
-	SOUND_RESET,
-	SOUND_STOP_RESET
-};
-
 /**
- * @brief サウンドの再生をするクラス
+ * サウンドの再生をするクラス
  *
  * ここでサウンドのリソースを管理し実体は一つで良いのでシングルトンクラスにしている
  */
 class DSoundManager
 {
 public:
-	
 	/**
-	 * 初期化処理
-	 * @return 成功したらtrue
+	 * サウンドを操作するためのenum
 	 */
-	bool Init();
-
-	/**
-	 * 解放処理
-	 */
-	inline void Release(){ m_pDSound8->Release(); }
-
-	/**
-	 * 音声の読み込み
-	 * @param[in]  _filename 読み込むファイルの名前
-	 * @param[out] _pKey データの格納先のキー
-	 * @return	   成功したらtrue
-	 */
-	bool LoadSound(char* _filename, int* _pKey);
-	
-	/**
-	 * 音声の開放
-	 * @param[in] _key 開放先のキー
-	 */
-	inline void ReleaseSound(int _key){ m_pSound[_key]->Release(); }
-
-	/**
-	 * サウンドの操作関数
-	 * @param[in] _key 操作するサウンドの格納先のキー
-	 * @param[in] _operation どのような操作をするか
-	 */
-	void SoundOperation(int _key, SOUND_OPERATION _operation);
+	enum SOUND_OPERATION
+	{
+		SOUND_PLAY,		//!< サウンドを再生する
+		SOUND_STOP,		//!< サウンドを停止する
+		SOUND_LOOP,		//!< サウンドをループ再生する
+		SOUND_RESET,	//!< サウンドをリセットする
+		SOUND_STOP_RESET//!< サウンドを停止してリセットする
+	};
 
 	/**
 	 * インスタンス生成関数
@@ -72,10 +42,14 @@ public:
 	}
 
 	/**
-	 * サウンドのバッファーを開放する
+	 * インスタンスを取得する
+	 * @return インスタンスが返る
 	 */
-	inline void ClearBuffer(){ m_pSound.clear(); }
-	
+	static DSoundManager* GetInstance()
+	{
+		return m_pSoundManager;
+	}
+
 	/**
 	 * インスタンスの破棄
 	 */
@@ -89,21 +63,71 @@ public:
 	}
 
 	/**
-	 * インスタンスを取得する
-	 * @return インスタンスが返る
+	 * DSoundManagerクラスの初期化関数
+	 * @return 成功したらtrue
 	 */
-	static DSoundManager* GetInstance()
+	bool Init();
+
+	/**
+	 * DSoundManagerクラスの解放関数
+	 */
+	void Release();
+
+	/**
+	 * 音声の読み込み
+	 * @param[in] _pFileName 読み込むファイルの名前
+	 * @param[out] _pIndex データの格納先のインデックス
+	 * @return 成功したらtrue
+	 */
+	bool LoadSound(LPSTR _pFileName, int* _pIndex);
+
+	/**
+	 * 音声の開放
+	 * @param[in] _index 開放先のインデックス
+	 */
+	void ReleaseSound(int _index);
+
+	/**
+	 * サウンドの操作関数
+	 * @param[in] _index 操作するサウンドの格納先のインデックス
+	 * @param[in] _operation どのような操作をするか
+	 */
+	void SoundOperation(int _index, SOUND_OPERATION _operation);
+
+	/**
+	 * サウンドのバッファーを開放する
+	 */
+	inline void ClearBuffer()
 	{
-		return m_pSoundManager;
+		m_pSound.clear();
 	}
 
 private:
+	/**
+	 * DSoundManagerクラスのコンストラクタ
+	 * @param[in] _hWnd 音声を鳴らすウィンドウのハンドル
+	 */
 	DSoundManager(HWND _hWnd);
+
+	/**
+	 * DSoundManagerクラスのデストラクタ
+	 */
 	~DSoundManager();
-	HWND							  m_hWnd;
+
+	/**
+	 * waveファイル内のデータを読み出す関数
+	 * @param[in] _pFileName 開くファイルの名前
+	 * @param[out] _pWaveFormat 読み込んだwaveファイルのフォーマット
+	 * @param[out] _pWaveData 読み込んだwaveファイルのデータ
+	 * @param[out] _pWaveSize 読み込んだwaveファイルのサイズ
+	 */
+	bool ReadWave(LPSTR _pFileName, WAVEFORMATEX* _pWaveFormat, BYTE** _pWaveData, DWORD* _pWaveSize);
+
+	HWND const						  m_hWnd;
 	IDirectSound8*					  m_pDSound8;
 	std::vector<LPDIRECTSOUNDBUFFER8> m_pSound;
 	static DSoundManager*			  m_pSoundManager;
-	bool							  OpenWave(TCHAR* _filename, WAVEFORMATEX &_wFmt, char** _pWaveData, DWORD &_waveSize);
+
 };
+
 #endif
