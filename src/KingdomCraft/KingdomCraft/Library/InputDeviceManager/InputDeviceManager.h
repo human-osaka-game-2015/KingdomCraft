@@ -5,20 +5,16 @@
  */
 #ifndef INPUTDEVICEMANAGER_H
 #define INPUTDEVICEMANAGER_H
-
 #define DIRECTINPUT_VERSION 0x0800
-
 #include "KeyDevice\KeyDevice.h"
 #include "MouseDevice\MouseDevice.h"
 
 /**
- * @brief  入力デバイスを管理するクラス
+ * 入力デバイスを管理するクラス
  */
 class InputDeviceManager
 {
 public:
-	~InputDeviceManager();
-
 	/**
 	 * InputDeviceManagerのインスタンスを生成する
 	 */
@@ -72,32 +68,45 @@ public:
 	bool CreateMouseDevice();
 
 	/**
-	 * キーの状態を更新する
+	 * KeyDeviceの状態を更新する
 	 */
 	void KeyUpdate();
 
 	/**
-	 * マウスの状態を更新する
+	 * MouseDeviceの状態を更新する
 	 */
 	void MouseUpdate();
 
 	/**
-	 * キーの状態を取得する
-	 * @param[in] 状態を取得したいキーのDIK
-	 * @return キーの状態
+	 * キーの状態を更新する
+	 * @param[in] 更新したいキーのDIK
 	 */
-	KEYSTATE GetKeyState(int _dik);
+	void KeyCheck(int _dik);
+
+	/**
+	 * キーの状態が格納されている配列を取得する
+	 * @return キーの状態が格納されている配列
+	 */
+	const KeyDevice::KEYSTATE* GetKeyState() const;
 
 	/**
 	 * マウスの状態を取得する
 	 * @return マウスの状態が格納されている構造体
 	 */
-	MOUSESTATE GetMouseState();
+	const MOUSESTATE GetMouseState() const;
 
 private:
+	/**
+	 * InputDeviceManagerクラスのコンストラクタ
+	 */
 	InputDeviceManager();
 
-	static InputDeviceManager*		m_pInputDeviceManager;
+	/**
+	 * InputDeviceManagerクラスのデストラクタ
+	 */
+	~InputDeviceManager();
+
+	static InputDeviceManager*	m_pInputDeviceManager;
 
 	KeyDevice*		m_pKeyDevice;
 	MouseDevice*	m_pMouseDevice;
