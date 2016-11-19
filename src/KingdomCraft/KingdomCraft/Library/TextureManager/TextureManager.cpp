@@ -6,19 +6,21 @@
 #include "TextureManager.h"
 #include <d3dx11.h>
 
-
+const int TextureManager::m_InvalidIndex = 0;
 TextureManager* TextureManager::m_pTextureManager = NULL;
 
-TextureManager::TextureManager(ID3D11Device* _pDevice):
+
+TextureManager::TextureManager(ID3D11Device* const _pDevice) :
 m_pDevice(_pDevice)
 {
+	m_pTextureResourceView.push_back(NULL);	// 読み込みに失敗した際に参照する値としてNULLを追加
 }
 
 TextureManager::~TextureManager()
 {
 }
 
-bool TextureManager::LoadTexture(LPCTCH _filePath, int* _pkey)
+bool TextureManager::LoadTexture(LPCTSTR _pFileName, int* _pIndex)
 {
 	D3DX11_IMAGE_LOAD_INFO LoadInfo;
 	ZeroMemory(&LoadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
@@ -39,18 +41,29 @@ bool TextureManager::LoadTexture(LPCTCH _filePath, int* _pkey)
 	ID3D11ShaderResourceView* pResourceView;
 	if (FAILED(D3DX11CreateShaderResourceViewFromFile(
 		m_pDevice,
-		_filePath,
+		_pFileName,
 		&LoadInfo,
 		NULL,
 		&pResourceView,
 		NULL)))
 	{
 		OutputDebugString(TEXT("テクスチャの読み込みに失敗しました\n"));
+		*_pIndex = m_InvalidIndex;
 		return false;
 	}
 
-	*_pkey = m_pTextureResourceView.size();
+	*_pIndex = m_pTextureResourceView.size();
 	m_pTextureResourceView.push_back(pResourceView);
 
 	return true;
 }
+
+void TextureManager::ReleaseTexture(int _index)
+{
+	if (m_pTextureResourceView[_index] != NULL)
+	{
+		m_pTextureResourceView[_index]->Release();
+		m_pTextureResourceView[_index] = NULL;
+	}
+}
+
