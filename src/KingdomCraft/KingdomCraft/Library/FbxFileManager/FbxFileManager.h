@@ -12,13 +12,11 @@
 class FbxLoader;
 
 /**
- * @brief  Fbxファイルを管理するクラス
+ *  Fbxファイルを管理するクラス
  */
 class FbxFileManager
 {
 public:
-	~FbxFileManager();
-
 	/**
 	 * インスタンスを生成
 	 */
@@ -61,31 +59,27 @@ public:
 
 	/**
 	 * Fbxモデルを読み込む
-	 * @param[in] _filePath 読み込むモデルのファイルパス
-	 * @param[in] _pOutKey 読み込んだモデルの格納先キー
+	 * @param[in] _pFileName 読み込むモデルのファイルパス
+	 * @param[out] _pIndex 読み込んだモデルの格納先インデックス
 	 * @return 読み込みに成功したらtrue
 	 */
-	bool LoadFbxModel(LPCTSTR _filePath, int* _pOutKey);
+	bool LoadFbxModel(LPCTSTR _pFileName, int* _pIndex);
 
 	/**
 	 * Fbxモデルを取得する
-	 * @param[in] _key 取得するモデルのキー
-	 * @return Fbxモデル
+	 * @param[in] _index 取得するモデルのインデックス
+	 * @return Fbxのデータを格納したFbxModelクラス
 	 */
-	inline FbxModel* GetFbxModel(int _key)
+	inline FbxModel* GetFbxModel(int _index) const
 	{
-		return m_pFbxModel[_key];
+		return m_pFbxModel[_index];
 	}
 
 	/**
 	 * Fbxモデルを解放する
-	 * @param[in] _key 解放するモデルのキー
+	 * @param[in] _index 解放するモデルのインデックス
 	 */
-	inline void ReleaseFbxModel(int _key)
-	{
-		m_pFbxModel[_key]->Release();
-		delete m_pFbxModel[_key];
-	}
+	void ReleaseFbxModel(int _index);
 
 	/**
 	 * モデルを確保しているバッファをクリアする
@@ -98,14 +92,26 @@ public:
 		m_pFbxModel.clear();
 	}
 
+	static const int m_InvalidIndex; //!< FbxFileManagerクラスがとるインデックスのエラー値
+
 private:
+	/**
+	 * FbxFileManagerクラスのコンストラクタ
+	 * @param[in] _pDevice Fbxの読み込みの際に利用するDirectX11のデバイス
+	 * @param[in] _pDeviceContext Fbxの描画の際に利用するDirectX11のデバイスコンテキスト
+	 */
 	FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext);
 
+	/**
+	 * FbxFileManagerクラスのデストラクタ
+	 */
+	~FbxFileManager();
+
 	static FbxFileManager*		m_pFbxFileManager;
-	ID3D11Device*				m_pDevice;
-	ID3D11DeviceContext*		m_pDeviceContext;
-	std::vector<FbxModel*>		m_pFbxModel;
+	ID3D11Device* const			m_pDevice;
+	ID3D11DeviceContext* const	m_pDeviceContext;
 	FbxLoader*					m_pFbxLoader;
+	std::vector<FbxModel*>		m_pFbxModel;
 
 };
 

@@ -59,10 +59,10 @@ void FbxLoader::Release()
 	ReleaseFbxManager();
 }
 
-bool FbxLoader::LoadFbxModel(FbxModel* _pModel, LPCTSTR _filePath)
+bool FbxLoader::LoadFbxModel(FbxModel* _pModel, LPCTSTR _pFileName)
 {
 	m_pModel = _pModel;
-	if (!m_pFbxImporter->Initialize(_filePath, -1, m_pFbxIOSettings))
+	if (!m_pFbxImporter->Initialize(_pFileName, -1, m_pFbxIOSettings))
 	{
 		OutputDebugString(TEXT("FbxImporterのInitializeに失敗しました\n"));
 		return false;
@@ -114,9 +114,9 @@ void FbxLoader::RecursiveNode(FbxNode* _pFbxNode)
 
 bool FbxLoader::LoadMesh(FbxNodeAttribute* _pAttribute)
 {
-	FbxMesh* pFbxMesh = (FbxMesh*)_pAttribute;
-	FbxModel::MeshData MeshData;
-	ZeroMemory(&MeshData, sizeof(FbxModel::MeshData));
+	FbxMesh* pFbxMesh = reinterpret_cast<FbxMesh*>(_pAttribute);
+	FbxModel::MESH_DATA MeshData;
+	ZeroMemory(&MeshData, sizeof(FbxModel::MESH_DATA));
 
 	if (!LoadMeshVertexData(pFbxMesh, &MeshData))
 	{
@@ -130,7 +130,7 @@ bool FbxLoader::LoadMesh(FbxNodeAttribute* _pAttribute)
 		return false;
 	}
 
-	/*if (!LoadMeshTextureData(pFbxMesh, &MeshData))
+	if (!LoadMeshTextureData(pFbxMesh, &MeshData))
 	{
 		OutputDebugString("テクスチャ情報の読み込みに失敗しました\n");
 		return false;
@@ -140,22 +140,22 @@ bool FbxLoader::LoadMesh(FbxNodeAttribute* _pAttribute)
 	{
 		OutputDebugString("マテリアル情報の読み込みに失敗しました\n");
 		return false;
-	}*/
+	}
 
-	//if (!LoadMeshAnimationData(pFbxMesh, &MeshData))
-	//{
-	//	OutputDebugString("アニメーション情報の読み込みに失敗しました\n");
-	//	return false;
-	//}
+	if (!LoadMeshAnimationData(pFbxMesh, &MeshData))
+	{
+		OutputDebugString("アニメーション情報の読み込みに失敗しました\n");
+		return false;
+	}
 
 	m_pModel->AddMeshData(&MeshData);
 
 	return true;
 }
 
-bool FbxLoader::LoadMeshVertexData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshData)
+bool FbxLoader::LoadMeshVertexData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
-	FbxModel::VertexData* pVertex = new FbxModel::VertexData;
+	FbxModel::VERTEX_DATA* pVertex = new FbxModel::VERTEX_DATA;
 
 	// 総ポリゴン数
 	int PolygonNum = _pMesh->GetPolygonCount();
@@ -186,37 +186,37 @@ bool FbxLoader::LoadMeshVertexData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshDa
 	pVertex->pVertex = new D3DXVECTOR3[ControlPositionNum];
 	for (int i = 0; i < ControlPositionNum; i++)
 	{
-		pVertex->pVertex[i].x = (float)pFbxVec[i][0];
-		pVertex->pVertex[i].y = (float)pFbxVec[i][1];
-		pVertex->pVertex[i].z = (float)pFbxVec[i][2];
+		pVertex->pVertex[i].x = static_cast<float>(pFbxVec[i][0]);
+		pVertex->pVertex[i].y = static_cast<float>(pFbxVec[i][1]);
+		pVertex->pVertex[i].z = static_cast<float>(pFbxVec[i][2]);
 	}
 
-	_pMeshData->pVertex = pVertex;
+	_pMeshData->pVertexData = pVertex;
 
 	return true;
 }
 
-bool FbxLoader::LoadMeshNormalData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshData)
+bool FbxLoader::LoadMeshNormalData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
 	int NormalSetCount = _pMesh->GetElementNormalCount();
-	FbxModel::NormalData* pNormal = new FbxModel::NormalData;
+	FbxModel::NORMAL_DATA* pNormalData = new FbxModel::NORMAL_DATA;
 
-	for (int i = 0; i < NormalSetCount; i++)
+	for (int NormalIndex = 0; NormalIndex < NormalSetCount; NormalIndex++)
 	{
-		if (i >= 1)
+		if (NormalIndex >= 1)
 		{
 			OutputDebugString(TEXT("法線セットが複数あります(対応していません)\n一番最初の法線セットを適応させます\n"));
 			break;
 		}
 
 		// 法線セットの取得
-		fbxsdk::FbxGeometryElementNormal* Normal = _pMesh->GetElementNormal(i);
+		fbxsdk::FbxGeometryElementNormal* pNormal = _pMesh->GetElementNormal(NormalIndex);
 
 		// マッピングモード取得
-		FbxGeometryElement::EMappingMode MappingMode = Normal->GetMappingMode();
+		FbxGeometryElement::EMappingMode MappingMode = pNormal->GetMappingMode();
 
 		// リファレンスモード取得
-		FbxGeometryElement::EReferenceMode ReferenceMode = Normal->GetReferenceMode();
+		FbxGeometryElement::EReferenceMode ReferenceMode = pNormal->GetReferenceMode();
 
 
 		switch (MappingMode)
@@ -225,25 +225,25 @@ bool FbxLoader::LoadMeshNormalData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshDa
 			switch (ReferenceMode)
 			{
 			case FbxGeometryElement::eDirect:
-				pNormal[i].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertex->PolygonVertexNum];
-				for (int n = 0; n < _pMeshData->pVertex->PolygonVertexNum; n++)
+				pNormalData[NormalIndex].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertexData->PolygonVertexNum];
+				for (int i = 0; i < _pMeshData->pVertexData->PolygonVertexNum; i++)
 				{
-					pNormal[i].pNormalVec->x = float(Normal->GetDirectArray().GetAt(n)[0]);
-					pNormal[i].pNormalVec->y = float(Normal->GetDirectArray().GetAt(n)[1]);
-					pNormal[i].pNormalVec->z = float(Normal->GetDirectArray().GetAt(n)[2]);
+					pNormalData[NormalIndex].pNormalVec->x = float(pNormal->GetDirectArray().GetAt(i)[0]);
+					pNormalData[NormalIndex].pNormalVec->y = float(pNormal->GetDirectArray().GetAt(i)[1]);
+					pNormalData[NormalIndex].pNormalVec->z = float(pNormal->GetDirectArray().GetAt(i)[2]);
 				}
 			break;
 			default:
-				/// 不明なモードはからデータで対応
+				/// 不明なモードは空データで対応
 
 				MessageBox(NULL, TEXT("リファレンスモード不明です\n空データを作成して対応します"), TEXT("エラー"), MB_ICONSTOP);
 
-				pNormal[i].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertex->PolygonVertexNum];
-				for (int n = 0; n < _pMeshData->pVertex->PolygonVertexNum; n++)
+				pNormalData[NormalIndex].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertexData->PolygonVertexNum];
+				for (int i = 0; i < _pMeshData->pVertexData->PolygonVertexNum; i++)
 				{
-					pNormal[i].pNormalVec->x = 0.0f;
-					pNormal[i].pNormalVec->y = 0.0f;
-					pNormal[i].pNormalVec->z = 0.0f;
+					pNormalData[NormalIndex].pNormalVec->x = 0.0f;
+					pNormalData[NormalIndex].pNormalVec->y = 0.0f;
+					pNormalData[NormalIndex].pNormalVec->z = 0.0f;
 				}
 			break;
 			}
@@ -251,70 +251,70 @@ bool FbxLoader::LoadMeshNormalData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshDa
 		case FbxGeometryElement::eByControlPoint:	
 			MessageBox(NULL, TEXT("マッピングモードeByControlPointに対応していません\n空データを作成して対応します"), TEXT("エラー"), MB_ICONSTOP);
 
-			pNormal[i].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertex->PolygonVertexNum];
-			for (int n = 0; n < _pMeshData->pVertex->PolygonVertexNum; n++)
+			pNormalData[NormalIndex].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertexData->PolygonVertexNum];
+			for (int i = 0; i < _pMeshData->pVertexData->PolygonVertexNum; i++)
 			{
-				pNormal[i].pNormalVec->x = 0.0f;
-				pNormal[i].pNormalVec->y = 0.0f;
-				pNormal[i].pNormalVec->z = 0.0f;
+				pNormalData[NormalIndex].pNormalVec->x = 0.0f;
+				pNormalData[NormalIndex].pNormalVec->y = 0.0f;
+				pNormalData[NormalIndex].pNormalVec->z = 0.0f;
 			}
 			break;
 		default:
 			MessageBox(NULL, TEXT("マッピングモードが不明です\n空データを作成して対応します"), TEXT("エラー"), MB_ICONSTOP);
 
-			pNormal[i].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertex->PolygonVertexNum];
-			for (int n = 0; n < _pMeshData->pVertex->PolygonVertexNum; n++)
+			pNormalData[NormalIndex].pNormalVec = new D3DXVECTOR3[_pMeshData->pVertexData->PolygonVertexNum];
+			for (int i = 0; i < _pMeshData->pVertexData->PolygonVertexNum; i++)
 			{
-				pNormal[i].pNormalVec->x = 0.0f;
-				pNormal[i].pNormalVec->y = 0.0f;
-				pNormal[i].pNormalVec->z = 0.0f;
+				pNormalData[NormalIndex].pNormalVec->x = 0.0f;
+				pNormalData[NormalIndex].pNormalVec->y = 0.0f;
+				pNormalData[NormalIndex].pNormalVec->z = 0.0f;
 			}
 			break;
 		}
 	}
 
-	_pMeshData->pNormal = pNormal;
+	_pMeshData->pNormalData = pNormalData;
 
 	return true;
 }
 
-bool FbxLoader::LoadMeshTextureData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshData)
+bool FbxLoader::LoadMeshTextureData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
-	
+	/// @todo テクスチャデータの取得は未実装
 	return true;
 }
 
-bool FbxLoader::LoadMeshMaterialData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshData)
+bool FbxLoader::LoadMeshMaterialData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
-	
+	/// @todo マテリアルデータの取得は未実装
 	return true;
 }
 
-bool FbxLoader::LoadMeshAnimationData(FbxMesh* _pMesh, FbxModel::MeshData* _pMeshData)
+bool FbxLoader::LoadMeshAnimationData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
-
+	/// @todo アニメーションデータの取得は未実装
 	return true;
 }
 
 void FbxLoader::GetTextureName(
-	fbxsdk::FbxSurfaceMaterial* material,
-	LPCTSTR matFlag,
-	std::vector<LPCTSTR>* pOutFileName,
-	std::vector<fbxsdk::FbxString>* pOutUvSetName,
-	int* OutCount)
+	fbxsdk::FbxSurfaceMaterial* _pMaterial,
+	LPCTSTR _pMatFlag,
+	std::vector<LPCTSTR>* _pOutFileName,
+	std::vector<fbxsdk::FbxString>* _pOutUvSetName,
+	int* _pOutCount)
 {
-	fbxsdk::FbxProperty Property = material->FindProperty(matFlag);
+	fbxsdk::FbxProperty Property = _pMaterial->FindProperty(_pMatFlag);
 	int LayerTextureCount = Property.GetSrcObjectCount<fbxsdk::FbxLayeredTexture>();
 
 	if (LayerTextureCount == 0)
 	{
 		int TextureCount = Property.GetSrcObjectCount<fbxsdk::FbxFileTexture>();
-		for (int i = 0; i < TextureCount; ++i)
+		for (int i = 0; i < TextureCount; i++)
 		{
-			(*OutCount)++;
+			(*_pOutCount)++;
 			fbxsdk::FbxFileTexture* fbxTexture = FbxCast<fbxsdk::FbxFileTexture>(Property.GetSrcObject<fbxsdk::FbxFileTexture>(i));
-			pOutUvSetName->push_back(fbxTexture->UVSet.Get());
-			pOutFileName->push_back(fbxTexture->GetRelativeFileName());
+			_pOutUvSetName->push_back(fbxTexture->UVSet.Get());
+			_pOutFileName->push_back(fbxTexture->GetRelativeFileName());
 		}
 	}
 }
@@ -370,22 +370,37 @@ bool FbxLoader::InitFbxIOSettings()
 
 void FbxLoader::ReleaseFbxManager()
 {
-	m_pFbxManager->Destroy();
+	if (m_pFbxManager != NULL)
+	{
+		m_pFbxManager->Destroy();
+		m_pFbxManager = NULL;
+	}
 }
 
 void FbxLoader::ReleaseFbxScene()
 {
-	m_pFbxScene->Destroy();
+	if (m_pFbxScene != NULL)
+	{
+		m_pFbxScene->Destroy();
+		m_pFbxScene = NULL;
+	}
 }
 
 void FbxLoader::ReleaseFbxImporter()
 {
-	m_pFbxImporter->Destroy();
+	if (m_pFbxImporter != NULL)
+	{
+		m_pFbxImporter->Destroy();
+		m_pFbxImporter = NULL;
+	}
 }
 
 void FbxLoader::ReleaseFbxIOSettings()
 {
-	m_pFbxIOSettings->Destroy();
+	if (m_pFbxIOSettings != NULL)
+	{
+		m_pFbxIOSettings->Destroy();
+		m_pFbxIOSettings = NULL;
+	}
 }
-
 

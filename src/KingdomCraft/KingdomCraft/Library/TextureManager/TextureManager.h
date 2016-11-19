@@ -9,17 +9,16 @@
 #include <vector>
 
 /**
- * @brief  テクスチャの管理クラス
+ * テクスチャの管理クラス
  */
 class TextureManager
 {
 public:
-	~TextureManager();
-
 	/**
 	 * インスタンスを生成
+	 * @param[in] _pDevice テクスチャの読み込みに使用するDirectX11のデバイス
 	 */
-	static void Create(ID3D11Device* _pDevice)
+	inline static void Create(ID3D11Device* const _pDevice)
 	{
 		if (m_pTextureManager == NULL)
 		{
@@ -31,46 +30,48 @@ public:
 	 * インスタンスを取得する
 	 * @return インスタンスが返る
 	 */
-	static TextureManager* GetInstance()
+	inline static TextureManager* GetInstance()
 	{
 		return m_pTextureManager;
 	}
 
 	/**
-	 * TextureManagerインスタンスを破棄する
+	 * インスタンスを破棄する
 	 */
-	static void Delete()
+	inline static void Delete()
 	{
 		delete m_pTextureManager;
 		m_pTextureManager = NULL;
 	}
 
 	/**
-	 * テクスチャを読み込む
-	 * @param[in] _filePath 読み込むテクスチャ
-	 * @param[out] _pkey 読み込んだテクスチャが格納されている先のキー
+	 * テクスチャを読み込む関数
+	 *
+	 * テクスチャの読み込みが失敗したらNULLへのインデックスが返る
+	 * @param[in] _pFileName 読み込むテクスチャファイルのパス
+	 * @param[out] _pIndex 読み込んだテクスチャが格納されている先のインデックス(読み込みが失敗した場合0が格納される)
 	 * @return テクスチャの読み込みに成功したらtrue
 	 */
-	bool LoadTexture(LPCTCH _filePath, int* _pkey);
+	bool LoadTexture(LPCTSTR _pFileName, int* _pIndex);
 
 	/**
 	 * 格納しているテクスチャを取得する
-	 * @param[in] _key 取得したいテクスチャのキー
+	 * @param[in] _index 取得したいテクスチャのインデックス
 	 * @return テクスチャのリソースビュー
 	 */
-	inline ID3D11ShaderResourceView* GetTexture(int _key)
-	{ 
-		return m_pTextureResourceView[_key];
+	inline ID3D11ShaderResourceView* GetTexture(int _index)
+	{
+		return m_pTextureResourceView[_index];
 	}
-	
+
 	/**
 	 * 格納しているテクスチャを解放する
-	 * @param[in] _key 解放したいテクスチャのキー
+	 * 
+	 * 0を引数として渡してはいけない
+	 * @param[in] _index 解放したいテクスチャのインデックス
 	 */
-	inline void ReleaseTexture(int _key)
-	{ 
-		m_pTextureResourceView[_key]->Release();
-	}
+	void ReleaseTexture(int _index);
+	
 
 	/**
 	 * テクスチャを確保しているバッファをクリアする
@@ -83,11 +84,22 @@ public:
 		m_pTextureResourceView.clear();
 	}
 
+	static const int m_InvalidIndex;	//!< TextureManagerクラスがとるインデックスのエラー値
+
 private:
-	TextureManager(ID3D11Device* _pDevice);
+	/**
+	 * TextureManagerクラスのコンストラクタ
+	 * @param[in] _pDevice テクスチャの読み込みに使用するDirectX11のデバイス
+	 */
+	TextureManager(ID3D11Device* const _pDevice);
+
+	/**
+	 * TextureManagerクラスのデストラクタ
+	 */
+	~TextureManager();
 
 	static TextureManager*						m_pTextureManager;
-	ID3D11Device*								m_pDevice;
+	ID3D11Device* const							m_pDevice;
 	std::vector<ID3D11ShaderResourceView*>		m_pTextureResourceView;
 
 };
