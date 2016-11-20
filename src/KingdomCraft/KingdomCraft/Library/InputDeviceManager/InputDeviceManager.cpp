@@ -9,6 +9,7 @@
 
 InputDeviceManager* InputDeviceManager::m_pInputDeviceManager = NULL;
 
+
 InputDeviceManager::InputDeviceManager() :
 m_pKeyDevice(NULL),
 m_pMouseDevice(NULL),
@@ -26,7 +27,7 @@ bool InputDeviceManager::Init(HWND _hWnd)
 
 	if (m_pDInput8 != NULL)
 	{
-		MessageBox(m_hWnd, TEXT("m_pDInputの中身は空ではありません"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("m_pDInput8の中身は空ではありません"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -47,6 +48,7 @@ void InputDeviceManager::Release()
 	{
 		m_pKeyDevice->Release();
 		delete m_pKeyDevice;
+		m_pKeyDevice = NULL;
 
 		OutputDebugString(TEXT("KeyDeviceクラスを破棄しました\n"));
 	}
@@ -55,11 +57,13 @@ void InputDeviceManager::Release()
 	{
 		m_pMouseDevice->Release();
 		delete m_pMouseDevice;
+		m_pMouseDevice = NULL;
 
 		OutputDebugString(TEXT("MouseDeviceクラスを破棄しました\n"));
 	}
 
 	m_pDInput8->Release();
+	m_pDInput8 = NULL;
 }
 
 bool InputDeviceManager::CreateKeyDevice()
@@ -74,13 +78,13 @@ bool InputDeviceManager::CreateKeyDevice()
 
 	if (!m_pKeyDevice->Init(m_pDInput8, m_hWnd))
 	{
-		MessageBox(m_hWnd, TEXT("キーデバイスの初期化に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("m_pKeyDevice初期化に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		delete m_pKeyDevice;
 		m_pKeyDevice = NULL;
 		return false;
 	}
 
-	OutputDebugString(TEXT("KeyDeviceクラスの生成に成功\n"));
+	OutputDebugString(TEXT("m_pKeyDeviceの初期化に成功\n"));
 
 	return true;
 }
@@ -97,13 +101,13 @@ bool InputDeviceManager::CreateMouseDevice()
 
 	if (!m_pMouseDevice->Init(m_pDInput8, m_hWnd))
 	{
-		MessageBox(m_hWnd, TEXT("マウスデバイス初期化に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("m_pMouseDeviceの初期化に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		delete m_pMouseDevice;
 		m_pMouseDevice = NULL;
 		return false;
 	}
 
-	OutputDebugString(TEXT("MouseDeviceクラスの生成に成功\n"));
+	OutputDebugString(TEXT("m_pMouseDeviceの初期化に成功\n"));
 
 	return true;
 }
@@ -123,12 +127,12 @@ void InputDeviceManager::KeyCheck(int _dik)
 	m_pKeyDevice->KeyCheck(_dik);
 }
 
-const KEYSTATE* InputDeviceManager::GetKeyState()
+const KeyDevice::KEYSTATE* InputDeviceManager::GetKeyState() const
 {
 	return m_pKeyDevice->GetKeyState();
 }
 
-MOUSESTATE InputDeviceManager::GetMouseState()
+const MOUSESTATE InputDeviceManager::GetMouseState() const
 {
 	return m_pMouseDevice->GetMouseState();
 }

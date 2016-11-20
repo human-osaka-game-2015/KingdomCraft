@@ -115,7 +115,7 @@ void KeyDevice::KeyCheck(int _dik)
 	}
 }
 
-const KEYSTATE* KeyDevice::GetKeyState()
+const KeyDevice::KEYSTATE* KeyDevice::GetKeyState() const
 {
 	return m_KeyState;
 }
