@@ -125,7 +125,8 @@ void MouseDevice::Update()
 	}
 }
 
-const MOUSESTATE& MouseDevice::GetMouseState()
+const MOUSESTATE& MouseDevice::GetMouseState() const
 {
 	return m_MouseState;
 }
+

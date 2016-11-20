@@ -5,31 +5,35 @@
  */
 #ifndef KEYDEVICE_H
 #define KEYDEVICE_H
-
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>	
 #include <Windows.h>
 
-
-enum KEYSTATE
-{
-	//! キーが押された瞬間の状態
-	KEY_PUSH,
-
-	//! キーが離された瞬間の状態
-	KEY_RELEASE,
-
-	//! キーが押され続けている状態
-	KEY_ON,
-
-	//! キーが押されていない状態
-	KEY_OFF
-};
-
+/**
+ * キーデバイスの管理クラス
+ */
 class KeyDevice
 {
 public:
+	/**
+	 * キーの状態を表したenum
+	 */
+	enum KEYSTATE
+	{
+		KEY_PUSH,	//!< キーが押された瞬間の状態
+		KEY_RELEASE,//!< キーが離された瞬間の状態
+		KEY_ON,		//!< キーが押され続けている状態
+		KEY_OFF		//!< キーが押されていない状態
+	};
+
+	/**
+	 * KeyDeviceクラスのコンストラクタ
+	 */
 	KeyDevice();
+
+	/**
+	 * KeyDeviceクラスのデストラクタ
+	 */
 	~KeyDevice();
 
 	/**
@@ -60,7 +64,7 @@ public:
 	 * キーの状態が格納されている配列を取得する
 	 * @return キーの状態が格納されている配列
 	 */
-	const KEYSTATE* GetKeyState();
+	const KEYSTATE* GetKeyState() const;
 
 private:
 	LPDIRECTINPUT8			m_pDInput8;
