@@ -5,9 +5,7 @@
  */
 #ifndef SCENEFACTORY_H
 #define SCENEFACTORY_H
-
-class Scene;
-enum SceneID;
+#include "..\Scene\Scene.h"
 
 /**
  * Sceneの生成管理するクラス
@@ -16,25 +14,23 @@ class SceneFactory
 {
 public:
 	/**
-	 * SceneFactoryのコンストラクタ
-	 */
-	SceneFactory()
-	{
-	}
-	
-	/**
-	 * SceneFactoryのデストラクタ
-	 */
-	~SceneFactory()
-	{
-	}
-
-	/**
 	 * シーンクラスの生成
 	 * @param _sceneID 生成するクラスのシーンID
 	 * @return シーンクラスのインスタンス
 	 */
-	Scene* CreateScene(SceneID _sceneID);
+	static Scene* CreateScene(Scene::SceneID _sceneID);
+
+private:
+	/**
+	 * SceneFactoryのコンストラクタ
+	 */
+	SceneFactory();
+
+	/**
+	 * SceneFactoryのデストラクタ
+	 */
+	~SceneFactory();
 
 };
+
 #endif

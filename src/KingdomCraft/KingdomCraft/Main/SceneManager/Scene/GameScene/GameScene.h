@@ -5,7 +5,7 @@
  */
 #ifndef GAMESCENE_H
 #define GAMESCENE_H
-#include "..//Scene.h"
+#include "..\Scene.h"
 
 /**
  * ゲームシーンを管理するクラス
@@ -33,6 +33,10 @@ public:
 	 * GameSceneの描画関数
 	 */
 	virtual void Draw();
+
+private:
+	GameScene(const GameScene&);
+	void operator=(const GameScene&);
 
 };
 
