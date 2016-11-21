@@ -6,10 +6,7 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 #include <Windows.h>
-
-class Scene;
-class SceneFactory;
-enum SceneID;
+#include "Scene\Scene.h"
 
 /**
  * シーンを管理するクラス
@@ -38,22 +35,29 @@ private:
 	/**
 	 * SceneManagerの状態
 	 */
-	enum SceneState
+	enum State
 	{
 		SCENE_CREATE,	//!< シーンの生成状態
 		SCENE_PROC,		//!< シーンの処理状態		
 		SCENE_RELEASE	//!< シーンの解放状態
 	};
 
+	/**
+	 * SceneManagerクラスの制御関数
+	 */
 	void Control();
+
+	/**
+	 * SceneManagerクラスの描画関数
+	 */
 	void Draw();
 
-	SceneFactory* m_pSceneFactory;
-	Scene*		  m_pScene;
-	SceneState    m_sceneState;
-	SceneID		  m_nextSceneID;
-	HWND		  m_hWnd;
-	bool		  m_end;
+	Scene*			m_pScene;
+	State			m_State;
+	Scene::SceneID	m_NextSceneID;
+	HWND			m_hWnd;
+	bool			m_IsGameEnd;
 
 };
+
 #endif
