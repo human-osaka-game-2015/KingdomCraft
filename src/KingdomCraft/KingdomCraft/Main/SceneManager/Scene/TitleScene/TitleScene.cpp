@@ -11,15 +11,19 @@
 #include "InputDeviceManager\InputDeviceManager.h"
 #include "TextureManager\TextureManager.h"
 #include "ShaderManager\ShaderManager.h"
+#include "DSoundManager\DSoundManager.h"
 #include "FbxFileManager\FbxFileManager.h"
 
 
 TitleScene::TitleScene() :
-Scene(SceneID::SCENE_TITLE),
-m_pTitleBackground(new TitleBackground()),
-m_pTitleLogo(new TitleLogo()),
-m_pTitleMenu(new TitleMenu())
+Scene(SCENE_TITLE)
 {
+	TextureManager::Create(DX11Manager::GetInstance()->GetDevice());
+	DSoundManager::Create(DX11Manager::GetInstance()->GetWindowHandle());
+
+	m_pTitleBackground = new TitleBackground();
+	m_pTitleLogo = new TitleLogo();
+	m_pTitleMenu = new TitleMenu();
 }
 
 TitleScene::~TitleScene()
@@ -27,17 +31,16 @@ TitleScene::~TitleScene()
 	delete m_pTitleMenu;
 	delete m_pTitleLogo;
 	delete m_pTitleBackground;
-	TextureManager::GetInstance()->ClearBuffer();
-	ShaderManager::GetInstance()->ClearPixelShaderBuffer();
-	ShaderManager::GetInstance()->ClearVertexShaderBuffer();
-	FbxFileManager::GetInstance()->ClearBuffer();
+
+	DSoundManager::Destroy();
+	TextureManager::Delete();
 }
 
-SceneID TitleScene::Control()
+Scene::SceneID TitleScene::Control()
 {
 	InputDeviceManager::GetInstance()->MouseUpdate();
 
-	SceneID NextSceneID = m_sceneID;
+	SceneID NextSceneID = m_SceneID;
 
 	m_pTitleBackground->Control();
 	m_pTitleLogo->Control();
