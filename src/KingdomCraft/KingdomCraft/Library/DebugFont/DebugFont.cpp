@@ -6,14 +6,22 @@
 #include "DebugFont.h"
 #include <d3dx11.h>
 
+
+//----------------------------------------------------------------------------------------------------
+// Static Private Variables
+//----------------------------------------------------------------------------------------------------
+
 const float DebugFont::m_DebugFontTu = 1.0f / 95;
 const int DebugFont::m_SpaceAsciiCode = 32;
 
 
-DebugFont::DebugFont(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND hWnd) :
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
+
+DebugFont::DebugFont(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext) :
 m_pDevice(_pDevice),
 m_pDeviceContext(_pDeviceContext),
-m_hWnd(hWnd),
 m_pResourceView(NULL),
 m_pConstantBuffer(NULL),
 m_pVertexBuffer(NULL),
@@ -22,7 +30,8 @@ m_pLayout(NULL),
 m_pPixelShader(NULL),
 m_pSamplerState(NULL),
 m_pBlendState(NULL),
-m_pDepthStencilState(NULL)
+m_pDepthStencilState(NULL),
+m_hWnd(NULL)
 {
 }
 
@@ -30,8 +39,21 @@ DebugFont::~DebugFont()
 {
 }
 
-bool DebugFont::Init()
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
+
+bool DebugFont::Init(HWND _hWnd)
 {
+	if (m_pResourceView != NULL)
+	{
+		MessageBox(m_hWnd, TEXT("DebugFontクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
+	m_hWnd = _hWnd;
+
 	if (!InitResourceView())
 	{
 		MessageBox(m_hWnd, TEXT("InitResourceViewが失敗しました"), TEXT("エラー"), MB_ICONSTOP);
@@ -193,6 +215,11 @@ void DebugFont::DrawFont(const D3DXVECTOR2* _pDrawPos, LPCTSTR _pStr)
 		m_pDeviceContext->Draw(4, 0);
 	}
 }
+
+
+//----------------------------------------------------------------------------------------------------
+// Private Functions
+//----------------------------------------------------------------------------------------------------
 
 bool DebugFont::InitResourceView()
 {
@@ -452,12 +479,20 @@ bool DebugFont::InitDepthStencilState()
 
 void DebugFont::ReleaseResourceView()
 {
-	m_pResourceView->Release();
+	if (m_pResourceView != NULL)
+	{
+		m_pResourceView->Release();
+		m_pResourceView = NULL;
+	}
 }
 
 void DebugFont::ReleaseConstantBuffer()
 {
-	m_pConstantBuffer->Release();
+	if (m_pConstantBuffer != NULL)
+	{
+		m_pConstantBuffer->Release();
+		m_pConstantBuffer = NULL;
+	}
 }
 
 void DebugFont::ReleaseShader()
@@ -468,26 +503,51 @@ void DebugFont::ReleaseShader()
 
 void DebugFont::ReleaseVertexShader()
 {
-	m_pLayout->Release();
-	m_pVertexShader->Release();
+	if (m_pLayout != NULL)
+	{
+		m_pLayout->Release();
+		m_pLayout = NULL;
+	}
+
+	if (m_pVertexShader != NULL)
+	{
+		m_pVertexShader->Release();
+		m_pVertexShader = NULL;
+	}
 }
 
 void DebugFont::ReleasePixelShader()
 {
-	m_pPixelShader->Release();
+	if (m_pPixelShader != NULL)
+	{
+		m_pPixelShader->Release();
+		m_pPixelShader = NULL;
+	}
 }
 
 void DebugFont::ReleaseSamplerState()
 {
-	m_pSamplerState->Release();
+	if (m_pSamplerState != NULL)
+	{
+		m_pSamplerState->Release();
+		m_pSamplerState = NULL;
+	}
 }
 
 void DebugFont::ReleaseBlendState()
 {
-	m_pBlendState->Release();
+	if (m_pBlendState != NULL)
+	{
+		m_pBlendState->Release();
+		m_pBlendState = NULL;
+	}
 }
 
 void DebugFont::ReleaseDepthStencilState()
 {
-	m_pDepthStencilState->Release();
+	if (m_pDepthStencilState != NULL)
+	{
+		m_pDepthStencilState->Release();
+		m_pDepthStencilState = NULL;
+	}
 }

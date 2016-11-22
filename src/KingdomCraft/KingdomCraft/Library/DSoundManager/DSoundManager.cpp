@@ -6,11 +6,21 @@
 #include "DSoundManager.h"
 #include <mmsystem.h>
 
+
+//----------------------------------------------------------------------------------------------------
+// Static Private Variables
+//----------------------------------------------------------------------------------------------------
+
 DSoundManager* DSoundManager::m_pSoundManager = NULL;
 
 
-DSoundManager::DSoundManager(HWND _hWnd) :
-m_hWnd(_hWnd)
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
+
+DSoundManager::DSoundManager() :
+m_pDSound8(NULL),
+m_hWnd(NULL)
 {
 }
 
@@ -18,17 +28,30 @@ DSoundManager::~DSoundManager()
 {
 }
 
-bool DSoundManager::Init()
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
+
+bool DSoundManager::Init(HWND _hWnd)
 {
+	if (m_pDSound8 != NULL)
+	{
+		MessageBox(m_hWnd, TEXT("DSoundManagerははすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
+	m_hWnd = _hWnd;
+
 	if (FAILED(DirectSoundCreate8(NULL, &m_pDSound8, NULL)))
 	{
-		MessageBox(m_hWnd, TEXT("サウンドデバイスの生成に失敗しました"), TEXT("Error"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("サウンドデバイスの生成に失敗しました"), TEXT("エラー""), MB_ICONSTOP);
 		return false;
 	}
 
 	if (FAILED(m_pDSound8->SetCooperativeLevel(m_hWnd, DSSCL_PRIORITY)))
 	{
-		MessageBox(m_hWnd, TEXT("協調レベルの設定に失敗しました"), TEXT("Error"), MB_ICONSTOP);
+		MessageBox(m_hWnd, TEXT("協調レベルの設定に失敗しました"), TEXT("エラー""), MB_ICONSTOP);
 		m_pDSound8->Release();
 		return false;
 	}
@@ -37,7 +60,11 @@ bool DSoundManager::Init()
 
 void DSoundManager::Release()
 {
-	m_pDSound8->Release();
+	if (m_pDSound8 != NULL)
+	{
+		m_pDSound8->Release();
+		m_pDSound8 = NULL;
+	}
 }
 
 void DSoundManager::SoundOperation(int _index, SOUND_OPERATION _operation)
@@ -124,6 +151,11 @@ void DSoundManager::ReleaseSound(int _index)
 		m_pSound[_index] = NULL;
 	}
 }
+
+
+//----------------------------------------------------------------------------------------------------
+// Private Functions
+//----------------------------------------------------------------------------------------------------
 
 bool DSoundManager::ReadWave(LPSTR _pFileName, WAVEFORMATEX* _pWaveFormat, BYTE** _pWaveData, DWORD* _pWaveSize)
 {

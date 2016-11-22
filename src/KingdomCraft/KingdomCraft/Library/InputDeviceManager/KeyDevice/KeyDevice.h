@@ -70,10 +70,11 @@ private:
 	LPDIRECTINPUT8			m_pDInput8;
 	HWND					m_hWnd;
 	LPDIRECTINPUTDEVICE8	m_pDInputDevice8;
-	KEYSTATE				m_KeyState[256];
-	BYTE					m_DIKeyState[256];
-	BYTE					m_OldDIKeyState[256];
+	KEYSTATE				m_pKeyState[256];
+	BYTE					m_pDIKeyState[256];
+	BYTE					m_pOldDIKeyState[256];
 
 };
+
 
 #endif

@@ -16,11 +16,11 @@ public:
 	/**
 	 * TitleMenuButtonのコンストラクタ
 	 *
-	 * @param[in] _pDrawPos ボタンの描画位置
-	 * @param[in] _pDrawSize ボタンのサイズ
-	 * @param[in] _textureName 描画するボタンの画像
+	 * @param[in] _pButtonPos ボタンの描画位置
+	 * @param[in] _pButtonVertex ボタンのサイズ
+	 * @param[in] _pTextureName 描画するボタンの画像
 	 */
-	TitleMenuButton(const D3DXVECTOR2* const _pDrawPos, const D3DXVECTOR2* const _pDrawSize, LPCTSTR const _pTextureName);
+	TitleMenuButton(const D3DXVECTOR2* const _pButtonPos, const D3DXVECTOR2* const _pButtonVertex, LPCTSTR const _pTextureName);
 
 	/**
 	 * TitleMenuButtonのデストラクタ
@@ -60,15 +60,16 @@ protected:
 	TitleMenuButton(const TitleMenuButton&);
 	void operator=(const TitleMenuButton&);
 
-	bool OnClick();
+	bool IsClicked();
 
-	D3DXVECTOR2 m_DrawPos;
-	D3DXVECTOR2 m_DrawSize;
+	D3DXVECTOR2 m_ButtonPos;
+	D3DXVECTOR2 m_ButtonVertex;
 	Vertex2D*	m_pVertex;
 	bool		m_IsMouseOver;
 	bool		m_IsVisible;
 	int			m_TextureIndex;
 
 };
+
 
 #endif

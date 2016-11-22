@@ -5,23 +5,51 @@
  */
 #include "DX11Manager.h"
 
+
+//----------------------------------------------------------------------------------------------------
+// Private Variables
+//----------------------------------------------------------------------------------------------------
+
 DX11Manager* DX11Manager::m_pDX11Manager = NULL;
 float DX11Manager::m_ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 
 
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
+
 DX11Manager::DX11Manager() :
+m_pDevice(NULL),
+m_pDeviceContext(NULL),
+m_pDXGI(NULL),
+m_pAdapter(NULL),
+m_pDXGIFactory(NULL),
+m_pDXGISwapChain(NULL),
+m_pBackBuffer(NULL),
+m_pRenderTargetView(NULL),
+m_pDepthStencilBuffer(NULL),
+m_pRasterizerState(NULL),
 m_hWnd(NULL)
 {
-
 }
 
 DX11Manager::~DX11Manager()
 {
-
 }
+
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
 
 bool DX11Manager::Init(HWND _hWnd)
 {
+	if (m_pDevice != NULL)
+	{
+		MessageBox(m_hWnd, TEXT("m_pDeviceDx11Managerクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
 	m_hWnd = _hWnd;
 	GetWindowRect(m_hWnd, &m_WindowRect);
 
@@ -71,6 +99,11 @@ void DX11Manager::SetDepthStencilTest(bool _isStencil)
 		m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, NULL);
 	}
 }
+
+
+//----------------------------------------------------------------------------------------------------
+// Private Functions
+//----------------------------------------------------------------------------------------------------
 
 bool DX11Manager::InitDevice()
 {
@@ -265,19 +298,72 @@ bool DX11Manager::InitDisplay()
 
 void DX11Manager::ReleaseDevice()
 {
-	m_pDeviceContext->Release();
-	m_pDevice->Release();
+	if (m_pDeviceContext != NULL)
+	{
+		m_pDeviceContext->Release();
+		m_pDeviceContext = NULL;
+	}
+
+	if (m_pDevice != NULL)
+	{
+		m_pDevice->Release();
+		m_pDevice = NULL;
+	}
 }
 
 void DX11Manager::ReleaseDisplay()
 {
-	m_pRasterizerState->Release();
-	m_pDepthStencilView->Release();
-	m_pDepthStencilBuffer->Release();
-	m_pRenderTargetView->Release();
-	m_pBackBuffer->Release();
-	m_pDXGISwapChain->Release();
-	m_pDXGIFactory->Release();
-	m_pAdapter->Release();
-	m_pDXGI->Release();
+	if (m_pRasterizerState != NULL)
+	{
+		m_pRasterizerState->Release();
+		m_pRasterizerState = NULL;
+	}
+
+	if (m_pDepthStencilView != NULL)
+	{
+		m_pDepthStencilView->Release();
+		m_pDepthStencilView = NULL;
+	}
+
+	if (m_pDepthStencilBuffer != NULL)
+	{
+		m_pDepthStencilBuffer->Release();
+		m_pDepthStencilBuffer = NULL;
+	}
+
+	if (m_pRenderTargetView != NULL)
+	{
+		m_pRenderTargetView->Release();
+		m_pRenderTargetView = NULL;
+	}
+
+	if (m_pBackBuffer != NULL)
+	{
+		m_pBackBuffer->Release();
+		m_pBackBuffer = NULL;
+	}
+
+	if (m_pDXGISwapChain != NULL)
+	{
+		m_pDXGISwapChain->Release();
+		m_pDXGISwapChain = NULL;
+	}
+
+	if (m_pDXGIFactory != NULL)
+	{
+		m_pDXGIFactory->Release();
+		m_pDXGIFactory = NULL;
+	}
+
+	if (m_pAdapter != NULL)
+	{
+		m_pAdapter->Release();
+		m_pAdapter = NULL;
+	}
+
+	if (m_pDXGI != NULL)
+	{
+		m_pDXGI->Release();
+		m_pDXGI = NULL;
+	}
 }

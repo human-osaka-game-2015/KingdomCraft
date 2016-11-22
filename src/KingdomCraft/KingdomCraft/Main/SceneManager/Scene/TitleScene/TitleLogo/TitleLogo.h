@@ -38,10 +38,11 @@ private:
 	void operator=(const TitleLogo&);
 
 	static const D3DXVECTOR2	m_TitleLogoPos;
-	static const D3DXVECTOR2	m_TitleLogoSize;
+	static const D3DXVECTOR2	m_TitleLogoVertex;
 	Vertex2D*					m_pVertex;
 	int							m_TextureIndex;
 
 };
+
 
 #endif

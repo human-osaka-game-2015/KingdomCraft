@@ -35,11 +35,10 @@ TitleSaveDataMenu::MENU_ID TitleSaveDataMenu::Control()
 		return NONE_ID;
 	}
 
-
 	MENU_ID MenuID = NONE_ID;
-	MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();
+	MouseDevice::MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();
 
-	if (MouseState.rgbButtons[1] == MOUSEBUTTON_PUSH)
+	if (MouseState.rgbButtons[1] == MouseDevice::MOUSEBUTTON_PUSH)
 	{
 		MenuID = CANCEL_ID;
 	}
@@ -49,6 +48,7 @@ TitleSaveDataMenu::MENU_ID TitleSaveDataMenu::Control()
 		if (m_pSaveDataButton[i]->Control())
 		{
 			MenuID = STARTGAME_ID;
+			break;
 		}
 	}
 

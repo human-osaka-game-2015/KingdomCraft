@@ -6,13 +6,29 @@
 #include "FbxFileManager.h"
 #include "FbxLoader\FbxLoader.h"
 
+
+//----------------------------------------------------------------------------------------------------
+// Static Public Variables
+//----------------------------------------------------------------------------------------------------
+
 const int FbxFileManager::m_InvalidIndex = 0;
+
+
+//----------------------------------------------------------------------------------------------------
+// Static Private Variables
+//----------------------------------------------------------------------------------------------------
+
 FbxFileManager* FbxFileManager::m_pFbxFileManager = NULL;
 
 
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
+
 FbxFileManager::FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext) :
 m_pDevice(_pDevice),
-m_pDeviceContext(_pDeviceContext)
+m_pDeviceContext(_pDeviceContext),
+m_pFbxLoader(NULL)
 {
 	m_pFbxModel.push_back(NULL);	// 読み込みに失敗した際に参照する値としてNULLを追加
 }
@@ -21,16 +37,34 @@ FbxFileManager::~FbxFileManager()
 {
 }
 
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
+
 bool FbxFileManager::Init()
 {
+	if (m_pFbxLoader != NULL)
+	{
+		MessageBox(NULL, TEXT("既にFbxFileManagerクラスは初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
 	m_pFbxLoader = new FbxLoader(m_pDevice);
 	return m_pFbxLoader->Init();
 }
 
 void FbxFileManager::Release()
 {
+	if (m_pFbxLoader == NULL)
+	{
+		MessageBox(NULL, TEXT("FbxFileManagerクラスはすでに空です。"), TEXT("エラー"), MB_ICONSTOP);
+		return;
+	}
+
 	m_pFbxLoader->Release();
 	delete m_pFbxLoader;
+	m_pFbxLoader = NULL;
 }
 
 bool FbxFileManager::LoadFbxModel(LPCTSTR _pFileName, int* _pIndex)

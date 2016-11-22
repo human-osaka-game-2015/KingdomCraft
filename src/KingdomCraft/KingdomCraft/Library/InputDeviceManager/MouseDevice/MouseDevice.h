@@ -9,36 +9,35 @@
 #include <dinput.h>	
 #include <Windows.h>
 
-
-/**
- * マウスの状態を表したenum
- */
-enum MOUSEBUTTONSTATE	///@todo タイトルシーン側で使ってしまってるので仮置き
-{
-	MOUSEBUTTON_PUSH,	//!< マウスのボタンが押された瞬間の状態
-	MOUSEBUTTON_RELEASE,//!< マウスのボタンが離された瞬間の状態
-	MOUSEBUTTON_ON,		//!< マウスのボタンが押され続けている状態
-	MOUSEBUTTON_OFF		//!< マウスのボタンが離されている状態
-};
-
-/**
- * マウスの状態を格納する構造体
- */
-struct MOUSESTATE		///@todo タイトルシーン側で使ってしまってるので仮置き
-{
-	LONG    lX;						//!< マウスのX方向の移動量
-	LONG    lY;						//!< マウスのY方向の移動量
-	LONG    lZ;						//!< マウスのZ方向の移動量
-	MOUSEBUTTONSTATE rgbButtons[4];	//!< マウスのボタンの状態
-	POINT	CursorPos;				//!< ウィンドウ内のカーソル位置
-};
-
 /**
  * マウスデバイスの管理クラス
  */
 class MouseDevice
 {
 public:
+	/**
+	 * マウスの状態を表したenum
+	 */
+	enum MOUSEBUTTONSTATE
+	{
+		MOUSEBUTTON_PUSH,	//!< マウスのボタンが押された瞬間の状態
+		MOUSEBUTTON_RELEASE,//!< マウスのボタンが離された瞬間の状態
+		MOUSEBUTTON_ON,		//!< マウスのボタンが押され続けている状態
+		MOUSEBUTTON_OFF		//!< マウスのボタンが離されている状態
+	};
+
+	/**
+	 * マウスの状態を格納する構造体
+	 */
+	struct MOUSESTATE
+	{
+		LONG    lX;						//!< マウスのX方向の移動量
+		LONG    lY;						//!< マウスのY方向の移動量
+		LONG    lZ;						//!< マウスのZ方向の移動量
+		MOUSEBUTTONSTATE rgbButtons[4];	//!< マウスのボタンの状態
+		POINT	CursorPos;				//!< ウィンドウ内のカーソル位置
+	};
+
 	/**
 	 * MouseDeviceクラスのコンストラクタ
 	 */
@@ -82,5 +81,6 @@ private:
 	DIMOUSESTATE			m_OldDIMouseState;
 
 };
+
 
 #endif
