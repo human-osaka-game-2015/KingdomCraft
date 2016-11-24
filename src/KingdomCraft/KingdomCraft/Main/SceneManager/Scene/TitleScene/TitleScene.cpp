@@ -19,7 +19,8 @@ TitleScene::TitleScene() :
 Scene(SCENE_TITLE)
 {
 	TextureManager::Create(DX11Manager::GetInstance()->GetDevice());
-	DSoundManager::Create(DX11Manager::GetInstance()->GetWindowHandle());
+	DSoundManager::Create();
+	DSoundManager::GetInstance()->Init(DX11Manager::GetInstance()->GetWindowHandle());
 
 	m_pTitleBackground = new TitleBackground();
 	m_pTitleLogo = new TitleLogo();
@@ -32,7 +33,7 @@ TitleScene::~TitleScene()
 	delete m_pTitleLogo;
 	delete m_pTitleBackground;
 
-	DSoundManager::Destroy();
+	DSoundManager::Delete();
 	TextureManager::Delete();
 }
 

@@ -6,9 +6,24 @@
 #include "ShaderManager.h"
 #include "d3dx11.h"
 
-ShaderManager* ShaderManager::m_pShaderManager = NULL;
+
+//----------------------------------------------------------------------------------------------------
+// Static Public Variables
+//----------------------------------------------------------------------------------------------------
+
 const int ShaderManager::m_InvalidIndex = 0;
 
+
+//----------------------------------------------------------------------------------------------------
+// Static Private Variables
+//----------------------------------------------------------------------------------------------------
+
+ShaderManager* ShaderManager::m_pShaderManager = NULL;
+
+
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
 
 ShaderManager::ShaderManager(ID3D11Device* _pDevice) :
 m_pDevice(_pDevice)
@@ -23,6 +38,11 @@ m_pDevice(_pDevice)
 ShaderManager::~ShaderManager()
 {
 }
+
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
 
 bool ShaderManager::LoadVertexShader(LPCTSTR _pFileName, LPCTSTR _pFuncName, int* _pIndex)
 {

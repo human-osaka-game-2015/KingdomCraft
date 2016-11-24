@@ -6,13 +6,19 @@
 #include "KeyDevice.h"
 
 
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
+
 KeyDevice::KeyDevice() :
-m_pDInput8(NULL)
+m_pDInput8(NULL),
+m_hWnd(NULL),
+m_pDInputDevice8(NULL)
 {
 	for (int i = 0; i < 256; i++)
 	{
-		m_DIKeyState[i] = KEY_OFF;
-		m_OldDIKeyState[i] = KEY_OFF;
+		m_pDIKeyState[i] = 0;
+		m_pOldDIKeyState[i] = 0;
 	}
 }
 
@@ -20,8 +26,19 @@ KeyDevice::~KeyDevice()
 {
 }
 
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
+
 bool KeyDevice::Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd)
 {
+	if (m_pDInput8 != NULL)
+	{
+		MessageBox(m_hWnd, TEXT("KeyDeviceクラスは既に初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
 	m_pDInput8 = _pDInput8;
 	m_hWnd = _hWnd;
 
@@ -73,9 +90,13 @@ bool KeyDevice::Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd)
 
 void KeyDevice::Release()
 {
-	m_pDInputDevice8->Release();
-
-	OutputDebugString(TEXT("DirectInputのKeyDeviceを解放しました\n"));
+	if (m_pDInputDevice8 != NULL)
+	{
+		m_pDInputDevice8->Release();
+		m_pDInputDevice8 = NULL;
+		m_pDInput8 = NULL;
+		OutputDebugString(TEXT("DirectInputのKeyDeviceを解放しました\n"));
+	}
 }
 
 void KeyDevice::Update()
@@ -83,39 +104,39 @@ void KeyDevice::Update()
 	HRESULT hr = m_pDInputDevice8->Acquire();
 	if ((hr == DI_OK) || (hr == S_FALSE))
 	{
-		m_pDInputDevice8->GetDeviceState(sizeof(m_DIKeyState), &m_DIKeyState);
+		m_pDInputDevice8->GetDeviceState(sizeof(m_pDIKeyState), &m_pDIKeyState);
 	}
 }
 
 void KeyDevice::KeyCheck(int _dik)
 {
-	if (m_DIKeyState[_dik] & 0x80)
+	if (m_pDIKeyState[_dik] & 0x80)
 	{
-		if (m_OldDIKeyState[_dik] == KEY_OFF)
+		if (m_pOldDIKeyState[_dik] == KEY_OFF)
 		{
-			m_KeyState[_dik] = KEY_PUSH;
+			m_pKeyState[_dik] = KEY_PUSH;
 		}
 		else
 		{
-			m_KeyState[_dik] = KEY_ON;
+			m_pKeyState[_dik] = KEY_ON;
 		}
-		m_OldDIKeyState[_dik] = KEY_ON;
+		m_pOldDIKeyState[_dik] = KEY_ON;
 	}
 	else
 	{
-		if (m_OldDIKeyState[_dik] == KEY_ON)
+		if (m_pOldDIKeyState[_dik] == KEY_ON)
 		{
-			m_KeyState[_dik] = KEY_RELEASE;
+			m_pKeyState[_dik] = KEY_RELEASE;
 		}
 		else
 		{
-			m_KeyState[_dik] = KEY_OFF;
+			m_pKeyState[_dik] = KEY_OFF;
 		}
-		m_OldDIKeyState[_dik] = KEY_OFF;
+		m_pOldDIKeyState[_dik] = KEY_OFF;
 	}
 }
 
 const KeyDevice::KEYSTATE* KeyDevice::GetKeyState() const
 {
-	return m_KeyState;
+	return m_pKeyState;
 }

@@ -17,7 +17,7 @@ public:
 	 * TitleSaveDataButtonのコンストラクタ
 	 * @param[in] _pDrawPos ボタンの描画位置
 	 * @param[in] _pDrawSize ボタンのサイズ
-	 * @param[in] _textureName 描画するボタンの画像
+	 * @param[in] _pTextureName 描画するボタンの画像
 	 */
 	TitleSaveDataButton(const D3DXVECTOR2* const _pDrawPos, const D3DXVECTOR2* const _pDrawSize, LPCTSTR const _pTextureName);
 
@@ -48,5 +48,6 @@ private:
 	D3DXVECTOR2 m_DrawSize;
 
 };
+
 
 #endif

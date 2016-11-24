@@ -35,15 +35,6 @@ public:
 	 */
 	bool Init(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV);
 
-	/// @todo 引数を変えたのでエラーを出さないための仮置き関数,削除する予定
-	bool Init(RECT* _pRectSize, D3DXVECTOR2* _pUV)
-	{
-		D3DXVECTOR2 Vec;
-		Vec.x = static_cast<float>(_pRectSize->right);
-		Vec.y = static_cast<float>(_pRectSize->bottom);
-		return Init(&Vec,_pUV);
-	}
-
 	/**
 	 * Vertex2Dクラスの解放関数
 	 */
@@ -187,10 +178,11 @@ private:
 	ID3D11BlendState*			m_pBlendState;
 	ID3D11SamplerState*			m_pSampler;
 	ID3D11ShaderResourceView*	m_pTextureResourceView;
-	HWND const					m_hWnd;
-	float						m_WindowWidth;
-	float						m_WindowHeight;
+	HWND						m_hWnd;
+	float						m_ClientWidth;
+	float						m_ClientHeight;
 
 };
+
 
 #endif

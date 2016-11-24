@@ -38,10 +38,11 @@ private:
 	void operator=(const TitleBackground&);
 
 	static const D3DXVECTOR2	m_TitleBackgroundPos;
-	static const D3DXVECTOR2	m_TitleBackgroundSize;
+	static const D3DXVECTOR2	m_TitleBackgroundVertex;
 	Vertex2D*					m_pVertex;
 	int							m_TextureIndex;
 
 };
+
 
 #endif

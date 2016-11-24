@@ -6,9 +6,18 @@
 #include "Vertex2D.h"
 #include <Windows.h>
 
+
+//----------------------------------------------------------------------------------------------------
+// Static Private Variables
+//----------------------------------------------------------------------------------------------------
+
 const int  Vertex2D::m_VertexNum = 4;
 const UINT Vertex2D::m_ColorMask = 0xffffffff;
 
+
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
 
 Vertex2D::Vertex2D(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND _hWnd) :
 m_pDevice(_pDevice),
@@ -26,23 +35,17 @@ Vertex2D::~Vertex2D()
 {
 }
 
-void Vertex2D::Release()
-{
-	ReleaseVertexBuffer();
-	ReleaseConstantBuffer();
-	ReleaseSamplerState();
-	ReleaseBlendState();
-	ReleasePixelShader();
-	ReleaseVertexLayout();
-	ReleaseVertexShader();
-}
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
 
 bool Vertex2D::Init(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV)
 {
-	RECT WindowRect;
-	GetWindowRect(m_hWnd, &WindowRect);
-	m_WindowWidth = static_cast<float>(WindowRect.right - WindowRect.left);
-	m_WindowHeight = static_cast<float>(WindowRect.bottom - WindowRect.top);
+	RECT ClientRect;
+	GetClientRect(m_hWnd, &ClientRect);
+	m_ClientWidth = static_cast<float>(ClientRect.right);
+	m_ClientHeight = static_cast<float>(ClientRect.bottom);
 
 	if (!InitVertexShader())
 	{
@@ -103,6 +106,16 @@ bool Vertex2D::Init(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV)
 	return true;
 }
 
+void Vertex2D::Release()
+{
+	ReleaseVertexBuffer();
+	ReleaseConstantBuffer();
+	ReleaseSamplerState();
+	ReleaseBlendState();
+	ReleasePixelShader();
+	ReleaseVertexLayout();
+	ReleaseVertexShader();
+}
 
 void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR3* _pScale, float _angle)
 {
@@ -124,8 +137,8 @@ void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR
 		ConstantBuffer.MatWorld = MatWorld;
 		D3DXMatrixTranspose(&ConstantBuffer.MatWorld, &ConstantBuffer.MatWorld);
 
-		ConstantBuffer.WindowSize.x = m_WindowWidth;
-		ConstantBuffer.WindowSize.y = m_WindowHeight;
+		ConstantBuffer.WindowSize.x = m_ClientWidth;
+		ConstantBuffer.WindowSize.y = m_ClientHeight;
 
 		ConstantBuffer.Color.a = _alpha;
 
@@ -154,34 +167,9 @@ void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR
 }
 
 
-bool Vertex2D::InitVertexBuffer(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV)
-{
-	VERTEX Vertex[] =
-	{
-		D3DXVECTOR3(-_pRectSize->x / 2, -_pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
-		D3DXVECTOR3( _pRectSize->x / 2, -_pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
-		D3DXVECTOR3(-_pRectSize->x / 2,  _pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
-		D3DXVECTOR3( _pRectSize->x / 2,  _pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y)
-	};
-
-	D3D11_BUFFER_DESC BufferDesc;
-	BufferDesc.ByteWidth = sizeof(VERTEX) * m_VertexNum;
-	BufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	BufferDesc.CPUAccessFlags = 0;
-	BufferDesc.MiscFlags = 0;
-	BufferDesc.StructureByteStride = sizeof(float);
-
-	D3D11_SUBRESOURCE_DATA InitVertexData;
-	InitVertexData.pSysMem = Vertex;
-	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &m_pVertexBuffer)))
-	{
-		MessageBox(m_hWnd, TEXT("VertexBufferの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
-		return false;
-	}
-
-	return true;
-}
+//----------------------------------------------------------------------------------------------------
+// Private Functions
+//----------------------------------------------------------------------------------------------------
 
 bool Vertex2D::InitVertexShader()
 {
@@ -212,6 +200,28 @@ bool Vertex2D::InitVertexShader()
 	return true;
 }
 
+bool Vertex2D::InitVertexLayout()
+{
+	D3D11_INPUT_ELEMENT_DESC InputElementDesc[] =
+	{
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	};
+
+	if (FAILED(m_pDevice->CreateInputLayout(
+		InputElementDesc,
+		sizeof(InputElementDesc) / sizeof(InputElementDesc[0]),
+		m_pVertexCompiledShader->GetBufferPointer(),
+		m_pVertexCompiledShader->GetBufferSize(),
+		&m_pVertexLayout)))
+	{
+		MessageBox(m_hWnd, TEXT("CreateInputLayoutに失敗"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
+	return true;
+}
+
 bool Vertex2D::InitPixelShader()
 {
 	ID3DBlob* pCompiledShader = NULL;
@@ -237,28 +247,6 @@ bool Vertex2D::InitPixelShader()
 
 	m_pDevice->CreatePixelShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), NULL, &m_pPixelShader);
 	pCompiledShader->Release();
-
-	return true;
-}
-
-bool Vertex2D::InitVertexLayout()
-{
-	D3D11_INPUT_ELEMENT_DESC InputElementDesc[] =
-	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-	};
-
-	if (FAILED(m_pDevice->CreateInputLayout(
-		InputElementDesc,
-		sizeof(InputElementDesc) / sizeof(InputElementDesc[0]),
-		m_pVertexCompiledShader->GetBufferPointer(),
-		m_pVertexCompiledShader->GetBufferSize(),
-		&m_pVertexLayout)))
-	{
-		MessageBox(m_hWnd, TEXT("CreateInputLayoutに失敗"), TEXT("エラー"), MB_ICONSTOP);
-		return false;
-	}
 
 	return true;
 }
@@ -302,6 +290,35 @@ bool Vertex2D::InitSamplerState()
 		MessageBox(m_hWnd, TEXT("CreateSamplerStateに失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
+	return true;
+}
+
+bool Vertex2D::InitVertexBuffer(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV)
+{
+	VERTEX Vertex[] =
+	{
+		D3DXVECTOR3(-_pRectSize->x / 2, -_pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
+		D3DXVECTOR3(_pRectSize->x / 2, -_pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
+		D3DXVECTOR3(-_pRectSize->x / 2, _pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
+		D3DXVECTOR3(_pRectSize->x / 2, _pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y)
+	};
+
+	D3D11_BUFFER_DESC BufferDesc;
+	BufferDesc.ByteWidth = sizeof(VERTEX) * m_VertexNum;
+	BufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	BufferDesc.CPUAccessFlags = 0;
+	BufferDesc.MiscFlags = 0;
+	BufferDesc.StructureByteStride = sizeof(float);
+
+	D3D11_SUBRESOURCE_DATA InitVertexData;
+	InitVertexData.pSysMem = Vertex;
+	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &m_pVertexBuffer)))
+	{
+		MessageBox(m_hWnd, TEXT("VertexBufferの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
 	return true;
 }
 

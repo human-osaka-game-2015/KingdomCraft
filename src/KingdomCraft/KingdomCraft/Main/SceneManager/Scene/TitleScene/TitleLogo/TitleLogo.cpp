@@ -8,18 +8,12 @@
 #include "TextureManager\TextureManager.h"
 
 const D3DXVECTOR2 TitleLogo::m_TitleLogoPos = D3DXVECTOR2(640, 100);
-const D3DXVECTOR2 TitleLogo::m_TitleLogoSize = D3DXVECTOR2(400, 100);
+const D3DXVECTOR2 TitleLogo::m_TitleLogoVertex = D3DXVECTOR2(400, 100);
 
 
 TitleLogo::TitleLogo() :
-m_TextureIndex(-1)	/// @todo TextureManagerクラスの定数を作るまで-1は仮置きしとく
+m_TextureIndex(TextureManager::m_InvalidIndex)
 {
-	RECT VertexRect;
-	VertexRect.left = 0;
-	VertexRect.right = static_cast<LONG>(m_TitleLogoSize.x);
-	VertexRect.top = 0;
-	VertexRect.bottom = static_cast<LONG>(m_TitleLogoSize.y);
-
 	D3DXVECTOR2 UV[4];
 	UV[0] = D3DXVECTOR2(0, 0);
 	UV[1] = D3DXVECTOR2(1, 0);
@@ -32,7 +26,7 @@ m_TextureIndex(-1)	/// @todo TextureManagerクラスの定数を作るまで-1�
 		DX11Manager::GetInstance()->GetDeviceContext(),
 		DX11Manager::GetInstance()->GetWindowHandle());
 
-	m_pVertex->Init(&VertexRect, UV);
+	m_pVertex->Init(&m_TitleLogoVertex, UV);
 
 
 	TextureManager::GetInstance()->LoadTexture(TEXT("Resource\\Texture\\TitleScene\\TitleLogo\\TitleLogo.png"), &m_TextureIndex);

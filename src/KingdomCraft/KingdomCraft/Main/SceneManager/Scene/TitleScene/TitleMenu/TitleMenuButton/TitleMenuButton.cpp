@@ -9,19 +9,13 @@
 #include "TextureManager\TextureManager.h"
 
 
-TitleMenuButton::TitleMenuButton(const D3DXVECTOR2* const _pDrawPos, const D3DXVECTOR2* const _pDrawSize, LPCTSTR const _pTextureName) :
-m_DrawPos(*_pDrawPos),
-m_DrawSize(*_pDrawSize),
+TitleMenuButton::TitleMenuButton(const D3DXVECTOR2* const _pButtonPos, const D3DXVECTOR2* const _pButtonVertex, LPCTSTR const _pTextureName) :
+m_ButtonPos(*_pButtonPos),
+m_ButtonVertex(*_pButtonVertex),
 m_IsMouseOver(false),
 m_IsVisible(false),
-m_TextureIndex(-1)	/// @todo TextureManagerクラスの定数を作るまで-1は仮置きしとく
+m_TextureIndex(TextureManager::m_InvalidIndex)
 {
-	RECT VertexRect;
-	VertexRect.left = 0;
-	VertexRect.right = m_DrawSize.x;
-	VertexRect.top = 0;
-	VertexRect.bottom = m_DrawSize.y;
-
 	D3DXVECTOR2 UV[4];
 	UV[0] = D3DXVECTOR2(0, 0);
 	UV[1] = D3DXVECTOR2(1, 0);
@@ -34,7 +28,7 @@ m_TextureIndex(-1)	/// @todo TextureManagerクラスの定数を作るまで-1�
 		DX11Manager::GetInstance()->GetDeviceContext(),
 		DX11Manager::GetInstance()->GetWindowHandle());
 
-	m_pVertex->Init(&VertexRect, UV);
+	m_pVertex->Init(&m_ButtonVertex, UV);
 
 
 	TextureManager::GetInstance()->LoadTexture(_pTextureName, &m_TextureIndex);
@@ -55,7 +49,7 @@ bool TitleMenuButton::Control()
 		return false;
 	}
 
-	return OnClick();
+	return IsClicked();
 }
 
 void TitleMenuButton::Draw()
@@ -69,30 +63,30 @@ void TitleMenuButton::Draw()
 
 	if (m_IsMouseOver)
 	{
-		m_pVertex->Draw(&m_DrawPos, 1.0f, &D3DXVECTOR3(1.1, 1.1, 1));
+		m_pVertex->Draw(&m_ButtonPos, 1.0f, &D3DXVECTOR3(1.1f, 1.1f, 1.f));
 	}
 	else
 	{
-		m_pVertex->Draw(&m_DrawPos, 1.0f, &D3DXVECTOR3(1, 1, 1));
+		m_pVertex->Draw(&m_ButtonPos, 1.0f, &D3DXVECTOR3(1.f, 1.f, 1.f));
 	}
 
 	DX11Manager::GetInstance()->SetDepthStencilTest(true);
 }
 
-bool TitleMenuButton::OnClick()
+bool TitleMenuButton::IsClicked()
 {
 	bool isClick = false;
-	MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();
+	MouseDevice::MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();
 
 	// マウス座標が矩形内にあるか判定
-	if (MouseState.CursorPos.x > (m_DrawPos.x - m_DrawSize.x / 2) &&
-		MouseState.CursorPos.x < (m_DrawPos.x + m_DrawSize.x / 2) &&
-		MouseState.CursorPos.y > (m_DrawPos.y - m_DrawSize.y / 2) &&
-		MouseState.CursorPos.y < (m_DrawPos.y + m_DrawSize.y / 2))
+	if (MouseState.CursorPos.x > (m_ButtonPos.x - m_ButtonVertex.x / 2) &&
+		MouseState.CursorPos.x < (m_ButtonPos.x + m_ButtonVertex.x / 2) &&
+		MouseState.CursorPos.y > (m_ButtonPos.y - m_ButtonVertex.y / 2) &&
+		MouseState.CursorPos.y < (m_ButtonPos.y + m_ButtonVertex.y / 2))
 	{
 		m_IsMouseOver = true;
 
-		if (MouseState.rgbButtons[0] == MOUSEBUTTON_PUSH)
+		if (MouseState.rgbButtons[0] == MouseDevice::MOUSEBUTTON_PUSH)
 		{
 			isClick = true;
 		}

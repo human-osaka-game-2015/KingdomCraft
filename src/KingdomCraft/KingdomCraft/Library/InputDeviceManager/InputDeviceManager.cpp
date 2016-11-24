@@ -7,13 +7,23 @@
 #include "KeyDevice\KeyDevice.h"
 #include "MouseDevice\MouseDevice.h"
 
+
+//----------------------------------------------------------------------------------------------------
+// Static Private Variables
+//----------------------------------------------------------------------------------------------------
+
 InputDeviceManager* InputDeviceManager::m_pInputDeviceManager = NULL;
 
+
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
 
 InputDeviceManager::InputDeviceManager() :
 m_pKeyDevice(NULL),
 m_pMouseDevice(NULL),
-m_pDInput8(NULL)
+m_pDInput8(NULL),
+m_hWnd(NULL)
 {
 }
 
@@ -21,15 +31,20 @@ InputDeviceManager::~InputDeviceManager()
 {
 }
 
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
+
 bool InputDeviceManager::Init(HWND _hWnd)
 {
-	m_hWnd = _hWnd;
-
 	if (m_pDInput8 != NULL)
 	{
 		MessageBox(m_hWnd, TEXT("m_pDInput8の中身は空ではありません"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
+
+	m_hWnd = _hWnd;
 
 	if (FAILED(DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&m_pDInput8, NULL)))
 	{
@@ -62,8 +77,11 @@ void InputDeviceManager::Release()
 		OutputDebugString(TEXT("MouseDeviceクラスを破棄しました\n"));
 	}
 
-	m_pDInput8->Release();
-	m_pDInput8 = NULL;
+	if (m_pDInput8 != NULL)
+	{
+		m_pDInput8->Release();
+		m_pDInput8 = NULL;
+	}
 }
 
 bool InputDeviceManager::CreateKeyDevice()
@@ -132,7 +150,7 @@ const KeyDevice::KEYSTATE* InputDeviceManager::GetKeyState() const
 	return m_pKeyDevice->GetKeyState();
 }
 
-const MOUSESTATE InputDeviceManager::GetMouseState() const
+const MouseDevice::MOUSESTATE InputDeviceManager::GetMouseState() const
 {
 	return m_pMouseDevice->GetMouseState();
 }
