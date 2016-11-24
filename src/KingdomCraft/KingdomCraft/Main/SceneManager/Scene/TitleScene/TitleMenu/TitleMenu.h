@@ -51,14 +51,15 @@ private:
 	TitleMenu(const TitleMenu&);
 	void operator=(const TitleMenu&);
 
-	static D3DXVECTOR2	m_StartButtonSize;
+	static D3DXVECTOR2	m_StartButtonVertex;
 	static D3DXVECTOR2	m_StartButtonPos;
-	static D3DXVECTOR2	m_ContinueButtonSize;
+	static D3DXVECTOR2	m_ContinueButtonVertex;
 	static D3DXVECTOR2	m_ContinueButtonPos;
+	TitleSaveDataMenu*	m_pTitleSaveDataMenu;	// 続きからを押した後に出るセーブデータメニュー
 	TitleMenuButton*	m_pStartButton;			// 初めからのボタン
 	TitleMenuButton*	m_pContinueButton;		// 続きからのボタン
-	TitleSaveDataMenu*	m_pTitleSaveDataMenu;	// 続きからを押した後に出るセーブデータメニュー
 
 };
+
 
 #endif

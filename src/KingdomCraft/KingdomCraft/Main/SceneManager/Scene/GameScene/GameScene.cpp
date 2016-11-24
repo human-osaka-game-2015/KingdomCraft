@@ -15,8 +15,12 @@ GameScene::GameScene() :
 Scene(SCENE_GAME)
 {
 	TextureManager::Create(DX11Manager::GetInstance()->GetDevice());
+
 	ShaderManager::Create(DX11Manager::GetInstance()->GetDevice());
-	DSoundManager::Create(DX11Manager::GetInstance()->GetWindowHandle());
+
+	DSoundManager::Create();
+	DSoundManager::GetInstance()->Init(DX11Manager::GetInstance()->GetWindowHandle());
+
 	FbxFileManager::Create(DX11Manager::GetInstance()->GetDevice(), DX11Manager::GetInstance()->GetDeviceContext());
 	FbxFileManager::GetInstance()->Init();
 }
@@ -25,8 +29,11 @@ GameScene::~GameScene()
 {
 	FbxFileManager::GetInstance()->Release();
 	FbxFileManager::Delete();
-	DSoundManager::Destroy();
+
+	DSoundManager::Delete();
+
 	ShaderManager::Delete();
+
 	TextureManager::Delete();
 }
 

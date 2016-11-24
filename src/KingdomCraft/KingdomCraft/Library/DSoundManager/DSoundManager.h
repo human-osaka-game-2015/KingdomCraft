@@ -31,13 +31,12 @@ public:
 
 	/**
 	 * インスタンス生成関数
-	 * @param[in] _hWnd ウィンドウハンドル。コンストラクタ内で使う
 	 */
-	static void Create(HWND _hWnd)
+	static void Create()
 	{
 		if (m_pSoundManager == NULL)
 		{
-			m_pSoundManager = new DSoundManager(_hWnd);
+			m_pSoundManager = new DSoundManager();
 		}
 	}
 
@@ -53,7 +52,7 @@ public:
 	/**
 	 * インスタンスの破棄
 	 */
-	static void Destroy()
+	static void Delete()
 	{
 		if (m_pSoundManager != NULL)
 		{
@@ -64,9 +63,10 @@ public:
 
 	/**
 	 * DSoundManagerクラスの初期化関数
+	 * @param[in] _hWnd ウィンドウハンドル。コンストラクタ内で使う
 	 * @return 成功したらtrue
 	 */
-	bool Init();
+	bool Init(HWND _hWnd);
 
 	/**
 	 * DSoundManagerクラスの解放関数
@@ -107,7 +107,7 @@ private:
 	 * DSoundManagerクラスのコンストラクタ
 	 * @param[in] _hWnd 音声を鳴らすウィンドウのハンドル
 	 */
-	DSoundManager(HWND _hWnd);
+	DSoundManager();
 
 	/**
 	 * DSoundManagerクラスのデストラクタ
@@ -123,11 +123,12 @@ private:
 	 */
 	bool ReadWave(LPSTR _pFileName, WAVEFORMATEX* _pWaveFormat, BYTE** _pWaveData, DWORD* _pWaveSize);
 
-	HWND const						  m_hWnd;
 	IDirectSound8*					  m_pDSound8;
+	HWND							  m_hWnd;
 	std::vector<LPDIRECTSOUNDBUFFER8> m_pSound;
 	static DSoundManager*			  m_pSoundManager;
 
 };
+
 
 #endif

@@ -19,7 +19,7 @@ public:
 	 * @param[in] _pDevice DirectX11のデバイス
 	 * @param[in] _pDeviceContext DirectX11のデバイスコンテキスト
 	 */
-	DebugFont(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND _hWnd);
+	DebugFont(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext);
 
 	/**
 	 * DebugFontクラスのデストラクタ
@@ -31,7 +31,7 @@ public:
 	 * @param[in] _hWnd DebugFontクラスが対応するWindowのハンドル
 	 * @return 初期化に成功したらtrueが返る
 	 */
-	bool Init();
+	bool Init(HWND _hWnd);
 
 	/**
 	 * DebugFontクラスの解放関数
@@ -163,7 +163,6 @@ private:
 	 */
 	void ReleaseDepthStencilState();
 
-
 	static const float m_DebugFontTu;
 	static const int m_SpaceAsciiCode;
 	ID3D11Device* const			m_pDevice;
@@ -177,12 +176,13 @@ private:
 	ID3D11SamplerState*			m_pSamplerState;
 	ID3D11BlendState*			m_pBlendState;
 	ID3D11DepthStencilState*	m_pDepthStencilState;
-	HWND const					m_hWnd;
+	HWND						m_hWnd;
 	float						m_FontHeight;
 	float						m_FontWidth;
 	float						m_WindowWidth;
 	float						m_WindowHeight;
 
 };
+
 
 #endif

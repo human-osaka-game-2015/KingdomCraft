@@ -93,7 +93,7 @@ public:
 	 * マウスの状態を取得する
 	 * @return マウスの状態が格納されている構造体
 	 */
-	const MOUSESTATE GetMouseState() const;
+	const MouseDevice::MOUSESTATE GetMouseState() const;
 
 private:
 	/**
@@ -114,5 +114,6 @@ private:
 	HWND			m_hWnd;
 
 };
+
 
 #endif
