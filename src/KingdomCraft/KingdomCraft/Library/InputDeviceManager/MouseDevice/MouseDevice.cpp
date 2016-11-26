@@ -123,11 +123,11 @@ void MouseDevice::Update()
 		{
 			if (m_OldDIMouseState.rgbButtons[i])
 			{
-				m_MouseState.rgbButtons[i] = MOUSEBUTTON_PUSH;
+				m_MouseState.rgbButtons[i] = MOUSEBUTTON_ON;
 			}
 			else
 			{
-				m_MouseState.rgbButtons[i] = MOUSEBUTTON_ON;
+				m_MouseState.rgbButtons[i] = MOUSEBUTTON_PUSH;
 			}
 			m_OldDIMouseState.rgbButtons[i] = m_DIMouseState.rgbButtons[i];
 		}
