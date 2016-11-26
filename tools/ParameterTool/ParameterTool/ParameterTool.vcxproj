@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{61C06E8C-512B-4AFF-992E-1C788B3E4761}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ParameterTool</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)ParameterTool\Librarys;$(DXSDK_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dxguid.lib;d3d9.lib;d3dx9.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Librarys\DebugFont\DebugFont.cpp" />
+    <ClCompile Include="Librarys\DX9Manager\DX9Manager.cpp" />
+    <ClCompile Include="Librarys\InputDeviceManager\InputDeviceManager.cpp" />
+    <ClCompile Include="Librarys\InputDeviceManager\KeyDevice\KeyDevice.cpp" />
+    <ClCompile Include="Librarys\InputDeviceManager\MouseDevice\MouseDevice.cpp" />
+    <ClCompile Include="Main\Main.cpp" />
+    <ClCompile Include="Main\Scene\FieldManager\FieldManager.cpp" />
+    <ClCompile Include="Main\Scene\FieldMessenger\FieldMessenger.cpp" />
+    <ClCompile Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildBox\HouseBuildBox.cpp" />
+    <ClCompile Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildManager.cpp" />
+    <ClCompile Include="Main\Scene\HouseManager\HouseManager.cpp" />
+    <ClCompile Include="Main\Scene\HouseManager\House\House.cpp" />
+    <ClCompile Include="Main\Scene\Scene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Librarys\DebugFont\DebugFont.h" />
+    <ClInclude Include="Librarys\DX9Manager\DX9Manager.h" />
+    <ClInclude Include="Librarys\InputDeviceManager\InputDeviceManager.h" />
+    <ClInclude Include="Librarys\InputDeviceManager\KeyDevice\KeyDevice.h" />
+    <ClInclude Include="Librarys\InputDeviceManager\MouseDevice\MouseDevice.h" />
+    <ClInclude Include="Main\Scene\FieldManager\FieldManager.h" />
+    <ClInclude Include="Main\Scene\FieldMessenger\FieldMessenger.h" />
+    <ClInclude Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildBox\HouseBuildBox.h" />
+    <ClInclude Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildManager.h" />
+    <ClInclude Include="Main\Scene\HouseManager\HouseManager.h" />
+    <ClInclude Include="Main\Scene\HouseManager\House\House.h" />
+    <ClInclude Include="Main\Scene\Scene.h" />
+    <ClInclude Include="Resource\resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource\Dialog.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
