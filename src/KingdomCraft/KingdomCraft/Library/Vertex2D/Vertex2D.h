@@ -179,8 +179,8 @@ private:
 	ID3D11SamplerState*			m_pSampler;
 	ID3D11ShaderResourceView*	m_pTextureResourceView;
 	HWND						m_hWnd;
-	float						m_WindowWidth;
-	float						m_WindowHeight;
+	float						m_ClientWidth;
+	float						m_ClientHeight;
 
 };
 
