@@ -42,10 +42,10 @@ Vertex2D::~Vertex2D()
 
 bool Vertex2D::Init(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV)
 {
-	RECT WindowRect;
-	GetWindowRect(m_hWnd, &WindowRect);
-	m_WindowWidth = static_cast<float>(WindowRect.right - WindowRect.left);
-	m_WindowHeight = static_cast<float>(WindowRect.bottom - WindowRect.top);
+	RECT ClientRect;
+	GetClientRect(m_hWnd, &ClientRect);
+	m_ClientWidth = static_cast<float>(ClientRect.right);
+	m_ClientHeight = static_cast<float>(ClientRect.bottom);
 
 	if (!InitVertexShader())
 	{
@@ -137,8 +137,8 @@ void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR
 		ConstantBuffer.MatWorld = MatWorld;
 		D3DXMatrixTranspose(&ConstantBuffer.MatWorld, &ConstantBuffer.MatWorld);
 
-		ConstantBuffer.WindowSize.x = m_WindowWidth;
-		ConstantBuffer.WindowSize.y = m_WindowHeight;
+		ConstantBuffer.WindowSize.x = m_ClientWidth;
+		ConstantBuffer.WindowSize.y = m_ClientHeight;
 
 		ConstantBuffer.Color.a = _alpha;
 
