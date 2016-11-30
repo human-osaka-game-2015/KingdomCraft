@@ -113,9 +113,15 @@ void MouseDevice::Update()
 	GetCursorPos(&m_MouseState.CursorPos);
 
 	RECT WindowRect;
+	RECT ClientRect;
+	int TitleBarSize = GetSystemMetrics(SM_CYCAPTION);
 	GetWindowRect(m_hWnd, &WindowRect);
+	GetClientRect(m_hWnd, &ClientRect);
 	m_MouseState.CursorPos.x -= WindowRect.left;
 	m_MouseState.CursorPos.y -= WindowRect.top;
+
+	m_MouseState.CursorPos.x -= (WindowRect.right - WindowRect.left - ClientRect.right - ClientRect.left) / 2;
+	m_MouseState.CursorPos.y -= (WindowRect.bottom - WindowRect.top - ClientRect.bottom + TitleBarSize - ClientRect.top) / 2;
 
 	for (int i = 0; i < 4; i++)
 	{
