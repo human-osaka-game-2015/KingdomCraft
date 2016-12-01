@@ -31,6 +31,9 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameData\GameData.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\Scene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.cpp" />
@@ -59,6 +62,9 @@
     <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameData\GameData.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\Scene.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.h" />
