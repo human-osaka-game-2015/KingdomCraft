@@ -94,6 +94,9 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameData\GameData.cpp">
       <Filter>Main\SceneManager\Scene\GameScene\GameData</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SaveDataManager\SaveDataManager.cpp">
+      <Filter>Main\SceneManager\SaveDataManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -185,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameData\GameData.h">
       <Filter>Main\SceneManager\Scene\GameScene\GameData</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SaveDataManager\SaveDataManager.h">
+      <Filter>Main\SceneManager\SaveDataManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +292,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\GameData">
       <UniqueIdentifier>{01740cda-36dc-4a91-a56d-70c8bb1ea247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SaveDataManager">
+      <UniqueIdentifier>{599d1318-177a-4566-b3c5-a882a9659cea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
