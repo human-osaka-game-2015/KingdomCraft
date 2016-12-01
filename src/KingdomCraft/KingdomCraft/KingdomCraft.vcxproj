@@ -24,6 +24,7 @@
     <ClCompile Include="Library\ShaderManager\ShaderManager.cpp" />
     <ClCompile Include="Library\Vertex2D\Vertex2D.cpp" />
     <ClCompile Include="Main\Main.cpp" />
+    <ClCompile Include="Main\SceneManager\SaveDataManager\SaveDataManager.cpp" />
     <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp" />
     <ClCompile Include="Main\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Library\TextureManager\TextureManager.h" />
     <ClInclude Include="Library\ShaderManager\ShaderManager.h" />
     <ClInclude Include="Library\Vertex2D\Vertex2D.h" />
+    <ClInclude Include="Main\SceneManager\SaveDataManager\SaveDataManager.h" />
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Library\InputDeviceManager\InputDeviceManager.h" />
     <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />
