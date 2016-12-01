@@ -26,6 +26,9 @@
     <ClCompile Include="Main\Main.cpp" />
     <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp" />
     <ClCompile Include="Main\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\Scene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.cpp" />
@@ -50,6 +53,9 @@
     <ClInclude Include="Library\InputDeviceManager\KeyDevice\KeyDevice.h" />
     <ClInclude Include="Library\InputDeviceManager\MouseDevice\MouseDevice.h" />
     <ClInclude Include="Main\SceneManager\SceneManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Main\SceneManager\Scene\Scene.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.h" />
