@@ -29,6 +29,7 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\GameData\GameData.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\Scene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.cpp" />
@@ -56,6 +57,7 @@
     <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\GameData\GameData.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Main\SceneManager\Scene\Scene.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.h" />
