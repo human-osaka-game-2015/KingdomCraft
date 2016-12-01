@@ -73,6 +73,15 @@
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp">
       <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\EventManager\EventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\EventManager\Event</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -143,6 +152,15 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h">
       <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.h">
+      <Filter>Main\SceneManager\Scene\GameScene\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.h">
+      <Filter>Main\SceneManager\Scene\GameScene\EventManager\EventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.h">
+      <Filter>Main\SceneManager\Scene\GameScene\EventManager\Event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +241,15 @@
     </Filter>
     <Filter Include="Library\Vertex2D\Effect">
       <UniqueIdentifier>{573df6be-f38e-4174-90e5-a99325fbf189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\EventManager">
+      <UniqueIdentifier>{08bfae1e-cc46-4dac-90ce-90f45d9ad074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener">
+      <UniqueIdentifier>{23dd25e5-5961-4b1c-ba93-4413ca8fecff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\EventManager\Event">
+      <UniqueIdentifier>{4d253192-345c-4863-a2c8-7f07029b6f23}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
