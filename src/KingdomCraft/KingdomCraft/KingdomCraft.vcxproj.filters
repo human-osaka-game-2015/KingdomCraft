@@ -82,6 +82,9 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.cpp">
       <Filter>Main\SceneManager\Scene\GameScene\EventManager\Event</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\GameData\GameData.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\GameData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -161,6 +164,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.h">
       <Filter>Main\SceneManager\Scene\GameScene\EventManager\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\GameData\GameData.h">
+      <Filter>Main\SceneManager\Scene\GameScene\GameData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +256,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\EventManager\Event">
       <UniqueIdentifier>{4d253192-345c-4863-a2c8-7f07029b6f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\GameData">
+      <UniqueIdentifier>{5d539324-f794-4485-b9af-b7efb8af9b3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
