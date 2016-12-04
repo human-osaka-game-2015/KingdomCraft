@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\Camera\Camera.cpp" />
     <ClCompile Include="Library\DSoundManager\DSoundManager.cpp" />
     <ClCompile Include="Library\DebugFont\DebugFont.cpp" />
     <ClCompile Include="Library\DX11Manager\DX11Manager.cpp" />
@@ -45,6 +46,7 @@
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Library\Camera\Camera.h" />
     <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
     <ClInclude Include="Library\DebugFont\DebugFont.h" />
     <ClInclude Include="Library\FbxFileManager\FbxFileManager.h" />
