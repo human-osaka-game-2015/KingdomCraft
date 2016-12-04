@@ -1,10 +1,27 @@
-﻿#include "DebugFont.h"
+﻿/**
+ * @file   DebugFont.cpp
+ * @brief  DebugFontクラスの実装
+ * @author morimoto
+ */
+#include "DebugFont.h"
 #include <d3dx11.h>
 
 
-DebugFont::DebugFont():
-m_pDevice(NULL),
-m_pDeviceContext(NULL),
+//----------------------------------------------------------------------------------------------------
+// Static Private Variables
+//----------------------------------------------------------------------------------------------------
+
+const float DebugFont::m_DebugFontTu = 1.0f / 95;
+const int DebugFont::m_SpaceAsciiCode = 32;
+
+
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
+
+DebugFont::DebugFont(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext) :
+m_pDevice(_pDevice),
+m_pDeviceContext(_pDeviceContext),
 m_pResourceView(NULL),
 m_pConstantBuffer(NULL),
 m_pVertexBuffer(NULL),
@@ -13,7 +30,8 @@ m_pLayout(NULL),
 m_pPixelShader(NULL),
 m_pSamplerState(NULL),
 m_pBlendState(NULL),
-m_pDepthStencilState(NULL)
+m_pDepthStencilState(NULL),
+m_hWnd(NULL)
 {
 }
 
@@ -21,12 +39,20 @@ DebugFont::~DebugFont()
 {
 }
 
-bool DebugFont::Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext, HWND _hWnd)
-{
-	m_pDevice = _pDevice;
-	m_pDeviceContext = _pDeviceContext;
-	m_hWnd = _hWnd;
 
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
+
+bool DebugFont::Init(HWND _hWnd)
+{
+	if (m_pResourceView != NULL)
+	{
+		MessageBox(m_hWnd, TEXT("DebugFontクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
+	m_hWnd = _hWnd;
 
 	if (!InitResourceView())
 	{
@@ -67,7 +93,7 @@ bool DebugFont::Init(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContex
 		ReleaseResourceView();
 		return false;
 	}
-	
+
 	if (!InitDepthStencilState())
 	{
 		MessageBox(m_hWnd, TEXT("InitDepthStencilStateが失敗しました"), TEXT("エラー"), MB_ICONSTOP);
@@ -96,33 +122,33 @@ void DebugFont::Release()
 
 bool DebugFont::InitFont(float _fontHeight, float _fontWidth, D3DXCOLOR _fontColor)
 {
-	m_FontWidth = _fontWidth;		// フォントの幅
-	m_FontHeight = _fontHeight;     // フォントの高さ
+	m_FontWidth = _fontWidth;
+	m_FontHeight = _fontHeight;
 
 	RECT WindowRect;
 	GetWindowRect(m_hWnd, &WindowRect);
-	m_WindowWidth = WindowRect.right - WindowRect.left;
-	m_WindowHeight = WindowRect.bottom - WindowRect.top;
+	m_WindowWidth = static_cast<float>(WindowRect.right - WindowRect.left);
+	m_WindowHeight = static_cast<float>(WindowRect.bottom - WindowRect.top);
 
 	FONT_VERTEX FontVertex[] =
 	{
-		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2, 0),				_fontColor, 0, 0,
-		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2, 0),				_fontColor, FONT_TU, 0,
-		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2 + m_FontHeight, 0), _fontColor, 0, 1,
-		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2 + m_FontHeight, 0), _fontColor, FONT_TU, 1,
+		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2, 0),				_fontColor, D3DXVECTOR2(0,				0),
+		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2, 0),				_fontColor, D3DXVECTOR2(m_DebugFontTu,	0),
+		D3DXVECTOR3(-m_WindowWidth / 2,					-m_WindowHeight / 2 + m_FontHeight, 0), _fontColor, D3DXVECTOR2(0,				1),
+		D3DXVECTOR3(-m_WindowWidth / 2 + m_FontWidth,	-m_WindowHeight / 2 + m_FontHeight, 0), _fontColor, D3DXVECTOR2(m_DebugFontTu,	1),
 	};
 
 	D3D11_BUFFER_DESC BufferDesc;
 	ZeroMemory(&BufferDesc, sizeof(BufferDesc));
-	BufferDesc.ByteWidth = sizeof(FontVertex);         
-	BufferDesc.Usage = D3D11_USAGE_DEFAULT;				
-	BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;	
-	BufferDesc.CPUAccessFlags = 0;                     
-	BufferDesc.MiscFlags = 0;							
+	BufferDesc.ByteWidth = sizeof(FontVertex);
+	BufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	BufferDesc.CPUAccessFlags = 0;
+	BufferDesc.MiscFlags = 0;
 
 	D3D11_SUBRESOURCE_DATA ResourceData;
 	ZeroMemory(&ResourceData, sizeof(ResourceData));
-	ResourceData.pSysMem = (void*)FontVertex;			
+	ResourceData.pSysMem = reinterpret_cast<void*>(FontVertex);
 	ResourceData.SysMemPitch = 0;
 	ResourceData.SysMemSlicePitch = 0;
 
@@ -135,7 +161,7 @@ bool DebugFont::InitFont(float _fontHeight, float _fontWidth, D3DXCOLOR _fontCol
 	return true;
 }
 
-void DebugFont::DrawFont(D3DXVECTOR2* _pDrawPos, char* _pStr)
+void DebugFont::DrawFont(const D3DXVECTOR2* _pDrawPos, LPCTSTR _pStr)
 {
 	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
 	m_pDeviceContext->HSSetShader(NULL, NULL, 0);
@@ -156,13 +182,12 @@ void DebugFont::DrawFont(D3DXVECTOR2* _pDrawPos, char* _pStr)
 	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
 
-	D3D11_MAPPED_SUBRESOURCE mappedResource;
-	CONSTANT_BUFFER* cBuffer;
-	D3DXMATRIX matTranslation;
-	for (int i = 0; i < (int)strlen(_pStr); i++)
+	D3D11_MAPPED_SUBRESOURCE MappedResource;
+	CONSTANT_BUFFER* pConstantBuffer;
+	for (int i = 0; i < static_cast<int>(strlen(_pStr)); i++)
 	{
-		m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);	
-		cBuffer = (CONSTANT_BUFFER*)(mappedResource.pData);
+		m_pDeviceContext->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &MappedResource);
+		pConstantBuffer = reinterpret_cast<CONSTANT_BUFFER*>(MappedResource.pData);
 
 		D3DXMATRIX Proj(
 			2.0f / m_WindowWidth, 0.0f, 0.0f, 0.0f,
@@ -170,17 +195,17 @@ void DebugFont::DrawFont(D3DXVECTOR2* _pDrawPos, char* _pStr)
 			0.0f, 0.0f, 1.0f, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f
 			);
-		cBuffer->MatWVP = Proj;
+		pConstantBuffer->MatWVP = Proj;
 
-		cBuffer->TexelOffset.x = (float)(_pStr[i] - 32) * FONT_TU;
-		cBuffer->TexelOffset.y = 0.0f;
-		cBuffer->TexelOffset.z = 0.0f;
-		cBuffer->TexelOffset.w = 0.0f;
+		pConstantBuffer->TexelOffset.x = static_cast<float>(_pStr[i] - m_SpaceAsciiCode) * m_DebugFontTu;
+		pConstantBuffer->TexelOffset.y = 0.0f;
+		pConstantBuffer->TexelOffset.z = 0.0f;
+		pConstantBuffer->TexelOffset.w = 0.0f;
 
-		cBuffer->PosOffset.x = i * m_FontWidth + _pDrawPos->x;
-		cBuffer->PosOffset.y = _pDrawPos->y;
-		cBuffer->PosOffset.z = 0;
-		cBuffer->PosOffset.w = 0;
+		pConstantBuffer->PosOffset.x = i * m_FontWidth + _pDrawPos->x;
+		pConstantBuffer->PosOffset.y = _pDrawPos->y;
+		pConstantBuffer->PosOffset.z = 0;
+		pConstantBuffer->PosOffset.w = 0;
 
 		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
 
@@ -190,6 +215,11 @@ void DebugFont::DrawFont(D3DXVECTOR2* _pDrawPos, char* _pStr)
 		m_pDeviceContext->Draw(4, 0);
 	}
 }
+
+
+//----------------------------------------------------------------------------------------------------
+// Private Functions
+//----------------------------------------------------------------------------------------------------
 
 bool DebugFont::InitResourceView()
 {
@@ -211,7 +241,7 @@ bool DebugFont::InitResourceView()
 
 	if (FAILED(D3DX11CreateShaderResourceViewFromFile(
 		m_pDevice,
-		TEXT("Library//DebugFont//Resource//Font.png"),
+		TEXT("Library\\DebugFont\\Resource\\Font.png"),
 		&LoadInfo,
 		NULL,
 		&m_pResourceView,
@@ -230,11 +260,11 @@ bool DebugFont::InitConstantBuffer()
 {
 	D3D11_BUFFER_DESC ConstantBufferDesc;
 	ZeroMemory(&ConstantBufferDesc, sizeof(ConstantBufferDesc));
-	ConstantBufferDesc.ByteWidth = sizeof(CONSTANT_BUFFER);         // バッファのサイズ
-	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;					// 動的リソースを指定(CPUによる書き込みとGPUによる読み取りがされる)
-	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;		// バッファの種類(定数バッファを指定)
-	ConstantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;		// CPUのアクセス(CPU による書き込みを許可)
-	ConstantBufferDesc.MiscFlags = 0;								// その他のフラグは設定しない
+	ConstantBufferDesc.ByteWidth = sizeof(CONSTANT_BUFFER);
+	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	ConstantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	ConstantBufferDesc.MiscFlags = 0;
 
 	if (FAILED(m_pDevice->CreateBuffer(&ConstantBufferDesc, NULL, &m_pConstantBuffer)))
 	{
@@ -272,7 +302,7 @@ bool DebugFont::InitVertexShader()
 	ID3DBlob* pCompiledVertexShader = NULL;
 	ID3DBlob* pVertexShaderErrors = NULL;
 	if (FAILED(D3DX11CompileFromFile(
-		TEXT("Library//DebugFont//Effect//DebugFont.fx"),
+		TEXT("Library\\DebugFont\\Effect\\DebugFont.fx"),
 		NULL,
 		NULL,
 		"VS",
@@ -292,7 +322,6 @@ bool DebugFont::InitVertexShader()
 	if (pVertexShaderErrors != NULL) pVertexShaderErrors->Release();
 
 
-
 	if (FAILED(m_pDevice->CreateVertexShader(
 		pCompiledVertexShader->GetBufferPointer(),
 		pCompiledVertexShader->GetBufferSize(),
@@ -305,12 +334,11 @@ bool DebugFont::InitVertexShader()
 	}
 
 
-
 	D3D11_INPUT_ELEMENT_DESC Layout[] =
 	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 28, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "POSITION",	0, DXGI_FORMAT_R32G32B32_FLOAT,		0, 0,	D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "COLOR",		0, DXGI_FORMAT_R32G32B32A32_FLOAT,	0, 12,	D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "TEXCOORD",	0, DXGI_FORMAT_R32G32_FLOAT,		0, 28,	D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	};
 
 	if (FAILED(m_pDevice->CreateInputLayout(
@@ -338,7 +366,7 @@ bool DebugFont::InitPixelShader()
 	ID3DBlob* pCompiledPixelShader = NULL;
 	ID3DBlob* pPixelShaderErrors = NULL;
 	if (FAILED(D3DX11CompileFromFile(
-		TEXT("Library//DebugFont//Effect//DebugFont.fx"),
+		TEXT("Library\\DebugFont\\Effect\\DebugFont.fx"),
 		NULL,
 		NULL,
 		"PS",
@@ -356,7 +384,6 @@ bool DebugFont::InitPixelShader()
 	}
 
 	if (pPixelShaderErrors != NULL) pPixelShaderErrors->Release();
-
 
 
 	if (FAILED(m_pDevice->CreatePixelShader(
@@ -377,23 +404,23 @@ bool DebugFont::InitPixelShader()
 
 bool DebugFont::InitSamplerState()
 {
-	D3D11_SAMPLER_DESC samplerDesc;
-	ZeroMemory(&samplerDesc, sizeof(samplerDesc));
-	samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;	// サンプリング時に使用するフィルタ。ここでは異方性フィルターを使用する。
-	samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ～ 1 の範囲外にある u テクスチャー座標の描画方法
-	samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ～ 1 の範囲外にある v テクスチャー座標の描画方法
-	samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;		// 0 ～ 1 の範囲外にある w テクスチャー座標の描画方法
-	samplerDesc.MipLODBias = 0;								// 計算されたミップマップ レベルからのバイアス
-	samplerDesc.MaxAnisotropy = 0;							// サンプリングに異方性補間を使用している場合の限界値。有効な値は 1 ～ 16 。
-	samplerDesc.ComparisonFunc = D3D11_COMPARISON_ALWAYS;	// 比較オプション。
+	D3D11_SAMPLER_DESC SamplerDesc;
+	ZeroMemory(&SamplerDesc, sizeof(SamplerDesc));
+	SamplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+	SamplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
+	SamplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
+	SamplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+	SamplerDesc.MipLODBias = 0;
+	SamplerDesc.MaxAnisotropy = 0;
+	SamplerDesc.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
 	for (int i = 0; i < 4; i++)
 	{
-		samplerDesc.BorderColor[i] = 0.0f;					// 境界色
+		SamplerDesc.BorderColor[i] = 0.0f;
 	}
-	samplerDesc.MinLOD = 0;									// アクセス可能なミップマップの下限値
-	samplerDesc.MaxLOD = D3D11_FLOAT32_MAX;					// アクセス可能なミップマップの上限値
+	SamplerDesc.MinLOD = 0;
+	SamplerDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
-	if (FAILED(m_pDevice->CreateSamplerState(&samplerDesc, &m_pSamplerState)))
+	if (FAILED(m_pDevice->CreateSamplerState(&SamplerDesc, &m_pSamplerState)))
 	{
 		MessageBox(m_hWnd, TEXT("サンプラーステートの生成に失敗"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
@@ -432,14 +459,14 @@ bool DebugFont::InitBlendState()
 
 bool DebugFont::InitDepthStencilState()
 {
-	D3D11_DEPTH_STENCIL_DESC ddsDesc;
-	ZeroMemory(&ddsDesc, sizeof(ddsDesc));
-	ddsDesc.DepthEnable = FALSE;
-	ddsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-	ddsDesc.DepthFunc = D3D11_COMPARISON_LESS;
-	ddsDesc.StencilEnable = FALSE;
+	D3D11_DEPTH_STENCIL_DESC DepthStencilDesc;
+	ZeroMemory(&DepthStencilDesc, sizeof(DepthStencilDesc));
+	DepthStencilDesc.DepthEnable = FALSE;
+	DepthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+	DepthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
+	DepthStencilDesc.StencilEnable = FALSE;
 
-	if (FAILED(m_pDevice->CreateDepthStencilState(&ddsDesc, &m_pDepthStencilState)))
+	if (FAILED(m_pDevice->CreateDepthStencilState(&DepthStencilDesc, &m_pDepthStencilState)))
 	{
 		OutputDebugString(TEXT("DebugFont デプスステンシルステートの生成に失敗\n"));
 		return false;
@@ -452,12 +479,20 @@ bool DebugFont::InitDepthStencilState()
 
 void DebugFont::ReleaseResourceView()
 {
-	m_pResourceView->Release();
+	if (m_pResourceView != NULL)
+	{
+		m_pResourceView->Release();
+		m_pResourceView = NULL;
+	}
 }
 
 void DebugFont::ReleaseConstantBuffer()
 {
-	m_pConstantBuffer->Release();
+	if (m_pConstantBuffer != NULL)
+	{
+		m_pConstantBuffer->Release();
+		m_pConstantBuffer = NULL;
+	}
 }
 
 void DebugFont::ReleaseShader()
@@ -468,26 +503,51 @@ void DebugFont::ReleaseShader()
 
 void DebugFont::ReleaseVertexShader()
 {
-	m_pLayout->Release();
-	m_pVertexShader->Release();
+	if (m_pLayout != NULL)
+	{
+		m_pLayout->Release();
+		m_pLayout = NULL;
+	}
+
+	if (m_pVertexShader != NULL)
+	{
+		m_pVertexShader->Release();
+		m_pVertexShader = NULL;
+	}
 }
 
 void DebugFont::ReleasePixelShader()
 {
-	m_pPixelShader->Release();
+	if (m_pPixelShader != NULL)
+	{
+		m_pPixelShader->Release();
+		m_pPixelShader = NULL;
+	}
 }
 
 void DebugFont::ReleaseSamplerState()
 {
-	m_pSamplerState->Release();
+	if (m_pSamplerState != NULL)
+	{
+		m_pSamplerState->Release();
+		m_pSamplerState = NULL;
+	}
 }
 
 void DebugFont::ReleaseBlendState()
 {
-	m_pBlendState->Release();
+	if (m_pBlendState != NULL)
+	{
+		m_pBlendState->Release();
+		m_pBlendState = NULL;
+	}
 }
 
 void DebugFont::ReleaseDepthStencilState()
 {
-	m_pDepthStencilState->Release();
+	if (m_pDepthStencilState != NULL)
+	{
+		m_pDepthStencilState->Release();
+		m_pDepthStencilState = NULL;
+	}
 }
