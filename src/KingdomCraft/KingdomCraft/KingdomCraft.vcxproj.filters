@@ -97,6 +97,9 @@
     <ClCompile Include="Main\SceneManager\SaveDataManager\SaveDataManager.cpp">
       <Filter>Main\SceneManager\SaveDataManager</Filter>
     </ClCompile>
+    <ClCompile Include="Library\Camera\Camera.cpp">
+      <Filter>Library\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SaveDataManager\SaveDataManager.h">
       <Filter>Main\SceneManager\SaveDataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Camera\Camera.h">
+      <Filter>Library\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -295,6 +301,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\SaveDataManager">
       <UniqueIdentifier>{599d1318-177a-4566-b3c5-a882a9659cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Camera">
+      <UniqueIdentifier>{e79f5d35-4f4c-444f-a156-7452a84b0ae0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
