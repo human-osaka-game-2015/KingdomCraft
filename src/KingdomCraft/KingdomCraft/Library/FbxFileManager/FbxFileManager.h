@@ -1,54 +1,117 @@
-﻿#ifndef FBXFILEMANAGER_H
+﻿/**
+ * @file   FbxFileManager.h
+ * @brief  FbxFileManagerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef FBXFILEMANAGER_H
 #define FBXFILEMANAGER_H
 #include <d3d11.h>
-#include <map>
+#include <vector>
 #include "FbxModel\FbxModel.h"
 
 class FbxLoader;
 
+/**
+ *  Fbxファイルを管理するクラス
+ */
 class FbxFileManager
 {
 public:
-	FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext);
-	~FbxFileManager();
+	/**
+	 * インスタンスを生成
+	 */
+	static void Create(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext)
+	{
+		if (m_pFbxFileManager == NULL)
+		{
+			m_pFbxFileManager = new FbxFileManager(_pDevice, _pDeviceContext);
+		}
+	}
 
+	/**
+	 * インスタンスを取得する
+	 * @return インスタンスが返る
+	 */
+	static FbxFileManager* GetInstance()
+	{
+		return m_pFbxFileManager;
+	}
+
+	/**
+	 * FbxFileManagerインスタンスを破棄する
+	 */
+	static void Delete()
+	{
+		delete m_pFbxFileManager;
+		m_pFbxFileManager = NULL;
+	}
+
+	/**
+	 * FbxFileManagerクラスの初期化関数
+	 * @return 初期化が成功したかのフラグ
+	 */
 	bool Init();
+
+	/**
+	 * FbxFileManagerクラスの解放関数
+	 */
 	void Release();
 
 	/**
 	 * Fbxモデルを読み込む
-	 * @param[in] _key 読み込んだモデルの格納先キー
-	 * @param[in] _filePath 読み込むモデルのファイルパス
+	 * @param[in] _pFileName 読み込むモデルのファイルパス
+	 * @param[out] _pIndex 読み込んだモデルの格納先インデックス
 	 * @return 読み込みに成功したらtrue
 	 */
-	bool LoadFbxModel(int _key, LPCTSTR _filePath);
+	bool LoadFbxModel(LPCTSTR _pFileName, int* _pIndex);
 
 	/**
 	 * Fbxモデルを取得する
-	 * @param[in] _key 取得するモデルのキー
-	 * @return Fbxモデル
+	 * @param[in] _index 取得するモデルのインデックス
+	 * @return Fbxのデータを格納したFbxModelクラス
 	 */
-	inline FbxModel* GetFbxModel(int _key)
+	inline FbxModel* GetFbxModel(int _index) const
 	{
-		return m_pFbxModel[_key];
+		return m_pFbxModel[_index];
 	}
 
 	/**
 	 * Fbxモデルを解放する
-	 * @param[in] _key 解放するモデルのキー
+	 * @param[in] _index 解放するモデルのインデックス
 	 */
-	inline void ReleaseFbxModel(int _key)
+	void ReleaseFbxModel(int _index);
+
+	/**
+	 * モデルを確保しているバッファをクリアする
+	 *
+	 * vectorを使用しているのでバッファ領域は解放されない。\n
+	 * バッファ領域はFbxFileManagerが破棄されたときに解放される。
+	 */
+	inline void ClearBuffer()
 	{
-		m_pFbxModel[_key]->Release();
-		delete m_pFbxModel[_key];
-		m_pFbxModel.erase(_key);
+		m_pFbxModel.clear();
 	}
 
+	static const int m_InvalidIndex; //!< FbxFileManagerクラスがとるインデックスのエラー値
+
 private:
-	ID3D11Device*				m_pDevice;
-	ID3D11DeviceContext*		m_pDeviceContext;
-	std::map<int, FbxModel*>	m_pFbxModel;
+	/**
+	 * FbxFileManagerクラスのコンストラクタ
+	 * @param[in] _pDevice Fbxの読み込みの際に利用するDirectX11のデバイス
+	 * @param[in] _pDeviceContext Fbxの描画の際に利用するDirectX11のデバイスコンテキスト
+	 */
+	FbxFileManager(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext);
+
+	/**
+	 * FbxFileManagerクラスのデストラクタ
+	 */
+	~FbxFileManager();
+
+	static FbxFileManager*		m_pFbxFileManager;
+	ID3D11Device* const			m_pDevice;
+	ID3D11DeviceContext* const	m_pDeviceContext;
 	FbxLoader*					m_pFbxLoader;
+	std::vector<FbxModel*>		m_pFbxModel;
 
 };
 

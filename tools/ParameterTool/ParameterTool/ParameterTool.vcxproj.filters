@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{bce9d28f-b81e-4e10-af64-adbf88661158}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene">
+      <UniqueIdentifier>{9253957b-064f-424d-91b3-4151d8d8d4d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librarys">
+      <UniqueIdentifier>{2043ce25-f6f4-4bad-9189-be7693785097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librarys\DX9Manager">
+      <UniqueIdentifier>{3fad6f0f-3674-4694-bd17-ea340887f631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librarys\DebugFont">
+      <UniqueIdentifier>{a2f49eda-6d4a-4911-abdb-f33af72026b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene\HouseManager">
+      <UniqueIdentifier>{d6f6e822-ac0f-464b-b59f-9f23fb5ce4d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene\HouseManager\House">
+      <UniqueIdentifier>{c5e1c90f-1ae5-4534-9ca5-67b520e892a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene\FieldManager">
+      <UniqueIdentifier>{59fb2904-1f6b-40b4-b8e5-6cef3701c7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librarys\InputDeviceManager">
+      <UniqueIdentifier>{18d9fe4f-3180-42c9-95dd-787c27cff208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librarys\InputDeviceManager\MouseDevice">
+      <UniqueIdentifier>{2308e88e-c3c3-4a9b-8fab-db9c410b5eeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Librarys\InputDeviceManager\KeyDevice">
+      <UniqueIdentifier>{98bebc94-f838-4f86-95b5-0035a4b0f712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene\FieldMessenger">
+      <UniqueIdentifier>{b8e28b99-b520-4bf4-8061-706c28beb51d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene\HouseManager\HouseBuildManager">
+      <UniqueIdentifier>{6fe874f5-0ad0-4b51-a49a-9498f0ce3945}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildBox">
+      <UniqueIdentifier>{30e543b7-8933-4067-ac03-61015b54e843}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main\Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Scene\Scene.cpp">
+      <Filter>Main\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Scene\FieldManager\FieldManager.cpp">
+      <Filter>Main\Scene\FieldManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Librarys\DX9Manager\DX9Manager.cpp">
+      <Filter>Librarys\DX9Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Librarys\DebugFont\DebugFont.cpp">
+      <Filter>Librarys\DebugFont</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Scene\HouseManager\HouseManager.cpp">
+      <Filter>Main\Scene\HouseManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Scene\HouseManager\House\House.cpp">
+      <Filter>Main\Scene\HouseManager\House</Filter>
+    </ClCompile>
+    <ClCompile Include="Librarys\InputDeviceManager\InputDeviceManager.cpp">
+      <Filter>Librarys\InputDeviceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Librarys\InputDeviceManager\MouseDevice\MouseDevice.cpp">
+      <Filter>Librarys\InputDeviceManager\MouseDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="Librarys\InputDeviceManager\KeyDevice\KeyDevice.cpp">
+      <Filter>Librarys\InputDeviceManager\KeyDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Scene\FieldMessenger\FieldMessenger.cpp">
+      <Filter>Main\Scene\FieldMessenger</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildManager.cpp">
+      <Filter>Main\Scene\HouseManager\HouseBuildManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildBox\HouseBuildBox.cpp">
+      <Filter>Main\Scene\HouseManager\HouseBuildManager\HouseBuildBox</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Main\Scene\Scene.h">
+      <Filter>Main\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Scene\FieldManager\FieldManager.h">
+      <Filter>Main\Scene\FieldManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Librarys\DX9Manager\DX9Manager.h">
+      <Filter>Librarys\DX9Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Librarys\DebugFont\DebugFont.h">
+      <Filter>Librarys\DebugFont</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Scene\HouseManager\HouseManager.h">
+      <Filter>Main\Scene\HouseManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Scene\HouseManager\House\House.h">
+      <Filter>Main\Scene\HouseManager\House</Filter>
+    </ClInclude>
+    <ClInclude Include="Librarys\InputDeviceManager\InputDeviceManager.h">
+      <Filter>Librarys\InputDeviceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Librarys\InputDeviceManager\MouseDevice\MouseDevice.h">
+      <Filter>Librarys\InputDeviceManager\MouseDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Librarys\InputDeviceManager\KeyDevice\KeyDevice.h">
+      <Filter>Librarys\InputDeviceManager\KeyDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Scene\FieldMessenger\FieldMessenger.h">
+      <Filter>Main\Scene\FieldMessenger</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildManager.h">
+      <Filter>Main\Scene\HouseManager\HouseBuildManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\resource.h">
+      <Filter>リソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\Scene\HouseManager\HouseBuildManager\HouseBuildBox\HouseBuildBox.h">
+      <Filter>Main\Scene\HouseManager\HouseBuildManager\HouseBuildBox</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource\Dialog.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

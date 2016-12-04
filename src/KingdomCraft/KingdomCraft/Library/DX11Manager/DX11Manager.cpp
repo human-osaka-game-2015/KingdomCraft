@@ -1,20 +1,55 @@
-﻿#include "DX11Manager.h"
+﻿/**
+ * @file   DX11Manager.cpp
+ * @brief  DX11Managerクラスの実装
+ * @author morimoto
+ */
+#include "DX11Manager.h"
 
+
+//----------------------------------------------------------------------------------------------------
+// Private Variables
+//----------------------------------------------------------------------------------------------------
 
 DX11Manager* DX11Manager::m_pDX11Manager = NULL;
+float DX11Manager::m_ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 
-DX11Manager::DX11Manager()
+
+//----------------------------------------------------------------------------------------------------
+// Constructor	Destructor
+//----------------------------------------------------------------------------------------------------
+
+DX11Manager::DX11Manager() :
+m_pDevice(NULL),
+m_pDeviceContext(NULL),
+m_pDXGI(NULL),
+m_pAdapter(NULL),
+m_pDXGIFactory(NULL),
+m_pDXGISwapChain(NULL),
+m_pBackBuffer(NULL),
+m_pRenderTargetView(NULL),
+m_pDepthStencilBuffer(NULL),
+m_pRasterizerState(NULL),
+m_hWnd(NULL)
 {
-	
 }
 
 DX11Manager::~DX11Manager()
 {
-	
 }
+
+
+//----------------------------------------------------------------------------------------------------
+// Public Functions
+//----------------------------------------------------------------------------------------------------
 
 bool DX11Manager::Init(HWND _hWnd)
 {
+	if (m_pDevice != NULL)
+	{
+		MessageBox(m_hWnd, TEXT("m_pDeviceDx11Managerクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
 	m_hWnd = _hWnd;
 	GetWindowRect(m_hWnd, &m_WindowRect);
 
@@ -44,9 +79,7 @@ void DX11Manager::Release()
 
 void DX11Manager::BeginScene()
 {
-	float ClearColor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
-
-	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, ClearColor);
+	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, m_ClearColor);
 	m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
 
@@ -55,15 +88,22 @@ void DX11Manager::EndScene()
 	m_pDXGISwapChain->Present(1, 0);
 }
 
-ID3D11Device* DX11Manager::GetDevice()
+void DX11Manager::SetDepthStencilTest(bool _isStencil)
 {
-	return m_pDevice;
+	if (_isStencil)
+	{
+		m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
+	}
+	else
+	{
+		m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, NULL);
+	}
 }
 
-ID3D11DeviceContext* DX11Manager::GetDeviceContext()
-{
-	return m_pDeviceContext;
-}
+
+//----------------------------------------------------------------------------------------------------
+// Private Functions
+//----------------------------------------------------------------------------------------------------
 
 bool DX11Manager::InitDevice()
 {
@@ -79,18 +119,18 @@ bool DX11Manager::InitDevice()
 		NULL,
 		&m_pDeviceContext)))
 	{
-		return false;
 		MessageBox(m_hWnd, TEXT("D3D11CreateDeviceに失敗しました"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
 	}
 
 	OutputDebugString(TEXT("デバイス生成成功\n"));
-	
+
 	return true;
 }
 
 bool DX11Manager::InitDisplay()
 {
-	if (FAILED(m_pDevice->QueryInterface(__uuidof(IDXGIDevice1), (void**)&m_pDXGI)))
+	if (FAILED(m_pDevice->QueryInterface(__uuidof(IDXGIDevice1), reinterpret_cast<void**>(&m_pDXGI))))
 	{
 		MessageBox(m_hWnd, TEXT("DX11のインターフェイスの取得に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
@@ -105,7 +145,7 @@ bool DX11Manager::InitDisplay()
 	}
 	OutputDebugString(TEXT("DX11アダプターの取得に成功しました\n"));
 
-	m_pAdapter->GetParent(__uuidof(IDXGIFactory), (void**)&m_pDXGIFactory);
+	m_pAdapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&m_pDXGIFactory));
 	if (m_pDXGIFactory == NULL)
 	{
 		MessageBox(m_hWnd, TEXT("DX11のファクトリーの取得に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
@@ -124,7 +164,6 @@ bool DX11Manager::InitDisplay()
 		return false;
 	}
 	OutputDebugString(TEXT("フルスクリーン対応に成功しました\n"));
-
 
 
 	m_DXGISwapChainDesc.BufferDesc.Width = m_WindowRect.right - m_WindowRect.left;
@@ -153,7 +192,7 @@ bool DX11Manager::InitDisplay()
 	}
 	OutputDebugString(TEXT("スワップチェインの作成に成功しました\n"));
 
-	if (FAILED(m_pDXGISwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&m_pBackBuffer)))
+	if (FAILED(m_pDXGISwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&m_pBackBuffer))))
 	{
 		MessageBox(m_hWnd, TEXT("スワップチェインのバックバッファ取得に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		m_pDXGISwapChain->Release();
@@ -177,7 +216,7 @@ bool DX11Manager::InitDisplay()
 	OutputDebugString(TEXT("描画ターゲット生成に成功しました\n"));
 
 
-	m_DepthDesc.Width  = m_WindowRect.right - m_WindowRect.left;
+	m_DepthDesc.Width = m_WindowRect.right - m_WindowRect.left;
 	m_DepthDesc.Height = m_WindowRect.bottom - m_WindowRect.top;
 	m_DepthDesc.MipLevels = 1;
 	m_DepthDesc.ArraySize = 1;
@@ -219,11 +258,10 @@ bool DX11Manager::InitDisplay()
 	m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
 
 
-
 	m_ViewPort.TopLeftX = 0;
 	m_ViewPort.TopLeftY = 0;
-	m_ViewPort.Width  = float(m_WindowRect.right - m_WindowRect.left);
-	m_ViewPort.Height = float(m_WindowRect.bottom - m_WindowRect.top);
+	m_ViewPort.Width = static_cast<float>(m_WindowRect.right - m_WindowRect.left);
+	m_ViewPort.Height = static_cast<float>(m_WindowRect.bottom - m_WindowRect.top);
 	m_ViewPort.MinDepth = 0.0f;
 	m_ViewPort.MaxDepth = 1.0f;
 	m_pDeviceContext->RSSetViewports(1, &m_ViewPort);
@@ -255,25 +293,77 @@ bool DX11Manager::InitDisplay()
 	OutputDebugString(TEXT("RasterizerStateの状態の生成に成功しました\n"));
 	m_pDeviceContext->RSSetState(m_pRasterizerState);
 
-
 	return true;
 }
 
 void DX11Manager::ReleaseDevice()
 {
-	m_pDeviceContext->Release();
-	m_pDevice->Release();
+	if (m_pDeviceContext != NULL)
+	{
+		m_pDeviceContext->Release();
+		m_pDeviceContext = NULL;
+	}
+
+	if (m_pDevice != NULL)
+	{
+		m_pDevice->Release();
+		m_pDevice = NULL;
+	}
 }
 
 void DX11Manager::ReleaseDisplay()
 {
-	m_pRasterizerState->Release();
-	m_pDepthStencilView->Release();
-	m_pDepthStencilBuffer->Release();
-	m_pRenderTargetView->Release();
-	m_pBackBuffer->Release();
-	m_pDXGISwapChain->Release();
-	m_pDXGIFactory->Release();
-	m_pAdapter->Release();
-	m_pDXGI->Release();
+	if (m_pRasterizerState != NULL)
+	{
+		m_pRasterizerState->Release();
+		m_pRasterizerState = NULL;
+	}
+
+	if (m_pDepthStencilView != NULL)
+	{
+		m_pDepthStencilView->Release();
+		m_pDepthStencilView = NULL;
+	}
+
+	if (m_pDepthStencilBuffer != NULL)
+	{
+		m_pDepthStencilBuffer->Release();
+		m_pDepthStencilBuffer = NULL;
+	}
+
+	if (m_pRenderTargetView != NULL)
+	{
+		m_pRenderTargetView->Release();
+		m_pRenderTargetView = NULL;
+	}
+
+	if (m_pBackBuffer != NULL)
+	{
+		m_pBackBuffer->Release();
+		m_pBackBuffer = NULL;
+	}
+
+	if (m_pDXGISwapChain != NULL)
+	{
+		m_pDXGISwapChain->Release();
+		m_pDXGISwapChain = NULL;
+	}
+
+	if (m_pDXGIFactory != NULL)
+	{
+		m_pDXGIFactory->Release();
+		m_pDXGIFactory = NULL;
+	}
+
+	if (m_pAdapter != NULL)
+	{
+		m_pAdapter->Release();
+		m_pAdapter = NULL;
+	}
+
+	if (m_pDXGI != NULL)
+	{
+		m_pDXGI->Release();
+		m_pDXGI = NULL;
+	}
 }

@@ -1,119 +1,180 @@
-﻿#ifndef SHADERMANAGER_H
+﻿/**
+ * @file   ShaderManager.h
+ * @brief  ShaderManagerクラスのヘッダファイル
+ * @author morimoto
+ */
+#ifndef SHADERMANAGER_H
 #define SHADERMANAGER_H
 #include <d3d11.h>
-#include <map>
+#include <vector>
 
+/**
+ * エフェクトファイルを管理するクラス
+ *
+ * シェーダーの読み込みから破棄まで管理している
+ */
 class ShaderManager
 {
 public:
-	ShaderManager(ID3D11Device* _pDevice);
-	~ShaderManager();
+	/**
+	 * インスタンスを生成
+	 * @param[in] _pDevice シェーダーを読み込むためのDirectX11デバイス
+	 */
+	static void Create(ID3D11Device* _pDevice)
+	{
+		if (m_pShaderManager == NULL)
+		{
+			m_pShaderManager = new ShaderManager(_pDevice);
+		}
+	}
+
+	/**
+	 * インスタンスを取得する
+	 * @return インスタンスが返る
+	 */
+	static ShaderManager* GetInstance()
+	{
+		return m_pShaderManager;
+	}
+
+	/**
+	 * ShaderManagerインスタンスを破棄する
+	 */
+	static void Delete()
+	{
+		delete m_pShaderManager;
+		m_pShaderManager = NULL;
+	}
 
 	/**
 	 * 頂点シェーダーを読み込む(頂点シェーダーのバージョンはvs_5_0)
-	 * @param[in] _key 頂点シェーダーが格納される場所のキー
-	 * @param[in] _fileName 読み込むエフェクトファイルのパス
-	 * @param[in] _funcName 頂点シェーダーの関数名
+	 * @param[in] _pFileName 読み込むエフェクトファイルのパス
+	 * @param[in] _pFuncName 頂点シェーダーの関数名
+	 * @param[out] _pIndex 頂点シェーダーとコンパイルデータの格納先インデックスが入る
 	 * @return 成功したかのフラグ
 	 */
-	bool LoadVertexShader(int _key, char* _fileName, char* _funcName);
+	bool LoadVertexShader(LPCTSTR _pFileName, LPCTSTR _pFuncName, int* _pIndex);
 
 	/**
 	 * ピクセルシェーダーを読み込む(ピクセルシェーダーをのバージョンはps_5_0)
-	 * @param[in] _key ピクセルシェーダーが格納される場所のキー
-	 * @param[in] _fileName 読み込むエフェクトファイルのパス
-	 * @param[in] _funcName ピクセルシェーダーの関数名
+	 * @param[in] _pFileName 読み込むエフェクトファイルのパス
+	 * @param[in] _pFuncName ピクセルシェーダーの関数名
+	 * @param[out] _pIndex ピクセルシェーダーとコンパイルデータの格納先インデックスが入る
 	 * @return 成功したかのフラグ
 	 */
-	bool LoadPixelShader(int _key, char* _fileName, char* _funcName);
+	bool LoadPixelShader(LPCTSTR _pFileName, LPCTSTR _pFuncName, int* _pIndex);
 
 	/**
 	 * 頂点シェーダーを取得する
-	 * @param[in] _key 取得したい頂点シェーダーのキー
+	 * @param[in] _index 取得したい頂点シェーダーのインデックス
 	 * @return 頂点シェーダー
 	 */
-	ID3D11VertexShader* GetVertexShader(int _key)
+	inline ID3D11VertexShader* GetVertexShader(int _index) const
 	{
-		return m_pVertexShader[_key];
+		return m_pVertexShader[_index];
 	}
 
 	/**
 	 * 頂点シェーダーのコンパイルデータを取得する
-	 * @param[in] _key 取得したいコンパイルデータのキー
+	 * @param[in] _index 取得したいコンパイルデータのインデックス
 	 * @return 頂点シェーダーのコンパイルデータ
 	 */
-	ID3DBlob* GetCompiledVertexShader(int _key)
+	inline ID3DBlob* GetCompiledVertexShader(int _index) const
 	{
-		return m_pCompiledVertexShader[_key];
+		return m_pCompiledVertexShader[_index];
 	}
-	
+
 	/**
 	 * ピクセルシェーダーを取得する
-	 * @param[in] _key 取得したいピクセルシェーダーのキー
+	 * @param[in] _index 取得したいピクセルシェーダーのインデックス
 	 * @return ピクセルシェーダー
 	 */
-	ID3D11PixelShader* GetPixelShader(int _key)
+	inline ID3D11PixelShader* GetPixelShader(int _index) const
 	{
-		return m_pPixelShader[_key];
+		return m_pPixelShader[_index];
 	}
 
 	/**
 	 * ピクセルシェーダーのコンパイルデータを取得する
-	 * @param[in] _key 取得したいコンパイルデータのキー
+	 * @param[in] _index 取得したいコンパイルデータのインデックス
 	 * @return ピクセルシェーダーのコンパイルデータ
 	 */
-	ID3DBlob* GetCompiledPixelShader(int _key)
+	inline ID3DBlob* GetCompiledPixelShader(int _index) const
 	{
-		return m_pCompiledPixelShader[_key];
+		return m_pCompiledPixelShader[_index];
 	}
 
 	/**
-	 * 頂点シェーダーを解放する
-	 * @param[in] _key 解放する頂点シェーダーのキー
+	 * 頂点シェーダーとそのコンパイルデータを解放する
+	 * @param[in] _index 解放する頂点シェーダーのインデックス
 	 */
-	void ReleaseVertexShader(int _key)
+	void ReleaseVertexShader(int _index);
+
+	/**
+	 * ピクセルシェーダーとそのコンパイルデータを解放する
+	 * @param[in] _index 解放するピクセルシェーダーのインデックス
+	 */
+	void ReleasePixelShader(int _index);
+
+
+	/**
+	 * 頂点シェーダーとコンパイルデータを確保しているバッファをクリアする
+	 *
+	 * vectorを使用しているのでバッファ領域は解放されない。\n
+	 * バッファ領域はShaderManagerが破棄されたときに解放される。
+	 */
+	inline void ClearVertexShaderBuffer()
 	{
-		m_pVertexShader[_key]->Release();
-		m_pVertexShader.erase(_key);
+		m_pVertexShader.clear();
+		m_pCompiledVertexShader.clear();
 	}
 
 	/**
-	 * 頂点シェーダーのコンパイルデータを解放する
-	 * @param[in] _key 解放するコンパイルデータのキー
+	 * ピクセルシェーダーとコンパイルデータを確保しているバッファをクリアする
+	 *
+	 * vectorを使用しているのでバッファ領域は解放されない。\n
+	 * バッファ領域はShaderManagerが破棄されたときに解放される。
 	 */
-	void ReleaseCompiledVertexShader(int _key)
+	inline void ClearPixelShaderBuffer()
 	{
-		m_pCompiledVertexShader[_key]->Release();
-		m_pCompiledVertexShader.erase(_key);
+		m_pPixelShader.clear();
+		m_pCompiledPixelShader.clear();
 	}
 
 	/**
-	 * ピクセルシェーダーを解放する
-	 * @param[in] _key 解放するピクセルシェーダーのキー
+	 * シェーダーのデータを確保しているバッファをクリアする
+	 *
+	 * vectorを使用しているのでバッファ領域は解放されない。\n
+	 * バッファ領域はShaderManagerが破棄されたときに解放される。
 	 */
-	void ReleasePixelShader(int _key)
+	inline void ClearShaderBuffer()
 	{
-		m_pPixelShader[_key]->Release();
-		m_pPixelShader.erase(_key);
+		ClearVertexShaderBuffer();
+		ClearPixelShaderBuffer();
 	}
 
-	/**
-	 * ピクセルシェーダーのコンパイルデータを解放する
-	 * @param[in] _key 解放するコンパイルデータのキー
-	 */
-	void ReleaseCompiledPixelShader(int _key)
-	{
-		m_pCompiledPixelShader[_key]->Release();
-		m_pCompiledPixelShader.erase(_key);
-	}
+	static const int m_InvalidIndex;	//!< ShaderManagerクラスがとるインデックスのエラー値
 
 private:
-	ID3D11Device* m_pDevice;
-	std::map<int, ID3D11VertexShader*>	m_pVertexShader;
-	std::map<int, ID3D11PixelShader*>	m_pPixelShader;
-	std::map<int, ID3DBlob*>			m_pCompiledVertexShader;
-	std::map<int, ID3DBlob*>			m_pCompiledPixelShader;
+	/**
+	 * ShaderManagerクラスのコンストラクタ
+	 * @param[in] _pDevice シェーダーを読み込むためのDirectX11デバイス
+	 */
+	ShaderManager(ID3D11Device* _pDevice);
+
+	/**
+	 * ShaderManagerクラスのデストラクタ
+	 */
+	~ShaderManager();
+
+	static ShaderManager*				m_pShaderManager;
+	ID3D11Device* const					m_pDevice;
+	std::vector<ID3D11VertexShader*>	m_pVertexShader;
+	std::vector<ID3D11PixelShader*>		m_pPixelShader;
+	std::vector<ID3DBlob*>				m_pCompiledVertexShader;
+	std::vector<ID3DBlob*>				m_pCompiledPixelShader;
 
 };
+
 
 #endif

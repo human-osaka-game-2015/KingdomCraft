@@ -1,11 +1,17 @@
-﻿#include "Scene.h"
+﻿/**
+ * @file   Scene.cpp
+ * @brief  Sceneクラスの実装
+ * @author kotani
+ */
+#include "Scene.h"
 
 Scene::Scene(SceneID _sceneID) :
-m_sceneID(_sceneID)
+m_SceneID(_sceneID)
 {
-}
 
+}
 
 Scene::~Scene()
 {
+
 }
