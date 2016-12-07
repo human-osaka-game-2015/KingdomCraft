@@ -117,7 +117,7 @@ void Vertex2D::Release()
 	ReleaseVertexShader();
 }
 
-void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR3* _pScale, float _angle)
+void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR3* _pScale, const D3DXVECTOR2* _pTexScroll, float _angle)
 {
 	D3DXMATRIX MatWorld, MatTranslate, MatRotate;
 	D3DXMatrixIdentity(&MatWorld);
@@ -139,7 +139,8 @@ void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR
 
 		ConstantBuffer.WindowSize.x = m_ClientWidth;
 		ConstantBuffer.WindowSize.y = m_ClientHeight;
-
+		ConstantBuffer.TexScroll.x = _pTexScroll->x;
+		ConstantBuffer.TexScroll.y = _pTexScroll->y;
 		ConstantBuffer.Color.a = _alpha;
 
 		memcpy_s(MappedResource.pData, MappedResource.RowPitch, reinterpret_cast<void*>(&ConstantBuffer), sizeof(ConstantBuffer));

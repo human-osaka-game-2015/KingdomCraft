@@ -30,7 +30,7 @@ public:
 	/**
 	 * Vertex2Dクラスの初期化関数
 	 * @param[in] _pRectSize 矩形のサイズ 
-	 * @param[in] _pUV テクスチャの4頂点分のUV値 テクスチャ座標の指定順番(左上->右上->左下->右下)
+	 * @param[in] _pUV テクスチャの4頂点分のUV初期値 テクスチャ座標の指定順番(左上->右上->左下->右下)
 	 * @return 初期化に成功したらtrue
 	 */
 	bool Init(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV);
@@ -45,12 +45,14 @@ public:
 	 * @param[in] _pDrawPos 矩形を描画するスクリーン座標位置
 	 * @param[in] _alpha 描画する矩形のアルファ値
 	 * @param[in] _pScale 描画する矩形の拡縮率
+	 * @param[in] _pTexScroll 最初に指定したUV値からの変化値
 	 * @param[in] _angle 描画する矩形の傾き
 	 */
 	void Draw(
-		const D3DXVECTOR2* _pDrawPos, 
-		float _alpha = 1.f, 
-		const D3DXVECTOR3* _pScale = &D3DXVECTOR3(1.f, 1.f, 1.f), 
+		const D3DXVECTOR2* _pDrawPos,
+		float _alpha = 1.f,
+		const D3DXVECTOR3* _pScale = &D3DXVECTOR3(1.f, 1.f, 1.f),
+		const D3DXVECTOR2* _pTexScroll = &D3DXVECTOR2(0.f, 0.f),
 		float _angle = 0.f);
 
 	/**
@@ -82,6 +84,7 @@ private:
 		D3DXMATRIX  MatWorld;	//!< ワールド変換行列
 		D3DXCOLOR   Color;		//!< 頂点カラー値
 		D3DXVECTOR4 WindowSize;	//!< ウィンドウの縦横サイズ
+		D3DXVECTOR4 TexScroll;	//!< uv座標の変化量
 	};
 
 	/**
