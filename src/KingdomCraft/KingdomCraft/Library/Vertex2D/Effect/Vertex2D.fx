@@ -42,6 +42,6 @@ float4 PS(PS_INPUT Input) : SV_Target
 {
 	PS_INPUT Out;
 	Out.Color = Texture.Sample(Sampler, Input.UV);
-	Out.Color.a = g_Alpha.a;
+	Out.Color.a *= g_Alpha.a;
 	return Out.Color;
 }
