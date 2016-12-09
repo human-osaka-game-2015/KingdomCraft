@@ -7,9 +7,6 @@
     <ClCompile Include="Main\SceneManager\SceneManager.cpp">
       <Filter>Main\SceneManager</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\Scene.cpp">
-      <Filter>Main\SceneManager\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp">
       <Filter>Main\SceneManager\Scene\GameScene</Filter>
     </ClCompile>
@@ -99,6 +96,24 @@
     </ClCompile>
     <ClCompile Include="Library\Camera\Camera.cpp">
       <Filter>Library\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow\UIWindow.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton\UIButton.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\Scene.cpp">
+      <Filter>Main\SceneManager\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +212,21 @@
     </ClInclude>
     <ClInclude Include="Library\Camera\Camera.h">
       <Filter>Library\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow\UIWindow.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton\UIButton.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -304,6 +334,21 @@
     </Filter>
     <Filter Include="Library\Camera">
       <UniqueIdentifier>{e79f5d35-4f4c-444f-a156-7452a84b0ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow">
+      <UniqueIdentifier>{1c25e291-24c0-4fec-afb5-1b4ff76e46ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow">
+      <UniqueIdentifier>{ae38b273-e5ae-4a87-87af-d72f81f02bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow">
+      <UniqueIdentifier>{4795c902-b2f7-4d74-a832-ca5087f72706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow">
+      <UniqueIdentifier>{08ef7a93-d056-4bf1-aa8f-34c873766a16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton">
+      <UniqueIdentifier>{eacae7e4-33e5-4622-9c6c-fb7287804ec5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
