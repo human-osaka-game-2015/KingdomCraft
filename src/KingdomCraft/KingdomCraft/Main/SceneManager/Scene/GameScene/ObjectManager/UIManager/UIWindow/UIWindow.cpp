@@ -4,7 +4,6 @@
  * @author morimoto
  */
 #include "UIWindow.h"
-#include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
 const D3DXVECTOR2 UIWindow::m_WindowPartsUV[UIWindow::PARTS_MAX][4] =

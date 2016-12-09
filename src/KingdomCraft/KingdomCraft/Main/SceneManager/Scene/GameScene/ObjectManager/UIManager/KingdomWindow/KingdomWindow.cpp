@@ -4,7 +4,6 @@
  * @author morimoto
  */
 #include "KingdomWindow.h"
-#include "TextureManager\TextureManager.h"
 
 const D3DXVECTOR2 KingdomWindow::m_KingdomWindowSize = D3DXVECTOR2(100, 100);
 const D3DXVECTOR2 KingdomWindow::m_KingdomWindowPos = D3DXVECTOR2(0, 0);

@@ -39,7 +39,6 @@ private:
 
 	static const D3DXVECTOR2	m_GameTimeWindowSize;
 	static const D3DXVECTOR2	m_GameTimeWindowPos;
-	int							m_TextureIndex;
 
 };
 

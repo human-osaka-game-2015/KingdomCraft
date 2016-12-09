@@ -72,7 +72,6 @@ private:
 	void operator=(const UIWindow&);
 
 	static const D3DXVECTOR2	m_WindowPartsUV[PARTS_MAX][4];
-	Vertex2D*					m_pWindowVertex;
 	int							m_TextureIndex;
 
 };

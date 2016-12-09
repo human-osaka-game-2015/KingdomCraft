@@ -4,7 +4,6 @@
  * @author morimoto
  */
 #include "GameTimeWindow.h"
-#include "TextureManager\TextureManager.h"
 
 const D3DXVECTOR2 GameTimeWindow::m_GameTimeWindowSize = D3DXVECTOR2(100, 100);
 const D3DXVECTOR2 GameTimeWindow::m_GameTimeWindowPos = D3DXVECTOR2(0, 0);

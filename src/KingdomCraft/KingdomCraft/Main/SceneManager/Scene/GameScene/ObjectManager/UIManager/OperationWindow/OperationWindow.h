@@ -6,7 +6,6 @@
 #ifndef OPERATIONWINDOW_H
 #define OPERATIONWINDOW_H
 #include "..\UIWindow\UIWindow.h"
-#include "Vertex2D\Vertex2D.h"
 
 /**
  * プレイヤーの操作UIを管理するクラス
@@ -55,8 +54,6 @@ private:
 	static const D3DXVECTOR2	m_OperationUIPos[OPERATION_MAX];		//!< UIの座標
 	static const D3DXVECTOR2	m_OperationUITexel[4];					//!< UIのテクスチャ座標
 	static const D3DXVECTOR2	m_OperationUITexelOffset[OPERATION_MAX];//!< UIのテクスチャ座標のスクロール値
-	Vertex2D*					m_pVertex;
-	int							m_TextureIndex;
 
 };
 

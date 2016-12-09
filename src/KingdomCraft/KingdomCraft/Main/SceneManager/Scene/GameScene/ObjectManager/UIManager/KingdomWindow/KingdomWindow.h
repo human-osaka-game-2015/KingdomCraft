@@ -39,7 +39,6 @@ private:
 
 	static const D3DXVECTOR2	m_KingdomWindowSize;
 	static const D3DXVECTOR2	m_KingdomWindowPos;
-	int							m_TextureIndex;
 
 };
 

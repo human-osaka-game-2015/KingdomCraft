@@ -4,9 +4,6 @@
  * @author morimoto
  */
 #include "OperationWindow.h"
-#include "DX11Manager\DX11Manager.h"
-#include "TextureManager\TextureManager.h"
-
 
 const D3DXVECTOR2 OperationWindow::m_OperationUISize = D3DXVECTOR2(64, 64);
 
