@@ -6,6 +6,12 @@
 #ifndef GAMEOBJECTMANAGER_H
 #define GAMEOBJECTMANAGER_H
 
+class EnemyManager;
+class FieldManager;
+class HouseManager;
+class HumanManager;
+class RoadManager;
+
 /**
  * ゲーム内のオブジェクトを管理するクラス
  */
@@ -13,28 +19,34 @@ class GameObjectManager
 {
 public:
 	/**
-	 * GameObjectManagerのコンストラクタ
+	 * GameObjectManagerクラスのコンストラクタ
 	 */
 	GameObjectManager();
 
 	/**
-	 * GameObjectManagerのデストラクタ
+	 * GameObjectManagerクラスのデストラクタ
 	 */
 	~GameObjectManager();
 
 	/**
-	 * GameObjectManagerの制御関数
+	 * GameObjectManagerクラスの制御関数
 	 */
 	void Control();
 
 	/**
-	 * GameObjectManagerの描画関数
+	 * GameObjectManagerクラスの描画関数
 	 */
 	void Draw();
 
 private:
 	GameObjectManager(const GameObjectManager&);
 	void operator=(const GameObjectManager&);
+
+	EnemyManager* m_pEnemyManager;
+	FieldManager* m_pFieldManager;
+	HouseManager* m_pHouseManager;
+	HumanManager* m_pHumanManager;
+	RoadManager*  m_pRoadManager;
 
 };
 
