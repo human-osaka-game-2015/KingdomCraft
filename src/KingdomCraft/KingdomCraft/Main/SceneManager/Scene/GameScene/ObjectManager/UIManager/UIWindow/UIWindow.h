@@ -46,6 +46,11 @@ public:
 	}
 
 protected:
+	/**
+	 * ウィンドウの描画関数
+	 */
+	void WindowDraw();
+
 	D3DXVECTOR2		m_WindowPos;	//!< ウィンドウの座標
 	D3DXVECTOR2 	m_WindowSize;	//!< ウィンドウのサイズ
 	bool			m_IsVisible;	//!< ウィンドウの可視状態
@@ -71,8 +76,13 @@ private:
 	UIWindow(const UIWindow&);
 	void operator=(const UIWindow&);
 
-	static const D3DXVECTOR2	m_WindowPartsUV[PARTS_MAX][4];
+	static const D3DXVECTOR2	m_WindowPartsTexel[4];					//!< ウィンドウパーツのテクスチャ座標
+	static const D3DXVECTOR2	m_WindowPartsTexelOffset[PARTS_MAX];	//!< ウィンドウパーツのテクスチャ座標のスクロール値
+
+	Vertex2D*					m_pWindowVertex;
 	int							m_TextureIndex;
+	D3DXVECTOR2					m_WindowPartsSize;
+	D3DXVECTOR2					m_WindowPartsPosOffset[PARTS_MAX];		//!< ウィンドウパーツの座標オフセット値
 
 };
 
