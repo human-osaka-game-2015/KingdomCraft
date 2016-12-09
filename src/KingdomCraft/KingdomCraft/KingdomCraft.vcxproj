@@ -11,6 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.cpp" />
     <ClCompile Include="Library\Camera\Camera.cpp" />
     <ClCompile Include="Library\DSoundManager\DSoundManager.cpp" />
     <ClCompile Include="Library\DebugFont\DebugFont.cpp" />
@@ -34,6 +38,8 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameData\GameData.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.cpp" />
@@ -49,8 +55,13 @@
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.h" />
     <ClInclude Include="Library\Camera\Camera.h" />
     <ClInclude Include="Library\DSoundManager\DSoundManager.h" />
     <ClInclude Include="Library\DebugFont\DebugFont.h" />
@@ -72,6 +83,8 @@
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameData\GameData.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.h" />
@@ -87,6 +100,7 @@
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleScene.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DX11Manager\DX11Manager.h" />

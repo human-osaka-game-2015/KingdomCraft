@@ -115,6 +115,27 @@
     <ClCompile Include="Main\SceneManager\Scene\Scene.cpp">
       <Filter>Main\SceneManager\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HouseManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\EnemyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HumanManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -227,6 +248,27 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton\UIButton.h">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HouseManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\EnemyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HumanManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +391,27 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton">
       <UniqueIdentifier>{eacae7e4-33e5-4622-9c6c-fb7287804ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HouseManager">
+      <UniqueIdentifier>{1dab1ec3-80bd-4dae-9e1e-0e528872e7a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager">
+      <UniqueIdentifier>{21d0d7a7-b505-4cf6-ae50-bc895ae9d3eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager">
+      <UniqueIdentifier>{0a2873f0-b057-4528-819e-125be2450689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky">
+      <UniqueIdentifier>{24d91e50-fe55-4ac7-b31d-dfa5dde7c6b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground">
+      <UniqueIdentifier>{1dcd6f59-c116-4da9-a396-3d548a20df27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HumanManager">
+      <UniqueIdentifier>{a5bd128d-d74f-48d7-a809-d1c75797faa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\EnemyManager">
+      <UniqueIdentifier>{6f102ad6-2e63-4dd3-9bfd-9bb4a1dd43d5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
