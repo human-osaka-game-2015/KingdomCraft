@@ -35,7 +35,12 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton\UIButton.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow\UIWindow.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\Scene.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.cpp" />
@@ -68,7 +73,12 @@
     <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton\UIButton.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow\UIWindow.h" />
     <ClInclude Include="Main\SceneManager\Scene\Scene.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.h" />
     <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.h" />
