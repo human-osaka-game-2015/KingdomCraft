@@ -581,6 +581,12 @@
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI">
       <UniqueIdentifier>{895c08c0-a77e-4171-bbc3-4e1fe50e6c8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground\Effect">
+      <UniqueIdentifier>{e7e66729-3153-452c-b4d8-9886a1dc5bd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect">
+      <UniqueIdentifier>{08a676f1-6e77-4316-be50-e3f5d22c69d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
@@ -591,6 +597,12 @@
     </FxCompile>
     <FxCompile Include="Library\Vertex\Effect\Vertex.fx">
       <Filter>Library\Vertex\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="Resource\Effect\GameScene\Ground.fx">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="Resource\Effect\GameScene\Sky.fx">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
