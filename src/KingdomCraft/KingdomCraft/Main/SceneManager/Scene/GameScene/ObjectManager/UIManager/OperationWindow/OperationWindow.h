@@ -5,7 +5,10 @@
  */
 #ifndef OPERATIONWINDOW_H
 #define OPERATIONWINDOW_H
+#include <vector>
 #include "..\UIWindow\UIWindow.h"
+
+class UIButton;
 
 /**
  * プレイヤーの操作UIを管理するクラス
@@ -50,10 +53,8 @@ private:
 	OperationWindow(const OperationWindow&);
 	void operator=(const OperationWindow&);
 
-	static const D3DXVECTOR2	m_OperationUISize;						//!< UIの矩形サイズ
-	static const D3DXVECTOR2	m_OperationUIPos[OPERATION_MAX];		//!< UIの座標
-	static const D3DXVECTOR2	m_OperationUITexel[4];					//!< UIのテクスチャ座標
-	static const D3DXVECTOR2	m_OperationUITexelOffset[OPERATION_MAX];//!< UIのテクスチャ座標のスクロール値
+	std::vector<UIButton*>		m_pUIButton;
+	int							m_TextureIndex;
 
 };
 

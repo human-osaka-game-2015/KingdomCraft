@@ -139,6 +139,21 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.cpp">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -275,6 +290,21 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.h">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -421,6 +451,21 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI">
       <UniqueIdentifier>{579b2de3-c6a9-44b3-88a5-ca9bba018570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI">
+      <UniqueIdentifier>{6ea00f9d-fd0c-49af-bae8-e15baa3dc502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI">
+      <UniqueIdentifier>{28f0051e-17c3-4cd8-8a0d-dc26a7d00981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI">
+      <UniqueIdentifier>{f1e970e6-e8e5-4434-815f-439ff3a504ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI">
+      <UniqueIdentifier>{1ac5fe57-762c-4dd9-8840-9408ba439f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI">
+      <UniqueIdentifier>{7c25895a-fd1f-49aa-bbb3-13469778a860}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
