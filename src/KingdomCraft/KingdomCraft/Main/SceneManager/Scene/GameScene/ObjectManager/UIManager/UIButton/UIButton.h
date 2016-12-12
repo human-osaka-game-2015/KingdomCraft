@@ -27,13 +27,13 @@ public:
 	virtual ~UIButton();
 
 	/**
-	 * TitleMenuButtonの制御関数
+	 * UIButtonクラスの制御関数
 	 * @return ボタンが押されたらtrue
 	 */
 	virtual bool Control();
 
 	/**
-	 * ボタンクラスの描画関数
+	 * UIButtonクラスの描画関数
 	 */
 	virtual void Draw() = 0;
 
