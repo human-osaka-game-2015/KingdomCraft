@@ -43,8 +43,13 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton\UIButton.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow\UIWindow.cpp" />
@@ -89,8 +94,13 @@
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIButton\UIButton.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIWindow\UIWindow.h" />

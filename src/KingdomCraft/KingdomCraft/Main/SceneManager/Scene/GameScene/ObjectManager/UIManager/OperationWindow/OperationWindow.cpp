@@ -4,43 +4,36 @@
  * @author morimoto
  */
 #include "OperationWindow.h"
-
-const D3DXVECTOR2 OperationWindow::m_OperationUISize = D3DXVECTOR2(64, 64);
-
-const D3DXVECTOR2 OperationWindow::m_OperationUIPos[OPERATION_MAX] =
-{
-	D3DXVECTOR2(900,  630),	// 建築UI
-	D3DXVECTOR2(964,  630),	// 政治UI
-	D3DXVECTOR2(1028, 630),	// セーブUI
-	D3DXVECTOR2(1092, 630),	// ロードUI
-	D3DXVECTOR2(1156, 630)	// タイトルバックUI
-};
-
-const D3DXVECTOR2 OperationWindow::m_OperationUITexel[4] =
-{
-	D3DXVECTOR2(0,     0), 
-	D3DXVECTOR2(0.125, 0), 
-	D3DXVECTOR2(0,     0.125), 
-	D3DXVECTOR2(0.125, 0.125)
-};
-
-const D3DXVECTOR2 OperationWindow::m_OperationUITexelOffset[OPERATION_MAX] =
-{
-	 D3DXVECTOR2(0,     0),	// 建築UI
-	 D3DXVECTOR2(0.125, 0),	// 政治UI
-	 D3DXVECTOR2(0.25,  0),	// セーブUI
-	 D3DXVECTOR2(0.375, 0),	// ロードUI
-	 D3DXVECTOR2(0.5,   0)	// タイトルバックUI
-};
+#include "BuildButtonUI\BuildButtonUI.h"
+#include "PoliticsButtonUI\PoliticsButtonUI.h"
+#include "SaveButtonUI\SaveButtonUI.h"
+#include "LoadButtonUI\LoadButtonUI.h"
+#include "BackToTitleButtonUI\BackToTitleButtonUI.h"
+#include "TextureManager\TextureManager.h"
 
 
 OperationWindow::OperationWindow() :
 UIWindow(&D3DXVECTOR2(0, 0), &D3DXVECTOR2(0, 0))
 {
+	TextureManager::GetInstance()->LoadTexture(
+		TEXT("Resource\\Texture\\GameScene\\ObjectManager\\UIManager\\OperationWindow\\OperationUI.png"),
+		&m_TextureIndex);
+
+	m_pUIButton.push_back(new BuildButtonUI(m_TextureIndex));
+	m_pUIButton.push_back(new PoliticsButtonUI(m_TextureIndex));
+	m_pUIButton.push_back(new SaveButtonUI(m_TextureIndex));
+	m_pUIButton.push_back(new LoadButtonUI(m_TextureIndex));
+	m_pUIButton.push_back(new BackToTitleButtonUI(m_TextureIndex));
 }
 
 OperationWindow::~OperationWindow()
 {
+	for (unsigned int i = 0; i < m_pUIButton.size(); i++)
+	{
+		delete m_pUIButton[i];
+	}
+
+	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
 }
 
 void OperationWindow::Control()
@@ -49,6 +42,11 @@ void OperationWindow::Control()
 	{
 		return;
 	}
+
+	for (unsigned int i = 0; i < m_pUIButton.size(); i++)
+	{
+		m_pUIButton[i]->Control();
+	}
 }
 
 void OperationWindow::Draw()
@@ -56,5 +54,10 @@ void OperationWindow::Draw()
 	if (m_IsVisible == false)
 	{
 		return;
+	}
+
+	for (unsigned int i = 0; i < m_pUIButton.size(); i++)
+	{
+		m_pUIButton[i]->Draw();
 	}
 }
