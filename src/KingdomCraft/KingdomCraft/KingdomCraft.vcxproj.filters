@@ -136,6 +136,9 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.cpp">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -269,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.h">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -412,6 +418,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\EnemyManager">
       <UniqueIdentifier>{6f102ad6-2e63-4dd3-9bfd-9bb4a1dd43d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI">
+      <UniqueIdentifier>{579b2de3-c6a9-44b3-88a5-ca9bba018570}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
