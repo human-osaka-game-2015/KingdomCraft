@@ -5,6 +5,8 @@
  */
 #include "GameData.h"
 
+GameData* GameData::m_pGameData = NULL;
+
 
 GameData::GameData()
 {
