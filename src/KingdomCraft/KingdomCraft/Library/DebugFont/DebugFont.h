@@ -163,6 +163,11 @@ private:
 	 */
 	void ReleaseDepthStencilState();
 
+	/**
+	 * フォントの頂点バッファ解放関数
+	 */
+	void ReleaseFont();
+
 	static const float m_DebugFontTu;
 	static const int m_SpaceAsciiCode;
 	ID3D11Device* const			m_pDevice;

@@ -112,6 +112,7 @@ bool DebugFont::Init(HWND _hWnd)
 
 void DebugFont::Release()
 {
+	ReleaseFont();
 	ReleaseDepthStencilState();
 	ReleaseBlendState();
 	ReleaseSamplerState();
@@ -549,5 +550,14 @@ void DebugFont::ReleaseDepthStencilState()
 	{
 		m_pDepthStencilState->Release();
 		m_pDepthStencilState = NULL;
+	}
+}
+
+void DebugFont::ReleaseFont()
+{
+	if (m_pVertexBuffer != NULL)
+	{
+		m_pVertexBuffer->Release();
+		m_pVertexBuffer = NULL;
 	}
 }
