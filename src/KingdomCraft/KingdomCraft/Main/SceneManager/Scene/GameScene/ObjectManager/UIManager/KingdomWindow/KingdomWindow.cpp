@@ -4,18 +4,30 @@
  * @author morimoto
  */
 #include "KingdomWindow.h"
+#include "KingdomDataUI\KingdomDataUI.h"
+#include "KingdomDemandUI\KingdomDemandUI.h"
+#include "KingdomParameterUI\KingdomParameterUI.h"
+#include "KingdomButtonUI\KingdomButtonUI.h"
 
-const D3DXVECTOR2 KingdomWindow::m_KingdomWindowSize = D3DXVECTOR2(100, 100);
-const D3DXVECTOR2 KingdomWindow::m_KingdomWindowPos = D3DXVECTOR2(0, 0);
+const D3DXVECTOR2 KingdomWindow::m_KingdomWindowPos = D3DXVECTOR2(990, 100);
+const D3DXVECTOR2 KingdomWindow::m_KingdomWindowSize = D3DXVECTOR2(600, 200);
 
 
 KingdomWindow::KingdomWindow() :
-UIWindow(&D3DXVECTOR2(0, 0), &D3DXVECTOR2(0, 0))
+UIWindow(&m_KingdomWindowPos, &m_KingdomWindowSize),
+m_pKingdomDataUI(new KingdomDataUI()),
+m_pKingdomDemandUI(new KingdomDemandUI()),
+m_pKingdomParameterUI(new KingdomParameterUI()),
+m_pKingdomButtonUI(new KingdomButtonUI())
 {
 }
 
 KingdomWindow::~KingdomWindow()
 {
+	delete m_pKingdomButtonUI;
+	delete m_pKingdomParameterUI;
+	delete m_pKingdomDemandUI;
+	delete m_pKingdomDataUI;
 }
 
 void KingdomWindow::Control()
@@ -24,6 +36,11 @@ void KingdomWindow::Control()
 	{
 		return;
 	}
+
+	m_pKingdomDataUI->Control();
+	m_pKingdomDemandUI->Control();
+	m_pKingdomParameterUI->Control();
+	m_pKingdomButtonUI->Control();
 }
 
 void KingdomWindow::Draw()
@@ -32,4 +49,11 @@ void KingdomWindow::Draw()
 	{
 		return;
 	}
+
+	WindowDraw();
+
+	m_pKingdomDataUI->Draw();
+	m_pKingdomDemandUI->Draw();
+	m_pKingdomParameterUI->Draw();
+	m_pKingdomButtonUI->Draw();
 }
