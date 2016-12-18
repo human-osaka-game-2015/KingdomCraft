@@ -154,6 +154,18 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.cpp">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDataUI\KingdomDataUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDataUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDemandUI\KingdomDemandUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDemandUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomParameterUI\KingdomParameterUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomParameterUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI\KingdomButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -305,6 +317,18 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.h">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDataUI\KingdomDataUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDataUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDemandUI\KingdomDemandUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDemandUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomParameterUI\KingdomParameterUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomParameterUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI\KingdomButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +490,18 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI">
       <UniqueIdentifier>{7c25895a-fd1f-49aa-bbb3-13469778a860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI">
+      <UniqueIdentifier>{b47b24e3-6d78-4fd5-a2cb-3fc3d648d3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDataUI">
+      <UniqueIdentifier>{415ab7f3-8f62-4dc2-bd3a-4369723104f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDemandUI">
+      <UniqueIdentifier>{bb811fad-c28a-49a9-b2da-4e380f460569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomParameterUI">
+      <UniqueIdentifier>{895c08c0-a77e-4171-bbc3-4e1fe50e6c8d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
