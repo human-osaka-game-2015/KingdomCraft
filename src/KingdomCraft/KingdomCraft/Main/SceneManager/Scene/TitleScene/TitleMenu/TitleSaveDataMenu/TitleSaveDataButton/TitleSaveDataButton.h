@@ -15,11 +15,11 @@ class TitleSaveDataButton
 public:
 	/**
 	 * TitleSaveDataButtonのコンストラクタ
-	 * @param[in] _pDrawPos ボタンの描画位置
-	 * @param[in] _pDrawSize ボタンのサイズ
+	 * @param[in] _pButtonPos ボタンの描画位置
+	 * @param[in] _pButtonSize ボタンのサイズ
 	 * @param[in] _pTextureName 描画するボタンの画像
 	 */
-	TitleSaveDataButton(const D3DXVECTOR2* const _pDrawPos, const D3DXVECTOR2* const _pDrawSize, LPCTSTR const _pTextureName);
+	TitleSaveDataButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, LPCTSTR _pTextureName);
 
 	/**
 	 * TitleSaveDataButtonのデストラクタ
@@ -44,8 +44,8 @@ private:
 	TitleSaveDataButton(const TitleSaveDataButton&);
 	void operator=(const TitleSaveDataButton&);
 
-	D3DXVECTOR2 m_DrawPos;
-	D3DXVECTOR2 m_DrawSize;
+	D3DXVECTOR2 m_ButtonPos;
+	D3DXVECTOR2 m_ButtonSize;
 
 };
 

@@ -37,8 +37,9 @@ private:
 	TitleLogo(const TitleLogo&);
 	void operator=(const TitleLogo&);
 
-	static const D3DXVECTOR2	m_TitleLogoPos;
-	static const D3DXVECTOR2	m_TitleLogoVertex;
+	static const D3DXVECTOR2	m_TitleLogoPos;			//!< タイトルロゴの矩形サイズ
+	static const D3DXVECTOR2	m_TitleLogoSize;		//!< タイトルロゴの座標
+	static const D3DXVECTOR2	m_TitleLogoTexel[4];	//!< タイトルロゴのテクスチャ座標
 	Vertex2D*					m_pVertex;
 	int							m_TextureIndex;
 
