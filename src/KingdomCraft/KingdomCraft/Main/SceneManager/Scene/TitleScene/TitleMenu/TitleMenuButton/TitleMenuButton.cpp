@@ -8,38 +8,41 @@
 #include "InputDeviceManager\InputDeviceManager.h"
 #include "TextureManager\TextureManager.h"
 
+const D3DXVECTOR2 TitleMenuButton::m_ButtonTexel[4] =
+{
+	D3DXVECTOR2(0, 0),
+	D3DXVECTOR2(1, 0),
+	D3DXVECTOR2(0, 1),
+	D3DXVECTOR2(1, 1)
+};
 
-TitleMenuButton::TitleMenuButton(const D3DXVECTOR2* const _pButtonPos, const D3DXVECTOR2* const _pButtonVertex, LPCTSTR const _pTextureName) :
+
+TitleMenuButton::TitleMenuButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, LPCTSTR _pTextureName) :
 m_ButtonPos(*_pButtonPos),
-m_ButtonVertex(*_pButtonVertex),
+m_ButtonSize(*_pButtonSize),
+m_pButtonVertex(NULL),
 m_IsMouseOver(false),
 m_IsVisible(false),
-m_TextureIndex(TextureManager::m_InvalidIndex)
+m_ButtonTextureIndex(TextureManager::m_InvalidIndex)
 {
-	D3DXVECTOR2 UV[4];
-	UV[0] = D3DXVECTOR2(0, 0);
-	UV[1] = D3DXVECTOR2(1, 0);
-	UV[2] = D3DXVECTOR2(0, 1);
-	UV[3] = D3DXVECTOR2(1, 1);
+	TextureManager::GetInstance()->LoadTexture(_pTextureName, &m_ButtonTextureIndex);
 
-
-	m_pVertex = new Vertex2D(
+	m_pButtonVertex = new Vertex2D(
 		DX11Manager::GetInstance()->GetDevice(),
 		DX11Manager::GetInstance()->GetDeviceContext(),
 		DX11Manager::GetInstance()->GetWindowHandle());
 
-	m_pVertex->Init(&m_ButtonVertex, UV);
-
-
-	TextureManager::GetInstance()->LoadTexture(_pTextureName, &m_TextureIndex);
-	m_pVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_TextureIndex));
+	m_pButtonVertex->Init(&m_ButtonSize, m_ButtonTexel);
+	m_pButtonVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_ButtonTextureIndex));
+	m_pButtonVertex->WriteConstantBuffer(&m_ButtonPos);
 }
 
 TitleMenuButton::~TitleMenuButton()
 {
-	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
-	m_pVertex->Release();
-	delete m_pVertex;
+	m_pButtonVertex->Release();
+	delete m_pButtonVertex;
+
+	TextureManager::GetInstance()->ReleaseTexture(m_ButtonTextureIndex);
 }
 
 bool TitleMenuButton::Control()
@@ -59,15 +62,22 @@ void TitleMenuButton::Draw()
 		return;
 	}
 
+	ButtonDraw();
+}
+
+void TitleMenuButton::ButtonDraw()
+{
 	DX11Manager::GetInstance()->SetDepthStencilTest(false);
 
 	if (m_IsMouseOver)
 	{
-		m_pVertex->Draw(&m_ButtonPos, 1.0f, &D3DXVECTOR3(1.1f, 1.1f, 1.f));
+		m_pButtonVertex->WriteConstantBuffer(&m_ButtonPos, &D3DXVECTOR2(1.1f, 1.1f));
+		m_pButtonVertex->Draw();
 	}
 	else
 	{
-		m_pVertex->Draw(&m_ButtonPos, 1.0f, &D3DXVECTOR3(1.f, 1.f, 1.f));
+		m_pButtonVertex->WriteConstantBuffer(&m_ButtonPos, &D3DXVECTOR2(1.0f, 1.0f));
+		m_pButtonVertex->Draw();
 	}
 
 	DX11Manager::GetInstance()->SetDepthStencilTest(true);
@@ -75,20 +85,20 @@ void TitleMenuButton::Draw()
 
 bool TitleMenuButton::IsClicked()
 {
-	bool isClick = false;
+	bool IsClick = false;
 	MouseDevice::MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();
 
 	// マウス座標が矩形内にあるか判定
-	if (MouseState.CursorPos.x > (m_ButtonPos.x - m_ButtonVertex.x / 2) &&
-		MouseState.CursorPos.x < (m_ButtonPos.x + m_ButtonVertex.x / 2) &&
-		MouseState.CursorPos.y > (m_ButtonPos.y - m_ButtonVertex.y / 2) &&
-		MouseState.CursorPos.y < (m_ButtonPos.y + m_ButtonVertex.y / 2))
+	if (MouseState.CursorPos.x > (m_ButtonPos.x - m_ButtonSize.x / 2) &&
+		MouseState.CursorPos.x < (m_ButtonPos.x + m_ButtonSize.x / 2) &&
+		MouseState.CursorPos.y > (m_ButtonPos.y - m_ButtonSize.y / 2) &&
+		MouseState.CursorPos.y < (m_ButtonPos.y + m_ButtonSize.y / 2))
 	{
 		m_IsMouseOver = true;
 
 		if (MouseState.rgbButtons[0] == MouseDevice::MOUSEBUTTON_PUSH)
 		{
-			isClick = true;
+			IsClick = true;
 		}
 	}
 	else
@@ -96,5 +106,5 @@ bool TitleMenuButton::IsClicked()
 		m_IsMouseOver = false;
 	}
 
-	return isClick;
+	return IsClick;
 }

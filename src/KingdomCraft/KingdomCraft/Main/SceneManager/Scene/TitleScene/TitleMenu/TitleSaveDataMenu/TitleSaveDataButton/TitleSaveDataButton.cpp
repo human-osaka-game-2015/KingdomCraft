@@ -6,9 +6,9 @@
 #include "TitleSaveDataButton.h"
 
 
-TitleSaveDataButton::TitleSaveDataButton(const D3DXVECTOR2* const _pDrawPos, const D3DXVECTOR2* const _pDrawSize, LPCTSTR const _pTextureName) :
-m_DrawPos(*_pDrawPos),
-m_DrawSize(*_pDrawSize)
+TitleSaveDataButton::TitleSaveDataButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, LPCTSTR _pTextureName) :
+m_ButtonPos(*_pButtonPos),
+m_ButtonSize(*_pButtonSize)
 {
 }
 

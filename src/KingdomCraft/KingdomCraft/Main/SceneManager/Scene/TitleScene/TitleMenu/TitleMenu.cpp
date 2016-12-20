@@ -7,15 +7,15 @@
 #include "TitleMenuButton\TitleMenuButton.h"
 #include "TitleSaveDataMenu\TitleSaveDataMenu.h"
 
-D3DXVECTOR2	TitleMenu::m_StartButtonVertex = D3DXVECTOR2(300, 70);
 D3DXVECTOR2	TitleMenu::m_StartButtonPos = D3DXVECTOR2(640, 500);
-D3DXVECTOR2	TitleMenu::m_ContinueButtonVertex = D3DXVECTOR2(300, 70);
+D3DXVECTOR2	TitleMenu::m_StartButtonSize = D3DXVECTOR2(300, 70);
 D3DXVECTOR2	TitleMenu::m_ContinueButtonPos = D3DXVECTOR2(640, 600);
+D3DXVECTOR2	TitleMenu::m_ContinueButtonSize = D3DXVECTOR2(300, 70);
 
 
 TitleMenu::TitleMenu() :
-m_pStartButton(new TitleMenuButton(&m_StartButtonPos, &m_StartButtonVertex, TEXT("Resource\\Texture\\TitleScene\\TitleMenu\\TitleMenuButton\\TitleStart.png"))),
-m_pContinueButton(new TitleMenuButton(&m_ContinueButtonPos, &m_ContinueButtonVertex, TEXT("Resource\\Texture\\TitleScene\\TitleMenu\\TitleMenuButton\\TitleContinue.png"))),
+m_pStartButton(new TitleMenuButton(&m_StartButtonPos, &m_StartButtonSize, TEXT("Resource\\Texture\\TitleScene\\TitleStart.png"))),
+m_pContinueButton(new TitleMenuButton(&m_ContinueButtonPos, &m_ContinueButtonSize, TEXT("Resource\\Texture\\TitleScene\\TitleContinue.png"))),
 m_pTitleSaveDataMenu(new TitleSaveDataMenu())
 {
 	m_pTitleSaveDataMenu->SetVisible(false);
@@ -33,7 +33,6 @@ TitleMenu::~TitleMenu()
 TitleMenu::MENU_ID TitleMenu::Control()
 {
 	TitleMenu::MENU_ID MenuID = NONE_ID;
-
 
 	TitleSaveDataMenu::MENU_ID SaveDataMenuID = m_pTitleSaveDataMenu->Control();
 
