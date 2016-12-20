@@ -41,6 +41,12 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI\KingdomButtonUI.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDataUI\KingdomDataUI.cpp" />
@@ -96,6 +102,12 @@
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI\KingdomButtonUI.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomDataUI\KingdomDataUI.h" />
