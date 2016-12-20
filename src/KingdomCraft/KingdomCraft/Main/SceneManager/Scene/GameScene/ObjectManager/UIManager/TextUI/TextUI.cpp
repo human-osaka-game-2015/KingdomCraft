@@ -18,7 +18,7 @@ m_IsVisible(_isVisible)
 
 	m_pDebugFont->Init(DX11Manager::GetInstance()->GetWindowHandle());
 
-	m_pDebugFont->InitFont(m_FontSize.x, m_FontSize.y, 0xffffffff);
+	m_pDebugFont->InitFont(m_FontSize.y, m_FontSize.x, 0xffffffff);
 }
 
 TextUI::~TextUI()
