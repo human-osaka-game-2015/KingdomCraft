@@ -19,6 +19,7 @@ TitleScene::TitleScene() :
 Scene(SCENE_TITLE)
 {
 	TextureManager::Create(DX11Manager::GetInstance()->GetDevice());
+
 	DSoundManager::Create();
 	DSoundManager::GetInstance()->Init(DX11Manager::GetInstance()->GetWindowHandle());
 
@@ -34,6 +35,7 @@ TitleScene::~TitleScene()
 	delete m_pTitleBackground;
 
 	DSoundManager::Delete();
+
 	TextureManager::Delete();
 }
 
