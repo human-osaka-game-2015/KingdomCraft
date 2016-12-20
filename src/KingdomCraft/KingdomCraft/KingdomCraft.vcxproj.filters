@@ -166,6 +166,24 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI\KingdomButtonUI.cpp">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -329,6 +347,24 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI\KingdomButtonUI.h">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -502,6 +538,24 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomParameterUI">
       <UniqueIdentifier>{895c08c0-a77e-4171-bbc3-4e1fe50e6c8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI">
+      <UniqueIdentifier>{334931c9-c592-4a19-9a05-3d095c8ad7b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI">
+      <UniqueIdentifier>{c3e1ce6e-0ed9-47e8-8aed-170dcf190811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI">
+      <UniqueIdentifier>{4c697f3f-9bab-4ba3-85fb-334c152c288d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI">
+      <UniqueIdentifier>{ac8bb9db-64b4-4f94-98c2-b6809c356258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI">
+      <UniqueIdentifier>{0f000293-8e93-4f86-8e33-27c9c07345f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI">
+      <UniqueIdentifier>{79a2a95d-bc9d-43e5-9f00-37e5adc38b91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
