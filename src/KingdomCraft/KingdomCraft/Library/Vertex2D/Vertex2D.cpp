@@ -24,10 +24,14 @@ m_pDevice(_pDevice),
 m_pDeviceContext(_pDeviceContext),
 m_hWnd(_hWnd),
 m_pVertexShader(NULL),
-m_pPixelShader(NULL),
+m_pVertexCompiledShader(NULL),
 m_pVertexLayout(NULL),
+m_pPixelShader(NULL),
+m_pBlendState(NULL),
+m_pSamplerState(NULL),
+m_pVertexBuffer(NULL),
 m_pConstantBuffer(NULL),
-m_pBlendState(NULL)
+m_pTextureResourceView(NULL)
 {
 }
 
@@ -108,8 +112,8 @@ bool Vertex2D::Init(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV)
 
 void Vertex2D::Release()
 {
-	ReleaseVertexBuffer();
 	ReleaseConstantBuffer();
+	ReleaseVertexBuffer();
 	ReleaseSamplerState();
 	ReleaseBlendState();
 	ReleasePixelShader();
@@ -117,18 +121,63 @@ void Vertex2D::Release()
 	ReleaseVertexShader();
 }
 
+void Vertex2D::Draw()
+{
+	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
+	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
+
+	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+
+	m_pDeviceContext->IASetInputLayout(m_pVertexLayout);
+	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+
+	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSamplerState);
+	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTextureResourceView);
+
+	m_pDeviceContext->OMSetBlendState(m_pBlendState, NULL, m_ColorMask);
+
+	UINT Stride = sizeof(VERTEX);
+	UINT Offset = 0;
+	m_pDeviceContext->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &Stride, &Offset);
+
+	m_pDeviceContext->Draw(m_VertexNum, 0);
+}
+
 void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR3* _pScale, const D3DXVECTOR2* _pTexScroll, float _angle)
+{
+	WriteConstantBuffer(_pDrawPos, &D3DXVECTOR2(_pScale->x, _pScale->y), _pTexScroll, _angle, _alpha);
+
+	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
+	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
+
+	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+
+	m_pDeviceContext->IASetInputLayout(m_pVertexLayout);
+	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+
+	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSamplerState);
+	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTextureResourceView);
+	
+	m_pDeviceContext->OMSetBlendState(m_pBlendState, NULL, m_ColorMask);
+
+	UINT Stride = sizeof(VERTEX);
+	UINT Offset = 0;
+	m_pDeviceContext->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &Stride, &Offset);
+
+	m_pDeviceContext->Draw(m_VertexNum, 0);
+}
+
+bool Vertex2D::WriteConstantBuffer(const D3DXVECTOR2* _pDrawPos, const D3DXVECTOR2* _pScale, const D3DXVECTOR2* _pTexScroll, float _angle, float _alpha)
 {
 	D3DXMATRIX MatWorld, MatTranslate, MatRotate;
 	D3DXMatrixIdentity(&MatWorld);
-	D3DXMatrixScaling(&MatWorld, _pScale->x, _pScale->y, _pScale->z);
+	D3DXMatrixScaling(&MatWorld, _pScale->x, _pScale->y, 1.0f);
 	D3DXMatrixRotationZ(&MatRotate, _angle);
 	D3DXMatrixMultiply(&MatWorld, &MatWorld, &MatRotate);
 	D3DXMatrixTranslation(&MatTranslate, _pDrawPos->x, _pDrawPos->y, 0);
 	D3DXMatrixMultiply(&MatWorld, &MatWorld, &MatTranslate);
-
-	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
-	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
 
 	D3D11_MAPPED_SUBRESOURCE MappedResource;
 	SHADER_CONSTANT_BUFFER ConstantBuffer;
@@ -145,28 +194,12 @@ void Vertex2D::Draw(const D3DXVECTOR2* _pDrawPos, float _alpha, const D3DXVECTOR
 
 		memcpy_s(MappedResource.pData, MappedResource.RowPitch, reinterpret_cast<void*>(&ConstantBuffer), sizeof(ConstantBuffer));
 		m_pDeviceContext->Unmap(m_pConstantBuffer, 0);
+
+		return true;
 	}
 
-	// 定数バッファのセット
-	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
-	m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
-
-	// 入力レイアウトのセット
-	m_pDeviceContext->IASetInputLayout(m_pVertexLayout);
-
-	// 描画方法の指定
-	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-
-	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSampler);
-	m_pDeviceContext->PSSetShaderResources(0, 1, &m_pTextureResourceView);
-
-	UINT Stride = sizeof(VERTEX);
-	UINT Offset = 0;
-	m_pDeviceContext->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &Stride, &Offset);
-
-	m_pDeviceContext->Draw(m_VertexNum, 0);
+	return false;
 }
-
 
 //----------------------------------------------------------------------------------------------------
 // Private Functions
@@ -192,6 +225,7 @@ bool Vertex2D::InitVertexShader()
 		pErrors->Release();
 		return false;
 	}
+
 	m_pDevice->CreateVertexShader(
 		m_pVertexCompiledShader->GetBufferPointer(),
 		m_pVertexCompiledShader->GetBufferSize(),
@@ -205,8 +239,8 @@ bool Vertex2D::InitVertexLayout()
 {
 	D3D11_INPUT_ELEMENT_DESC InputElementDesc[] =
 	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,  D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	};
 
 	if (FAILED(m_pDevice->CreateInputLayout(
@@ -227,7 +261,6 @@ bool Vertex2D::InitPixelShader()
 {
 	ID3DBlob* pCompiledShader = NULL;
 	ID3DBlob* pErrors = NULL;
-	m_pPixelShader = NULL;
 	if (FAILED(D3DX11CompileFromFile(
 		TEXT("Library\\Vertex2D\\Effect\\Vertex2D.fx"),
 		NULL,
@@ -246,7 +279,12 @@ bool Vertex2D::InitPixelShader()
 		return false;
 	}
 
-	m_pDevice->CreatePixelShader(pCompiledShader->GetBufferPointer(), pCompiledShader->GetBufferSize(), NULL, &m_pPixelShader);
+	m_pDevice->CreatePixelShader(
+		pCompiledShader->GetBufferPointer(), 
+		pCompiledShader->GetBufferSize(), 
+		NULL, 
+		&m_pPixelShader);
+	
 	pCompiledShader->Release();
 
 	return true;
@@ -256,8 +294,8 @@ bool Vertex2D::InitBlendState()
 {
 	D3D11_BLEND_DESC BlendDesc;
 	ZeroMemory(&BlendDesc, sizeof(D3D11_BLEND_DESC));
-	BlendDesc.IndependentBlendEnable = false;
 	BlendDesc.AlphaToCoverageEnable = false;
+	BlendDesc.IndependentBlendEnable = false;
 	BlendDesc.RenderTarget[0].BlendEnable = true;
 	BlendDesc.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
 	BlendDesc.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
@@ -273,7 +311,6 @@ bool Vertex2D::InitBlendState()
 		return false;
 	}
 
-	m_pDeviceContext->OMSetBlendState(m_pBlendState, NULL, m_ColorMask);
 	return true;
 }
 
@@ -286,33 +323,41 @@ bool Vertex2D::InitSamplerState()
 	SamplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
 	SamplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
 
-	if (FAILED(m_pDevice->CreateSamplerState(&SamplerDesc, &m_pSampler)))
+	if (FAILED(m_pDevice->CreateSamplerState(&SamplerDesc, &m_pSamplerState)))
 	{
 		MessageBox(m_hWnd, TEXT("CreateSamplerStateに失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
+
 	return true;
 }
 
 bool Vertex2D::InitVertexBuffer(const D3DXVECTOR2* _pRectSize, const D3DXVECTOR2* _pUV)
 {
+	float RectTop    = -_pRectSize->y / 2;
+	float RectBottom =  _pRectSize->y / 2;
+	float RectLeft   = -_pRectSize->x / 2;
+	float RectRight  =  _pRectSize->x / 2;
+
 	VERTEX Vertex[] =
 	{
-		D3DXVECTOR3(-_pRectSize->x / 2, -_pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
-		D3DXVECTOR3(_pRectSize->x / 2, -_pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
-		D3DXVECTOR3(-_pRectSize->x / 2, _pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
-		D3DXVECTOR3(_pRectSize->x / 2, _pRectSize->y / 2, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y)
+		D3DXVECTOR3(RectLeft,  RectTop, 0.f), D3DXVECTOR2(_pUV[0].x, _pUV[0].y),
+		D3DXVECTOR3(RectRight, RectTop, 0.f), D3DXVECTOR2(_pUV[1].x, _pUV[1].y),
+		D3DXVECTOR3(RectLeft,  RectBottom, 0.f), D3DXVECTOR2(_pUV[2].x, _pUV[2].y),
+		D3DXVECTOR3(RectRight, RectBottom, 0.f), D3DXVECTOR2(_pUV[3].x, _pUV[3].y)
 	};
 
 	D3D11_BUFFER_DESC BufferDesc;
+	ZeroMemory(&BufferDesc, sizeof(D3D11_BUFFER_DESC));
 	BufferDesc.ByteWidth = sizeof(VERTEX) * m_VertexNum;
 	BufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	BufferDesc.CPUAccessFlags = 0;
 	BufferDesc.MiscFlags = 0;
-	BufferDesc.StructureByteStride = sizeof(float);
+	BufferDesc.StructureByteStride = 0;
 
 	D3D11_SUBRESOURCE_DATA InitVertexData;
+	ZeroMemory(&InitVertexData, sizeof(D3D11_SUBRESOURCE_DATA));
 	InitVertexData.pSysMem = Vertex;
 	if (FAILED(m_pDevice->CreateBuffer(&BufferDesc, &InitVertexData, &m_pVertexBuffer)))
 	{
@@ -327,18 +372,19 @@ bool Vertex2D::InitConstantBuffer()
 {
 	D3D11_BUFFER_DESC ConstantBufferDesc;
 	ZeroMemory(&ConstantBufferDesc, sizeof(D3D11_BUFFER_DESC));
-	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	ConstantBufferDesc.ByteWidth = sizeof(SHADER_CONSTANT_BUFFER);
+	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	ConstantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	ConstantBufferDesc.MiscFlags = 0;
 	ConstantBufferDesc.StructureByteStride = 0;
-	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
 
 	if (FAILED(m_pDevice->CreateBuffer(&ConstantBufferDesc, NULL, &m_pConstantBuffer)))
 	{
 		MessageBox(m_hWnd, TEXT("ConstantBufferの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
+
 	return true;
 }
 
@@ -386,10 +432,10 @@ void Vertex2D::ReleaseBlendState()
 
 void Vertex2D::ReleaseSamplerState()
 {
-	if (m_pSampler != NULL)
+	if (m_pSamplerState != NULL)
 	{
-		m_pSampler->Release();
-		m_pSampler = NULL;
+		m_pSamplerState->Release();
+		m_pSamplerState = NULL;
 	}
 }
 
