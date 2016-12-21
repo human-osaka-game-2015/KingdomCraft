@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Library\Vertex\Vertex.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.cpp" />
@@ -74,6 +75,7 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Library\Vertex\Vertex.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.h" />
@@ -158,6 +160,12 @@
       </EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Library\Vertex\Effect\Vertex.fx">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
     </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">

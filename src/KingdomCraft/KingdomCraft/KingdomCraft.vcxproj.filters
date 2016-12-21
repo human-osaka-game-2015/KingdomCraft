@@ -184,6 +184,9 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.cpp">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
     </ClCompile>
+    <ClCompile Include="Library\Vertex\Vertex.cpp">
+      <Filter>Library\Vertex</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -366,6 +369,9 @@
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.h">
       <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
     </ClInclude>
+    <ClInclude Include="Library\Vertex\Vertex.h">
+      <Filter>Library\Vertex</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -442,9 +448,6 @@
     </Filter>
     <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton">
       <UniqueIdentifier>{dee953b7-9ea4-428e-9fb9-12a257bf5e5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Library\Vertex2D\Effect">
-      <UniqueIdentifier>{573df6be-f38e-4174-90e5-a99325fbf189}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager">
       <UniqueIdentifier>{8aa953b7-3c65-4e37-949a-7ebfee5d7364}</UniqueIdentifier>
@@ -557,16 +560,28 @@
     <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI">
       <UniqueIdentifier>{79a2a95d-bc9d-43e5-9f00-37e5adc38b91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library\Vertex">
+      <UniqueIdentifier>{73bf57ba-312b-4419-a3d2-943c7c278077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Vertex\Effect">
+      <UniqueIdentifier>{8f2cd0c9-4fe3-4fa6-9932-839199b421fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Vertex2D">
+      <UniqueIdentifier>{e30530c9-00d8-4131-8996-5b30a6349c95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Vertex2D\Effect">
+      <UniqueIdentifier>{573df6be-f38e-4174-90e5-a99325fbf189}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
       <Filter>Library\DebugFont\Effect</Filter>
     </FxCompile>
-    <Filter Include="Library\Vertex2D">
-      <UniqueIdentifier>{e30530c9-00d8-4131-8996-5b30a6349c95}</UniqueIdentifier>
-    </Filter>
     <FxCompile Include="Library\Vertex2D\Effect\Vertex2D.fx">
       <Filter>Library\Vertex2D\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="Library\Vertex\Effect\Vertex.fx">
+      <Filter>Library\Vertex\Effect</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
