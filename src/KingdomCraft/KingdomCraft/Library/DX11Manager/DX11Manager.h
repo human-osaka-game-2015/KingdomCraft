@@ -6,8 +6,7 @@
 #ifndef DX11MANAGER_H
 #define DX11MANAGER_H
 #include <Windows.h>
-#include <d3d11.h>
-#include <d3dx11.h>	
+#include <D3DX11.h>	
 
 /**
  * DirectX11関係のオブジェクトを管理しているクラス
@@ -20,7 +19,7 @@ class DX11Manager
 {
 public:
 	/**
-	 * インスタンスを生成
+	 * DX11Managerのインスタンスを作成する関数
 	 */
 	inline static void Create()
 	{
@@ -31,8 +30,8 @@ public:
 	}
 
 	/**
-	 * インスタンスを取得する
-	 * @return インスタンスが返る
+	 * DX11Managerのインスタンスを取得する関数
+	 * @return DX11Managerのインスタンス
 	 */
 	inline static DX11Manager* GetInstance()
 	{
@@ -40,7 +39,7 @@ public:
 	}
 
 	/**
-	 * DX11Managerインスタンスを破棄する
+	 * DX11Managerインスタンスを破棄する関数
 	 */
 	inline static void Delete()
 	{
@@ -49,14 +48,14 @@ public:
 	}
 
 	/**
-	 * DX11Managerの初期化関数
+	 * DX11Managerクラスの初期化関数
 	 * @param[in] _hWnd DX11Managerが対応するウィンドウのハンドル
 	 * @return 初期化に成功したらtrue
 	 */
 	bool Init(HWND _hWnd);
 
 	/**
-	 * DX11Managerの解放関数
+	 * DX11Managerクラスの解放関数
 	 */
 	void Release();
 

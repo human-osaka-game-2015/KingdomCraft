@@ -5,7 +5,7 @@
  */
 #ifndef CAMERA_H
 #define CAMERA_H
-#include <d3dx9.h>
+#include <D3DX10.h>
 
 /**
  * カメラ情報を管理するクラス
@@ -15,22 +15,17 @@ class Camera
 public:
 	/**
 	 * Cameraクラスのコンストラクタ
-	 */
-	Camera();
-
-	/**
-	 * Cameraクラスのデストラクタ
-	 */
-	~Camera();
-
-	/**
-	 * Cameraの初期化関数
 	 * @param[in] _windowWidth ウィンドウの幅
 	 * @param[in] _windowHeight ウィンドウの高さ
 	 * @param[in] _nearZ カメラの最近点
 	 * @param[in] _farZ カメラの最遠点
 	 */
-	void Init(float _windowWidth, float _windowHeight, float _nearZ, float _farZ);
+	Camera(float _windowWidth, float _windowHeight, float _nearZ, float _farZ);
+
+	/**
+	 * Cameraクラスのデストラクタ
+	 */
+	~Camera();
 
 	/**
 	 * 座標変換用の行列を作成する関数

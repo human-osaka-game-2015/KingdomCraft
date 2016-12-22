@@ -37,7 +37,7 @@ bool DSoundManager::Init(HWND _hWnd)
 {
 	if (m_pDSound8 != NULL)
 	{
-		MessageBox(m_hWnd, TEXT("DSoundManagerははすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(_hWnd, TEXT("DSoundManagerはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -93,7 +93,7 @@ void DSoundManager::SoundOperation(int _index, SOUND_OPERATION _operation)
 bool DSoundManager::LoadSound(LPSTR _pFileName, int* _pIndex)
 {
 	WAVEFORMATEX WaveFormat;
-	BYTE* pWaveData = 0;
+	BYTE* pWaveData = NULL;
 	DWORD WaveSize = 0;
 
 	if (!ReadWave(_pFileName, &WaveFormat, &pWaveData, &WaveSize))
@@ -111,10 +111,10 @@ bool DSoundManager::LoadSound(LPSTR _pFileName, int* _pIndex)
 	DSBufferDesc.guid3DAlgorithm = GUID_NULL;
 
 	LPDIRECTSOUNDBUFFER8 pDSBuffer = NULL;
-	LPDIRECTSOUNDBUFFER pTmpBuf = NULL;
-	m_pDSound8->CreateSoundBuffer(&DSBufferDesc, &pTmpBuf, NULL);
-	pTmpBuf->QueryInterface(IID_IDirectSoundBuffer8, reinterpret_cast<void**>(&pDSBuffer));
-	pTmpBuf->Release();
+	LPDIRECTSOUNDBUFFER pTmpBufer = NULL;
+	m_pDSound8->CreateSoundBuffer(&DSBufferDesc, &pTmpBufer, NULL);
+	pTmpBufer->QueryInterface(IID_IDirectSoundBuffer8, reinterpret_cast<void**>(&pDSBuffer));
+	pTmpBufer->Release();
 
 	if (pDSBuffer == NULL)
 	{
