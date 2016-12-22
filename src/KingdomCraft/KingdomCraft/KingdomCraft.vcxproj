@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.cpp" />
     <ClCompile Include="Library\Vertex\Vertex.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.cpp" />
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.cpp" />
@@ -75,6 +76,7 @@
     <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.h" />
     <ClInclude Include="Library\Vertex\Vertex.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.h" />
     <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.h" />
