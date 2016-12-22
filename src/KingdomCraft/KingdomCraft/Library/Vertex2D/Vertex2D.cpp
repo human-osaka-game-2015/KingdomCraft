@@ -31,7 +31,9 @@ m_pBlendState(NULL),
 m_pSamplerState(NULL),
 m_pVertexBuffer(NULL),
 m_pConstantBuffer(NULL),
-m_pTextureResourceView(NULL)
+m_pTextureResourceView(NULL),
+m_ClientWidth(0),
+m_ClientHeight(0)
 {
 }
 
@@ -201,6 +203,7 @@ bool Vertex2D::WriteConstantBuffer(const D3DXVECTOR2* _pDrawPos, const D3DXVECTO
 	return false;
 }
 
+
 //----------------------------------------------------------------------------------------------------
 // Private Functions
 //----------------------------------------------------------------------------------------------------
@@ -239,8 +242,8 @@ bool Vertex2D::InitVertexLayout()
 {
 	D3D11_INPUT_ELEMENT_DESC InputElementDesc[] =
 	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,  D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,					  D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,	  0, sizeof(D3DXVECTOR3), D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	};
 
 	if (FAILED(m_pDevice->CreateInputLayout(

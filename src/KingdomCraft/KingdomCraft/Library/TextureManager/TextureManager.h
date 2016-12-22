@@ -5,7 +5,7 @@
  */
 #ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
-#include <d3d11.h>
+#include <D3DX11.h>
 #include <vector>
 
 /**
@@ -15,10 +15,10 @@ class TextureManager
 {
 public:
 	/**
-	 * インスタンスを生成
+	 * TextureManagerのインスタンスを作成する関数
 	 * @param[in] _pDevice テクスチャの読み込みに使用するDirectX11のデバイス
 	 */
-	inline static void Create(ID3D11Device* const _pDevice)
+	inline static void Create(ID3D11Device* _pDevice)
 	{
 		if (m_pTextureManager == NULL)
 		{
@@ -27,8 +27,8 @@ public:
 	}
 
 	/**
-	 * インスタンスを取得する
-	 * @return インスタンスが返る
+	 * TextureManagerのインスタンスを取得する関数
+	 * @return TextureManagerのインスタンス
 	 */
 	inline static TextureManager* GetInstance()
 	{
@@ -36,7 +36,7 @@ public:
 	}
 
 	/**
-	 * インスタンスを破棄する
+	 * TextureManagerのインスタンスを破棄する関数
 	 */
 	inline static void Delete()
 	{
@@ -55,7 +55,7 @@ public:
 	bool LoadTexture(LPCTSTR _pFileName, int* _pIndex);
 
 	/**
-	 * 格納しているテクスチャを取得する
+	 * 格納しているテクスチャを取得する関数
 	 * @param[in] _index 取得したいテクスチャのインデックス
 	 * @return テクスチャのリソースビュー
 	 */
@@ -65,19 +65,16 @@ public:
 	}
 
 	/**
-	 * 格納しているテクスチャを解放する
-	 * 
-	 * 0を引数として渡してはいけない
+	 * 格納しているテクスチャを解放する関数
 	 * @param[in] _index 解放したいテクスチャのインデックス
 	 */
 	void ReleaseTexture(int _index);
 	
-
 	/**
 	 * テクスチャを確保しているバッファをクリアする
 	 *
 	 * vectorを使用しているのでバッファ領域は解放されない。\n
-	 * バッファ領域はTextureManagerのDelete関数が呼ばれて破棄されたときに解放される。
+	 * バッファ領域はTextureManagerのDelete()が呼ばれて破棄されたときに解放される。
 	 */
 	inline void ClearBuffer()
 	{
@@ -91,7 +88,7 @@ private:
 	 * TextureManagerクラスのコンストラクタ
 	 * @param[in] _pDevice テクスチャの読み込みに使用するDirectX11のデバイス
 	 */
-	TextureManager(ID3D11Device* const _pDevice);
+	TextureManager(ID3D11Device* _pDevice);
 
 	/**
 	 * TextureManagerクラスのデストラクタ

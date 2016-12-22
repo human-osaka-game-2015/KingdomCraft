@@ -28,6 +28,7 @@ m_pDXGISwapChain(NULL),
 m_pBackBuffer(NULL),
 m_pRenderTargetView(NULL),
 m_pDepthStencilBuffer(NULL),
+m_pDepthStencilView(NULL),
 m_pRasterizerState(NULL),
 m_hWnd(NULL)
 {
@@ -46,7 +47,7 @@ bool DX11Manager::Init(HWND _hWnd)
 {
 	if (m_pDevice != NULL)
 	{
-		MessageBox(m_hWnd, TEXT("m_pDeviceDx11Managerクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(_hWnd, TEXT("m_pDeviceDx11Managerクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -135,6 +136,7 @@ bool DX11Manager::InitDisplay()
 		MessageBox(m_hWnd, TEXT("DX11のインターフェイスの取得に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
+
 	OutputDebugString(TEXT("DX11のインターフェイス(グラフィック)の取得に成功しました\n"));
 
 	if (FAILED(m_pDXGI->GetAdapter(&m_pAdapter)))
@@ -143,6 +145,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+	
 	OutputDebugString(TEXT("DX11アダプターの取得に成功しました\n"));
 
 	m_pAdapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void**>(&m_pDXGIFactory));
@@ -153,6 +156,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+
 	OutputDebugString(TEXT("DX11のファクトリー取得に成功しました\n"));
 
 	if (FAILED(m_pDXGIFactory->MakeWindowAssociation(m_hWnd, 0)))
@@ -163,6 +167,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+
 	OutputDebugString(TEXT("フルスクリーン対応に成功しました\n"));
 
 
@@ -190,6 +195,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+
 	OutputDebugString(TEXT("スワップチェインの作成に成功しました\n"));
 
 	if (FAILED(m_pDXGISwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&m_pBackBuffer))))
@@ -201,6 +207,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+
 	OutputDebugString(TEXT("スワップチェインのバックバッファ取得に成功しました\n"));
 
 	if (FAILED(m_pDevice->CreateRenderTargetView(m_pBackBuffer, NULL, &m_pRenderTargetView)))
@@ -213,6 +220,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+
 	OutputDebugString(TEXT("描画ターゲット生成に成功しました\n"));
 
 
@@ -239,6 +247,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+
 	OutputDebugString(TEXT("ステンシルビュー生成に成功しました\n"));
 
 	if (FAILED(m_pDevice->CreateDepthStencilView(m_pDepthStencilBuffer, NULL, &m_pDepthStencilView)))
@@ -253,6 +262,7 @@ bool DX11Manager::InitDisplay()
 		m_pDXGI->Release();
 		return false;
 	}
+
 	OutputDebugString(TEXT("ステンシルバッファ生成に成功しました\n"));
 
 	m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
@@ -290,6 +300,7 @@ bool DX11Manager::InitDisplay()
 		MessageBox(m_hWnd, TEXT("RasterizerStateの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
+
 	OutputDebugString(TEXT("RasterizerStateの状態の生成に成功しました\n"));
 	m_pDeviceContext->RSSetState(m_pRasterizerState);
 

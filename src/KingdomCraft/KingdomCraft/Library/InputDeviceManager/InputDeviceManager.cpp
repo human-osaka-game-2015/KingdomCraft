@@ -40,17 +40,22 @@ bool InputDeviceManager::Init(HWND _hWnd)
 {
 	if (m_pDInput8 != NULL)
 	{
-		MessageBox(m_hWnd, TEXT("m_pDInput8の中身は空ではありません"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(_hWnd, TEXT("m_pDInput8の中身は空ではありません"), TEXT("エラー"), MB_ICONSTOP);
+		return false;
+	}
+
+	if (FAILED(DirectInput8Create(
+		GetModuleHandle(NULL), 
+		DIRECTINPUT_VERSION, 
+		IID_IDirectInput8, 
+		reinterpret_cast<void**>(&m_pDInput8), 
+		NULL)))
+	{
+		MessageBox(_hWnd, TEXT("DirectInput8オブジェクトの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
 
 	m_hWnd = _hWnd;
-
-	if (FAILED(DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&m_pDInput8, NULL)))
-	{
-		MessageBox(m_hWnd, TEXT("DirectInput8オブジェクトの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
-		return false;
-	}
 
 	OutputDebugString(TEXT("DirectInput8オブジェクトの生成に成功\n"));
 
@@ -64,8 +69,6 @@ void InputDeviceManager::Release()
 		m_pKeyDevice->Release();
 		delete m_pKeyDevice;
 		m_pKeyDevice = NULL;
-
-		OutputDebugString(TEXT("KeyDeviceクラスを破棄しました\n"));
 	}
 
 	if (m_pMouseDevice != NULL)
@@ -73,8 +76,6 @@ void InputDeviceManager::Release()
 		m_pMouseDevice->Release();
 		delete m_pMouseDevice;
 		m_pMouseDevice = NULL;
-
-		OutputDebugString(TEXT("MouseDeviceクラスを破棄しました\n"));
 	}
 
 	if (m_pDInput8 != NULL)

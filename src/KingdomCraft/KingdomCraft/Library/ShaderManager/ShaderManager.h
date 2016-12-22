@@ -5,7 +5,7 @@
  */
 #ifndef SHADERMANAGER_H
 #define SHADERMANAGER_H
-#include <d3d11.h>
+#include <D3DX11.h>
 #include <vector>
 
 /**
@@ -17,7 +17,7 @@ class ShaderManager
 {
 public:
 	/**
-	 * インスタンスを生成
+	 * ShaderManagerのインスタンスを生成する関数
 	 * @param[in] _pDevice シェーダーを読み込むためのDirectX11デバイス
 	 */
 	static void Create(ID3D11Device* _pDevice)
@@ -29,8 +29,8 @@ public:
 	}
 
 	/**
-	 * インスタンスを取得する
-	 * @return インスタンスが返る
+	 * ShaderManagerのインスタンスを取得する関数
+	 * @return ShaderManagerのインスタンス
 	 */
 	static ShaderManager* GetInstance()
 	{
@@ -38,7 +38,7 @@ public:
 	}
 
 	/**
-	 * ShaderManagerインスタンスを破棄する
+	 * ShaderManagerのインスタンスを破棄する関数
 	 */
 	static void Delete()
 	{
