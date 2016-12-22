@@ -4,6 +4,7 @@
  * @author kotani
  */
 #include "GameObjectManager.h"
+#include "MainCamera\MainCamera.h"
 #include "EnemyManager\EnemyManager.h"
 #include "FieldManager\FieldManager.h"
 #include "HouseManager\HouseManager.h"
@@ -12,6 +13,7 @@
 
 
 GameObjectManager::GameObjectManager() :
+m_pMainCamera(new MainCamera()),
 m_pEnemyManager(new EnemyManager()),
 m_pFieldManager(new FieldManager()),
 m_pHouseManager(new HouseManager()),
@@ -27,10 +29,12 @@ GameObjectManager::~GameObjectManager()
 	delete m_pHouseManager;
 	delete m_pFieldManager;
 	delete m_pEnemyManager;
+	delete m_pMainCamera;
 }
 
 void GameObjectManager::Control()
 {
+	m_pMainCamera->Control();
 	m_pEnemyManager->Control();
 	m_pFieldManager->Control();
 	m_pHouseManager->Control();

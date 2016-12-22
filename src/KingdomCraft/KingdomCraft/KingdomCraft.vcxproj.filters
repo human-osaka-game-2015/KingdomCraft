@@ -187,6 +187,9 @@
     <ClCompile Include="Library\Vertex\Vertex.cpp">
       <Filter>Library\Vertex</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.cpp">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\MainCamera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -371,6 +374,9 @@
     </ClInclude>
     <ClInclude Include="Library\Vertex\Vertex.h">
       <Filter>Library\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.h">
+      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\MainCamera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -571,6 +577,9 @@
     </Filter>
     <Filter Include="Library\Vertex2D\Effect">
       <UniqueIdentifier>{573df6be-f38e-4174-90e5-a99325fbf189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\MainCamera">
+      <UniqueIdentifier>{62ef79b3-482b-460a-a4a2-0a5970ce879b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
