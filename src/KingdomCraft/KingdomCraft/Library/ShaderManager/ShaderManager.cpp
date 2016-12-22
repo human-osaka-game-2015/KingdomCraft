@@ -4,7 +4,6 @@
  * @author morimoto
  */
 #include "ShaderManager.h"
-#include "d3dx11.h"
 
 
 //----------------------------------------------------------------------------------------------------
@@ -113,7 +112,6 @@ bool ShaderManager::LoadPixelShader(LPCTSTR _pFileName, LPCTSTR _pFuncName, int*
 
 	if (pShaderErrors != NULL) pShaderErrors->Release();
 
-
 	if (FAILED(m_pDevice->CreatePixelShader(
 		pCompiledShader->GetBufferPointer(),
 		pCompiledShader->GetBufferSize(),
@@ -137,7 +135,9 @@ void ShaderManager::ReleaseVertexShader(int _index)
 	if (m_pVertexShader[_index] != NULL)
 	{
 		m_pVertexShader[_index]->Release();
+		m_pVertexShader[_index] = NULL;
 		m_pCompiledVertexShader[_index]->Release();
+		m_pCompiledVertexShader[_index] = NULL;
 	}
 }
 
@@ -146,6 +146,8 @@ void ShaderManager::ReleasePixelShader(int _index)
 	if (m_pPixelShader[_index] != NULL)
 	{
 		m_pPixelShader[_index]->Release();
+		m_pPixelShader[_index] = NULL;
 		m_pCompiledPixelShader[_index]->Release();
+		m_pCompiledPixelShader[_index] = NULL;
 	}
 }

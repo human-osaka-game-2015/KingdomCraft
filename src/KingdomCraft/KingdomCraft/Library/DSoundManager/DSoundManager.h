@@ -30,9 +30,9 @@ public:
 	};
 
 	/**
-	 * インスタンス生成関数
+	 * DSoundManagerのインスタンスを生成する関数
 	 */
-	static void Create()
+	inline static void Create()
 	{
 		if (m_pSoundManager == NULL)
 		{
@@ -41,24 +41,21 @@ public:
 	}
 
 	/**
-	 * インスタンスを取得する
-	 * @return インスタンスが返る
+	 * DSoundManagerのインスタンスを取得する関数
+	 * @return DSoundManagerのインスタンスが返る
 	 */
-	static DSoundManager* GetInstance()
+	inline static DSoundManager* GetInstance()
 	{
 		return m_pSoundManager;
 	}
 
 	/**
-	 * インスタンスの破棄
+	 * DSoundManagerのインスタンスの破棄する関数
 	 */
-	static void Delete()
+	inline static void Delete()
 	{
-		if (m_pSoundManager != NULL)
-		{
-			delete m_pSoundManager;
-			m_pSoundManager = NULL;
-		}
+		delete m_pSoundManager;
+		m_pSoundManager = NULL;
 	}
 
 	/**

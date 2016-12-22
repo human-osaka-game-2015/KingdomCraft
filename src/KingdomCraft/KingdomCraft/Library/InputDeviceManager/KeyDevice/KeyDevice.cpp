@@ -35,7 +35,7 @@ bool KeyDevice::Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd)
 {
 	if (m_pDInput8 != NULL)
 	{
-		MessageBox(m_hWnd, TEXT("KeyDeviceクラスは既に初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(_hWnd, TEXT("KeyDeviceクラスは既に初期化されています"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -61,13 +61,13 @@ bool KeyDevice::Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd)
 		return false;
 	}
 
-	DIPROPDWORD diprop;
-	diprop.diph.dwSize = sizeof(diprop);
-	diprop.diph.dwHeaderSize = sizeof(diprop.diph);
-	diprop.diph.dwObj = 0;
-	diprop.diph.dwHow = DIPH_DEVICE;
-	diprop.dwData = 1000;
-	if (FAILED(m_pDInputDevice8->SetProperty(DIPROP_BUFFERSIZE, &diprop.diph)))
+	DIPROPDWORD DiProp;
+	DiProp.diph.dwSize = sizeof(DiProp);
+	DiProp.diph.dwHeaderSize = sizeof(DiProp.diph);
+	DiProp.diph.dwObj = 0;
+	DiProp.diph.dwHow = DIPH_DEVICE;
+	DiProp.dwData = 1000;
+	if (FAILED(m_pDInputDevice8->SetProperty(DIPROP_BUFFERSIZE, &DiProp.diph)))
 	{
 		MessageBox(m_hWnd, TEXT("DirectInput8キーデバイスのバッファ設定に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
 		m_pDInputDevice8->Release();

@@ -24,7 +24,10 @@ m_pSamplerState(NULL),
 m_pConstantBuffer(NULL),
 m_pVertexBuffer(NULL),
 m_pTextureResourceView(NULL),
-m_pVertex(NULL)
+m_pVertex(NULL),
+m_VertexNum(0),
+m_ClientWidth(0),
+m_ClientHeight(0)
 {
 }
 

@@ -16,9 +16,9 @@ class InputDeviceManager
 {
 public:
 	/**
-	 * InputDeviceManagerのインスタンスを生成する
+	 * InputDeviceManagerのインスタンスを生成する関数
 	 */
-	static void Create()
+	inline static void Create()
 	{
 		if (m_pInputDeviceManager == NULL)
 		{
@@ -27,18 +27,18 @@ public:
 	}
 
 	/**
-	 * InputDeviceManagerのインスタンスを取得する
+	 * InputDeviceManagerのインスタンスを取得する関数
 	 * @return InputDeviceManagerのインスタンス
 	 */
-	static InputDeviceManager* GetInstance()
+	inline static InputDeviceManager* GetInstance()
 	{
 		return m_pInputDeviceManager;
 	}
 
 	/**
-	 * InputDeviceManagerのインスタンスを破棄する
+	 * InputDeviceManagerのインスタンスを破棄する関数
 	 */
-	static void Delete()
+	inline static void Delete()
 	{
 		delete m_pInputDeviceManager;
 		m_pInputDeviceManager = NULL;

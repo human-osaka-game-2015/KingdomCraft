@@ -10,8 +10,12 @@
 // Constructor	Destructor
 //----------------------------------------------------------------------------------------------------
 
-Camera::Camera()
+Camera::Camera(float _windowWidth, float _windowHeight, float _nearZ, float _farZ)
 {
+	m_WindowWidth = _windowWidth;
+	m_WindowHeight = _windowHeight;
+	m_NearZ = _nearZ;
+	m_FarZ = _farZ;
 }
 
 Camera::~Camera()
@@ -23,14 +27,6 @@ Camera::~Camera()
 // Public Functions
 //----------------------------------------------------------------------------------------------------
 
-void Camera::Init(float _windowWidth, float _windowHeight, float _nearZ, float _farZ)
-{
-	m_WindowWidth = _windowWidth;
-	m_WindowHeight = _windowHeight;
-	m_NearZ = _nearZ;
-	m_FarZ = _farZ;
-}
-
 void Camera::TransformView(D3DXVECTOR3 _eyePos, D3DXVECTOR3 _lookPos, float _viewAngle)
 {
 	// ビュー座標変換行列の作成
@@ -39,5 +35,5 @@ void Camera::TransformView(D3DXVECTOR3 _eyePos, D3DXVECTOR3 _lookPos, float _vie
 
 	// プロジェクション座標変換行列の作成
 	float Aspect = m_WindowWidth / m_WindowHeight;
-	D3DXMatrixPerspectiveFovLH(&m_MatProj, D3DXToRadian(_viewAngle), Aspect, m_NearZ, m_FarZ);
+	D3DXMatrixPerspectiveFovLH(&m_MatProj, static_cast<float>(D3DXToRadian(_viewAngle)), Aspect, m_NearZ, m_FarZ);
 }
