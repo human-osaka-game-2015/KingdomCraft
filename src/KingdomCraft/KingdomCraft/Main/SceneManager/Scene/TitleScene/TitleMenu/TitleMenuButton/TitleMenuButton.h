@@ -68,10 +68,10 @@ private:
 	static const D3DXVECTOR2	m_ButtonTexel[4];	//!< ボタンのテクスチャ座標
 	const D3DXVECTOR2			m_ButtonPos;
 	const D3DXVECTOR2			m_ButtonSize;
-	Vertex2D*					m_pVertex;
+	Vertex2D*					m_pButtonVertex;
 	bool						m_IsMouseOver;
 	bool						m_IsVisible;
-	int							m_TextureIndex;
+	int							m_ButtonTextureIndex;
 
 };
 

@@ -20,27 +20,29 @@ const D3DXVECTOR2 TitleMenuButton::m_ButtonTexel[4] =
 TitleMenuButton::TitleMenuButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, LPCTSTR _pTextureName) :
 m_ButtonPos(*_pButtonPos),
 m_ButtonSize(*_pButtonSize),
+m_pButtonVertex(NULL),
 m_IsMouseOver(false),
 m_IsVisible(false),
-m_TextureIndex(TextureManager::m_InvalidIndex)
+m_ButtonTextureIndex(TextureManager::m_InvalidIndex)
 {
-	TextureManager::GetInstance()->LoadTexture(_pTextureName, &m_TextureIndex);
+	TextureManager::GetInstance()->LoadTexture(_pTextureName, &m_ButtonTextureIndex);
 
-	m_pVertex = new Vertex2D(
+	m_pButtonVertex = new Vertex2D(
 		DX11Manager::GetInstance()->GetDevice(),
 		DX11Manager::GetInstance()->GetDeviceContext(),
 		DX11Manager::GetInstance()->GetWindowHandle());
 
-	m_pVertex->Init(&m_ButtonSize, m_ButtonTexel);
-	m_pVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_TextureIndex));
+	m_pButtonVertex->Init(&m_ButtonSize, m_ButtonTexel);
+	m_pButtonVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_ButtonTextureIndex));
+	m_pButtonVertex->WriteConstantBuffer(&m_ButtonPos);
 }
 
 TitleMenuButton::~TitleMenuButton()
 {
-	m_pVertex->Release();
-	delete m_pVertex;
+	m_pButtonVertex->Release();
+	delete m_pButtonVertex;
 
-	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
+	TextureManager::GetInstance()->ReleaseTexture(m_ButtonTextureIndex);
 }
 
 bool TitleMenuButton::Control()
@@ -69,11 +71,13 @@ void TitleMenuButton::ButtonDraw()
 
 	if (m_IsMouseOver)
 	{
-		m_pVertex->Draw(&m_ButtonPos, 1.0f, &D3DXVECTOR3(1.1f, 1.1f, 1.f));
+		m_pButtonVertex->WriteConstantBuffer(&m_ButtonPos, &D3DXVECTOR2(1.1f, 1.1f));
+		m_pButtonVertex->Draw();
 	}
 	else
 	{
-		m_pVertex->Draw(&m_ButtonPos, 1.0f, &D3DXVECTOR3(1.f, 1.f, 1.f));
+		m_pButtonVertex->WriteConstantBuffer(&m_ButtonPos, &D3DXVECTOR2(1.0f, 1.0f));
+		m_pButtonVertex->Draw();
 	}
 
 	DX11Manager::GetInstance()->SetDepthStencilTest(true);
@@ -81,7 +85,7 @@ void TitleMenuButton::ButtonDraw()
 
 bool TitleMenuButton::IsClicked()
 {
-	bool isClick = false;
+	bool IsClick = false;
 	MouseDevice::MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();
 
 	// マウス座標が矩形内にあるか判定
@@ -94,7 +98,7 @@ bool TitleMenuButton::IsClicked()
 
 		if (MouseState.rgbButtons[0] == MouseDevice::MOUSEBUTTON_PUSH)
 		{
-			isClick = true;
+			IsClick = true;
 		}
 	}
 	else
@@ -102,5 +106,5 @@ bool TitleMenuButton::IsClicked()
 		m_IsMouseOver = false;
 	}
 
-	return isClick;
+	return IsClick;
 }
