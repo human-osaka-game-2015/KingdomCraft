@@ -18,11 +18,11 @@ m_LookPoint(D3DXVECTOR3(0.f, 0.f, 1.f))
 {
 	RECT ClientRect;
 	GetClientRect(DX11Manager::GetInstance()->GetWindowHandle(), &ClientRect);
-	m_pCamera = new Camera(ClientRect.right, ClientRect.bottom,m_NearPoint,m_FarPoint);
+	m_pCamera = new Camera(static_cast<float>(ClientRect.right), static_cast<float>(ClientRect.bottom), m_NearPoint, m_FarPoint);
 	
 	InitConstantBuffer();
-	WriteConstantBuffer();
 	m_pCamera->TransformView(m_Pos, m_LookPoint, m_ViewAngle);
+	WriteConstantBuffer();
 }
 
 MainCamera::~MainCamera()
@@ -33,7 +33,6 @@ MainCamera::~MainCamera()
 
 void MainCamera::Control()
 {
-
 	DX11Manager::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(1, 1, &m_pConstantBuffer);
 	DX11Manager::GetInstance()->GetDeviceContext()->PSSetConstantBuffers(1, 1, &m_pConstantBuffer);
 }
