@@ -19,25 +19,29 @@ const D3DXVECTOR2 TitleBackground::m_TitleBackgroundTexel[4] =
 
 
 TitleBackground::TitleBackground() :
-m_TextureIndex(TextureManager::m_InvalidIndex)
+m_pBackgroundVertex(NULL),
+m_BackgroundTextureIndex(TextureManager::m_InvalidIndex)
 {
-	TextureManager::GetInstance()->LoadTexture(TEXT("Resource\\Texture\\TitleScene\\TitleBackground.png"), &m_TextureIndex);
+	TextureManager::GetInstance()->LoadTexture(
+		TEXT("Resource\\Texture\\TitleScene\\TitleBackground.png"), 
+		&m_BackgroundTextureIndex);
 
-	m_pVertex = new Vertex2D(
+	m_pBackgroundVertex = new Vertex2D(
 		DX11Manager::GetInstance()->GetDevice(),
 		DX11Manager::GetInstance()->GetDeviceContext(),
 		DX11Manager::GetInstance()->GetWindowHandle());
 
-	m_pVertex->Init(&m_TitleBackgroundSize, m_TitleBackgroundTexel);
-	m_pVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_TextureIndex));
+	m_pBackgroundVertex->Init(&m_TitleBackgroundSize, m_TitleBackgroundTexel);
+	m_pBackgroundVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_BackgroundTextureIndex));
+	m_pBackgroundVertex->WriteConstantBuffer(&D3DXVECTOR2(m_TitleBackgroundPos));
 }
 
 TitleBackground::~TitleBackground()
 {
-	m_pVertex->Release();
-	delete m_pVertex;
+	m_pBackgroundVertex->Release();
+	delete m_pBackgroundVertex;
 
-	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
+	TextureManager::GetInstance()->ReleaseTexture(m_BackgroundTextureIndex);
 }
 
 void TitleBackground::Control()
@@ -47,6 +51,6 @@ void TitleBackground::Control()
 void TitleBackground::Draw()
 {
 	DX11Manager::GetInstance()->SetDepthStencilTest(false);
-	m_pVertex->Draw(&D3DXVECTOR2(m_TitleBackgroundPos));
+	m_pBackgroundVertex->Draw();
 	DX11Manager::GetInstance()->SetDepthStencilTest(true);
 }

@@ -19,25 +19,29 @@ const D3DXVECTOR2 TitleLogo::m_TitleLogoTexel[4] =
 
 
 TitleLogo::TitleLogo() :
-m_TextureIndex(TextureManager::m_InvalidIndex)
+m_pLogoVertex(NULL),
+m_LogoTextureIndex(TextureManager::m_InvalidIndex)
 {
-	TextureManager::GetInstance()->LoadTexture(TEXT("Resource\\Texture\\TitleScene\\TitleLogo.png"), &m_TextureIndex);
+	TextureManager::GetInstance()->LoadTexture(
+		TEXT("Resource\\Texture\\TitleScene\\TitleLogo.png"), 
+		&m_LogoTextureIndex);
 
-	m_pVertex = new Vertex2D(
+	m_pLogoVertex = new Vertex2D(
 		DX11Manager::GetInstance()->GetDevice(),
 		DX11Manager::GetInstance()->GetDeviceContext(),
 		DX11Manager::GetInstance()->GetWindowHandle());
 
-	m_pVertex->Init(&m_TitleLogoSize, m_TitleLogoTexel);
-	m_pVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_TextureIndex));
+	m_pLogoVertex->Init(&m_TitleLogoSize, m_TitleLogoTexel);
+	m_pLogoVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_LogoTextureIndex));
+	m_pLogoVertex->WriteConstantBuffer(&D3DXVECTOR2(m_TitleLogoPos));
 }
 
 TitleLogo::~TitleLogo()
 {
-	m_pVertex->Release();
-	delete m_pVertex;
+	m_pLogoVertex->Release();
+	delete m_pLogoVertex;
 
-	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
+	TextureManager::GetInstance()->ReleaseTexture(m_LogoTextureIndex);
 }
 
 void TitleLogo::Control()
@@ -47,6 +51,6 @@ void TitleLogo::Control()
 void TitleLogo::Draw()
 {
 	DX11Manager::GetInstance()->SetDepthStencilTest(false);
-	m_pVertex->Draw(&D3DXVECTOR2(m_TitleLogoPos));
+	m_pLogoVertex->Draw();
 	DX11Manager::GetInstance()->SetDepthStencilTest(true);
 }
