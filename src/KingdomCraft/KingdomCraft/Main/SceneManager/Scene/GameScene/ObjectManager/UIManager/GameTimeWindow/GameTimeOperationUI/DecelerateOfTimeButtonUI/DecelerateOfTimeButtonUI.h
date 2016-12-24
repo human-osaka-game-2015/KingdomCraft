@@ -5,19 +5,20 @@
  */
 #ifndef DECELERATEOFTIMEBUTTONUI_H
 #define DECELERATEOFTIMEBUTTONUI_H
-#include "..\..\..\UIButton\UIButton.h"
+#include "..\..\..\ButtonUI\ButtonUI.h"
 #include "Vertex2D\Vertex2D.h"
 
 /**
  * 時間の減速ボタンを管理するクラス
  */
-class DecelerateOfTimeButtonUI : public UIButton
+class DecelerateOfTimeButtonUI : public ButtonUI
 {
 public:
 	/**
 	 * DecelerateOfTimeButtonUIクラスのコンストラクタ
+	 * @param[in] _pParentUIPos 親UIの座標
 	 */
-	DecelerateOfTimeButtonUI();
+	DecelerateOfTimeButtonUI(const D3DXVECTOR2* _pParentUIPos);
 
 	/**
 	 * DecelerateOfTimeButtonUIクラスのデストラクタ
@@ -39,12 +40,12 @@ private:
 	DecelerateOfTimeButtonUI(const DecelerateOfTimeButtonUI&);
 	void operator=(const DecelerateOfTimeButtonUI&);
 
-	static const D3DXVECTOR2	m_ButtonPos;	//!< ボタンの座標
-	static const D3DXVECTOR2	m_ButtonSize;	//!< ボタンの矩形サイズ
+	static const D3DXVECTOR2	m_ButtonPos;		//!< ボタンの座標
+	static const D3DXVECTOR2	m_ButtonSize;		//!< ボタンの矩形サイズ
 	static const D3DXVECTOR2	m_ButtonTexel[4];	//!< ボタンのテクスチャ座標
-
 	Vertex2D*					m_pButtonVertex;
-	int							m_TextureIndex;
+	int							m_ButtonTextureIndex;
+	D3DXVECTOR2					m_ParentUIPos;
 
 };
 

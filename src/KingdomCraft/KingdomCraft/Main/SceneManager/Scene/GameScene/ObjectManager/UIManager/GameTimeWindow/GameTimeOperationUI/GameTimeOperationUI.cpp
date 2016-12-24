@@ -10,11 +10,12 @@
 #include "GameTimeSpeedUI\GameTimeSpeedUI.h"
 
 
-GameTimeOperationUI::GameTimeOperationUI() : 
-m_pDecelerateButton(new DecelerateOfTimeButtonUI()),
-m_pAccelerateButton(new AccelerateOfTimeButtonUI()),
-m_pNormalButton(new NormalTimeButtonUI()),
-m_pGameTimeSpeed(new GameTimeSpeedUI())
+GameTimeOperationUI::GameTimeOperationUI(const D3DXVECTOR2* _pParentUIPos) :
+m_pDecelerateButton(new DecelerateOfTimeButtonUI(_pParentUIPos)),
+m_pAccelerateButton(new AccelerateOfTimeButtonUI(_pParentUIPos)),
+m_pNormalButton(new NormalTimeButtonUI(_pParentUIPos)),
+m_pGameTimeSpeed(new GameTimeSpeedUI(_pParentUIPos)),
+m_ParentUIPos(*_pParentUIPos)
 {
 }
 

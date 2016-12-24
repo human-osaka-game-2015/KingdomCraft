@@ -1,39 +1,39 @@
 ﻿/**
- * @file   UIButton.h
- * @brief  UIButtonクラスのヘッダファイル
+ * @file   ButtonUI.h
+ * @brief  ButtonUIクラスのヘッダファイル
  * @author morimoto
  */
-#ifndef UIBUTTON_H
-#define UIBUTTON_H
+#ifndef BUTTONUI_H
+#define BUTTONUI_H
 #include "Vertex2D\Vertex2D.h"
 
 /**
  * UIのボタンクラス
  */
-class UIButton
+class ButtonUI
 {
 public:
 	/**
-	 * UIButtonクラスのコンストラクタ
+	 * ButtonUIクラスのコンストラクタ
 	 * @param[in] _pButtonPos ボタンの描画位置
 	 * @param[in] _pButtonVertex ボタンのサイズ
 	 * @param[in] _isVisible ボタンの可視設定
 	 */
-	UIButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, bool _isVisible = true);
+	ButtonUI(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, bool _isVisible = true);
 
 	/**
-	 * UIButtonクラスのデストラクタ
+	 * ButtonUIクラスのデストラクタ
 	 */
-	virtual ~UIButton();
+	virtual ~ButtonUI();
 
 	/**
-	 * UIButtonクラスの制御関数
+	 * ButtonUIクラスの制御関数
 	 * @return ボタンが押されたらtrue
 	 */
 	virtual bool Control();
 
 	/**
-	 * UIButtonクラスの描画関数
+	 * ButtonUIクラスの描画関数
 	 */
 	virtual void Draw() = 0;
 

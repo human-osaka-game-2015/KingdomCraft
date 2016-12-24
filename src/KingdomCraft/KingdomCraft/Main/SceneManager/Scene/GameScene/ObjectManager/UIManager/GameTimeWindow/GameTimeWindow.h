@@ -5,7 +5,7 @@
  */
 #ifndef GAMETIMEWINDOW_H
 #define GAMETIMEWINDOW_H
-#include "..\UIWindow\UIWindow.h"
+#include "..\WindowUI\WindowUI.h"
 
 class GameTimeOperationUI;
 class GameTimeUI;
@@ -13,7 +13,7 @@ class GameTimeUI;
 /**
  * ゲームタイムUIの管理クラス
  */
-class GameTimeWindow : public UIWindow
+class GameTimeWindow : public WindowUI
 {
 public:
 	/**
@@ -42,7 +42,6 @@ private:
 
 	static const D3DXVECTOR2	m_GameTimeWindowPos;
 	static const D3DXVECTOR2	m_GameTimeWindowSize;
-
 	GameTimeOperationUI*		m_pGameTimeOperationUI;
 	GameTimeUI*					m_pGameTimeUI;
 
