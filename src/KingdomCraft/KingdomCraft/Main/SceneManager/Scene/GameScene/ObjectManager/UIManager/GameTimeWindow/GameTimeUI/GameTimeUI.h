@@ -15,8 +15,9 @@ class GameTimeUI : public TextUI
 public:
 	/** 
 	 * GameTimeUIクラスのコンストラクタ
+	 * @param[in] _pParentUIPos 親UIの座標
 	 */
-	GameTimeUI();
+	GameTimeUI(const D3DXVECTOR2* _pParentUIPos);
 
 	/**
 	 * GameTimeUIクラスのデストラクタ
@@ -37,8 +38,9 @@ private:
 	GameTimeUI(const GameTimeUI&);
 	void operator=(const GameTimeUI&);
 
-	static const D3DXVECTOR2	m_TextPos;	//!< ゲーム内時間テキストの座標
-	static const D3DXVECTOR2	m_FontSize;	//!< ゲーム内時間テキストのフォントサイズ
+	static const D3DXVECTOR2	m_TextPos;		//!< ゲーム内時間テキストの座標
+	static const D3DXVECTOR2	m_FontSize;		//!< ゲーム内時間テキストのフォントサイズ
+	D3DXVECTOR2					m_ParentUIPos;	//!< 親UIの座標位置
 
 };
 

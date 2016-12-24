@@ -15,8 +15,9 @@ class KingdomDataUI : public TextUI
 public:
 	/**
 	 * KingdomDataUIクラスのコンストラクタ
+	 * @param[in] _pParentUIPos 親UIの座標
 	 */
-	KingdomDataUI();
+	KingdomDataUI(const D3DXVECTOR2* _pParentUIPos);
 
 	/**
 	 * KingdomDataUIクラスのデストラクタ
@@ -37,8 +38,9 @@ private:
 	KingdomDataUI(const KingdomDataUI&);
 	void operator=(const KingdomDataUI&);
 
-	static const D3DXVECTOR2 m_TextPos;		//!< 表示するテキストの座標
-	static const D3DXVECTOR2 m_FontSize;	//!< 表示するテキストのフォントサイズ
+	static const D3DXVECTOR2	m_TextPos;		//!< 表示するテキストの座標
+	static const D3DXVECTOR2	m_FontSize;		//!< 表示するテキストのフォントサイズ
+	D3DXVECTOR2					m_ParentUIPos;	//!< 親UIの座標位置
 
 };
 

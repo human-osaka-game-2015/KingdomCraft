@@ -48,7 +48,7 @@ public:
 protected:
 	/**
 	 * テキストの描画関数
-	 * @param[in] 描画するテキスト
+	 * @param[in] _pStr 描画するテキスト
 	 */
 	void TextDraw(LPCTSTR _pStr);
 

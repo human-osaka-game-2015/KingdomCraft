@@ -6,7 +6,8 @@
 #include "KingdomDemandUI.h"
 
 
-KingdomDemandUI::KingdomDemandUI()
+KingdomDemandUI::KingdomDemandUI(const D3DXVECTOR2* _pParentUIPos) : 
+m_ParentUIPos(*_pParentUIPos)
 {
 }
 

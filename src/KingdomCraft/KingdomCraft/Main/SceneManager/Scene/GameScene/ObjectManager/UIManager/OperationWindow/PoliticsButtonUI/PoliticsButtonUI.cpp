@@ -7,7 +7,7 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 PoliticsButtonUI::m_ButtonPos = D3DXVECTOR2(964, 630);
+const D3DXVECTOR2 PoliticsButtonUI::m_ButtonPos = D3DXVECTOR2(-26, -15);
 const D3DXVECTOR2 PoliticsButtonUI::m_ButtonSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 PoliticsButtonUI::m_ButtonTexel[4] =
 {
@@ -18,9 +18,11 @@ const D3DXVECTOR2 PoliticsButtonUI::m_ButtonTexel[4] =
 };
 
 
-PoliticsButtonUI::PoliticsButtonUI(int _textureIndex) :
-UIButton(&m_ButtonPos, &m_ButtonSize),
-m_TextureIndex(_textureIndex)
+PoliticsButtonUI::PoliticsButtonUI(const D3DXVECTOR2* _pParentUIPos, int _textureIndex) :
+ButtonUI(&D3DXVECTOR2(m_ButtonPos + *_pParentUIPos), &m_ButtonSize),
+m_pButtonVertex(NULL),
+m_ButtonTextureIndex(_textureIndex),
+m_ParentUIPos(*_pParentUIPos)
 {
 	m_pButtonVertex = new Vertex2D(
 		DX11Manager::GetInstance()->GetDevice(),
@@ -28,14 +30,12 @@ m_TextureIndex(_textureIndex)
 		DX11Manager::GetInstance()->GetWindowHandle());
 
 	m_pButtonVertex->Init(&m_ButtonSize, m_ButtonTexel);
-
-	m_pButtonVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_TextureIndex));
+	m_pButtonVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_ButtonTextureIndex));
+	m_pButtonVertex->WriteConstantBuffer(&D3DXVECTOR2(m_ButtonPos + *_pParentUIPos));
 }
 
 PoliticsButtonUI::~PoliticsButtonUI()
 {
-	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
-
 	m_pButtonVertex->Release();
 	delete m_pButtonVertex;
 }
@@ -58,6 +58,6 @@ void PoliticsButtonUI::Draw()
 	}
 
 	DX11Manager::GetInstance()->SetDepthStencilTest(false);
-	m_pButtonVertex->Draw(&m_ButtonPos);
+	m_pButtonVertex->Draw();
 	DX11Manager::GetInstance()->SetDepthStencilTest(true);
 }

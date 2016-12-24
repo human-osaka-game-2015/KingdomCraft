@@ -1,43 +1,43 @@
 ﻿/**
- * @file   UIWindow.h
- * @brief  UIWindowクラスのヘッダファイル
+ * @file   WindowUI.h
+ * @brief  WindowUIクラスのヘッダファイル
  * @author morimoto
  */
-#ifndef UIWINDOW_H
-#define UIWINDOW_H
+#ifndef WINDOWUI_H
+#define WINDOWUI_H
 #include "Vertex2D\Vertex2D.h"
 
 /**
- * UIWindowクラス
+ * WindowUIクラス
  */
-class UIWindow
+class WindowUI
 {
 public:
 	/**
-	 * UIWindowクラスのコンストラクタ
+	 * WindowUIクラスのコンストラクタ
 	 * @param[in] _pWindowPos ウィンドウの座標
 	 * @param[in] _pWindowSize ウィンドウのサイズ
 	 * @param[in] _isVisible ウィンドウの可視設定フラグ
 	 */
-	UIWindow(const D3DXVECTOR2* _pWindowPos, const D3DXVECTOR2* _pWindowSize, bool _isVisible = true);
+	WindowUI(const D3DXVECTOR2* _pWindowPos, const D3DXVECTOR2* _pWindowSize, bool _isVisible = true);
 
 	/**
-	 * UIWindowクラスのデストラクタ
+	 * WindowUIクラスのデストラクタ
 	 */
-	virtual ~UIWindow();
+	virtual ~WindowUI();
 
 	/**
-	 * UIWindowクラスの制御関数
+	 * WindowUIクラスの制御関数
 	 */
 	virtual void Control();
 
 	/**
-	 * UIWindowクラスの描画関数
+	 * WindowUIクラスの描画関数
 	 */
 	virtual void Draw();
 
 	/**
-	 * UIWindowの可視設定を行う関数
+	 * WindowUIの可視設定を行う関数
 	 * @param[in] _isVisible 可視状態にするかのフラグ
 	 */
 	void SetVisible(bool _isVisible)
@@ -73,15 +73,15 @@ private:
 		PARTS_MAX		//!< ウィンドウのパーツ数
 	};
 
-	UIWindow(const UIWindow&);
-	void operator=(const UIWindow&);
+	WindowUI(const WindowUI&);
+	void operator=(const WindowUI&);
 
 	static const D3DXVECTOR2	m_WindowPartsTexel[4];					//!< ウィンドウパーツのテクスチャ座標
 	static const D3DXVECTOR2	m_WindowPartsTexelOffset[PARTS_MAX];	//!< ウィンドウパーツのテクスチャ座標のスクロール値
 
 	Vertex2D*					m_pWindowVertex;
-	int							m_TextureIndex;
-	D3DXVECTOR2					m_WindowPartsSize;
+	int							m_WindowTextureIndex;
+	D3DXVECTOR2					m_WindowPartsSize;						//!< ウィンドウパーツのサイズ
 	D3DXVECTOR2					m_WindowPartsPosOffset[PARTS_MAX];		//!< ウィンドウパーツの座標オフセット値
 
 };

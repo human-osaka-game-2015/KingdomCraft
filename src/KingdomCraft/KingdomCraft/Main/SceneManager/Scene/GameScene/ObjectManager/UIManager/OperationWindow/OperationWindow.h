@@ -6,14 +6,14 @@
 #ifndef OPERATIONWINDOW_H
 #define OPERATIONWINDOW_H
 #include <vector>
-#include "..\UIWindow\UIWindow.h"
+#include "..\WindowUI\WindowUI.h"
 
-class UIButton;
+class ButtonUI;
 
 /**
  * プレイヤーの操作UIを管理するクラス
  */
-class OperationWindow : public UIWindow
+class OperationWindow : public WindowUI
 {
 public:
 	/**
@@ -53,8 +53,10 @@ private:
 	OperationWindow(const OperationWindow&);
 	void operator=(const OperationWindow&);
 
-	std::vector<UIButton*>		m_pUIButton;
-	int							m_TextureIndex;
+	static const D3DXVECTOR2	m_OperationWindowPos;
+	static const D3DXVECTOR2	m_OperationWindowSize;
+	std::vector<ButtonUI*>		m_pButtonUI;
+	int							m_ButtonTextureIndex;
 
 };
 

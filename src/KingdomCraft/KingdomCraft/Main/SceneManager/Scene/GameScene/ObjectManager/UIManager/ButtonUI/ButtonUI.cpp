@@ -1,33 +1,33 @@
 ﻿/**
- * @file   UIButton.cpp
- * @brief  UIButtonクラスの実装
+ * @file   ButtonUI.cpp
+ * @brief  ButtonUIクラスの実装
  * @author morimoto
  */
-#include "UIButton.h"
+#include "ButtonUI.h"
 #include "InputDeviceManager\InputDeviceManager.h"
 
 
-UIButton::UIButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, bool _isVisible) :
+ButtonUI::ButtonUI(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, bool _isVisible) :
 m_ButtonPos(*_pButtonPos),
 m_ButtonSize(*_pButtonSize),
 m_IsVisible(_isVisible)
 {
 }
 
-UIButton::~UIButton()
+ButtonUI::~ButtonUI()
 {
 }
 
-bool UIButton::Control()
+bool ButtonUI::Control()
 {
 	return IsClicked();
 }
 
-void UIButton::Draw()
+void ButtonUI::Draw()
 {
 }
 
-bool UIButton::IsClicked()
+bool ButtonUI::IsClicked()
 {
 	bool IsClick = false;
 	MouseDevice::MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();

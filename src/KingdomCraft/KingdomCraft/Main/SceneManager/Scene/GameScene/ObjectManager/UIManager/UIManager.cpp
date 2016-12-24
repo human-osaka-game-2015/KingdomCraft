@@ -5,13 +5,13 @@
  */
 #include "UIManager.h"
 #include "GameTimeWindow\GameTimeWindow.h"
-#include "KingdomWindow\KingdomWindow.h"
+#include "KingdomStatusWindow\KingdomStatusWindow.h"
 #include "OperationWindow\OperationWindow.h"
 
 
 UIManager::UIManager() :
 m_pGameTimeWindow(new GameTimeWindow()),
-m_pKingdomWindow(new KingdomWindow()),
+m_pKingdomWindow(new KingdomStatusWindow()),
 m_pOperationWindow(new OperationWindow())
 {
 }

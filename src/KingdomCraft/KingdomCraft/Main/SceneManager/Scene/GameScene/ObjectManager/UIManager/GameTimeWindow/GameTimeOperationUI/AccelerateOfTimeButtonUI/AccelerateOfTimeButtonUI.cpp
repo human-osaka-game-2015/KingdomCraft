@@ -7,7 +7,7 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 AccelerateOfTimeButtonUI::m_ButtonPos = D3DXVECTOR2(132, 100);
+const D3DXVECTOR2 AccelerateOfTimeButtonUI::m_ButtonPos = D3DXVECTOR2(-118, 20);
 const D3DXVECTOR2 AccelerateOfTimeButtonUI::m_ButtonSize = D3DXVECTOR2(32, 32);
 const D3DXVECTOR2 AccelerateOfTimeButtonUI::m_ButtonTexel[4] =
 {
@@ -18,12 +18,15 @@ const D3DXVECTOR2 AccelerateOfTimeButtonUI::m_ButtonTexel[4] =
 };
 
 
-AccelerateOfTimeButtonUI::AccelerateOfTimeButtonUI() :
-UIButton(&m_ButtonPos, &m_ButtonSize)
+AccelerateOfTimeButtonUI::AccelerateOfTimeButtonUI(const D3DXVECTOR2* _pParentUIPos) :
+ButtonUI(&D3DXVECTOR2(m_ButtonPos + *_pParentUIPos), &m_ButtonSize),
+m_pButtonVertex(NULL),
+m_ButtonTextureIndex(TextureManager::m_InvalidIndex),
+m_ParentUIPos(*_pParentUIPos)
 {
 	TextureManager::GetInstance()->LoadTexture(
-		TEXT("Resource\\Texture\\GameScene\\ObjectManager\\UIManager\\GameTimeWindow\\GameTimeOperationUI\\AccelerateOfTimeButtonUI\\AccelerateOfTimeButtonUI.png"),
-		&m_TextureIndex);
+		TEXT("Resource\\Texture\\GameScene\\UI\\AccelerateOfTimeButtonUI.png"),
+		&m_ButtonTextureIndex);
 
 	m_pButtonVertex = new Vertex2D(
 		DX11Manager::GetInstance()->GetDevice(),
@@ -31,7 +34,8 @@ UIButton(&m_ButtonPos, &m_ButtonSize)
 		DX11Manager::GetInstance()->GetWindowHandle());
 
 	m_pButtonVertex->Init(&m_ButtonSize, m_ButtonTexel);
-	m_pButtonVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_TextureIndex));
+	m_pButtonVertex->SetTexture(TextureManager::GetInstance()->GetTexture(m_ButtonTextureIndex));
+	m_pButtonVertex->WriteConstantBuffer(&D3DXVECTOR2(m_ButtonPos + *_pParentUIPos));
 }
 
 AccelerateOfTimeButtonUI::~AccelerateOfTimeButtonUI()
@@ -39,7 +43,7 @@ AccelerateOfTimeButtonUI::~AccelerateOfTimeButtonUI()
 	m_pButtonVertex->Release();
 	delete m_pButtonVertex;
 
-	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
+	TextureManager::GetInstance()->ReleaseTexture(m_ButtonTextureIndex);
 }
 
 bool AccelerateOfTimeButtonUI::Control()
@@ -59,5 +63,5 @@ void AccelerateOfTimeButtonUI::Draw()
 		return;
 	}
 
-	m_pButtonVertex->Draw(&m_ButtonPos);
+	m_pButtonVertex->Draw();
 }
