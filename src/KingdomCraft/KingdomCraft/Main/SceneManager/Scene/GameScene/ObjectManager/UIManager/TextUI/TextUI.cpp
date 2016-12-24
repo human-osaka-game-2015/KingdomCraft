@@ -17,7 +17,6 @@ m_IsVisible(_isVisible)
 		DX11Manager::GetInstance()->GetDeviceContext());
 
 	m_pDebugFont->Init(DX11Manager::GetInstance()->GetWindowHandle());
-
 	m_pDebugFont->InitFont(m_FontSize.y, m_FontSize.x, 0xffffffff);
 }
 

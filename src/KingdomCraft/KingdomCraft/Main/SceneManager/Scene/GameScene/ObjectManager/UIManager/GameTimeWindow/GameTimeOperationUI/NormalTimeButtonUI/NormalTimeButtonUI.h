@@ -5,19 +5,20 @@
  */
 #ifndef NORMALTIMEBUTTONUI_H
 #define NORMALTIMEBUTTONUI_H
-#include "..\..\..\UIButton\UIButton.h"
+#include "..\..\..\ButtonUI\ButtonUI.h"
 #include "Vertex2D\Vertex2D.h"
 
 /**
  * 時間の通常化ボタンを管理するクラス
  */
-class NormalTimeButtonUI : public UIButton
+class NormalTimeButtonUI : public ButtonUI
 {
 public:
 	/**
 	 * NormalTimeButtonUIクラスのコンストラクタ
+	 * @param[in] _pParentUIPos 親UIの座標
 	 */
-	NormalTimeButtonUI();
+	NormalTimeButtonUI(const D3DXVECTOR2* _pParentUIPos);
 
 	/**
 	 * NormalTimeButtonUIクラスのデストラクタ
@@ -42,9 +43,9 @@ private:
 	static const D3DXVECTOR2	m_ButtonPos;		//!< ボタンの座標
 	static const D3DXVECTOR2	m_ButtonSize;		//!< ボタンの矩形サイズ
 	static const D3DXVECTOR2	m_ButtonTexel[4];	//!< ボタンのテクスチャ座標
-
 	Vertex2D*					m_pButtonVertex;
-	int							m_TextureIndex;
+	int							m_ButtonTextureIndex;
+	D3DXVECTOR2					m_ParentUIPos;
 
 };
 

@@ -5,6 +5,7 @@
  */
 #ifndef GAMETIMEOPERATIONUI_H
 #define GAMETIMEOPERATIONUI_H
+#include "Vertex2D\Vertex2D.h"
 
 class DecelerateOfTimeButtonUI;
 class AccelerateOfTimeButtonUI;
@@ -19,8 +20,9 @@ class GameTimeOperationUI
 public:
 	/**
 	 * GameTimeOperationUIクラスのコンストラクタ
+	 * @param[in] _pParentUIPos 親UIの座標
 	 */
-	GameTimeOperationUI();
+	GameTimeOperationUI(const D3DXVECTOR2* _pParentUIPos);
 
 	/**
 	 * GameTimeOperationUIクラスのデストラクタ
@@ -45,6 +47,7 @@ private:
 	AccelerateOfTimeButtonUI*	m_pAccelerateButton;
 	NormalTimeButtonUI*			m_pNormalButton;
 	GameTimeSpeedUI*			m_pGameTimeSpeed;
+	D3DXVECTOR2					m_ParentUIPos;
 
 };
 

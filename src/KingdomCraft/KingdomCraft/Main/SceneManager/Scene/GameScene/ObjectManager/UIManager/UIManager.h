@@ -7,7 +7,7 @@
 #define UIMANAGER_H
 
 class GameTimeWindow;
-class KingdomWindow;
+class KingdomStatusWindow;
 class OperationWindow;
 
 /**
@@ -40,9 +40,9 @@ private:
 	UIManager(const UIManager&);
 	void operator=(const UIManager&);
 
-	GameTimeWindow*		m_pGameTimeWindow;
-	KingdomWindow*		m_pKingdomWindow;
-	OperationWindow*	m_pOperationWindow;
+	GameTimeWindow*			m_pGameTimeWindow;
+	KingdomStatusWindow*	m_pKingdomWindow;
+	OperationWindow*		m_pOperationWindow;
 
 };
 

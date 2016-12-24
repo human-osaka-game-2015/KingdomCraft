@@ -12,9 +12,9 @@ const D3DXVECTOR2 GameTimeWindow::m_GameTimeWindowSize = D3DXVECTOR2(500, 160);
 
 
 GameTimeWindow::GameTimeWindow() :
-UIWindow(&m_GameTimeWindowPos, &m_GameTimeWindowSize),
-m_pGameTimeOperationUI(new GameTimeOperationUI()),
-m_pGameTimeUI(new GameTimeUI())
+WindowUI(&m_GameTimeWindowPos, &m_GameTimeWindowSize),
+m_pGameTimeOperationUI(new GameTimeOperationUI(&m_GameTimeWindowPos)),
+m_pGameTimeUI(new GameTimeUI(&m_GameTimeWindowPos))
 {
 }
 

@@ -15,8 +15,9 @@ class GameTimeSpeedUI : public TextUI
 public:
 	/**
 	 * GameTimeSpeedUIクラスのコンストラクタ
+	 * @param[in] _pParentUIPos 親UIの座標
 	 */
-	GameTimeSpeedUI();
+	GameTimeSpeedUI(const D3DXVECTOR2* _pParentUIPos);
 
 	/**
 	 * GameTimeSpeedUIクラスのデストラクタ
@@ -39,6 +40,7 @@ private:
 
 	static const D3DXVECTOR2	m_TextPos;	//!< テキストの座標
 	static const D3DXVECTOR2	m_FontSize;	//!< テキストのフォントサイズ
+	D3DXVECTOR2					m_ParentUIPos;
 
 };
 
