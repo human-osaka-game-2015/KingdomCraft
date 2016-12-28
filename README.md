@@ -1,3 +1,6 @@
+[![](https://img.shields.io/badge/VisualStudio-2013%20Community-ff69b4.svg)](https://support.microsoft.com/ja-jp/kb/3021976)
+[![](https://img.shields.io/badge/DirectXSDK-June%202010-yellow.svg)](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
+[![](https://img.shields.io/badge/FBX%20SDK-2016.1-blue.svg)](http://usa.autodesk.com/adsk/servlet/pc/item?id=24535361&siteID=123112)
 # KingdomCraft
 
 
