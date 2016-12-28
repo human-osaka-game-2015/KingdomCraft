@@ -7,12 +7,6 @@
     <ClCompile Include="Main\SceneManager\SceneManager.cpp">
       <Filter>Main\SceneManager</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\GameScene.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleScene.cpp">
-      <Filter>Main\SceneManager\Scene\TitleScene</Filter>
-    </ClCompile>
     <ClCompile Include="Main\SceneManager\SceneFactory\SceneFactory.cpp">
       <Filter>Main\SceneManager\SceneFactory</Filter>
     </ClCompile>
@@ -52,157 +46,154 @@
     <ClCompile Include="Library\Vertex2D\Vertex2D.cpp">
       <Filter>Library\Vertex2D</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.cpp">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleLogo</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.cpp">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleBackground</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenu.cpp">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.cpp">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\EventManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\EventManager\Event</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\EventManager\EventListener</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\GameData\GameData.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\GameData</Filter>
-    </ClCompile>
     <ClCompile Include="Main\SceneManager\SaveDataManager\SaveDataManager.cpp">
       <Filter>Main\SceneManager\SaveDataManager</Filter>
     </ClCompile>
     <ClCompile Include="Library\Camera\Camera.cpp">
       <Filter>Library\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\Scene.cpp">
-      <Filter>Main\SceneManager\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HouseManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\EnemyManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HumanManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
-    </ClCompile>
     <ClCompile Include="Library\Vertex\Vertex.cpp">
       <Filter>Library\Vertex</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\MainCamera</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\Event.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\ButtonUI\ButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\ButtonUI</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\EventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\WindowUI\WindowUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\WindowUI</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI\KingdomButtonUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\EnemyManager</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI\KingdomDataUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI\KingdomDemandUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI\KingdomParameterUI.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomStatusWindow.cpp">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow</Filter>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\HouseManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\HumanManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MainCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\ButtonUI\ButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\ButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI\KingdomButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI\KingdomDataUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI\KingdomDemandUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI\KingdomParameterUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomStatusWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\TextUI\TextUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\TextUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\WindowUI\WindowUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\WindowUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\UIManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\ObjectManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\GameScene.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleBackground\TitleBackground.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleLogo\TitleLogo.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleLogo</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenu.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\SceneBase.cpp">
+      <Filter>Main\SceneManager\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\GameDataManager\GameDataManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\GameDataManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
       <Filter>Main\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\Scene.h">
-      <Filter>Main\SceneManager\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\GameScene.h">
-      <Filter>Main\SceneManager\Scene\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleScene.h">
-      <Filter>Main\SceneManager\Scene\TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneFactory\SceneFactory.h">
       <Filter>Main\SceneManager\SceneFactory</Filter>
@@ -243,140 +234,149 @@
     <ClInclude Include="Library\FbxFileManager\FbxFileManager.h">
       <Filter>Library\FbxFileManager</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleLogo\TitleLogo.h">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleLogo</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleBackground\TitleBackground.h">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleBackground</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenu.h">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.h">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h">
-      <Filter>Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\UIManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\ObjectManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\EventManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\Event\Event.h">
-      <Filter>Main\SceneManager\Scene\GameScene\EventManager\Event</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener\EventListener.h">
-      <Filter>Main\SceneManager\Scene\GameScene\EventManager\EventListener</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\GameData\GameData.h">
-      <Filter>Main\SceneManager\Scene\GameScene\GameData</Filter>
-    </ClInclude>
     <ClInclude Include="Main\SceneManager\SaveDataManager\SaveDataManager.h">
       <Filter>Main\SceneManager\SaveDataManager</Filter>
     </ClInclude>
     <ClInclude Include="Library\Camera\Camera.h">
       <Filter>Library\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HouseManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\EnemyManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HumanManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI\TextUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
-    </ClInclude>
     <ClInclude Include="Library\Vertex\Vertex.h">
       <Filter>Library\Vertex</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\MainCamera</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\Event.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\ButtonUI\ButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\ButtonUI</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\EventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\WindowUI\WindowUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\WindowUI</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI\KingdomButtonUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\EnemyManager</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI\KingdomDataUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Ground\Ground.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI\KingdomDemandUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI\KingdomParameterUI.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\FieldManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomStatusWindow.h">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow</Filter>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\HouseManager\HouseManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\HouseManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\HumanManager\HumanManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\HumanManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MainCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\RoadManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameObjectManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\ButtonUI\ButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\ButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI\GameTimeSpeedUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI\NormalTimeButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeOperationUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI\GameTimeUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI\KingdomButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI\KingdomDataUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI\KingdomDemandUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI\KingdomParameterUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomStatusWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI\LoadButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI\PoliticsButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI\SaveButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\OperationWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\TextUI\TextUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\TextUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\WindowUI\WindowUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\WindowUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\UIManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\ObjectManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\GameScene.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleBackground\TitleBackground.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleLogo\TitleLogo.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleLogo</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenu.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\SceneBase.h">
+      <Filter>Main\SceneManager\SceneBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\GameDataManager\GameDataManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\GameDataManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -388,15 +388,6 @@
     </Filter>
     <Filter Include="Main\SceneManager">
       <UniqueIdentifier>{43a7a68d-0f7b-40f4-bdde-c974f8515fd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene">
-      <UniqueIdentifier>{9c674c58-49b8-4ae1-868e-0baec8198c1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene">
-      <UniqueIdentifier>{5b274c4c-1c7f-4951-9de9-4526680194b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\TitleScene">
-      <UniqueIdentifier>{f592d59e-a32a-4e66-ab4d-3086b2773ee9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\SceneManager\SceneFactory">
       <UniqueIdentifier>{7d2a4205-28be-4fa4-9f16-150acc21428a}</UniqueIdentifier>
@@ -437,113 +428,11 @@
     <Filter Include="Library\FbxFileManager\FbxModel">
       <UniqueIdentifier>{d7172336-c39a-4df8-9792-6f6c8220d7c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleLogo">
-      <UniqueIdentifier>{953daab7-b099-4148-b12e-9d810fefe12e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleBackground">
-      <UniqueIdentifier>{e27cdcb0-3f8b-4a46-9573-f1567375e269}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu">
-      <UniqueIdentifier>{52ce621f-8063-45a9-9acb-2501be1f88cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu">
-      <UniqueIdentifier>{7c32c86f-0164-460c-ae17-09da5fd65eb3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton">
-      <UniqueIdentifier>{9d424ac1-403c-4008-ad6e-1ec143af7912}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\TitleScene\TitleMenu\TitleMenuButton">
-      <UniqueIdentifier>{dee953b7-9ea4-428e-9fb9-12a257bf5e5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager">
-      <UniqueIdentifier>{8aa953b7-3c65-4e37-949a-7ebfee5d7364}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager">
-      <UniqueIdentifier>{56621f14-c353-44ec-8992-0d12bb48cd41}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager">
-      <UniqueIdentifier>{d90d8b97-1d0b-4087-bbfa-8a2511b869fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\EventManager">
-      <UniqueIdentifier>{d076b898-f6f7-42e0-88c0-54427e9f2db7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\EventManager\Event">
-      <UniqueIdentifier>{7c457e5a-1015-46cc-aa49-449432990501}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\EventManager\EventListener">
-      <UniqueIdentifier>{64d141d7-906e-42c2-8017-f860aeadb0d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\GameData">
-      <UniqueIdentifier>{01740cda-36dc-4a91-a56d-70c8bb1ea247}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\SceneManager\SaveDataManager">
       <UniqueIdentifier>{599d1318-177a-4566-b3c5-a882a9659cea}</UniqueIdentifier>
     </Filter>
     <Filter Include="Library\Camera">
       <UniqueIdentifier>{e79f5d35-4f4c-444f-a156-7452a84b0ae0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow">
-      <UniqueIdentifier>{1c25e291-24c0-4fec-afb5-1b4ff76e46ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow">
-      <UniqueIdentifier>{4795c902-b2f7-4d74-a832-ca5087f72706}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HouseManager">
-      <UniqueIdentifier>{1dab1ec3-80bd-4dae-9e1e-0e528872e7a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\RoadManager">
-      <UniqueIdentifier>{21d0d7a7-b505-4cf6-ae50-bc895ae9d3eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager">
-      <UniqueIdentifier>{0a2873f0-b057-4528-819e-125be2450689}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky">
-      <UniqueIdentifier>{24d91e50-fe55-4ac7-b31d-dfa5dde7c6b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground">
-      <UniqueIdentifier>{1dcd6f59-c116-4da9-a396-3d548a20df27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\HumanManager">
-      <UniqueIdentifier>{a5bd128d-d74f-48d7-a809-d1c75797faa8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\EnemyManager">
-      <UniqueIdentifier>{6f102ad6-2e63-4dd3-9bfd-9bb4a1dd43d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\TextUI">
-      <UniqueIdentifier>{579b2de3-c6a9-44b3-88a5-ca9bba018570}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI">
-      <UniqueIdentifier>{6ea00f9d-fd0c-49af-bae8-e15baa3dc502}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI">
-      <UniqueIdentifier>{28f0051e-17c3-4cd8-8a0d-dc26a7d00981}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI">
-      <UniqueIdentifier>{f1e970e6-e8e5-4434-815f-439ff3a504ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI">
-      <UniqueIdentifier>{1ac5fe57-762c-4dd9-8840-9408ba439f3c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI">
-      <UniqueIdentifier>{7c25895a-fd1f-49aa-bbb3-13469778a860}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI">
-      <UniqueIdentifier>{334931c9-c592-4a19-9a05-3d095c8ad7b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI">
-      <UniqueIdentifier>{c3e1ce6e-0ed9-47e8-8aed-170dcf190811}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI">
-      <UniqueIdentifier>{4c697f3f-9bab-4ba3-85fb-334c152c288d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI">
-      <UniqueIdentifier>{ac8bb9db-64b4-4f94-98c2-b6809c356258}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI">
-      <UniqueIdentifier>{0f000293-8e93-4f86-8e33-27c9c07345f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI">
-      <UniqueIdentifier>{79a2a95d-bc9d-43e5-9f00-37e5adc38b91}</UniqueIdentifier>
     </Filter>
     <Filter Include="Library\Vertex">
       <UniqueIdentifier>{73bf57ba-312b-4419-a3d2-943c7c278077}</UniqueIdentifier>
@@ -557,35 +446,146 @@
     <Filter Include="Library\Vertex2D\Effect">
       <UniqueIdentifier>{573df6be-f38e-4174-90e5-a99325fbf189}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\MainCamera">
-      <UniqueIdentifier>{62ef79b3-482b-460a-a4a2-0a5970ce879b}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase">
+      <UniqueIdentifier>{9c674c58-49b8-4ae1-868e-0baec8198c1b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\ButtonUI">
-      <UniqueIdentifier>{eacae7e4-33e5-4622-9c6c-fb7287804ec5}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene">
+      <UniqueIdentifier>{5b274c4c-1c7f-4951-9de9-4526680194b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\WindowUI">
-      <UniqueIdentifier>{08ef7a93-d056-4bf1-aa8f-34c873766a16}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager">
+      <UniqueIdentifier>{8aa953b7-3c65-4e37-949a-7ebfee5d7364}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow">
-      <UniqueIdentifier>{ae38b273-e5ae-4a87-87af-d72f81f02bd3}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager">
+      <UniqueIdentifier>{56621f14-c353-44ec-8992-0d12bb48cd41}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI">
-      <UniqueIdentifier>{b47b24e3-6d78-4fd5-a2cb-3fc3d648d3e5}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\HouseManager">
+      <UniqueIdentifier>{1dab1ec3-80bd-4dae-9e1e-0e528872e7a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI">
-      <UniqueIdentifier>{415ab7f3-8f62-4dc2-bd3a-4369723104f1}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager">
+      <UniqueIdentifier>{21d0d7a7-b505-4cf6-ae50-bc895ae9d3eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI">
-      <UniqueIdentifier>{bb811fad-c28a-49a9-b2da-4e380f460569}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager">
+      <UniqueIdentifier>{0a2873f0-b057-4528-819e-125be2450689}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI">
-      <UniqueIdentifier>{895c08c0-a77e-4171-bbc3-4e1fe50e6c8d}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky">
+      <UniqueIdentifier>{24d91e50-fe55-4ac7-b31d-dfa5dde7c6b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground\Effect">
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground">
+      <UniqueIdentifier>{1dcd6f59-c116-4da9-a396-3d548a20df27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground\Effect">
       <UniqueIdentifier>{e7e66729-3153-452c-b4d8-9886a1dc5bd9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect">
-      <UniqueIdentifier>{08a676f1-6e77-4316-be50-e3f5d22c69d4}</UniqueIdentifier>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\HumanManager">
+      <UniqueIdentifier>{a5bd128d-d74f-48d7-a809-d1c75797faa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\EnemyManager">
+      <UniqueIdentifier>{6f102ad6-2e63-4dd3-9bfd-9bb4a1dd43d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MainCamera">
+      <UniqueIdentifier>{62ef79b3-482b-460a-a4a2-0a5970ce879b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager">
+      <UniqueIdentifier>{d90d8b97-1d0b-4087-bbfa-8a2511b869fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow">
+      <UniqueIdentifier>{1c25e291-24c0-4fec-afb5-1b4ff76e46ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI">
+      <UniqueIdentifier>{6ea00f9d-fd0c-49af-bae8-e15baa3dc502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadButtonUI">
+      <UniqueIdentifier>{28f0051e-17c3-4cd8-8a0d-dc26a7d00981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsButtonUI">
+      <UniqueIdentifier>{f1e970e6-e8e5-4434-815f-439ff3a504ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveButtonUI">
+      <UniqueIdentifier>{1ac5fe57-762c-4dd9-8840-9408ba439f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI">
+      <UniqueIdentifier>{7c25895a-fd1f-49aa-bbb3-13469778a860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow">
+      <UniqueIdentifier>{4795c902-b2f7-4d74-a832-ca5087f72706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI">
+      <UniqueIdentifier>{334931c9-c592-4a19-9a05-3d095c8ad7b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI">
+      <UniqueIdentifier>{c3e1ce6e-0ed9-47e8-8aed-170dcf190811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI">
+      <UniqueIdentifier>{4c697f3f-9bab-4ba3-85fb-334c152c288d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI">
+      <UniqueIdentifier>{ac8bb9db-64b4-4f94-98c2-b6809c356258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI">
+      <UniqueIdentifier>{0f000293-8e93-4f86-8e33-27c9c07345f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI">
+      <UniqueIdentifier>{79a2a95d-bc9d-43e5-9f00-37e5adc38b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\TextUI">
+      <UniqueIdentifier>{579b2de3-c6a9-44b3-88a5-ca9bba018570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\ButtonUI">
+      <UniqueIdentifier>{eacae7e4-33e5-4622-9c6c-fb7287804ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\WindowUI">
+      <UniqueIdentifier>{08ef7a93-d056-4bf1-aa8f-34c873766a16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow">
+      <UniqueIdentifier>{ae38b273-e5ae-4a87-87af-d72f81f02bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI">
+      <UniqueIdentifier>{b47b24e3-6d78-4fd5-a2cb-3fc3d648d3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI">
+      <UniqueIdentifier>{415ab7f3-8f62-4dc2-bd3a-4369723104f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI">
+      <UniqueIdentifier>{bb811fad-c28a-49a9-b2da-4e380f460569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI">
+      <UniqueIdentifier>{895c08c0-a77e-4171-bbc3-4e1fe50e6c8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager">
+      <UniqueIdentifier>{d076b898-f6f7-42e0-88c0-54427e9f2db7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event">
+      <UniqueIdentifier>{7c457e5a-1015-46cc-aa49-449432990501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener">
+      <UniqueIdentifier>{64d141d7-906e-42c2-8017-f860aeadb0d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene">
+      <UniqueIdentifier>{f592d59e-a32a-4e66-ab4d-3086b2773ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleLogo">
+      <UniqueIdentifier>{953daab7-b099-4148-b12e-9d810fefe12e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleBackground">
+      <UniqueIdentifier>{e27cdcb0-3f8b-4a46-9573-f1567375e269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu">
+      <UniqueIdentifier>{52ce621f-8063-45a9-9acb-2501be1f88cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu">
+      <UniqueIdentifier>{7c32c86f-0164-460c-ae17-09da5fd65eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton">
+      <UniqueIdentifier>{9d424ac1-403c-4008-ad6e-1ec143af7912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton">
+      <UniqueIdentifier>{dee953b7-9ea4-428e-9fb9-12a257bf5e5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\GameDataManager">
+      <UniqueIdentifier>{01740cda-36dc-4a91-a56d-70c8bb1ea247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect">
+      <UniqueIdentifier>{c691e3ed-3d13-4de5-a158-87468c4f0b74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -599,10 +599,10 @@
       <Filter>Library\Vertex\Effect</Filter>
     </FxCompile>
     <FxCompile Include="Resource\Effect\GameScene\Ground.fx">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground\Effect</Filter>
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Ground\Effect</Filter>
     </FxCompile>
     <FxCompile Include="Resource\Effect\GameScene\Sky.fx">
-      <Filter>Main\SceneManager\Scene\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect</Filter>
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

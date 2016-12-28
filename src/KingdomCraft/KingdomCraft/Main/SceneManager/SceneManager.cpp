@@ -4,7 +4,7 @@
  * @author kotani
  */
 #include "SceneManager.h"
-#include "Scene\Scene.h"
+#include "SceneBase\SceneBase.h"
 #include "SceneFactory\SceneFactory.h"
 #include "DX11Manager\DX11Manager.h"
 #include "InputDeviceManager\InputDeviceManager.h"
@@ -17,12 +17,13 @@
 SceneManager::SceneManager(HWND _hwnd) :
 m_pScene(NULL),
 m_State(SCENE_CREATE),
-m_NextSceneID(Scene::SCENE_TITLE),
+m_NextSceneID(SceneBase::SCENE_TITLE),
 m_hWnd(_hwnd),
 m_IsGameEnd(false)
 {
 	DX11Manager::Create();
 	DX11Manager::GetInstance()->Init(m_hWnd);
+
 	InputDeviceManager::Create();
 	InputDeviceManager::GetInstance()->Init(m_hWnd);
 	InputDeviceManager::GetInstance()->CreateKeyDevice();
@@ -32,8 +33,10 @@ m_IsGameEnd(false)
 SceneManager::~SceneManager()
 {
 	delete m_pScene;
+
 	InputDeviceManager::GetInstance()->Release();
 	InputDeviceManager::Delete();
+	
 	DX11Manager::GetInstance()->Release();
 	DX11Manager::Delete();
 }
@@ -48,22 +51,26 @@ bool SceneManager::Run()
 
 void SceneManager::Control()
 {
-	Scene::SceneID CurrentSceneID;
+	SceneBase::SceneID CurrentSceneID;
 
 	switch (m_State)
 	{
 	case SCENE_CREATE:
-		if (m_NextSceneID == Scene::FIN)
+		if (m_NextSceneID == SceneBase::FIN)
 		{
 			m_IsGameEnd = true;
 			return;
 		}
-		m_pScene = SceneFactory::CreateScene(m_NextSceneID);
-		m_State = SCENE_PROC;
+		else
+		{
+			m_pScene = SceneFactory::CreateScene(m_NextSceneID);
+			m_State = SCENE_PROC;
+		}
 		break;
 	case SCENE_PROC:
 		CurrentSceneID = m_pScene->GetSceneID();
 		m_NextSceneID = m_pScene->Control();
+
 		if (m_NextSceneID != CurrentSceneID)
 		{
 			m_State = SCENE_RELEASE;
@@ -72,6 +79,7 @@ void SceneManager::Control()
 	case SCENE_RELEASE:
 		delete m_pScene;
 		m_pScene = NULL;
+
 		m_State = SCENE_CREATE;
 		break;
 	}
