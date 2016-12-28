@@ -5,10 +5,10 @@
  */
 #ifndef SCENEFACTORY_H
 #define SCENEFACTORY_H
-#include "..\Scene\Scene.h"
+#include "..\SceneBase\SceneBase.h"
 
 /**
- * Sceneの生成管理するクラス
+ * SceneBaseの生成管理するクラス
  */
 class SceneFactory
 {
@@ -18,7 +18,7 @@ public:
 	 * @param _sceneID 生成するクラスのシーンID
 	 * @return シーンクラスのインスタンス
 	 */
-	static Scene* CreateScene(Scene::SceneID _sceneID);
+	static SceneBase* CreateScene(SceneBase::SceneID _sceneID);
 
 private:
 	/**
