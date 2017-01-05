@@ -190,6 +190,15 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\GameDataManager\GameDataManager.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\GameDataManager</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\GameTimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -378,6 +387,15 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\GameDataManager\GameDataManager.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\GameDataManager</Filter>
     </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\GameTimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -512,21 +530,6 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeUI">
       <UniqueIdentifier>{334931c9-c592-4a19-9a05-3d095c8ad7b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI">
-      <UniqueIdentifier>{c3e1ce6e-0ed9-47e8-8aed-170dcf190811}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI">
-      <UniqueIdentifier>{4c697f3f-9bab-4ba3-85fb-334c152c288d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI">
-      <UniqueIdentifier>{ac8bb9db-64b4-4f94-98c2-b6809c356258}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI">
-      <UniqueIdentifier>{0f000293-8e93-4f86-8e33-27c9c07345f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI">
-      <UniqueIdentifier>{79a2a95d-bc9d-43e5-9f00-37e5adc38b91}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\TextUI">
       <UniqueIdentifier>{579b2de3-c6a9-44b3-88a5-ca9bba018570}</UniqueIdentifier>
     </Filter>
@@ -586,6 +589,30 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect">
       <UniqueIdentifier>{c691e3ed-3d13-4de5-a158-87468c4f0b74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\GameTimeManager">
+      <UniqueIdentifier>{777602b2-f46e-4cb4-9054-ae407b047315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent">
+      <UniqueIdentifier>{4b46438c-bbdc-4581-a050-6c99d728a622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI">
+      <UniqueIdentifier>{c3e1ce6e-0ed9-47e8-8aed-170dcf190811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\NormalTimeButtonUI">
+      <UniqueIdentifier>{4c697f3f-9bab-4ba3-85fb-334c152c288d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\GameTimeSpeedUI">
+      <UniqueIdentifier>{ac8bb9db-64b4-4f94-98c2-b6809c356258}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\AccelerateOfTimeButtonUI">
+      <UniqueIdentifier>{0f000293-8e93-4f86-8e33-27c9c07345f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI">
+      <UniqueIdentifier>{79a2a95d-bc9d-43e5-9f00-37e5adc38b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener">
+      <UniqueIdentifier>{867a0f0f-0e36-49c3-8558-2ee49012f521}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,8 @@
 GameDataManager* GameDataManager::m_pGameDataManager = NULL;
 
 
-GameDataManager::GameDataManager()
+GameDataManager::GameDataManager() :
+m_GameTime(0, 0, 0, 0)
 {
 }
 
