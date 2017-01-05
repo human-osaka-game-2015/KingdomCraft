@@ -12,6 +12,7 @@ class FieldManager;
 class HouseManager;
 class HumanManager;
 class RoadManager;
+class GameTimeManager;
 
 /**
  * ゲーム内のオブジェクトを管理するクラス
@@ -43,12 +44,13 @@ private:
 	GameObjectManager(const GameObjectManager&);
 	void operator=(const GameObjectManager&);
 
-	MainCamera*	  m_pMainCamera;
-	EnemyManager* m_pEnemyManager;
-	FieldManager* m_pFieldManager;
-	HouseManager* m_pHouseManager;
-	HumanManager* m_pHumanManager;
-	RoadManager*  m_pRoadManager;
+	MainCamera*			m_pMainCamera;
+	EnemyManager*		m_pEnemyManager;
+	FieldManager*		m_pFieldManager;
+	HouseManager*		m_pHouseManager;
+	HumanManager*		m_pHumanManager;
+	RoadManager*		m_pRoadManager;
+	GameTimeManager*	m_pGameTimeManager;
 
 };
 

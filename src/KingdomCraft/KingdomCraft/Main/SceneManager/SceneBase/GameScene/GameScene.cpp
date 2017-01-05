@@ -10,6 +10,8 @@
 #include "DSoundManager\DSoundManager.h"
 #include "FbxFileManager\FbxFileManager.h"
 #include "InputDeviceManager\InputDeviceManager.h"
+#include "GameDataManager\GameDataManager.h"
+#include "EventManager\EventManager.h"
 #include "ObjectManager\ObjectManager.h"
 
 
@@ -27,12 +29,16 @@ m_pObjectManager(NULL)
 	FbxFileManager::Create(DX11Manager::GetInstance()->GetDevice(), DX11Manager::GetInstance()->GetDeviceContext());
 	FbxFileManager::GetInstance()->Init();
 
+	GameDataManager::Create();
+	EventManager::Create();
 	m_pObjectManager = new ObjectManager();
 }
 
 GameScene::~GameScene()
 {
 	delete m_pObjectManager;
+	EventManager::Delete();
+	GameDataManager::Delete();
 
 	FbxFileManager::GetInstance()->Release();
 	FbxFileManager::Delete();

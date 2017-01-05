@@ -6,6 +6,7 @@
 #ifndef GAMEDATAMANAGER_H
 #define GAMEDATAMANAGER_H
 #include <Windows.h>
+#include "..\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.h"
 
 /**
  * GameScene内のデータを管理するクラス
@@ -42,6 +43,25 @@ public:
 		m_pGameDataManager = NULL;
 	}
 
+	/**
+	 * ゲーム内時間を取得する関数
+	 * @return ゲーム内時間が格納された構造体
+	 */
+	inline GameTimeManager::GAMETIME GetGameTime()
+	{
+		return m_GameTime;
+	}
+
+	/**
+	 * ゲーム内時間を設定する関数
+	 * @param[in] _gameTime 設定するゲーム内時間
+	 */
+	inline void SetGameTime(GameTimeManager::GAMETIME _gameTime)
+	{
+		m_GameTime = _gameTime;
+	}
+
+
 private:
 	/**
 	 * GameDataManagerクラスのコンストラクタ
@@ -54,6 +74,9 @@ private:
 	~GameDataManager();
 
 	static GameDataManager* m_pGameDataManager;
+
+	GameTimeManager::GAMETIME m_GameTime;	//!< ゲーム内時間を格納する変数
+
 
 };
 

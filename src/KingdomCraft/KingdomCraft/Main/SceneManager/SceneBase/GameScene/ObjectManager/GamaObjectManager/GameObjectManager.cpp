@@ -10,6 +10,7 @@
 #include "HouseManager\HouseManager.h"
 #include "HumanManager\HumanManager.h"
 #include "RoadManager\RoadManager.h"
+#include "GameTimeManager\GameTimeManager.h"
 
 
 GameObjectManager::GameObjectManager() :
@@ -18,12 +19,14 @@ m_pEnemyManager(new EnemyManager()),
 m_pFieldManager(new FieldManager()),
 m_pHouseManager(new HouseManager()),
 m_pHumanManager(new HumanManager()),
-m_pRoadManager(new RoadManager())
+m_pRoadManager(new RoadManager()),
+m_pGameTimeManager(new GameTimeManager())
 {
 }
 
 GameObjectManager::~GameObjectManager()
 {
+	delete m_pGameTimeManager;
 	delete m_pRoadManager;
 	delete m_pHumanManager;
 	delete m_pHouseManager;
@@ -40,6 +43,7 @@ void GameObjectManager::Control()
 	m_pHouseManager->Control();
 	m_pHumanManager->Control();
 	m_pRoadManager->Control();
+	m_pGameTimeManager->Control();
 }
 
 void GameObjectManager::Draw()
@@ -49,4 +53,5 @@ void GameObjectManager::Draw()
 	m_pHouseManager->Draw();
 	m_pHumanManager->Draw();
 	m_pRoadManager->Draw();
+	m_pGameTimeManager->Draw();
 }
