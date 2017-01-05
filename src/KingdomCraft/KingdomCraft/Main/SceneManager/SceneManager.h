@@ -6,7 +6,7 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 #include <Windows.h>
-#include "Scene\Scene.h"
+#include "SceneBase\SceneBase.h"
 
 /**
  * シーンを管理するクラス
@@ -52,9 +52,9 @@ private:
 	 */
 	void Draw();
 
-	Scene*			m_pScene;
+	SceneBase*			m_pScene;
 	State			m_State;
-	Scene::SceneID	m_NextSceneID;
+	SceneBase::SceneID	m_NextSceneID;
 	HWND			m_hWnd;
 	bool			m_IsGameEnd;
 

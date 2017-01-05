@@ -4,45 +4,43 @@
  * @author kotani
  */
 #include "SceneFactory.h"
-#include "..\Scene\GameScene\GameScene.h"
-#include "..\Scene\TitleScene\TitleScene.h"
+#include "..\SceneBase\GameScene\GameScene.h"
+#include "..\SceneBase\TitleScene\TitleScene.h"
 #include <Windows.h>
 
 
 SceneFactory::SceneFactory()
 {
-
 }
 
 SceneFactory::~SceneFactory()
 {
-
 }
 
-Scene* SceneFactory::CreateScene(Scene::SceneID _sceneID)
+SceneBase* SceneFactory::CreateScene(SceneBase::SceneID _sceneID)
 {
-	Scene* pScene = NULL;
+	SceneBase* pScene = NULL;
 
 	switch (_sceneID)
 	{
-	case Scene::SCENE_LOGO:
+	case SceneBase::SCENE_LOGO:
 		break;
-	case Scene::SCENE_OPENING:
+	case SceneBase::SCENE_OPENING:
 		break;
-	case Scene::SCENE_TITLE:
+	case SceneBase::SCENE_TITLE:
 		pScene = new TitleScene();
 		break;
-	case Scene::SCENE_GAME:
+	case SceneBase::SCENE_GAME:
 		pScene = new GameScene();
 		break;
-	case Scene::SCENE_CONTINUE_GAME:
+	case SceneBase::SCENE_CONTINUE_GAME:
 		pScene = new GameScene();
 		break;
-	case Scene::SCENE_RESULT:
+	case SceneBase::SCENE_RESULT:
 		break;
-	case Scene::SCENE_ENDING:
+	case SceneBase::SCENE_ENDING:
 		break;
-	case Scene::FIN:
+	case SceneBase::FIN:
 		break;
 	default:
 		break;

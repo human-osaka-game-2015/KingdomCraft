@@ -35,7 +35,7 @@ bool MouseDevice::Init(LPDIRECTINPUT8 _pDInput8, HWND _hWnd)
 {
 	if (m_pDInput8 != NULL)
 	{
-		MessageBox(m_hWnd, TEXT("MouseDeviceクラスは既に初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(_hWnd, TEXT("MouseDeviceクラスは既に初期化されています"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -95,7 +95,6 @@ void MouseDevice::Release()
 		m_pDInputDevice8->Release();
 		m_pDInputDevice8 = NULL;
 		m_pDInput8 = NULL;
-		OutputDebugString(TEXT("DirectInputのMouseDeviceを解放しました\n"));
 	}
 }
 

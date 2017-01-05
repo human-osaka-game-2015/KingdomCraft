@@ -4,7 +4,6 @@
  * @author morimoto
  */
 #include "TextureManager.h"
-#include <d3dx11.h>
 
 
 //----------------------------------------------------------------------------------------------------
@@ -25,7 +24,7 @@ TextureManager* TextureManager::m_pTextureManager = NULL;
 // Constructor	Destructor
 //----------------------------------------------------------------------------------------------------
 
-TextureManager::TextureManager(ID3D11Device* const _pDevice) :
+TextureManager::TextureManager(ID3D11Device* _pDevice) :
 m_pDevice(_pDevice)
 {
 	m_pTextureResourceView.push_back(NULL);	// 読み込みに失敗した際に参照する値としてNULLを追加
@@ -58,7 +57,7 @@ bool TextureManager::LoadTexture(LPCTSTR _pFileName, int* _pIndex)
 	LoadInfo.MipFilter = D3DX11_FILTER_POINT;
 	LoadInfo.pSrcInfo = NULL;
 
-	ID3D11ShaderResourceView* pResourceView;
+	ID3D11ShaderResourceView* pResourceView = NULL;
 	if (FAILED(D3DX11CreateShaderResourceViewFromFile(
 		m_pDevice,
 		_pFileName,

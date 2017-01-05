@@ -4,7 +4,6 @@
  * @author morimoto
  */
 #include "DebugFont.h"
-#include <d3dx11.h>
 
 
 //----------------------------------------------------------------------------------------------------
@@ -31,7 +30,11 @@ m_pPixelShader(NULL),
 m_pSamplerState(NULL),
 m_pBlendState(NULL),
 m_pDepthStencilState(NULL),
-m_hWnd(NULL)
+m_hWnd(NULL),
+m_FontHeight(0),
+m_FontWidth(0),
+m_WindowHeight(0),
+m_WindowWidth(0)
 {
 }
 
@@ -48,7 +51,7 @@ bool DebugFont::Init(HWND _hWnd)
 {
 	if (m_pResourceView != NULL)
 	{
-		MessageBox(m_hWnd, TEXT("DebugFontクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
+		MessageBox(_hWnd, TEXT("DebugFontクラスはすでに初期化されています"), TEXT("エラー"), MB_ICONSTOP);
 		return false;
 	}
 
@@ -112,6 +115,7 @@ bool DebugFont::Init(HWND _hWnd)
 
 void DebugFont::Release()
 {
+	ReleaseFont();
 	ReleaseDepthStencilState();
 	ReleaseBlendState();
 	ReleaseSamplerState();
@@ -193,8 +197,7 @@ void DebugFont::DrawFont(const D3DXVECTOR2* _pDrawPos, LPCTSTR _pStr)
 			2.0f / m_WindowWidth, 0.0f, 0.0f, 0.0f,
 			0.0f, -2.0f / m_WindowHeight, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f
-			);
+			0.0f, 0.0f, 0.0f, 1.0f);
 		pConstantBuffer->MatWVP = Proj;
 
 		pConstantBuffer->TexelOffset.x = static_cast<float>(_pStr[i] - m_SpaceAsciiCode) * m_DebugFontTu;
@@ -321,7 +324,6 @@ bool DebugFont::InitVertexShader()
 
 	if (pVertexShaderErrors != NULL) pVertexShaderErrors->Release();
 
-
 	if (FAILED(m_pDevice->CreateVertexShader(
 		pCompiledVertexShader->GetBufferPointer(),
 		pCompiledVertexShader->GetBufferSize(),
@@ -338,7 +340,7 @@ bool DebugFont::InitVertexShader()
 	{
 		{ "POSITION",	0, DXGI_FORMAT_R32G32B32_FLOAT,		0, 0,	D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		{ "COLOR",		0, DXGI_FORMAT_R32G32B32A32_FLOAT,	0, 12,	D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD",	0, DXGI_FORMAT_R32G32_FLOAT,		0, 28,	D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "TEXCOORD",	0, DXGI_FORMAT_R32G32_FLOAT,		0, 28,	D3D11_INPUT_PER_VERTEX_DATA, 0 }
 	};
 
 	if (FAILED(m_pDevice->CreateInputLayout(
@@ -549,5 +551,14 @@ void DebugFont::ReleaseDepthStencilState()
 	{
 		m_pDepthStencilState->Release();
 		m_pDepthStencilState = NULL;
+	}
+}
+
+void DebugFont::ReleaseFont()
+{
+	if (m_pVertexBuffer != NULL)
+	{
+		m_pVertexBuffer->Release();
+		m_pVertexBuffer = NULL;
 	}
 }

@@ -18,9 +18,11 @@ class FbxFileManager
 {
 public:
 	/**
-	 * インスタンスを生成
+	 * FbxFileManagerのインスタンスを生成する関数
+	 * @param[in] _pDevice Fbxファイルの読み込みに使用するDirectX11デバイス
+	 * @param[in] _pDeviceContext 3Dモデルの描画に使用するDirectX11デバイスコンテキスト
 	 */
-	static void Create(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext)
+	inline static void Create(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext)
 	{
 		if (m_pFbxFileManager == NULL)
 		{
@@ -29,18 +31,18 @@ public:
 	}
 
 	/**
-	 * インスタンスを取得する
-	 * @return インスタンスが返る
+	 * FbxFileManagerのインスタンスを取得する関数
+	 * @return FbxFileManagerのインスタンスが返る
 	 */
-	static FbxFileManager* GetInstance()
+	inline static FbxFileManager* GetInstance()
 	{
 		return m_pFbxFileManager;
 	}
 
 	/**
-	 * FbxFileManagerインスタンスを破棄する
+	 * FbxFileManagerのインスタンスを破棄する関数
 	 */
-	static void Delete()
+	inline static void Delete()
 	{
 		delete m_pFbxFileManager;
 		m_pFbxFileManager = NULL;

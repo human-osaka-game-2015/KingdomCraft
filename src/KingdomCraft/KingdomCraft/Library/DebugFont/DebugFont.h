@@ -5,8 +5,8 @@
  */
 #ifndef DEBUGFONT_H
 #define DEBUGFONT_H
-#include <d3d11.h>
-#include <d3dx10.h>
+#include <D3DX11.h>
+#include <D3DX10.h>
 
 /**
  * デバッグ情報を表示するクラス
@@ -70,7 +70,7 @@ private:
 	 */
 	struct CONSTANT_BUFFER
 	{
-		D3DXMATRIX MatWVP;		//!< ワールド変換行列
+		D3DXMATRIX	MatWVP;		//!< ワールド変換行列
 		D3DXVECTOR4 TexelOffset;//!< テクスチャ座標のオフセット
 		D3DXVECTOR4 PosOffset;	//!< 頂点座標のオフセット
 	};
@@ -162,6 +162,11 @@ private:
 	 * 深度ステンシルバッファの解放関数
 	 */
 	void ReleaseDepthStencilState();
+
+	/**
+	 * フォントの頂点バッファ解放関数
+	 */
+	void ReleaseFont();
 
 	static const float m_DebugFontTu;
 	static const int m_SpaceAsciiCode;
