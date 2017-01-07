@@ -14,6 +14,7 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.cpp" />
     <ClCompile Include="Library\Vertex\Vertex.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.cpp" />
@@ -82,6 +83,7 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.h" />
     <ClInclude Include="Library\Vertex\Vertex.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\EnemyManager\EnemyManager.h" />
