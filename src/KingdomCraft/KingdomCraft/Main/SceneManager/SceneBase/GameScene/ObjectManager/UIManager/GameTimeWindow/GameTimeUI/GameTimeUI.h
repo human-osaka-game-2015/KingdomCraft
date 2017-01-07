@@ -5,7 +5,9 @@
  */
 #ifndef GAMETIMEUI_H
 #define GAMETIMEUI_H
+#include "Vertex\Vertex.h"
 #include "..\..\TextUI\TextUI.h"
+#include "..\..\..\..\GameDataManager\GameDataManager.h"
 
 /**
  * ゲーム内時間UIを管理するクラス
@@ -35,12 +37,40 @@ public:
 	virtual void Draw();
 
 private:
+	/**
+	 * 年の描画
+	 */
+	void YearTextDraw();
+
+	/**
+	 * 月の描画
+	 */
+	void MonthTextDraw();
+
+	/**
+	 * 日付の描画
+	 */
+	void DayTextDraw();
+
+	/**
+	 * 時間の描画
+	 */
+	void HourTextDraw();
+
 	GameTimeUI(const GameTimeUI&);
 	void operator=(const GameTimeUI&);
 
 	static const D3DXVECTOR2	m_DefaultTextPos;	//!< ゲーム内時間テキストの初期座標
 	static const D3DXVECTOR2	m_DefaultFontSize;	//!< ゲーム内時間テキストのフォント初期サイズ
+	static const D3DXVECTOR2	m_YearTextPos;
+	static const D3DXVECTOR2	m_MonthTextPos;
+	static const D3DXVECTOR2	m_DayTextPos;
+	static const D3DXVECTOR2	m_HourTextPos;
+	static const Vertex::VERTEX m_DefaultVertexData[4];
 	D3DXVECTOR2					m_ParentUIPos;		//!< 親UIの座標位置
+	Vertex*						m_pVertex;
+	int							m_TextureIndex;
+	GameTimeManager::GAMETIME	m_GameTime;
 
 };
 
