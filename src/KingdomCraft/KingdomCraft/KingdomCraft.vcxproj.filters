@@ -199,6 +199,9 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameObjectBase\GameObjectBase.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\GameObjectBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -395,6 +398,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameObjectBase\GameObjectBase.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\GameObjectBase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -613,6 +619,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener">
       <UniqueIdentifier>{867a0f0f-0e36-49c3-8558-2ee49012f521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\GameObjectBase">
+      <UniqueIdentifier>{01e56c57-ced3-463a-95ee-85a452a61b23}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
