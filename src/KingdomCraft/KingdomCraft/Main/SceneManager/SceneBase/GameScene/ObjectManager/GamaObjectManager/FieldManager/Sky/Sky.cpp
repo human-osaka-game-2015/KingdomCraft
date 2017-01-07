@@ -15,6 +15,7 @@ Sky::Sky()
 	ShaderManager::GetInstance()->LoadVertexShader(TEXT("Resource\\Effect\\GameScene\\Sky.fx"), "VS", &m_VertexShaderIndex);
 	ShaderManager::GetInstance()->LoadPixelShader(TEXT("Resource\\Effect\\GameScene\\Sky.fx"), "PS", &m_PixelShaderIndex);
 	InitVertexLayout();
+	InitDepthStencilState();
 	InitConstantBuffer();
 	WriteConstantBuffer();
 }
@@ -22,6 +23,7 @@ Sky::Sky()
 Sky::~Sky()
 {
 	ReleaseConstantBuffer();
+	ReleaseDepthStencilState();
 	ReleaseVertexLayout();
 	ShaderManager::GetInstance()->ReleasePixelShader(m_PixelShaderIndex);
 	ShaderManager::GetInstance()->ReleaseVertexShader(m_VertexShaderIndex);
@@ -40,6 +42,7 @@ void Sky::Draw()
 	DX11Manager::GetInstance()->GetDeviceContext()->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 	DX11Manager::GetInstance()->GetDeviceContext()->VSSetShader(ShaderManager::GetInstance()->GetVertexShader(m_VertexShaderIndex), NULL, 0);
 	DX11Manager::GetInstance()->GetDeviceContext()->PSSetShader(ShaderManager::GetInstance()->GetPixelShader(m_PixelShaderIndex), NULL, 0);
+	DX11Manager::GetInstance()->GetDeviceContext()->OMSetDepthStencilState(m_pDepthStencilState,0);
 	FbxFileManager::GetInstance()->GetFbxModel(m_ModelIndex)->Draw();
 }
 
@@ -50,7 +53,7 @@ void Sky::WriteConstantBuffer()
 	{
 		D3DXMATRIX World;
 		D3DXMatrixIdentity(&World);
-		SHADER_CONSTANT_BUFFER ConstantBuffer;
+		MODEL_CONSTANT_BUFFER ConstantBuffer;
 		ConstantBuffer.World = World;
 		D3DXMatrixTranspose(&ConstantBuffer.World, &ConstantBuffer.World);
 		memcpy_s(SubResourceData.pData, SubResourceData.RowPitch, static_cast<void*>(&ConstantBuffer), sizeof(ConstantBuffer));
@@ -74,10 +77,25 @@ void Sky::InitVertexLayout()
 		&m_pVertexLayout);
 }
 
+void Sky::InitDepthStencilState()
+{
+	D3D11_DEPTH_STENCIL_DESC DepthStencilDesc;
+	ZeroMemory(&DepthStencilDesc, sizeof(DepthStencilDesc));
+	DepthStencilDesc.DepthEnable = TRUE;
+	DepthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+	DepthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
+	DepthStencilDesc.StencilEnable = FALSE;
+
+	if (FAILED(DX11Manager::GetInstance()->GetDevice()->CreateDepthStencilState(&DepthStencilDesc, &m_pDepthStencilState)))
+	{
+		MessageBox(DX11Manager::GetInstance()->GetWindowHandle(), TEXT("DepthStencilStateの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
+	}
+}
+
 void Sky::InitConstantBuffer()
 {
 	D3D11_BUFFER_DESC ConstantBufferDesc;
-	ConstantBufferDesc.ByteWidth = sizeof(SHADER_CONSTANT_BUFFER);
+	ConstantBufferDesc.ByteWidth = sizeof(MODEL_CONSTANT_BUFFER);
 	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
 	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	ConstantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
@@ -96,6 +114,15 @@ void Sky::ReleaseVertexLayout()
 	{
 		m_pVertexLayout->Release();
 		m_pVertexLayout = NULL;
+	}
+}
+
+void Sky::ReleaseDepthStencilState()
+{
+	if (m_pDepthStencilState != NULL)
+	{
+		m_pDepthStencilState->Release();
+		m_pDepthStencilState = NULL;
 	}
 }
 
