@@ -7,11 +7,12 @@
 #define SKY_H
 #include <D3DX11.h>
 #include <D3DX10.h>
+#include "..\..\GameObjectBase\GameObjectBase.h"
 
 /**
  * 空の管理クラス
  */
-class Sky
+class Sky : public GameObjectBase
 {
 public:
 	/**
@@ -27,21 +28,21 @@ public:
 	/**
 	 * Skyクラスの制御関数
 	 */
-	void Control();
+	virtual void Control();
 
 	/**
 	 * Skyクラスの描画関数
 	 */
-	void Draw();
+	virtual void Draw();
 
 private:
 	Sky(const Sky&);
 	void operator=(const Sky&);
 
 	/**
-	 * シェーダー用コンスタントバッファ
+	 * モデルのコンスタントバッファ
 	 */
-	struct SHADER_CONSTANT_BUFFER
+	struct MODEL_CONSTANT_BUFFER
 	{
 		D3DXMATRIX World;
 	};
@@ -49,33 +50,23 @@ private:
 	/**
 	 * 頂点入力レイアウトの初期化関数
 	 */
-	void InitVertexLayout();
-
-	/**
-	 * コンスタントバッファの初期化関数
-	 */
-	void InitConstantBuffer();
+	virtual void InitVertexLayout();
 
 	/**
 	 * コンスタントバッファへの書き込み関数
 	 */
-	void WriteConstantBuffer();
-
-	/**
-	 * バーテックスレイアウトの開放関数
-	 */
-	void ReleaseVertexLayout();
+	virtual void WriteConstantBuffer();
 
 	/**
 	 * コンスタントバッファの開放関数
 	 */
-	void ReleaseConstantBuffer();
+	virtual void ReleaseConstantBuffer();
 
 	int m_ModelIndex;
 	int m_VertexShaderIndex;
 	int m_PixelShaderIndex;
 
-	ID3D11InputLayout* m_pVertexLayout;
+	MODEL_CONSTANT_BUFFER m_ModelConstantBuffer;
 	ID3D11Buffer*	   m_pConstantBuffer;
 
 };

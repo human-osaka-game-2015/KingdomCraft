@@ -14,8 +14,9 @@ Sky::Sky()
 	FbxFileManager::GetInstance()->LoadFbxModel(TEXT("Resource\\Fbx\\GameScene\\Sky.fbx"), &m_ModelIndex);
 	ShaderManager::GetInstance()->LoadVertexShader(TEXT("Resource\\Effect\\GameScene\\Sky.fx"), "VS", &m_VertexShaderIndex);
 	ShaderManager::GetInstance()->LoadPixelShader(TEXT("Resource\\Effect\\GameScene\\Sky.fx"), "PS", &m_PixelShaderIndex);
+	InitDepthStencilState();
 	InitVertexLayout();
-	InitConstantBuffer();
+	InitConstantBuffer(sizeof(MODEL_CONSTANT_BUFFER), &m_pConstantBuffer);
 	WriteConstantBuffer();
 }
 
@@ -23,6 +24,7 @@ Sky::~Sky()
 {
 	ReleaseConstantBuffer();
 	ReleaseVertexLayout();
+	ReleaseDepthStencilState();
 	ShaderManager::GetInstance()->ReleasePixelShader(m_PixelShaderIndex);
 	ShaderManager::GetInstance()->ReleaseVertexShader(m_VertexShaderIndex);
 	FbxFileManager::GetInstance()->ReleaseFbxModel(m_ModelIndex);
@@ -40,22 +42,8 @@ void Sky::Draw()
 	DX11Manager::GetInstance()->GetDeviceContext()->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 	DX11Manager::GetInstance()->GetDeviceContext()->VSSetShader(ShaderManager::GetInstance()->GetVertexShader(m_VertexShaderIndex), NULL, 0);
 	DX11Manager::GetInstance()->GetDeviceContext()->PSSetShader(ShaderManager::GetInstance()->GetPixelShader(m_PixelShaderIndex), NULL, 0);
+	DX11Manager::GetInstance()->GetDeviceContext()->OMSetDepthStencilState(m_pDepthStencilState, 0);
 	FbxFileManager::GetInstance()->GetFbxModel(m_ModelIndex)->Draw();
-}
-
-void Sky::WriteConstantBuffer()
-{
-	D3D11_MAPPED_SUBRESOURCE SubResourceData;
-	if (SUCCEEDED(DX11Manager::GetInstance()->GetDeviceContext()->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &SubResourceData)))
-	{
-		D3DXMATRIX World;
-		D3DXMatrixIdentity(&World);
-		SHADER_CONSTANT_BUFFER ConstantBuffer;
-		ConstantBuffer.World = World;
-		D3DXMatrixTranspose(&ConstantBuffer.World, &ConstantBuffer.World);
-		memcpy_s(SubResourceData.pData, SubResourceData.RowPitch, static_cast<void*>(&ConstantBuffer), sizeof(ConstantBuffer));
-		DX11Manager::GetInstance()->GetDeviceContext()->Unmap(m_pConstantBuffer, 0);
-	}
 }
 
 void Sky::InitVertexLayout()
@@ -74,28 +62,18 @@ void Sky::InitVertexLayout()
 		&m_pVertexLayout);
 }
 
-void Sky::InitConstantBuffer()
+void Sky::WriteConstantBuffer()
 {
-	D3D11_BUFFER_DESC ConstantBufferDesc;
-	ConstantBufferDesc.ByteWidth = sizeof(SHADER_CONSTANT_BUFFER);
-	ConstantBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-	ConstantBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	ConstantBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-	ConstantBufferDesc.MiscFlags = 0;
-	ConstantBufferDesc.StructureByteStride = 0;
-
-	if (FAILED(DX11Manager::GetInstance()->GetDevice()->CreateBuffer(&ConstantBufferDesc, NULL, &m_pConstantBuffer)))
+	D3D11_MAPPED_SUBRESOURCE SubResourceData;
+	if (SUCCEEDED(DX11Manager::GetInstance()->GetDeviceContext()->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &SubResourceData)))
 	{
-		MessageBox(DX11Manager::GetInstance()->GetWindowHandle(), TEXT("SkyクラスのConstantBufferの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
-	}
-}
-
-void Sky::ReleaseVertexLayout()
-{
-	if (m_pVertexLayout != NULL)
-	{
-		m_pVertexLayout->Release();
-		m_pVertexLayout = NULL;
+		D3DXMATRIX World;
+		D3DXMatrixIdentity(&World);
+		MODEL_CONSTANT_BUFFER ConstantBuffer;
+		ConstantBuffer.World = World;
+		D3DXMatrixTranspose(&ConstantBuffer.World, &ConstantBuffer.World);
+		memcpy_s(SubResourceData.pData, SubResourceData.RowPitch, reinterpret_cast<void*>(&ConstantBuffer), sizeof(ConstantBuffer));
+		DX11Manager::GetInstance()->GetDeviceContext()->Unmap(m_pConstantBuffer, 0);
 	}
 }
 
