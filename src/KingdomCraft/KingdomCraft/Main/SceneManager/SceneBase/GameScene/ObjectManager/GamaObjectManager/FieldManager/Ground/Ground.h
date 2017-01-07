@@ -39,9 +39,9 @@ private:
 	void operator=(const Ground&);
 
 	/**
-	 * シェーダー用コンスタントバッファ
+	 * モデル用コンスタントバッファ
 	 */
-	struct SHADER_CONSTANT_BUFFER
+	struct MODEL_CONSTANT_BUFFER
 	{
 		D3DXMATRIX World;
 	};
@@ -50,6 +50,11 @@ private:
 	 * 頂点入力レイアウトの初期化関数
 	 */
 	void InitVertexLayout();
+
+	/**
+	 * 深度ステンシルステートの初期化関数
+	 */
+	void InitDepthStencilState();
 
 	/**
 	 * コンスタントバッファの初期化関数
@@ -61,10 +66,16 @@ private:
 	 */
 	void WriteConstantBuffer();
 
+
 	/**
-	 * バーテックスレイアウトの開放関数
+	 * 頂点入力レイアウトの開放関数
 	 */
 	void ReleaseVertexLayout();
+
+	/**
+	 * 深度ステンシルステートの開放関数
+	 */
+	void ReleaseDepthStencilState();
 
 	/**
  	 * コンスタントバッファの開放関数
@@ -76,8 +87,9 @@ private:
 	int m_PixelShaderIndex;
 	int m_TextureIndex;
 
-	ID3D11InputLayout* m_pVertexLayout;
-	ID3D11Buffer*	   m_pConstantBuffer;
+	ID3D11InputLayout*		 m_pVertexLayout;
+	ID3D11DepthStencilState* m_pDepthStencilState;
+	ID3D11Buffer*			 m_pConstantBuffer;
 
 };
 
