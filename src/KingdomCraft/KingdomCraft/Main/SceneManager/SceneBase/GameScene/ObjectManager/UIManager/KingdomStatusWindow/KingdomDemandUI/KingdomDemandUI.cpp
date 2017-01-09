@@ -135,8 +135,7 @@ void KingdomDemandUI::HouseGaugeDraw()
 		}
 	}
 
-	m_pGaugeVertex->CreateVertexBuffer(Vertex, 4);
-
+	m_pGaugeVertex->WriteVertexBuffer(Vertex);
 	m_pGaugeVertex->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultHousePos + m_ParentUIPos));
 	m_pGaugeVertex->Draw();
 }
@@ -167,8 +166,7 @@ void KingdomDemandUI::CommerceGaugeDraw()
 		}
 	}
 
-	m_pGaugeVertex->CreateVertexBuffer(Vertex, 4);
-
+	m_pGaugeVertex->WriteVertexBuffer(Vertex);
 	m_pGaugeVertex->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultCommercePos + m_ParentUIPos));
 	m_pGaugeVertex->Draw();
 }
@@ -199,8 +197,7 @@ void KingdomDemandUI::IndustryGaugeDraw()
 		}
 	}
 
-	m_pGaugeVertex->CreateVertexBuffer(Vertex, 4);
-
+	m_pGaugeVertex->WriteVertexBuffer(Vertex);
 	m_pGaugeVertex->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultIndustryPos + m_ParentUIPos));
 	m_pGaugeVertex->Draw();
 }
