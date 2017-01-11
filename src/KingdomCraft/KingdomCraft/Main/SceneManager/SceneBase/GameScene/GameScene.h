@@ -40,6 +40,11 @@ private:
 	GameScene(const GameScene&);
 	void operator=(const GameScene&);
 
+	/**
+	 * キーボードの状態更新
+	 */
+	void KeyUpdate();
+
 	ObjectManager* m_pObjectManager;
 
 };
