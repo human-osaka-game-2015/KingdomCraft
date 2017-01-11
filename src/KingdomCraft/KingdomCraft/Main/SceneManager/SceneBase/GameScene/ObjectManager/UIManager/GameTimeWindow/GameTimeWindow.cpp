@@ -44,6 +44,6 @@ void GameTimeWindow::Draw()
 
 	WindowDraw();
 
-	m_pGameTimeOperationUI->Draw();
 	m_pGameTimeUI->Draw();
+	m_pGameTimeOperationUI->Draw();
 }
