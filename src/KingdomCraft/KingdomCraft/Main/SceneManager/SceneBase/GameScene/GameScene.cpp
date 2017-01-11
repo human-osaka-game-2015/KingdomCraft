@@ -54,7 +54,7 @@ GameScene::~GameScene()
 SceneBase::SceneID GameScene::Control()
 {
 	InputDeviceManager::GetInstance()->MouseUpdate();
-
+	KeyUpdate();
 	m_pObjectManager->Control();
 
 	return m_SceneID;
@@ -67,4 +67,13 @@ void GameScene::Draw()
 	m_pObjectManager->Draw();
 
 	DX11Manager::GetInstance()->EndScene();
+}
+
+void GameScene::KeyUpdate()
+{
+	InputDeviceManager::GetInstance()->KeyUpdate();
+	InputDeviceManager::GetInstance()->KeyCheck(DIK_W);
+	InputDeviceManager::GetInstance()->KeyCheck(DIK_A);
+	InputDeviceManager::GetInstance()->KeyCheck(DIK_S);
+	InputDeviceManager::GetInstance()->KeyCheck(DIK_D);
 }
