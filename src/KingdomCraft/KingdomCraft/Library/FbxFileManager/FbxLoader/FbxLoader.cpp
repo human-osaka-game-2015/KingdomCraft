@@ -158,6 +158,12 @@ bool FbxLoader::LoadMesh(FbxNodeAttribute* _pAttribute)
 		return false;
 	}
 
+	if (!MeshDataConvert(&MeshData))
+	{
+		OutputDebugString("モデルデータの変換に失敗しました\n");
+		return false;
+	}
+
 	m_pModel->AddMeshData(&MeshData);
 
 	return true;
@@ -219,14 +225,11 @@ bool FbxLoader::LoadMeshNormalData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshD
 			break;
 		}
 
-		// 法線セットの取得
-		fbxsdk::FbxGeometryElementNormal* pNormal = _pMesh->GetElementNormal(NormalIndex);
+		fbxsdk::FbxGeometryElementNormal* pNormal = _pMesh->GetElementNormal(NormalIndex);	// 法線セットの取得
 
-		// マッピングモード取得
-		FbxGeometryElement::EMappingMode MappingMode = pNormal->GetMappingMode();
-
-		// リファレンスモード取得
-		FbxGeometryElement::EReferenceMode ReferenceMode = pNormal->GetReferenceMode();
+		FbxGeometryElement::EMappingMode MappingMode = pNormal->GetMappingMode();			// マッピングモード取得
+		
+		FbxGeometryElement::EReferenceMode ReferenceMode = pNormal->GetReferenceMode();		// リファレンスモード取得
 
 
 		switch (MappingMode)
@@ -290,19 +293,264 @@ bool FbxLoader::LoadMeshNormalData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshD
 
 bool FbxLoader::LoadMeshTextureData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
-	/// @todo テクスチャデータの取得は未実装
+	std::vector<fbxsdk::FbxString> UvSetName;
+	int UVSetCount = _pMesh->GetElementUVCount();
+
+	FbxModel::TEXTURE_DATA* pTextureData = new FbxModel::TEXTURE_DATA;	// UVセットの数確保
+	pTextureData->pTextureUVData = new FbxModel::TEXTURE_UV_DATA[UVSetCount];
+	pTextureData->TextureUVCount = UVSetCount;
+	D3DXVECTOR2** ppTextureUV = new D3DXVECTOR2*[UVSetCount];
+	for (int i = 0; i < UVSetCount; i++)
+	{
+		ppTextureUV[i] = new D3DXVECTOR2[_pMeshData->pVertexData->PolygonVertexNum];
+	}
+
+
+	for (int i = 0; i < UVSetCount; i++)
+	{
+		fbxsdk::FbxGeometryElementUV* UVSet = _pMesh->GetElementUV(i);					// UVセットの取得
+		FbxGeometryElement::EMappingMode MappingMode = UVSet->GetMappingMode();			// マッピングモードの取得
+		FbxGeometryElement::EReferenceMode ReferenceMode = UVSet->GetReferenceMode();	// リファレンスモード取得
+
+		switch (MappingMode)
+		{
+		case FbxGeometryElement::eByPolygonVertex:
+
+			switch (ReferenceMode)
+			{
+			case FbxGeometryElement::eDirect:
+			{
+				for (int n = 0; n < _pMeshData->pVertexData->PolygonVertexNum; n++)
+				{
+					ppTextureUV[i][n].x = static_cast<float>(UVSet->GetDirectArray().GetAt(n)[0]);
+					ppTextureUV[i][n].y = 1.0f - static_cast<float>(UVSet->GetDirectArray().GetAt(n)[1]);
+				}
+
+				UvSetName.push_back(UVSet->GetName());
+			}
+			break;
+			case FbxGeometryElement::eIndexToDirect:
+			{
+				FbxLayerElementArrayTemplate<int>* UVIndex = &UVSet->GetIndexArray();
+				for (int n = 0; n < _pMeshData->pVertexData->PolygonVertexNum; n++)
+				{
+					int Index = UVIndex->GetAt(n);
+					ppTextureUV[i][n].x = static_cast<float>(UVSet->GetDirectArray().GetAt(Index)[0]);
+					ppTextureUV[i][n].y = 1.0f - static_cast<float>(UVSet->GetDirectArray().GetAt(Index)[1]);
+				}
+
+				UvSetName.push_back(UVSet->GetName());
+			}
+			break;
+			default:
+				
+				MessageBox(NULL, TEXT("MappingModeが対応していません"), TEXT("エラー"), MB_OK);
+				return false;
+			
+				break;
+			}
+
+			break;
+		default:
+			
+			MessageBox(NULL, TEXT("ReferenceModeが対応していません"), TEXT("エラー"), MB_OK);
+			return false;
+
+			break;
+		}
+
+		pTextureData->pTextureUVData[i].pTextureUV = ppTextureUV[i];
+		pTextureData->pTextureUVData[i].pUVSetName = UVSet->GetName();
+	}
+
+	delete[] ppTextureUV;
+
+	_pMeshData->pTextureData = pTextureData;
+
 	return true;
 }
 
 bool FbxLoader::LoadMeshMaterialData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
-	/// @todo マテリアルデータの取得は未実装
+	std::vector<FbxModel::MATERIAL> pMaterial;
+	int								TextureFileCount = 0;
+	std::vector<const char*>		TextureFileName;
+	std::vector<fbxsdk::FbxString>	TextureUvSetName;
+
+
+	fbxsdk::FbxNode* Node = _pMesh->GetNode();
+	int MaterialCount = Node->GetMaterialCount();
+
+	FbxModel::MATERIAL_DATA* pMaterialData = new FbxModel::MATERIAL_DATA[MaterialCount];
+
+
+	for (int i = 0; i < MaterialCount; i++)
+	{
+		fbxsdk::FbxSurfaceMaterial* Material = Node->GetMaterial(i);	// マテリアルの取得
+
+		if (Material->GetClassId().Is(fbxsdk::FbxSurfaceLambert::ClassId))
+		{
+			fbxsdk::FbxSurfaceLambert* lambert = reinterpret_cast<fbxsdk::FbxSurfaceLambert*>(Material);	// Lambertにダウンキャスト
+			
+			
+			FbxModel::MATERIAL MaterialData;
+
+			// アンビエントの取得
+			MaterialData.Ambient.r = (float)lambert->Ambient.Get().mData[0] * (float)lambert->AmbientFactor.Get();
+			MaterialData.Ambient.g = (float)lambert->Ambient.Get().mData[1] * (float)lambert->AmbientFactor.Get();
+			MaterialData.Ambient.b = (float)lambert->Ambient.Get().mData[2] * (float)lambert->AmbientFactor.Get();
+			GetTextureName(lambert, fbxsdk::FbxSurfaceMaterial::sAmbient, &TextureFileName, &TextureUvSetName, &TextureFileCount);
+
+			// ディフューズの取得
+			MaterialData.Diffuse.r = (float)lambert->Diffuse.Get().mData[0] * (float)lambert->DiffuseFactor.Get();
+			MaterialData.Diffuse.g = (float)lambert->Diffuse.Get().mData[1] * (float)lambert->DiffuseFactor.Get();
+			MaterialData.Diffuse.b = (float)lambert->Diffuse.Get().mData[2] * (float)lambert->DiffuseFactor.Get();
+			GetTextureName(lambert, fbxsdk::FbxSurfaceMaterial::sDiffuse, &TextureFileName, &TextureUvSetName, &TextureFileCount);
+
+			// エミッシブの取得
+			MaterialData.Emissive.r = (float)lambert->Emissive.Get().mData[0] * (float)lambert->EmissiveFactor.Get();
+			MaterialData.Emissive.g = (float)lambert->Emissive.Get().mData[1] * (float)lambert->EmissiveFactor.Get();
+			MaterialData.Emissive.b = (float)lambert->Emissive.Get().mData[2] * (float)lambert->EmissiveFactor.Get();
+			GetTextureName(lambert, fbxsdk::FbxSurfaceMaterial::sEmissive, &TextureFileName, &TextureUvSetName, &TextureFileCount);
+
+			// 透過度の取得
+			MaterialData.Ambient.a = (float)lambert->TransparentColor.Get().mData[0];
+			MaterialData.Diffuse.a = (float)lambert->TransparentColor.Get().mData[1];
+			MaterialData.Emissive.a = (float)lambert->TransparentColor.Get().mData[2];
+			GetTextureName(lambert, fbxsdk::FbxSurfaceMaterial::sTransparentColor, &TextureFileName, &TextureUvSetName, &TextureFileCount);
+
+
+			// 法線マップの取得
+			GetTextureName(lambert, fbxsdk::FbxSurfaceMaterial::sNormalMap, &TextureFileName, &TextureUvSetName, &TextureFileCount);
+
+			pMaterial.push_back(MaterialData);
+		}
+		else
+		{
+			MessageBox(NULL, TEXT("Material Lambert以外には対応していません"), TEXT("エラー"), MB_OK);
+
+			return false;
+		}
+
+		pMaterialData[i].pMaterial = pMaterial[i];
+		pMaterialData[i].TextureCount = TextureFileCount;
+		pMaterialData[i].pTextureName = new LPCTSTR[TextureFileCount];
+		pMaterialData[i].pTextureUVSetName = new LPCTSTR[TextureFileCount];
+		pMaterialData[i].pTextureView = new ID3D11ShaderResourceView*[TextureFileCount];
+		for (int n = 0; n < TextureFileCount; n++)
+		{
+			pMaterialData[i].pTextureName[n] = TextureFileName[n];
+			pMaterialData[i].pTextureUVSetName[n] = TextureUvSetName[n];
+
+			D3DX11_IMAGE_LOAD_INFO LoadInfo;
+			ZeroMemory(&LoadInfo, sizeof(D3DX11_IMAGE_LOAD_INFO));
+			LoadInfo.Width = D3DX11_DEFAULT;
+			LoadInfo.Height = D3DX11_DEFAULT;
+			LoadInfo.Depth = D3DX11_DEFAULT;
+			LoadInfo.FirstMipLevel = D3DX11_DEFAULT;
+			LoadInfo.MipLevels = 1;
+			LoadInfo.Usage = D3D11_USAGE_DEFAULT;
+			LoadInfo.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+			LoadInfo.CpuAccessFlags = 0;
+			LoadInfo.MiscFlags = 0;
+			LoadInfo.Format = DXGI_FORMAT_FROM_FILE;
+			LoadInfo.Filter = D3DX11_FILTER_POINT;
+			LoadInfo.MipFilter = D3DX11_FILTER_POINT;
+			LoadInfo.pSrcInfo = NULL;
+
+			ID3D11ShaderResourceView* pResourceView = NULL;
+			if (FAILED(D3DX11CreateShaderResourceViewFromFile(
+				m_pDevice,
+				TextureFileName[n],
+				&LoadInfo,
+				NULL,
+				&pResourceView,
+				NULL)))
+			{
+				MessageBox(NULL, TEXT("テクスチャの読み込みに失敗しました\n"), TEXT("エラー"), MB_OK);
+				return false;
+			}
+
+			pMaterialData[i].pTextureView[n] = pResourceView;
+		}
+	}
+
+	_pMeshData->pMaterialData = pMaterialData;
+
 	return true;
 }
 
 bool FbxLoader::LoadMeshAnimationData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData)
 {
 	/// @todo アニメーションデータの取得は未実装
+	return true;
+}
+
+bool FbxLoader::MeshDataConvert(FbxModel::MESH_DATA* _pMeshData)
+{
+	FbxModel::VERTEX_DATA* pVertexData = new FbxModel::VERTEX_DATA;
+	FbxModel::VERTEX_DATA* pBaseVertexData = _pMeshData->pVertexData;
+
+	pVertexData->ControlPositionNum = pBaseVertexData->ControlPositionNum;
+	pVertexData->PolygonNum = pBaseVertexData->PolygonNum;
+	pVertexData->PolygonVertexNum = pBaseVertexData->PolygonVertexNum;
+	pVertexData->pVertex = new D3DXVECTOR3[pBaseVertexData->PolygonVertexNum];	// インデックスの数と合わせるべき？
+	pVertexData->pIndexAry = new int[pBaseVertexData->PolygonVertexNum];		// インデックスの数はテクスチャ座標に合わせて変動
+
+	
+	FbxModel::TEXTURE_DATA* pTextureData = new FbxModel::TEXTURE_DATA;
+	FbxModel::TEXTURE_DATA* pBaseTextureData = _pMeshData->pTextureData;
+
+	pTextureData->pTextureUVData = new FbxModel::TEXTURE_UV_DATA[pBaseTextureData->TextureUVCount];
+	pTextureData->TextureUVCount = pBaseTextureData->TextureUVCount;
+	for (int i = 0; i < pBaseTextureData->TextureUVCount; i++)
+	{
+		pTextureData->pTextureUVData[i].pTextureUV = new D3DXVECTOR2[pBaseVertexData->PolygonVertexNum];
+		pTextureData->pTextureUVData[i].pUVSetName = pBaseTextureData->pTextureUVData[i].pUVSetName;
+	}
+
+
+	for (int i = 0; i < pBaseVertexData->PolygonVertexNum; i++)
+	{
+		int Index = pBaseVertexData->pIndexAry[i];
+		pVertexData->pVertex[i] = pBaseVertexData->pVertex[Index];
+		pVertexData->pIndexAry[i] = i;	// これじゃあindex描画使う意味ないけど現状はこれで対応する
+	}
+
+	for (int n = 0; n < pBaseTextureData->TextureUVCount; n++)
+	{
+		for (int k = 0; k < pBaseVertexData->PolygonVertexNum; k++)
+		{
+			pTextureData->pTextureUVData[n].pTextureUV[k] = pBaseTextureData->pTextureUVData[n].pTextureUV[k];
+		}
+	}
+
+	pVertexData->ControlPositionNum = pBaseVertexData->PolygonVertexNum;	// インデックス数変更
+
+	
+	// 法線対応する
+
+
+	for (int n = 0; n < pBaseTextureData->TextureUVCount; n++)
+	{
+		delete[] _pMeshData->pTextureData->pTextureUVData[n].pTextureUV;
+		_pMeshData->pTextureData->pTextureUVData[n].pTextureUV = NULL;
+	}
+	delete[] _pMeshData->pTextureData->pTextureUVData;
+	_pMeshData->pTextureData->pTextureUVData = NULL;
+	delete _pMeshData->pTextureData;
+
+	_pMeshData->pTextureData = pTextureData;
+
+
+	delete[] _pMeshData->pVertexData->pVertex;
+	_pMeshData->pVertexData->pVertex = NULL;
+	delete[] _pMeshData->pVertexData->pIndexAry;
+	_pMeshData->pVertexData->pIndexAry = NULL;
+	delete _pMeshData->pVertexData;
+
+	_pMeshData->pVertexData = pVertexData;
+
 	return true;
 }
 

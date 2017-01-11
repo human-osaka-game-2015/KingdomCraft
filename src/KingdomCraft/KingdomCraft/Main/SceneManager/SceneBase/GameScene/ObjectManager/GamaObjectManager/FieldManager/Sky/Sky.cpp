@@ -37,12 +37,18 @@ void Sky::Control()
 void Sky::Draw()
 {
 	DX11Manager::GetInstance()->SetDepthStencilTest(true);
-	DX11Manager::GetInstance()->GetDeviceContext()->IASetInputLayout(m_pVertexLayout);
-	DX11Manager::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
-	DX11Manager::GetInstance()->GetDeviceContext()->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+
 	DX11Manager::GetInstance()->GetDeviceContext()->VSSetShader(ShaderManager::GetInstance()->GetVertexShader(m_VertexShaderIndex), NULL, 0);
 	DX11Manager::GetInstance()->GetDeviceContext()->PSSetShader(ShaderManager::GetInstance()->GetPixelShader(m_PixelShaderIndex), NULL, 0);
 	DX11Manager::GetInstance()->GetDeviceContext()->OMSetDepthStencilState(m_pDepthStencilState,0);
+	DX11Manager::GetInstance()->GetDeviceContext()->HSSetShader(NULL, NULL, 0);
+	DX11Manager::GetInstance()->GetDeviceContext()->DSSetShader(NULL, NULL, 0);
+	DX11Manager::GetInstance()->GetDeviceContext()->GSSetShader(NULL, NULL, 0);
+	DX11Manager::GetInstance()->GetDeviceContext()->CSSetShader(NULL, NULL, 0);
+	DX11Manager::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	DX11Manager::GetInstance()->GetDeviceContext()->PSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+	DX11Manager::GetInstance()->GetDeviceContext()->IASetInputLayout(m_pVertexLayout);
+
 	FbxFileManager::GetInstance()->GetFbxModel(m_ModelIndex)->Draw();
 }
 
@@ -65,16 +71,20 @@ void Sky::InitVertexLayout()
 {
 	D3D11_INPUT_ELEMENT_DESC InputElementDesc[] =
 	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, sizeof(D3DXVECTOR3), D3D11_INPUT_PER_VERTEX_DATA, 0 }
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,  D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, sizeof(D3DXVECTOR3), D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, sizeof(D3DXVECTOR3) + sizeof(D3DXVECTOR3), D3D11_INPUT_PER_VERTEX_DATA, 0 }
 	};
 
-	DX11Manager::GetInstance()->GetDevice()->CreateInputLayout(
+	if (FAILED(DX11Manager::GetInstance()->GetDevice()->CreateInputLayout(
 		InputElementDesc,
 		sizeof(InputElementDesc) / sizeof(InputElementDesc[0]),
 		ShaderManager::GetInstance()->GetCompiledVertexShader(m_VertexShaderIndex)->GetBufferPointer(),
 		ShaderManager::GetInstance()->GetCompiledVertexShader(m_VertexShaderIndex)->GetBufferSize(),
-		&m_pVertexLayout);
+		&m_pVertexLayout)))
+	{
+		MessageBox(DX11Manager::GetInstance()->GetWindowHandle(), TEXT("SkyクラスのVertexLayoutの生成に失敗しました"), TEXT("エラー"), MB_ICONSTOP);
+	}
 }
 
 void Sky::InitDepthStencilState()

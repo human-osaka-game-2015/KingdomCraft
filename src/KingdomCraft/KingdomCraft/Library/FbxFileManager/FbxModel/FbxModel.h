@@ -57,21 +57,27 @@ public:
 		float		Power;		//!< スペキュラ強度
 	};
 
-	/**
-	 * Fbxファイルから取得するテクスチャ構造体
-	 */
-	struct TEXTURE_DATA
+	struct TEXTURE_UV_DATA
 	{
 		LPCTSTR			pUVSetName;	//!< UVセットの名前(テクスチャ座標とテクスチャを紐づける)
 		D3DXVECTOR2*	pTextureUV;	//!< テクスチャ座標
 	};
 
 	/**
+	 * Fbxファイルから取得するテクスチャ構造体
+	 */
+	struct TEXTURE_DATA
+	{
+		TEXTURE_UV_DATA* pTextureUVData;
+		int TextureUVCount;
+	};
+
+	/**
 	 * Fbxから取得するマテリアル構造体
 	 */
-	struct MaterialData
+	struct MATERIAL_DATA
 	{
-		MATERIAL*					pMaterial;			//!< メッシュのマテリアル
+		MATERIAL					pMaterial;			//!< メッシュのマテリアル
 		int							TextureCount;		//!< マテリアルに紐づいているテクスチャの数
 		LPCTSTR*					pTextureName;		//!< マテリアルに紐づいているテクスチャの名前が格納された配列
 		LPCTSTR*					pTextureUVSetName;	//!< マテリアルに紐づいているテクスチャとUVを結びつける文字列が格納された配列
@@ -83,8 +89,10 @@ public:
 	 */
 	struct MESH_DATA
 	{
-		VERTEX_DATA* pVertexData;	//!< メッシュの頂点情報
-		NORMAL_DATA* pNormalData;	//!< メッシュの法線情報
+		VERTEX_DATA*	pVertexData;	//!< メッシュの頂点情報
+		NORMAL_DATA*	pNormalData;	//!< メッシュの法線情報
+		TEXTURE_DATA*	pTextureData;	//!< テクスチャの情報
+		MATERIAL_DATA*	pMaterialData;	//!< マテリアルの情報
 	};
 
 	FbxModel(ID3D11Device* _pDevice, ID3D11DeviceContext* _pDeviceContext);
@@ -150,6 +158,12 @@ private:
 	bool InitVertexBuffer();
 
 	/**
+	 * サンプラステートの初期化する
+	 * @return 初期化に成功したらtrue
+	 */
+	bool InitSamplerState();
+
+	/**
 	 * インデックスバッファの解放
 	 */
 	void ReleaseIndexBuffer();
@@ -159,12 +173,18 @@ private:
 	 */
 	void ReleaseVertexBuffer();
 
+	/**
+	 * サンプラステートの解放
+	 */
+	void ReleaseSamplerState();
+
 	ID3D11Device* const			m_pDevice;
 	ID3D11DeviceContext* const	m_pDeviceContext;
 	std::vector<MESH_DATA>		m_MeshData;
 	ID3D11Buffer**				m_ppIndexBuffer;
 	ID3D11Buffer**				m_ppVertexBuffer;
 	FBXMODEL_VERTEX**			m_ppVertexData;
+	ID3D11SamplerState*			m_pSamplerState;
 
 };
 

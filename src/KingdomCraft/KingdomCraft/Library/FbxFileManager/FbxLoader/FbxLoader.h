@@ -143,6 +143,11 @@ private:
 	bool LoadMeshAnimationData(FbxMesh* _pMesh, FbxModel::MESH_DATA* _pMeshData);
 
 	/**
+	 * ファイルから取得したメッシュデータを描画に使用できるようにする
+	 */
+	bool MeshDataConvert(FbxModel::MESH_DATA* _pMeshData);
+
+	/**
 	 * テクスチャの名前をマテリアルから取得する関数
 	 * @param[in] _pMaterial テクスチャ名を取得するマテリアル
 	 * @param[in] _pMatFlag 取得するテクスチャのフラグ
