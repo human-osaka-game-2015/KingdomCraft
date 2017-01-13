@@ -11,6 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI\HouseBuildButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow\LoadWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\BuildWindow.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.cpp" />
@@ -78,8 +83,17 @@
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\PoliticsWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow\SaveWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent\OperationWindowEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI\HouseBuildButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow\LoadWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\BuildWindow.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.h" />
@@ -145,6 +159,10 @@
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\PoliticsWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow\SaveWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent\OperationWindowEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DX11Manager\DX11Manager.h" />

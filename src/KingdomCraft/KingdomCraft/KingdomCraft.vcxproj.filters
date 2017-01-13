@@ -202,6 +202,33 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\KingdomDataManager</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\BuildWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow\LoadWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\PoliticsWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow\SaveWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent\OperationWindowEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI\HouseBuildButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -401,6 +428,33 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\KingdomDataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\BuildWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow\LoadWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\PoliticsWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow\SaveWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent\OperationWindowEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI\HouseBuildButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -622,6 +676,33 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\KingdomDataManager">
       <UniqueIdentifier>{2a39886f-3377-4c6c-afb9-97a197f22aee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow">
+      <UniqueIdentifier>{5e36bc21-22b9-466c-b440-483a0633fb4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow">
+      <UniqueIdentifier>{e7beedd4-855e-4c5a-8bf9-860f529c3ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow">
+      <UniqueIdentifier>{f076557c-bedc-4f7b-b0f8-0cd8a3fb0b01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow">
+      <UniqueIdentifier>{7715e847-1af1-4fb5-afb5-2442fd9a7758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow">
+      <UniqueIdentifier>{53d70229-ace4-4c77-b933-7747c3f99ed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent">
+      <UniqueIdentifier>{46823a04-c6b4-4e26-8f63-e1fd9d1d9186}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener">
+      <UniqueIdentifier>{f46fa8f3-2651-4088-9e02-7f4dab796ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI">
+      <UniqueIdentifier>{42ae9f21-2449-4e97-a9a6-b756a8d49d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI">
+      <UniqueIdentifier>{a6a9cd9f-3f7a-4e81-b973-28b45418b610}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

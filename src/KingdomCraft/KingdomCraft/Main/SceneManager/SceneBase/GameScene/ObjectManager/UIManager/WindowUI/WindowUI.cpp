@@ -9,23 +9,23 @@
 
 const D3DXVECTOR2 WindowUI::m_WindowPartsTexel[4] =
 {
-	D3DXVECTOR2(0,			0),
-	D3DXVECTOR2(0.1953125,	0),
-	D3DXVECTOR2(0,			0.1953125),
-	D3DXVECTOR2(0.1953125,	0.1953125)
+	D3DXVECTOR2(0.0f,			0.0f),
+	D3DXVECTOR2(0.35253906f,	0.0f),
+	D3DXVECTOR2(0.0f,			0.35253906f),
+	D3DXVECTOR2(0.35253906f,	0.35253906f)
 };
 
 const D3DXVECTOR2 WindowUI::m_WindowPartsTexelOffset[WindowUI::PARTS_MAX] =
 {
-	D3DXVECTOR2(0,			0),			// ウインドウの左上
-	D3DXVECTOR2(0.1953125,	0),			// ウィンドウの中央上	
-	D3DXVECTOR2(0.390625,	0),			// ウインドウの右上
-	D3DXVECTOR2(0,			0.1953125),	// ウィンドウの左
-	D3DXVECTOR2(0.1953125,	0.1953125),	// ウィンドウの中央
-	D3DXVECTOR2(0.390625,	0.1953125),	// ウィンドウの右
-	D3DXVECTOR2(0,			0.390625),	// ウインドウの左下
-	D3DXVECTOR2(0.1953125,	0.390625),	// ウィンドウの中央下
-	D3DXVECTOR2(0.390625,	0.390625)	// ウインドウの右下
+	D3DXVECTOR2(0.0f,			0.0f),			// ウインドウの左上
+	D3DXVECTOR2(0.35253906f,	0.0f),			// ウィンドウの中央上	
+	D3DXVECTOR2(0.66601562f,	0.0f),			// ウインドウの右上
+	D3DXVECTOR2(0.0f,			0.35253906f),	// ウィンドウの左
+	D3DXVECTOR2(0.35253906f,	0.35253906f),	// ウィンドウの中央
+	D3DXVECTOR2(0.66601562f,	0.35253906f),	// ウィンドウの右
+	D3DXVECTOR2(0.0f,			0.66601562f),	// ウインドウの左下
+	D3DXVECTOR2(0.35253906f,	0.66601562f),	// ウィンドウの中央下
+	D3DXVECTOR2(0.66601562f,	0.66601562f)	// ウインドウの右下
 };
 
 
@@ -67,7 +67,7 @@ m_WindowTextureIndex(TextureManager::m_InvalidIndex)
 
 
 	TextureManager::GetInstance()->LoadTexture(
-		TEXT("Resource\\Texture\\GameScene\\UI\\WindowUI.png"),
+		TEXT("Resource\\Texture\\GameScene\\UI\\WindowUI.jpg"),
 		&m_WindowTextureIndex);
 
 	m_pWindowVertex = new Vertex2D(

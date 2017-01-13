@@ -56,6 +56,7 @@ private:
 	static const D3DXVECTOR2	m_DefaultPos;
 	static const D3DXVECTOR2	m_DefaultSize;
 	std::vector<ButtonUI*>		m_pButtonUI;
+	std::vector<WindowUI*>		m_pWindowUI;
 	int							m_TextureIndex;
 
 };

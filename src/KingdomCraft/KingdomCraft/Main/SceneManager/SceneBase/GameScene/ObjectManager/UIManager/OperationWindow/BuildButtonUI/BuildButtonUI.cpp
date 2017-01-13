@@ -4,6 +4,8 @@
  * @author morimoto
  */
 #include "BuildButtonUI.h"
+#include "..\..\..\..\EventManager\EventManager.h"
+#include "..\..\..\..\EventManager\Event\OperationWindowEvent\OperationWindowEvent.h"
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
@@ -13,8 +15,8 @@ const D3DXVECTOR2 BuildButtonUI::m_DefaultTexel[4] =
 {
 	D3DXVECTOR2(0,		0),
 	D3DXVECTOR2(0.125,	0),
-	D3DXVECTOR2(0,		0.125),
-	D3DXVECTOR2(0.125,	0.125)
+	D3DXVECTOR2(0,		1),
+	D3DXVECTOR2(0.125,	1)
 };
 
 
@@ -47,7 +49,15 @@ bool BuildButtonUI::Control()
 		return false;
 	}
 
-	return IsClicked();
+	bool IsClick = IsClicked();
+
+	if (IsClick == true)
+	{
+		OperationWindowEvent::GetInstance()->SetEventType(OperationWindowEvent::BUILD_BUTTON_CLICK);
+		EventManager::GetInstance()->SendEventMessage(OperationWindowEvent::GetInstance());
+	}
+
+	return IsClick;
 }
 
 void BuildButtonUI::Draw()
