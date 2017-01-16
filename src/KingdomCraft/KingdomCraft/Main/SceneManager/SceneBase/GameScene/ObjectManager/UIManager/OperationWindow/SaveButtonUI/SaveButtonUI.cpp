@@ -7,7 +7,7 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 SaveButtonUI::m_DefaultPos = D3DXVECTOR2(38, -15);
+const D3DXVECTOR2 SaveButtonUI::m_DefaultPos = D3DXVECTOR2(-9, -15);
 const D3DXVECTOR2 SaveButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 SaveButtonUI::m_DefaultTexel[4] =
 {

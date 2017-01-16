@@ -1,45 +1,42 @@
 ﻿/**
- * @file   HouseBuildButtonUI.h
- * @brief  HouseBuildButtonUIクラスのヘッダファイル
+ * @file   RoadLayingButtonUI.h
+ * @brief  RoadLayingButtonUIクラスのヘッダファイル
  * @author morimoto
  */
-#ifndef HOUSEBUILDBUTTONUI_H
-#define HOUSEBUILDBUTTONUI_H
+#ifndef ROADLAYINGBUTTONUI_H
+#define ROADLAYINGBUTTONUI_H
 #include "Vertex2D\Vertex2D.h"
 #include "..\..\..\ButtonUI\ButtonUI.h"
 
-/**
- * 建物の建設ボタンを管理するUIクラス
- */
-class HouseBuildButtonUI : public ButtonUI
+class RoadLayingButtonUI : public ButtonUI
 {
 public:
 	/**
-	 * HouseBuildButtonUIクラスのコンストラクタ
+	 * RoadLayingButtonUIクラスのコンストラクタ
 	 * @param[in] _pParentUIPos 親UIの座標
 	 * @param[in] _textureIndex 使用するテクスチャのインデックス番号
 	 */
-	HouseBuildButtonUI(const D3DXVECTOR2* _pParentUIPos, int _textureIndex);
+	RoadLayingButtonUI(const D3DXVECTOR2* _pParentUIPos, int _textureIndex);
 
 	/**
-	 * HouseBuildButtonUIクラスのデストラクタ
+	 * RoadLayingButtonUIクラスのデストラクタ
 	 */
-	~HouseBuildButtonUI();
+	virtual ~RoadLayingButtonUI();
 
 	/**
-	 * HouseBuildButtonUIクラスの制御関数
+	 * RoadLayingButtonUIクラスの制御関数
 	 * @return ボタンが押されたらtrue
 	 */
 	virtual bool Control();
 
 	/**
-	 * HouseBuildButtonUIクラスの描画関数
+	 * RoadLayingButtonUIクラスの描画関数
 	 */
 	virtual void Draw();
 
 private:
-	HouseBuildButtonUI(const HouseBuildButtonUI&);
-	void operator=(const HouseBuildButtonUI&);
+	RoadLayingButtonUI(const RoadLayingButtonUI&);
+	void operator=(const RoadLayingButtonUI&);
 
 	static const D3DXVECTOR2	m_DefaultPos;		//!< ボタンの初期座標
 	static const D3DXVECTOR2	m_DefaultSize;		//!< ボタンの初期矩形サイズ

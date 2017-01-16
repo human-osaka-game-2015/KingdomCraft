@@ -19,11 +19,12 @@ public:
 	enum EVENT_TYPE
 	{
 		NONE,
-		BUILD_BUTTON_CLICK,
-		POLITICS_BUTTON_CLICK,
-		SAVE_BUTTON_CLICK,
-		LOAD_BUTTON_CLICK,
-		BACK_TO_TITLE_BUTTON_CLICK,
+		OPERATION_WINDOW_BACK,		//!< OperationWindowに処理を戻すイベント
+		BUILD_BUTTON_CLICK,			//!< BuildButtonのクリックイベント
+		POLITICS_BUTTON_CLICK,		//!< PoliticsButtonのクリックイベント
+		SAVE_BUTTON_CLICK,			//!< SaveButtonのクリックイベント
+		LOAD_BUTTON_CLICK,			//!< LoadButtonのクリックイベント
+		BACK_TO_TITLE_BUTTON_CLICK,	//!< BackToTitleButtonのクリックイベント
 		EVENT_TYPE_MAX
 	};
 

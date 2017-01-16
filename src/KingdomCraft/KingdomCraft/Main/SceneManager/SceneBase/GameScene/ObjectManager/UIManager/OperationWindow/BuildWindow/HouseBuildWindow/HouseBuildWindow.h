@@ -1,59 +1,54 @@
 ﻿/**
- * @file   BuildWindow.h
- * @brief  BuildWindowクラスのヘッダファイル
+ * @file   HouseBuildWindow.h
+ * @brief  HouseBuildWindowクラスのヘッダファイル
  * @author morimoto
  */
-#ifndef BUILDWINDOW_H
-#define BUILDWINDOW_H
+#ifndef HOUSEBUILDWINDOW_H
+#define HOUSEBUILDWINDOW_H
 #include <vector>
-#include "..\..\WindowUI\WindowUI.h"
-#include "..\..\ButtonUI\ButtonUI.h"
-#include "EventListener\OperationWindowEventListener\OperationWindowEventListener.h"
+#include "..\..\..\WindowUI\WindowUI.h"
+#include "..\..\..\ButtonUI\ButtonUI.h"
 #include "EventListener\BuildWindowEventListener\BuildWindowEventListener.h"
 #include "InputDeviceManager\InputDeviceManager.h"
 
-/**
- * 建設を管理するWindowクラス
- */
-class BuildWindow : public WindowUI
+class HouseBuildWindow : public WindowUI
 {
 public:
 	/**
-	 * BuildWindowクラスのコンストラクタ
+	 * HouseBuildWindowクラスのコンストラクタ
 	 * @param[in] _pParentUIPos 親UIの座標
 	 */
-	BuildWindow(const D3DXVECTOR2* _pParentUIPos);
+	HouseBuildWindow(const D3DXVECTOR2* _pParentUIPos);
 
 	/**
-	 * BuildWindowクラスのデストラクタ
+	 * HouseBuildWindowクラスのデストラクタ
 	 */
-	virtual ~BuildWindow();
+	virtual ~HouseBuildWindow();
 
 	/**
-	 * BuildWindowクラスの制御関数
+	 * HouseBuildWindowクラスの制御関数
 	 */
 	virtual void Control();
 
 	/**
-	 * BuildWindowクラスの描画関数
+	 * HouseBuildWindowクラスの描画関数
 	 */
 	virtual void Draw();
 
 private:
 	/**
-	 * BuildWindowクラスの状態列挙子
+	 * HouseBuildWindowクラスの状態列挙子
 	 */
 	enum STATE
 	{
 		NONE,			//!< 何もしない状態
-		WAIT_STATE,		//!< 子からの処理を待つ状態
 		START_STATE,	//!< 開始処理を行う状態
 		PROC_STATE,		//!< 通常処理を行う状態
 		END_STATE		//!< 終了処理を行う状態
 	};
 
-	BuildWindow(const BuildWindow&);
-	void operator=(const BuildWindow&);
+	HouseBuildWindow(const HouseBuildWindow&);
+	void operator=(const HouseBuildWindow&);
 
 	/**
 	 * マウスの状態チェックを行う関数
@@ -64,11 +59,6 @@ private:
 	 * 状態の制御を行う関数
 	 */
 	void StateControl();
-
-	/**
-	 * 待機時の処理を行う関数
-	 */
-	void WaitControl();
 
 	/**
 	 * 開始処理を行う関数
@@ -86,24 +76,14 @@ private:
 	void EndControl();
 
 	/**
-	 * BuildWindowが持つButtonUIの制御を行う関数
-	 */
-	void ButtonUIControl();
-
-	/**
-	 * BuildWindowが持つWindowUIの制御を行う関数
-	 */
-	void WindowUIControl();
-
-	/**
-	 * BuildWindowが持つButtonUIの描画を行う関数
+	 * HouseuildWindowが持つButtonUI描画関数
 	 */
 	void ButtonUIDraw();
 
 	/**
-	 * BuildWindowが持つWindowUIの制御を行う関数
+	 * HouseuildWindowが持つButtonUI制御関数
 	 */
-	void WindowUIDraw();
+	void ButtonUIControl();
 
 	static const D3DXVECTOR2	m_DefaultPos;
 	static const D3DXVECTOR2	m_DefaultSize;
@@ -111,8 +91,6 @@ private:
 	static const float			m_MoveSpeed;
 
 	std::vector<ButtonUI*>			m_pButtonUI;
-	std::vector<WindowUI*>			m_pWindowUI;
-	OperationWindowEventListener*	m_pParentEventListener;
 	BuildWindowEventListener*		m_pEventListener;
 	STATE							m_State;
 	MouseDevice::MOUSESTATE			m_MouseState;

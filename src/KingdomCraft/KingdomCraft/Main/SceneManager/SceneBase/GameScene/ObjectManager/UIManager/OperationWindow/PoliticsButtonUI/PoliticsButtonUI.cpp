@@ -4,12 +4,12 @@
  * @author morimoto
  */
 #include "PoliticsButtonUI.h"
-#include "..\..\..\..\EventManager\EventManager.h"
-#include "..\..\..\..\EventManager\Event\OperationWindowEvent\OperationWindowEvent.h"
+#include "EventManager.h"
+#include "Event\OperationWindowEvent\OperationWindowEvent.h"
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 PoliticsButtonUI::m_DefaultPos = D3DXVECTOR2(-26, -15);
+const D3DXVECTOR2 PoliticsButtonUI::m_DefaultPos = D3DXVECTOR2(-73, -15);
 const D3DXVECTOR2 PoliticsButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 PoliticsButtonUI::m_DefaultTexel[4] =
 {
@@ -50,13 +50,11 @@ bool PoliticsButtonUI::Control()
 	}
 
 	bool IsClick = IsClicked();
-
 	if (IsClick == true)
 	{
 		OperationWindowEvent::GetInstance()->SetEventType(OperationWindowEvent::POLITICS_BUTTON_CLICK);
 		EventManager::GetInstance()->SendEventMessage(OperationWindowEvent::GetInstance());
 	}
-
 
 	return IsClick;
 }

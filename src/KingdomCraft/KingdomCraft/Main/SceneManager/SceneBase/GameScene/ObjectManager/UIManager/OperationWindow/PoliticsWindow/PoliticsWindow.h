@@ -6,7 +6,7 @@
 #ifndef POLITICSWINDOW_H
 #define POLITICSWINDOW_H
 #include "..\..\WindowUI\WindowUI.h"
-#include "..\..\..\..\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.h"
+#include "EventListener\OperationWindowEventListener\OperationWindowEventListener.h"
 #include "InputDeviceManager\InputDeviceManager.h"
 
 /**

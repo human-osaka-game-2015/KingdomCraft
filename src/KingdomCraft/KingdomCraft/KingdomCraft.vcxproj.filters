@@ -229,6 +229,19 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\HouseBuildWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent\BuildWindowEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener\BuildWindowEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI\RoadLayingButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -456,6 +469,19 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI</Filter>
     </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\HouseBuildWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent\BuildWindowEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener\BuildWindowEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI\RoadLayingButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -703,6 +729,18 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI">
       <UniqueIdentifier>{a6a9cd9f-3f7a-4e81-b973-28b45418b610}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow">
+      <UniqueIdentifier>{3228cc4a-29b8-4a94-94eb-4b9f85f73e77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent">
+      <UniqueIdentifier>{1df23ae1-ddc8-4183-9ed9-ccf555641188}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener">
+      <UniqueIdentifier>{4d9b2090-fbfb-4a75-88ef-601542b29aa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI">
+      <UniqueIdentifier>{3974f724-3c19-492f-a2f1-da08f0fb1b64}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

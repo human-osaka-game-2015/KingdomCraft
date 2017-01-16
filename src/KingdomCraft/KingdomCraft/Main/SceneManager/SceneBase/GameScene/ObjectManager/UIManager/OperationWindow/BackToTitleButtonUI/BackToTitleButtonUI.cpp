@@ -7,7 +7,7 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 BackToTitleButtonUI::m_DefaultPos = D3DXVECTOR2(166, -15);
+const D3DXVECTOR2 BackToTitleButtonUI::m_DefaultPos = D3DXVECTOR2(119, -15);
 const D3DXVECTOR2 BackToTitleButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 BackToTitleButtonUI::m_DefaultTexel[4] =
 {

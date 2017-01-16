@@ -4,8 +4,8 @@
  * @author morimoto
  */
 #include "PoliticsWindow.h"
-#include "..\..\..\..\EventManager\EventManager.h"
-#include "..\..\..\..\EventManager\Event\OperationWindowEvent\OperationWindowEvent.h"
+#include "EventManager.h"
+#include "Event\OperationWindowEvent\OperationWindowEvent.h"
 
 const D3DXVECTOR2 PoliticsWindow::m_DefaultPos = D3DXVECTOR2(-375, 300);
 const D3DXVECTOR2 PoliticsWindow::m_DefaultSize = D3DXVECTOR2(600, 500);
@@ -77,7 +77,6 @@ void PoliticsWindow::StateControl()
 		break;
 	default:
 		m_pEventListener->ClearEventType();
-
 		break;
 	}
 }
@@ -104,7 +103,6 @@ void PoliticsWindow::ProcControl()
 	{
 		m_State = END_STATE;
 	}
-
 }
 
 void PoliticsWindow::EndControl()
@@ -115,6 +113,9 @@ void PoliticsWindow::EndControl()
 	{
 		m_WindowPos.y = (m_DefaultPos + m_ParentUIPos).y;	// 座標を合わせる
 		m_State = NONE;
+
+		OperationWindowEvent::GetInstance()->SetEventType(OperationWindowEvent::OPERATION_WINDOW_BACK);	// 操作ウィンドウに処理を戻す
+		EventManager::GetInstance()->SendEventMessage(OperationWindowEvent::GetInstance());
 	}
 }
 

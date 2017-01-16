@@ -8,8 +8,8 @@
 
 
 ButtonUI::ButtonUI(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, bool _isVisible) :
-m_Pos(*_pButtonPos),
-m_Size(*_pButtonSize),
+m_ButtonPos(*_pButtonPos),
+m_ButtonSize(*_pButtonSize),
 m_IsVisible(_isVisible)
 {
 }
@@ -33,14 +33,14 @@ bool ButtonUI::IsClicked()
 	MouseDevice::MOUSESTATE MouseState = InputDeviceManager::GetInstance()->GetMouseState();
 
 	// マウス座標が矩形内にあるか判定
-	if (MouseState.CursorPos.x > (m_Pos.x - m_Size.x / 2) &&
-		MouseState.CursorPos.x < (m_Pos.x + m_Size.x / 2) &&
-		MouseState.CursorPos.y > (m_Pos.y - m_Size.y / 2) &&
-		MouseState.CursorPos.y < (m_Pos.y + m_Size.y / 2))
+	if (MouseState.CursorPos.x > (m_ButtonPos.x - m_ButtonSize.x / 2) &&
+		MouseState.CursorPos.x < (m_ButtonPos.x + m_ButtonSize.x / 2) &&
+		MouseState.CursorPos.y > (m_ButtonPos.y - m_ButtonSize.y / 2) &&
+		MouseState.CursorPos.y < (m_ButtonPos.y + m_ButtonSize.y / 2))
 	{
 		m_IsMouseOver = true;
 
-		if (MouseState.rgbButtons[0] == MouseDevice::MOUSEBUTTON_PUSH)
+		if (MouseState.rgbButtons[0] == MouseDevice::MOUSEBUTTON_RELEASE)
 		{
 			IsClick = true;
 		}
