@@ -38,7 +38,8 @@ private:
 	KingdomDataUI(const KingdomDataUI&);
 	void operator=(const KingdomDataUI&);
 
-	static const D3DXVECTOR2	m_DefaultTextPos;	//!< 表示するテキストの初期座標
+	static const D3DXVECTOR2	m_MoneyTextPos;		//!< お金のテキストの初期座標
+	static const D3DXVECTOR2	m_PopulationTextPos;//!< 人口のテキスト位置
 	static const D3DXVECTOR2	m_DefaultFontSize;	//!< 表示するテキストのフォント初期サイズ
 	D3DXVECTOR2					m_ParentUIPos;		//!< 親UIの座標位置
 

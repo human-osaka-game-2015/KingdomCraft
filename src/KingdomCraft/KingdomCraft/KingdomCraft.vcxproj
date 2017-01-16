@@ -11,6 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent\HouseBuildWindowEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent\BuildWindowEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener\BuildWindowEventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\HouseBuildWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI\HouseBuildButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow\LoadWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\BuildWindow.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.cpp" />
@@ -57,7 +67,6 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI\KingdomButtonUI.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI\KingdomDataUI.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI\KingdomDemandUI.cpp" />
-    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI\KingdomParameterUI.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomStatusWindow.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.cpp" />
@@ -78,8 +87,24 @@
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\PoliticsWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow\SaveWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent\OperationWindowEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI\RoadLayingButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent\HouseBuildWindowEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent\BuildWindowEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener\BuildWindowEventListener.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\HouseBuildWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI\HouseDestroyButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildButtonUI\HouseBuildButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\LoadWindow\LoadWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\BuildWindow.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.h" />
@@ -124,7 +149,6 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomButtonUI\KingdomButtonUI.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI\KingdomDataUI.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI\KingdomDemandUI.h" />
-    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI\KingdomParameterUI.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomStatusWindow.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleButtonUI\BackToTitleButtonUI.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildButtonUI\BuildButtonUI.h" />
@@ -145,6 +169,12 @@
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Sky\Sky.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\PoliticsWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\SaveWindow\SaveWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent\OperationWindowEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI\RoadLayingButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DX11Manager\DX11Manager.h" />
@@ -234,7 +264,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)KingdomCraft\Library;$(FBXSDK_INCLUDE_DIR);$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\cupkb\Desktop\KingdomCraft\src\KingdomCraft\KingdomCraft\Main\SceneManager\SceneBase\GameScene\EventManager;$(SolutionDir)KingdomCraft\Library;$(FBXSDK_INCLUDE_DIR);$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DisableSpecificWarnings>4005;4717;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -256,7 +286,7 @@
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)KingdomCraft\Library;$(FBXSDK_INCLUDE_DIR);$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\cupkb\Desktop\KingdomCraft\src\KingdomCraft\KingdomCraft\Main\SceneManager\SceneBase\GameScene\EventManager;$(SolutionDir)KingdomCraft\Library;$(FBXSDK_INCLUDE_DIR);$(DXSDK_DIR)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4005;4717;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>

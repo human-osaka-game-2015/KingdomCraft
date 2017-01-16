@@ -4,10 +4,12 @@
  * @author morimoto
  */
 #include "PoliticsButtonUI.h"
+#include "EventManager.h"
+#include "Event\OperationWindowEvent\OperationWindowEvent.h"
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 PoliticsButtonUI::m_DefaultPos = D3DXVECTOR2(-26, -15);
+const D3DXVECTOR2 PoliticsButtonUI::m_DefaultPos = D3DXVECTOR2(-73, -15);
 const D3DXVECTOR2 PoliticsButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 PoliticsButtonUI::m_DefaultTexel[4] =
 {
@@ -16,6 +18,8 @@ const D3DXVECTOR2 PoliticsButtonUI::m_DefaultTexel[4] =
 	D3DXVECTOR2(0.125,	0.125),
 	D3DXVECTOR2(0.25,	0.125)
 };
+
+const D3DXVECTOR2 PoliticsButtonUI::m_MouseOverTexelOffset = D3DXVECTOR2(0.0, 0.125);
 
 
 PoliticsButtonUI::PoliticsButtonUI(const D3DXVECTOR2* _pParentUIPos, int _textureIndex) :
@@ -47,7 +51,14 @@ bool PoliticsButtonUI::Control()
 		return false;
 	}
 
-	return IsClicked();
+	bool IsClick = IsClicked();
+	if (IsClick == true)
+	{
+		OperationWindowEvent::GetInstance()->SetEventType(OperationWindowEvent::POLITICS_BUTTON_CLICK);
+		EventManager::GetInstance()->SendEventMessage(OperationWindowEvent::GetInstance());
+	}
+
+	return IsClick;
 }
 
 void PoliticsButtonUI::Draw()
@@ -57,6 +68,30 @@ void PoliticsButtonUI::Draw()
 		return;
 	}
 
+	if (m_IsMouseOver == true)
+	{
+		MouseOverButtonDraw();
+	}
+	else
+	{
+		ButtonDraw();
+	}
+}
+
+void PoliticsButtonUI::MouseOverButtonDraw()
+{
 	DX11Manager::GetInstance()->SetDepthStencilTest(false);
+	m_pVertex2D->WriteConstantBuffer(
+		&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos),
+		&D3DXVECTOR2(1.0f, 1.0f),
+		&m_MouseOverTexelOffset);
+
+	m_pVertex2D->Draw();
+}
+
+void PoliticsButtonUI::ButtonDraw()
+{
+	DX11Manager::GetInstance()->SetDepthStencilTest(false);
+	m_pVertex2D->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos));
 	m_pVertex2D->Draw();
 }

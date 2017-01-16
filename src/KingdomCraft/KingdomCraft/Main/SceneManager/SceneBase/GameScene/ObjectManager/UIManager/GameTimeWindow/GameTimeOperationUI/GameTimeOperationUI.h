@@ -48,6 +48,7 @@ private:
 	NormalTimeButtonUI*			m_pNormalButton;
 	GameTimeSpeedUI*			m_pGameTimeSpeed;
 	D3DXVECTOR2					m_ParentUIPos;
+	int							m_TextureIndex;
 
 };
 

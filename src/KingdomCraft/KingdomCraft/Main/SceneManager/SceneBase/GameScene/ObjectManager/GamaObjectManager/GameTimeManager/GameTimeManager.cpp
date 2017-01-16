@@ -72,6 +72,7 @@ void GameTimeManager::StateControl()
 	}
 
 	m_pEventListener->ClearEventType();	// イベントの処理を行ったので履歴を消去
+	GameDataManager::GetInstance()->SetSpeedState(m_SpeedState);	// 状態が更新されたのでセット
 }
 
 void GameTimeManager::AccelerateTime()

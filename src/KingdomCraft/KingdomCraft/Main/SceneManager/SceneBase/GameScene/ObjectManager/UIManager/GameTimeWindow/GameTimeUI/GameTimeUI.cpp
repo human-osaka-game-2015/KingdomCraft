@@ -8,12 +8,12 @@
 #include "TextureManager\TextureManager.h"
 #include <stdio.h>
 
-const D3DXVECTOR2 GameTimeUI::m_DefaultTextPos = D3DXVECTOR2(-130, 65);
+const D3DXVECTOR2 GameTimeUI::m_DefaultTextPos = D3DXVECTOR2(-120, -20);
 const D3DXVECTOR2 GameTimeUI::m_DefaultFontSize = D3DXVECTOR2(16, 32);
-const D3DXVECTOR2 GameTimeUI::m_YearTextPos = D3DXVECTOR2(-100, 0);
-const D3DXVECTOR2 GameTimeUI::m_MonthTextPos = D3DXVECTOR2(-40, 0);
-const D3DXVECTOR2 GameTimeUI::m_DayTextPos = D3DXVECTOR2(25, 0);
-const D3DXVECTOR2 GameTimeUI::m_HourTextPos = D3DXVECTOR2(90, 0);
+const D3DXVECTOR2 GameTimeUI::m_YearTextPos = D3DXVECTOR2(-100, -4);
+const D3DXVECTOR2 GameTimeUI::m_MonthTextPos = D3DXVECTOR2(-40, -4);
+const D3DXVECTOR2 GameTimeUI::m_DayTextPos = D3DXVECTOR2(25, -4);
+const D3DXVECTOR2 GameTimeUI::m_HourTextPos = D3DXVECTOR2(90, -4);
 const Vertex::VERTEX GameTimeUI::m_DefaultVertexData[4] = 
 {
 	Vertex::VERTEX{ D3DXVECTOR3(-150, -20, 0), D3DXVECTOR2(0, 0), D3DXCOLOR(0xffffffff) },

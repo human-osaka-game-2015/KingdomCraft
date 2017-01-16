@@ -56,8 +56,8 @@ protected:
 	 */
 	bool IsClicked();
 
-	D3DXVECTOR2		m_Pos;			//!< ボタンの座標
-	D3DXVECTOR2 	m_Size;			//!< ボタンのサイズ
+	D3DXVECTOR2		m_ButtonPos;	//!< ボタンの座標
+	D3DXVECTOR2 	m_ButtonSize;	//!< ボタンのサイズ
 	bool			m_IsMouseOver;	//!< マウスオーバー状態か
 	bool			m_IsVisible;	//!< ボタンが可視状態か
 

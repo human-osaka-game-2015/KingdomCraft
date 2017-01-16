@@ -5,12 +5,13 @@
  */
 #include "KingdomDataUI.h"
 
-const D3DXVECTOR2 KingdomDataUI::m_DefaultTextPos = D3DXVECTOR2(-290, 70);
+const D3DXVECTOR2 KingdomDataUI::m_MoneyTextPos = D3DXVECTOR2(-240, -45);
+const D3DXVECTOR2 KingdomDataUI::m_PopulationTextPos = D3DXVECTOR2(-240, 0);
 const D3DXVECTOR2 KingdomDataUI::m_DefaultFontSize = D3DXVECTOR2(16, 32);
 
 
 KingdomDataUI::KingdomDataUI(const D3DXVECTOR2* _pParentUIPos) :
-TextUI(&D3DXVECTOR2(m_DefaultTextPos + *_pParentUIPos), &m_DefaultFontSize),
+TextUI(&D3DXVECTOR2(*_pParentUIPos), &m_DefaultFontSize),
 m_ParentUIPos(*_pParentUIPos)
 {
 }
@@ -34,5 +35,9 @@ void KingdomDataUI::Draw()
 		return;
 	}
 
-	TextDraw("KingdomDataUI");
+	m_TextPos = m_ParentUIPos + m_MoneyTextPos;
+	TextDraw("Money");
+
+	m_TextPos = m_ParentUIPos + m_PopulationTextPos;
+	TextDraw("Population");
 }
