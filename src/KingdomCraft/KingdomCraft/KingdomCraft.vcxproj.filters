@@ -241,6 +241,15 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent\HouseBuildWindowEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -476,6 +485,15 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI\KingdomDataUI.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDataUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent\HouseBuildWindowEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener</Filter>
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI</Filter>
@@ -741,7 +759,13 @@
       <UniqueIdentifier>{3974f724-3c19-492f-a2f1-da08f0fb1b64}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI">
-      <UniqueIdentifier>{0dda6505-ccb1-4d18-8670-71451c0a8e8f}</UniqueIdentifier>
+      <UniqueIdentifier>{dbc6659b-10f4-4403-b9ee-db6b0157e127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent">
+      <UniqueIdentifier>{9c08b60a-6bfd-4552-871b-e4852213309c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener">
+      <UniqueIdentifier>{33062fb8-fd74-4ac0-a6e5-5e158c14bd5c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

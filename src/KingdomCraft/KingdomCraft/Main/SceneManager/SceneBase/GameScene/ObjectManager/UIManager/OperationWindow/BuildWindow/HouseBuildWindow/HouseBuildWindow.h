@@ -11,6 +11,9 @@
 #include "EventListener\BuildWindowEventListener\BuildWindowEventListener.h"
 #include "InputDeviceManager\InputDeviceManager.h"
 
+/**
+ * 建物建設ウィンドウ
+ */
 class HouseBuildWindow : public WindowUI
 {
 public:
@@ -90,12 +93,12 @@ private:
 	static const D3DXVECTOR2	m_MovePos;
 	static const float			m_MoveSpeed;
 
-	std::vector<ButtonUI*>			m_pButtonUI;
-	BuildWindowEventListener*		m_pEventListener;
-	STATE							m_State;
-	MouseDevice::MOUSESTATE			m_MouseState;
-	D3DXVECTOR2						m_ParentUIPos;
-	int								m_TextureIndex;
+	std::vector<ButtonUI*>		m_pButtonUI;
+	BuildWindowEventListener*	m_pEventListener;
+	STATE						m_State;
+	MouseDevice::MOUSESTATE		m_MouseState;
+	D3DXVECTOR2					m_ParentUIPos;
+	int							m_TextureIndex;
 
 };
 

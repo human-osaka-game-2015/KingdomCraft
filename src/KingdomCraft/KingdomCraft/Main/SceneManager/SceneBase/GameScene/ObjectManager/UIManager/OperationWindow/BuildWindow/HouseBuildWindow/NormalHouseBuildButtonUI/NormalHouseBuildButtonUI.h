@@ -8,6 +8,9 @@
 #include "Vertex2D\Vertex2D.h"
 #include "..\..\..\..\ButtonUI\ButtonUI.h"
 
+/**
+ * 通常の家建設UIボタン 
+ */
 class NormalHouseBuildButtonUI : public ButtonUI
 {
 public:

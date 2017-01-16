@@ -7,7 +7,7 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 #include "EventManager.h"
-#include "Event\BuildWindowEvent\BuildWindowEvent.h"
+#include "Event\HouseBuildWindowEvent\HouseBuildWindowEvent.h"
 
 const D3DXVECTOR2 NormalHouseBuildButtonUI::m_DefaultPos = D3DXVECTOR2(-170, -170);
 const D3DXVECTOR2 NormalHouseBuildButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
@@ -53,8 +53,8 @@ bool NormalHouseBuildButtonUI::Control()
 	bool IsClick = IsClicked();
 	if (IsClick == true)
 	{
-		BuildWindowEvent::GetInstance()->SetEventType(BuildWindowEvent::HOUSE_DESTROY_BUTTON_CLICK);
-		EventManager::GetInstance()->SendEventMessage(BuildWindowEvent::GetInstance());
+		HouseBuildWindowEvent::GetInstance()->SetEventType(HouseBuildWindowEvent::NORMAL_HOUSE_BUILD_BUTTON_CLICK);
+		EventManager::GetInstance()->SendEventMessage(HouseBuildWindowEvent::GetInstance());
 	}
 
 	return IsClick;

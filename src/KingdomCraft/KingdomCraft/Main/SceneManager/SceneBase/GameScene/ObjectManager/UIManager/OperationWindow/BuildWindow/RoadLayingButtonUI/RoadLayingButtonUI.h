@@ -8,6 +8,9 @@
 #include "Vertex2D\Vertex2D.h"
 #include "..\..\..\ButtonUI\ButtonUI.h"
 
+/**
+ * 道の敷設ボタンUIクラス
+ */
 class RoadLayingButtonUI : public ButtonUI
 {
 public:
