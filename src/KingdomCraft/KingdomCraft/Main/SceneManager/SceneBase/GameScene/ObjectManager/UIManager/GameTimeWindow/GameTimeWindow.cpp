@@ -7,8 +7,8 @@
 #include "GameTimeOperationUI\GameTimeOperationUI.h"
 #include "GameTimeUI\GameTimeUI.h"
 
-const D3DXVECTOR2 GameTimeWindow::m_GameTimeWindowPos = D3DXVECTOR2(250, 80);
-const D3DXVECTOR2 GameTimeWindow::m_GameTimeWindowSize = D3DXVECTOR2(500, 160);
+const D3DXVECTOR2 GameTimeWindow::m_GameTimeWindowPos = D3DXVECTOR2(250, 60);
+const D3DXVECTOR2 GameTimeWindow::m_GameTimeWindowSize = D3DXVECTOR2(500, 120);
 
 
 GameTimeWindow::GameTimeWindow() :

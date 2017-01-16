@@ -15,9 +15,11 @@ const D3DXVECTOR2 PoliticsButtonUI::m_DefaultTexel[4] =
 {
 	D3DXVECTOR2(0.125,	0),
 	D3DXVECTOR2(0.25,	0),
-	D3DXVECTOR2(0.125,	1),
-	D3DXVECTOR2(0.25,	1)
+	D3DXVECTOR2(0.125,	0.125),
+	D3DXVECTOR2(0.25,	0.125)
 };
+
+const D3DXVECTOR2 PoliticsButtonUI::m_MouseOverTexelOffset = D3DXVECTOR2(0.0, 0.125);
 
 
 PoliticsButtonUI::PoliticsButtonUI(const D3DXVECTOR2* _pParentUIPos, int _textureIndex) :
@@ -66,6 +68,30 @@ void PoliticsButtonUI::Draw()
 		return;
 	}
 
+	if (m_IsMouseOver == true)
+	{
+		MouseOverButtonDraw();
+	}
+	else
+	{
+		ButtonDraw();
+	}
+}
+
+void PoliticsButtonUI::MouseOverButtonDraw()
+{
 	DX11Manager::GetInstance()->SetDepthStencilTest(false);
+	m_pVertex2D->WriteConstantBuffer(
+		&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos),
+		&D3DXVECTOR2(1.0f, 1.0f),
+		&m_MouseOverTexelOffset);
+
+	m_pVertex2D->Draw();
+}
+
+void PoliticsButtonUI::ButtonDraw()
+{
+	DX11Manager::GetInstance()->SetDepthStencilTest(false);
+	m_pVertex2D->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos));
 	m_pVertex2D->Draw();
 }

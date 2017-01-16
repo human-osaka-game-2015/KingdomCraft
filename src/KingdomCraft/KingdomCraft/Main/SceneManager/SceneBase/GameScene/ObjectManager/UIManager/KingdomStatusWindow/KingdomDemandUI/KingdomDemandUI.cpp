@@ -7,7 +7,7 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 KingdomDemandUI::m_DefaultTitlePos = D3DXVECTOR2(-45, -75);
+const D3DXVECTOR2 KingdomDemandUI::m_DefaultTitlePos = D3DXVECTOR2(60, -45);
 const Vertex::VERTEX KingdomDemandUI::m_DefaultTitleVertexData[4] =
 {
 	Vertex::VERTEX{ D3DXVECTOR3(-40, -20, 0), D3DXVECTOR2(0, 0), D3DXCOLOR(0xffffffff) },
@@ -16,9 +16,9 @@ const Vertex::VERTEX KingdomDemandUI::m_DefaultTitleVertexData[4] =
 	Vertex::VERTEX{ D3DXVECTOR3( 40,  20, 0), D3DXVECTOR2(1, 1), D3DXCOLOR(0xffffffff) }
 };
 
-const D3DXVECTOR2 KingdomDemandUI::m_DefaultHousePos = D3DXVECTOR2(-75, -40);
-const D3DXVECTOR2 KingdomDemandUI::m_DefaultCommercePos = D3DXVECTOR2(-45, -40);
-const D3DXVECTOR2 KingdomDemandUI::m_DefaultIndustryPos = D3DXVECTOR2(-15, -40);
+const D3DXVECTOR2 KingdomDemandUI::m_DefaultHousePos = D3DXVECTOR2(30, -10);
+const D3DXVECTOR2 KingdomDemandUI::m_DefaultCommercePos = D3DXVECTOR2(60, -10);
+const D3DXVECTOR2 KingdomDemandUI::m_DefaultIndustryPos = D3DXVECTOR2(90, -10);
 
 const Vertex::VERTEX KingdomDemandUI::m_DefaultGaugeVertexData[4] = 
 {

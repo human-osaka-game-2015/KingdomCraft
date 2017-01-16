@@ -30,7 +30,7 @@ m_IsButtonActive(true)
 	EventManager::GetInstance()->AddEventListener(m_pEventListener);
 
 	TextureManager::GetInstance()->LoadTexture(
-		TEXT("Resource\\Texture\\GameScene\\UI\\OperationUI.jpg"),
+		TEXT("Resource\\Texture\\GameScene\\UI\\MainUI.png"),
 		&m_TextureIndex);
 
 	m_pButtonUI.push_back(new BuildButtonUI(&m_DefaultPos, m_TextureIndex));

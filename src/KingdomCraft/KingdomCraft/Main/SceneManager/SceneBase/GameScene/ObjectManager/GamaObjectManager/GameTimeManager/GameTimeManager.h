@@ -15,6 +15,20 @@ class GameTimeManager
 {
 public:
 	/**
+	 * KingdomStateクラスの状態を表す列挙子
+	 */
+	enum SPEED_STATE
+	{
+		NORMAL_SPEED,			// 1倍速
+		ONE_POINT_FIVE_SPEED,	// 1.5倍速
+		TWO_SPEED,				// 2倍速
+		FOUR_SPEED,				// 4倍速
+		SIX_SPEED,				// 6倍速
+		PAUSE_STATE,			// 停止状態
+		STATE_MAX				// STATEの数
+	};
+
+	/**
 	 * ゲーム内時間構造体
 	 */
 	struct GAMETIME
@@ -62,22 +76,6 @@ public:
 	void Draw();
 
 private:
-	/**
-	 * KingdomStateクラスの状態を表す列挙子
-	 * @todo 名前が思いつかなかったのでとりあえずでつけてる
-	 */
-	enum SPEED_STATE
-	{
-		NORMAL_SPEED,			// 1倍速
-		ONE_POINT_FIVE_SPEED,	// 1.5倍速
-		TWO_SPEED,				// 2倍速
-		FOUR_SPEED,				// 4倍速
-		SIX_SPEED,				// 6倍速
-		PAUSE_STATE,			// 停止状態
-		STATE_MAX				// STATEの数
-	};
-
-
 	GameTimeManager(const GameTimeManager&);
 	void operator=(const GameTimeManager&);
 
