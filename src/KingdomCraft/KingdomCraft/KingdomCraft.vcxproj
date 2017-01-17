@@ -82,7 +82,6 @@
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleBackground\TitleBackground.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleLogo\TitleLogo.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenu.cpp" />
-    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.cpp" />
@@ -93,6 +92,8 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI\RoadLayingButtonUI.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton\TitleContinueButton.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.h" />
@@ -164,7 +165,6 @@
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleBackground\TitleBackground.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleLogo\TitleLogo.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenu.h" />
-    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataMenu.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleScene.h" />
@@ -175,6 +175,8 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener\OperationWindowEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI\RoadLayingButtonUI.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton\TitleContinueButton.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DX11Manager\DX11Manager.h" />

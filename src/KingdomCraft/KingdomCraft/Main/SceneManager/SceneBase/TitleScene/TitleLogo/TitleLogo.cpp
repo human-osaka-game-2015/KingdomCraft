@@ -9,7 +9,7 @@
 #include "Vertex2D\Vertex2D.h"
 
 const D3DXVECTOR2 TitleLogo::m_Pos = D3DXVECTOR2(640, 100);
-const D3DXVECTOR2 TitleLogo::m_Size = D3DXVECTOR2(400, 100);
+const D3DXVECTOR2 TitleLogo::m_Size = D3DXVECTOR2(630, 100);
 const D3DXVECTOR2 TitleLogo::m_Texel[4] =
 {
 	D3DXVECTOR2(0, 0),
@@ -24,7 +24,7 @@ m_pVertex2D(NULL),
 m_TextureIndex(TextureManager::m_InvalidIndex)
 {
 	TextureManager::GetInstance()->LoadTexture(
-		TEXT("Resource\\Texture\\TitleScene\\TitleLogo.png"), 
+		TEXT("Resource\\Texture\\TitleScene\\TitleLogo.jpg"), 
 		&m_TextureIndex);
 
 	m_pVertex2D = new Vertex2D(

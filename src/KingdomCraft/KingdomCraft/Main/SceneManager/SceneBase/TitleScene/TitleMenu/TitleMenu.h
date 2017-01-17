@@ -7,8 +7,9 @@
 #define TITLEMENU_H
 #include "Vertex2D\Vertex2D.h"
 
-class TitleMenuButton;
 class TitleSaveDataMenu;
+class TitleStartButton;
+class TitleContinueButton;
 
 /**
  * タイトルシーン内のメニューを管理するクラス
@@ -51,13 +52,14 @@ private:
 	TitleMenu(const TitleMenu&);
 	void operator=(const TitleMenu&);
 
-	static D3DXVECTOR2	m_StartButtonPos;
-	static D3DXVECTOR2	m_StartButtonSize;
-	static D3DXVECTOR2	m_ContinueButtonPos;
-	static D3DXVECTOR2	m_ContinueButtonSize;
-	TitleSaveDataMenu*	m_pTitleSaveDataMenu;	// 続きからを押した後に出るセーブデータメニュー
-	TitleMenuButton*	m_pStartButton;			// 初めからのボタン
-	TitleMenuButton*	m_pContinueButton;		// 続きからのボタン
+	static D3DXVECTOR2		m_StartButtonPos;
+	static D3DXVECTOR2		m_StartButtonSize;
+	static D3DXVECTOR2		m_ContinueButtonPos;
+	static D3DXVECTOR2		m_ContinueButtonSize;
+	TitleSaveDataMenu*		m_pTitleSaveDataMenu;	// 続きからを押した後に出るセーブデータメニュー
+	TitleStartButton*		m_pStartButton;			// 初めからのボタン
+	TitleContinueButton*	m_pContinueButton;		// 続きからのボタン
+	int						m_TextureIndex;
 
 };
 
