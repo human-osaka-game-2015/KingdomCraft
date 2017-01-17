@@ -11,7 +11,7 @@
 
 Ground::Ground()
 {
-	FbxFileManager::GetInstance()->LoadFbxModel(TEXT("Resource\\Fbx\\GameScene\\Ground.fbx"), &m_ModelIndex);
+	FbxFileManager::GetInstance()->LoadFbxModel(TEXT("Resource\\Fbx\\GameScene\\map.fbx"), &m_ModelIndex);
 	ShaderManager::GetInstance()->LoadVertexShader(TEXT("Resource\\Effect\\GameScene\\Ground.fx"), "VS", &m_VertexShaderIndex);
 	ShaderManager::GetInstance()->LoadPixelShader(TEXT("Resource\\Effect\\GameScene\\Ground.fx"), "PS", &m_PixelShaderIndex);
 	InitVertexLayout();
