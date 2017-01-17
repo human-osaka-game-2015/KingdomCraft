@@ -6,28 +6,28 @@
 #include "NormalTimeButtonUI.h"
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
+#include "EventManager.h"
+#include "Event\GameTimeEvent\GameTimeEvent.h"
 
-const D3DXVECTOR2 NormalTimeButtonUI::m_DefaultPos = D3DXVECTOR2(-150, 20);
-const D3DXVECTOR2 NormalTimeButtonUI::m_DefaultSize = D3DXVECTOR2(32, 32);
+const D3DXVECTOR2 NormalTimeButtonUI::m_DefaultPos = D3DXVECTOR2(130, -15);
+const D3DXVECTOR2 NormalTimeButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 NormalTimeButtonUI::m_DefaultTexel[4] = 
 {
-	D3DXVECTOR2(0, 0),
-	D3DXVECTOR2(1, 0),
-	D3DXVECTOR2(0, 1),
-	D3DXVECTOR2(1, 1)
+	D3DXVECTOR2(0.125, 0.25),
+	D3DXVECTOR2(0.25,  0.25),
+	D3DXVECTOR2(0.125, 0.375),
+	D3DXVECTOR2(0.25,  0.375)
 };
 
+const D3DXVECTOR2 NormalTimeButtonUI::m_MouseOverTexelOffset = D3DXVECTOR2(0.0, 0.125);
 
-NormalTimeButtonUI::NormalTimeButtonUI(const D3DXVECTOR2* _pParentUIPos) :
+
+NormalTimeButtonUI::NormalTimeButtonUI(const D3DXVECTOR2* _pParentUIPos, int _textureIndex) :
 ButtonUI(&D3DXVECTOR2(m_DefaultPos + *_pParentUIPos), &m_DefaultSize),
 m_pVertex2D(NULL),
-m_TextureIndex(TextureManager::m_InvalidIndex),
+m_TextureIndex(_textureIndex),
 m_ParentUIPos(*_pParentUIPos)
 {
-	TextureManager::GetInstance()->LoadTexture(
-		TEXT("Resource\\Texture\\GameScene\\UI\\NormalTimeButtonUI.png"), 
-		&m_TextureIndex);
-
 	m_pVertex2D = new Vertex2D(
 		DX11Manager::GetInstance()->GetDevice(),
 		DX11Manager::GetInstance()->GetDeviceContext(),
@@ -42,8 +42,6 @@ NormalTimeButtonUI::~NormalTimeButtonUI()
 {
 	m_pVertex2D->Release();
 	delete m_pVertex2D;
-
-	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
 }
 
 bool NormalTimeButtonUI::Control()
@@ -53,7 +51,14 @@ bool NormalTimeButtonUI::Control()
 		return false;
 	}
 
-	return IsClicked();
+	bool IsClick = IsClicked();
+	if (IsClick == true)
+	{
+		GameTimeEvent::GetInstance()->SetEventType(GameTimeEvent::NORMAL_TIME);
+		EventManager::GetInstance()->SendEventMessage(GameTimeEvent::GetInstance());
+	}
+
+	return IsClick;
 }
 
 void NormalTimeButtonUI::Draw()
@@ -63,5 +68,28 @@ void NormalTimeButtonUI::Draw()
 		return;
 	}
 
+	if (m_IsMouseOver == true)
+	{
+		MouseOverButtonDraw();
+	}
+	else
+	{
+		ButtonDraw();
+	}
+}
+
+void NormalTimeButtonUI::MouseOverButtonDraw()
+{
+	m_pVertex2D->WriteConstantBuffer(
+		&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos),
+		&D3DXVECTOR2(1.0f, 1.0f),
+		&m_MouseOverTexelOffset);
+
+	m_pVertex2D->Draw();
+}
+
+void NormalTimeButtonUI::ButtonDraw()
+{
+	m_pVertex2D->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos));
 	m_pVertex2D->Draw();
 }

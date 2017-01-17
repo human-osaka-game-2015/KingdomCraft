@@ -62,10 +62,10 @@ private:
 
 	static const D3DXVECTOR2	m_DefaultTextPos;	//!< ゲーム内時間テキストの初期座標
 	static const D3DXVECTOR2	m_DefaultFontSize;	//!< ゲーム内時間テキストのフォント初期サイズ
-	static const D3DXVECTOR2	m_YearTextPos;
-	static const D3DXVECTOR2	m_MonthTextPos;
-	static const D3DXVECTOR2	m_DayTextPos;
-	static const D3DXVECTOR2	m_HourTextPos;
+	static const D3DXVECTOR2	m_YearTextPos;		//!< 年の描画位置
+	static const D3DXVECTOR2	m_MonthTextPos;		//!< 月の描画位置
+	static const D3DXVECTOR2	m_DayTextPos;		//!< 日付の描画位置
+	static const D3DXVECTOR2	m_HourTextPos;		//!< 時間の描画位置
 	static const Vertex::VERTEX m_DefaultVertexData[4];
 	D3DXVECTOR2					m_ParentUIPos;		//!< 親UIの座標位置
 	Vertex*						m_pVertex;

@@ -9,7 +9,6 @@
 
 class KingdomDataUI;
 class KingdomDemandUI;
-class KingdomParameterUI;
 class KingdomButtonUI;
 
 /**
@@ -46,7 +45,6 @@ private:
 	static const D3DXVECTOR2	m_DefaultSize;	//!< 表示するウィンドウの初期サイズ
 	KingdomDataUI*				m_pKingdomDataUI;
 	KingdomDemandUI*			m_pKingdomDemandUI;
-	KingdomParameterUI*			m_pKingdomParameterUI;
 	KingdomButtonUI*			m_pKingdomButtonUI;
 
 };

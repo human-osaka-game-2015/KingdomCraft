@@ -51,7 +51,8 @@ protected:
 	 */
 	void WindowDraw();
 
-	bool m_IsVisible;	//!< ウィンドウの可視状態
+	D3DXVECTOR2	m_WindowPos;	//!< ウィンドウの座標
+	bool		m_IsVisible;	//!< ウィンドウの可視状態
 
 private:
 	/**
@@ -79,7 +80,6 @@ private:
 
 	Vertex2D*					m_pWindowVertex;
 	int							m_WindowTextureIndex;
-	D3DXVECTOR2					m_WindowPos;						//!< ウィンドウの座標
 	D3DXVECTOR2 				m_WindowSize;						//!< ウィンドウのサイズ
 	D3DXVECTOR2					m_WindowPartsSize;					//!< ウィンドウパーツのサイズ
 	D3DXVECTOR2					m_WindowPartsPosOffset[PARTS_MAX];	//!< ウィンドウパーツの座標オフセット値

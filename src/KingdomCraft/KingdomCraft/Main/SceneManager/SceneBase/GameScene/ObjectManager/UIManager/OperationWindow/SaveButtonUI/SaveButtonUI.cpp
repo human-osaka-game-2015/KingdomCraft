@@ -7,15 +7,17 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 SaveButtonUI::m_DefaultPos = D3DXVECTOR2(38, -15);
+const D3DXVECTOR2 SaveButtonUI::m_DefaultPos = D3DXVECTOR2(-9, -15);
 const D3DXVECTOR2 SaveButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 SaveButtonUI::m_DefaultTexel[4] =
 {
 	D3DXVECTOR2(0.25,	0),
 	D3DXVECTOR2(0.375,	0),
-	D3DXVECTOR2(0.25,	0.125),
-	D3DXVECTOR2(0.375,	0.125)
+	D3DXVECTOR2(0.25,   0.125),
+	D3DXVECTOR2(0.375,  0.125)
 };
+
+const D3DXVECTOR2 SaveButtonUI::m_MouseOverTexelOffset = D3DXVECTOR2(0.0, 0.125);
 
 
 SaveButtonUI::SaveButtonUI(const D3DXVECTOR2* _pParentUIPos, int _textureIndex) :
@@ -57,6 +59,30 @@ void SaveButtonUI::Draw()
 		return;
 	}
 
+	if (m_IsMouseOver == true)
+	{
+		MouseOverButtonDraw();
+	}
+	else
+	{
+		ButtonDraw();
+	}
+}
+
+void SaveButtonUI::MouseOverButtonDraw()
+{
 	DX11Manager::GetInstance()->SetDepthStencilTest(false);
+	m_pVertex2D->WriteConstantBuffer(
+		&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos),
+		&D3DXVECTOR2(1.0f, 1.0f),
+		&m_MouseOverTexelOffset);
+
+	m_pVertex2D->Draw();
+}
+
+void SaveButtonUI::ButtonDraw()
+{
+	DX11Manager::GetInstance()->SetDepthStencilTest(false);
+	m_pVertex2D->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos));
 	m_pVertex2D->Draw();
 }

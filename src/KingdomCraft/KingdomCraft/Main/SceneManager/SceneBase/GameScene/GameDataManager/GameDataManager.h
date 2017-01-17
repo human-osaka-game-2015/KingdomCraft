@@ -53,7 +53,7 @@ public:
 	}
 
 	/**
-	 * ゲーム内時間を設定する関数
+	 * ゲーム内時間をセットする関数
 	 * @param[in] _gameTime 設定するゲーム内時間
 	 */
 	inline void SetGameTime(GameTimeManager::GAMETIME _gameTime)
@@ -61,6 +61,23 @@ public:
 		m_GameTime = _gameTime;
 	}
 
+	/**
+	 * ゲーム内時間の速度を取得する関数
+	 * @return ゲーム内時間の速度
+	 */
+	inline GameTimeManager::SPEED_STATE GetSpeedState()
+	{
+		return m_SpeedState;
+	}
+	
+	/**
+	 * ゲーム内時間の速度をセットする関数
+	 * @param[in] _speedState ゲーム内時間の速度
+	 */
+	inline void SetSpeedState(GameTimeManager::SPEED_STATE _speedState)
+	{
+		m_SpeedState = _speedState;
+	}
 
 private:
 	/**
@@ -75,8 +92,8 @@ private:
 
 	static GameDataManager* m_pGameDataManager;
 
-	GameTimeManager::GAMETIME m_GameTime;	//!< ゲーム内時間を格納する変数
-
+	GameTimeManager::GAMETIME		m_GameTime;		//!< ゲーム内時間を格納する変数
+	GameTimeManager::SPEED_STATE	m_SpeedState;	//!< ゲーム内時間の速度
 
 };
 
