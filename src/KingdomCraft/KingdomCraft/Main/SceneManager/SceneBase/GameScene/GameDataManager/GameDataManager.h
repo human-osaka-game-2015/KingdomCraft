@@ -17,7 +17,7 @@ public:
 	/**
 	 * インスタンスを生成する関数
 	 */
-	static void Create()
+	inline static void Create()
 	{
 		if (m_pGameDataManager == NULL)
 		{
@@ -29,7 +29,7 @@ public:
 	 * インスタンスを取得する関数
 	 * @return GameDataManagerクラスのインスタンス
 	 */
-	static GameDataManager* GetInstance()
+	inline static GameDataManager* GetInstance()
 	{
 		return m_pGameDataManager;
 	}
@@ -37,7 +37,7 @@ public:
 	/**
 	 * インスタンスを破棄する関数
 	 */
-	static void Delete()
+	inline static void Delete()
 	{
 		delete m_pGameDataManager;
 		m_pGameDataManager = NULL;
