@@ -163,9 +163,6 @@
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleLogo\TitleLogo.cpp">
       <Filter>Main\SceneManager\SceneBase\TitleScene\TitleLogo</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.cpp">
-      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton</Filter>
-    </ClCompile>
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.cpp">
       <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
     </ClCompile>
@@ -249,6 +246,12 @@
     </ClCompile>
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton\TitleContinueButton.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.cpp">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -411,9 +414,6 @@
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleLogo\TitleLogo.h">
       <Filter>Main\SceneManager\SceneBase\TitleScene\TitleLogo</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton\TitleMenuButton.h">
-      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton</Filter>
-    </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton\TitleSaveDataButton.h">
       <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton</Filter>
     </ClInclude>
@@ -497,6 +497,12 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton\TitleContinueButton.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.h">
+      <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -683,9 +689,6 @@
     <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleSaveDataMenu\TitleSaveDataButton">
       <UniqueIdentifier>{9d424ac1-403c-4008-ad6e-1ec143af7912}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleMenuButton">
-      <UniqueIdentifier>{dee953b7-9ea4-428e-9fb9-12a257bf5e5f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\GameDataManager">
       <UniqueIdentifier>{01740cda-36dc-4a91-a56d-70c8bb1ea247}</UniqueIdentifier>
     </Filter>
@@ -766,6 +769,12 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener">
       <UniqueIdentifier>{33062fb8-fd74-4ac0-a6e5-5e158c14bd5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton">
+      <UniqueIdentifier>{cd031716-c344-40c0-92a9-d24ca51add8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton">
+      <UniqueIdentifier>{d2d826aa-7a3b-4a92-acc7-7de2181488d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

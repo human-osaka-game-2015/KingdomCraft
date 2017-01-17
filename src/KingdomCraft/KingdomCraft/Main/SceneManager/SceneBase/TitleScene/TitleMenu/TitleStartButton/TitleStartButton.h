@@ -1,34 +1,30 @@
 ﻿/**
- * @file TitleButton.h
- * @brief TitleButtonクラスのヘッダファイル
+ * @file TitleStartButton.h
+ * @brief TitleStartButtonクラスのヘッダファイル
  * @author morimoto
  */
-#ifndef TITLEBUTTON_H
-#define TITLEBUTTON_H
+#ifndef TITLESTARTBUTTON_H
+#define TITLESTARTBUTTON_H
 #include "Vertex2D\Vertex2D.h"
 
-/**
- * タイトルメニュー内のボタンクラス
- * @todo 削除してUIButtonクラスに差し替える予定
- */
-class TitleMenuButton
+class TitleStartButton
 {
 public:
 	/**
-	 * TitleMenuButtonのコンストラクタ
+	 * TitleStartButtonのコンストラクタ
 	 * @param[in] _pButtonPos ボタンの描画位置
 	 * @param[in] _pButtonSize ボタンのサイズ
-	 * @param[in] _pTextureName 描画するボタンの画像
+	 * @param[in] _textureIndex 描画するボタンの画像インデックス
 	 */
-	TitleMenuButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, LPCTSTR _pTextureName);
+	TitleStartButton(const D3DXVECTOR2* _pButtonPos, const D3DXVECTOR2* _pButtonSize, int _textureIndex);
 
 	/**
-	 * TitleMenuButtonのデストラクタ
+	 * TitleStartButtonのデストラクタ
 	 */
-	~TitleMenuButton();
+	~TitleStartButton();
 
 	/**
-	 * TitleMenuButtonの制御関数
+	 * TitleStartButtonの制御関数
 	 * @return ボタンが押されたらtrue
 	 */
 	bool Control();
@@ -40,9 +36,6 @@ public:
 
 	/**
 	 * ボタンの可視設定を行う関数
-	 *
-	 * falseを指定したらControlとDrawは動作しなくなる
-	 * trueを指定したらそのまま動作
 	 * @param[in] _isVisible 可視設定するかのフラグ
 	 */
 	inline void SetVisible(bool _isVisible)
@@ -51,8 +44,8 @@ public:
 	}
 
 private:
-	TitleMenuButton(const TitleMenuButton&);
-	void operator=(const TitleMenuButton&);
+	TitleStartButton(const TitleStartButton&);
+	void operator=(const TitleStartButton&);
 
 	/**
 	 * ボタンの描画関数
@@ -65,7 +58,7 @@ private:
 	 */
 	bool IsClicked();
 
-	static const D3DXVECTOR2	m_Texel[4];		//!< ボタンのテクスチャ座標
+	static const D3DXVECTOR2	m_DefaultTexel[4];		//!< ボタンのテクスチャ座標
 	const D3DXVECTOR2			m_Pos;
 	const D3DXVECTOR2			m_Size;
 	Vertex2D*					m_pVertex2D;
