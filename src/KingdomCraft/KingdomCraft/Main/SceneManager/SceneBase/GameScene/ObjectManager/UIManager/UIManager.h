@@ -9,6 +9,7 @@
 class GameTimeWindow;
 class KingdomStatusWindow;
 class OperationWindow;
+class KingdomWindow;
 
 /**
  * UIを管理するクラス
@@ -41,8 +42,9 @@ private:
 	void operator=(const UIManager&);
 
 	GameTimeWindow*			m_pGameTimeWindow;
-	KingdomStatusWindow*	m_pKingdomWindow;
+	KingdomStatusWindow*	m_pKingdomStatusWindow;
 	OperationWindow*		m_pOperationWindow;
+	KingdomWindow*			m_pKingdomWindow;
 
 };
 
