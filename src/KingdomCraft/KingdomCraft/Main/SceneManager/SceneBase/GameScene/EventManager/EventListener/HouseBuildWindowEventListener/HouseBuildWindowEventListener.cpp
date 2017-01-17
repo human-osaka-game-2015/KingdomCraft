@@ -19,6 +19,11 @@ void HouseBuildWindowEventListener::EventMessage(Event* _pEvent)
 {
 	if (_pEvent->GetEventID() == HouseBuildWindowEvent::GetInstance()->GetEventID())
 	{
+		if (m_EventTypeContainer.size() >= m_EventMessageMax)
+		{
+			m_EventTypeContainer.clear();	/// @todo 古い順から削除したいけどとりあえずこれでやる
+		}
+
 		HouseBuildWindowEvent::EVENT_TYPE EventType = reinterpret_cast<HouseBuildWindowEvent*>(_pEvent)->GetEventType();
 		m_EventTypeContainer.push_back(EventType);
 	}

@@ -19,6 +19,11 @@ void OperationWindowEventListener::EventMessage(Event* _pEvent)
 {
 	if (_pEvent->GetEventID() == OperationWindowEvent::GetInstance()->GetEventID())
 	{
+		if (m_EventTypeContainer.size() >= m_EventMessageMax)
+		{
+			m_EventTypeContainer.clear();	/// @todo 古い順から削除したいけどとりあえずこれでやる
+		}
+
 		OperationWindowEvent::EVENT_TYPE EventType = reinterpret_cast<OperationWindowEvent*>(_pEvent)->GetEventType();
 		m_EventTypeContainer.push_back(EventType);
 	}

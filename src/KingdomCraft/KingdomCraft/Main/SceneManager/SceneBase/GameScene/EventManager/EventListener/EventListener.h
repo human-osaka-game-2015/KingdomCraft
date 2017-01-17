@@ -39,9 +39,12 @@ public:
 		return m_EventListenerID;
 	}
 
+protected:
+	static const int	m_EventMessageMax;		//!< イベントの最大数
+
 private:
-	static int	m_EventListenerNum;
-	int			m_EventListenerID;
+	static int			m_EventListenerNum;
+	int					m_EventListenerID;
 
 };
 

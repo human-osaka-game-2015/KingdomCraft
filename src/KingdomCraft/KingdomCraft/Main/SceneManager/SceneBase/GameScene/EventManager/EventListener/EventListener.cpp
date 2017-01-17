@@ -5,6 +5,7 @@
  */
 #include "EventListener.h"
 
+const int EventListener::m_EventMessageMax = 30;
 int EventListener::m_EventListenerNum = 0;
 
 
