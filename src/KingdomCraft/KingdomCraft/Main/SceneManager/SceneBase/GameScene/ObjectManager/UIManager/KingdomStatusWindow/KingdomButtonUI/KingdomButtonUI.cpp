@@ -7,15 +7,17 @@
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 KingdomButtonUI::m_DefaultPos = D3DXVECTOR2(187, -60);
-const D3DXVECTOR2 KingdomButtonUI::m_DefaultSize = D3DXVECTOR2(128, 60);
+const D3DXVECTOR2 KingdomButtonUI::m_DefaultPos = D3DXVECTOR2(195, -20);
+const D3DXVECTOR2 KingdomButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
 const D3DXVECTOR2 KingdomButtonUI::m_DefaultTexel[4] =
 {
-	D3DXVECTOR2(0, 0),
-	D3DXVECTOR2(1, 0),
-	D3DXVECTOR2(0, 1),
-	D3DXVECTOR2(1, 1)
+	D3DXVECTOR2(0.375, 0.25),
+	D3DXVECTOR2(0.5,   0.25),
+	D3DXVECTOR2(0.375, 0.375),
+	D3DXVECTOR2(0.5,   0.375)
 };
+
+const D3DXVECTOR2 KingdomButtonUI::m_MouseOverTexelOffset = D3DXVECTOR2(0.0, 0.125);
 
 
 KingdomButtonUI::KingdomButtonUI(const D3DXVECTOR2* _pParentUIPos) :
@@ -25,7 +27,7 @@ m_TextureIndex(TextureManager::m_InvalidIndex),
 m_ParentUIPos(*_pParentUIPos)
 {
 	TextureManager::GetInstance()->LoadTexture(
-		TEXT("Resource\\Texture\\GameScene\\UI\\KingdomButton.png"),
+		TEXT("Resource\\Texture\\GameScene\\UI\\MainUI.png"),
 		&m_TextureIndex);
 
 	m_pVertex2D = new Vertex2D(
@@ -63,5 +65,28 @@ void KingdomButtonUI::Draw()
 		return;
 	}
 
+	if (m_IsMouseOver == true)
+	{
+		MouseOverButtonDraw();
+	}
+	else
+	{
+		ButtonDraw();
+	}
+}
+
+void KingdomButtonUI::MouseOverButtonDraw()
+{
+	m_pVertex2D->WriteConstantBuffer(
+		&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos),
+		&D3DXVECTOR2(1.0f, 1.0f),
+		&m_MouseOverTexelOffset);
+
+	m_pVertex2D->Draw();
+}
+
+void KingdomButtonUI::ButtonDraw()
+{
+	m_pVertex2D->WriteConstantBuffer(&D3DXVECTOR2(m_DefaultPos + m_ParentUIPos));
 	m_pVertex2D->Draw();
 }

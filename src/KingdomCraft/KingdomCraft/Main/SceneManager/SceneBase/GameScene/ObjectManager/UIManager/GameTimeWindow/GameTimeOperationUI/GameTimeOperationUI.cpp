@@ -4,6 +4,7 @@
  * @author morimoto
  */
 #include "GameTimeOperationUI.h"
+#include "TextureManager\TextureManager.h"
 #include "DecelerateOfTimeButtonUI\DecelerateOfTimeButtonUI.h"
 #include "AccelerateOfTimeButtonUI\AccelerateOfTimeButtonUI.h"
 #include "NormalTimeButtonUI\NormalTimeButtonUI.h"
@@ -11,12 +12,17 @@
 
 
 GameTimeOperationUI::GameTimeOperationUI(const D3DXVECTOR2* _pParentUIPos) :
-m_pDecelerateButton(new DecelerateOfTimeButtonUI(_pParentUIPos)),
-m_pAccelerateButton(new AccelerateOfTimeButtonUI(_pParentUIPos)),
-m_pNormalButton(new NormalTimeButtonUI(_pParentUIPos)),
-m_pGameTimeSpeed(new GameTimeSpeedUI(_pParentUIPos)),
-m_ParentUIPos(*_pParentUIPos)
+m_ParentUIPos(*_pParentUIPos),
+m_TextureIndex(TextureManager::m_InvalidIndex)
 {
+	TextureManager::GetInstance()->LoadTexture(
+		TEXT("Resource\\Texture\\GameScene\\UI\\MainUI.png"),
+		&m_TextureIndex);
+
+	m_pDecelerateButton = new DecelerateOfTimeButtonUI(_pParentUIPos, m_TextureIndex);
+	m_pAccelerateButton = new AccelerateOfTimeButtonUI(_pParentUIPos, m_TextureIndex);
+	m_pNormalButton = new NormalTimeButtonUI(_pParentUIPos, m_TextureIndex);
+	m_pGameTimeSpeed = new GameTimeSpeedUI(_pParentUIPos);
 }
 
 GameTimeOperationUI::~GameTimeOperationUI()
@@ -25,6 +31,8 @@ GameTimeOperationUI::~GameTimeOperationUI()
 	delete m_pNormalButton;
 	delete m_pAccelerateButton;
 	delete m_pDecelerateButton;
+
+	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
 }
 
 void GameTimeOperationUI::Control()

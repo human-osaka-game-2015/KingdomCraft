@@ -6,6 +6,7 @@
 #ifndef GAMETIMESPEEDUI_H
 #define GAMETIMESPEEDUI_H
 #include "..\..\..\TextUI\TextUI.h"
+#include "EventListener\GameTimeEventListener\GameTimeEventListener.h"
 
 /**
  * ゲームの進行スピード表示を管理するクラス
@@ -37,6 +38,11 @@ public:
 private:
 	GameTimeSpeedUI(const GameTimeSpeedUI&);
 	void operator=(const GameTimeSpeedUI&);
+
+	/**
+	 * ゲーム内時間の描画を行う関数
+	 */
+	void GameSpeedDraw();
 
 	static const D3DXVECTOR2	m_DefaultTextPos;	//!< テキストの初期座標
 	static const D3DXVECTOR2	m_DefaultFontSize;	//!< テキストのフォント初期サイズ

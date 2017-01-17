@@ -7,6 +7,7 @@
 #define OPERATIONWINDOW_H
 #include <vector>
 #include "..\WindowUI\WindowUI.h"
+#include "EventListener\OperationWindowEventListener\OperationWindowEventListener.h"
 
 class ButtonUI;
 
@@ -53,10 +54,38 @@ private:
 	OperationWindow(const OperationWindow&);
 	void operator=(const OperationWindow&);
 
-	static const D3DXVECTOR2	m_DefaultPos;
-	static const D3DXVECTOR2	m_DefaultSize;
-	std::vector<ButtonUI*>		m_pButtonUI;
-	int							m_TextureIndex;
+	/**
+	 * OperationWindowの状態制御関数
+	 */
+	void StateControl();
+
+	/**
+	 * OperationWindowが持つWindowUIクラスの制御関数
+	 */
+	void WindowUIControl();
+
+	/**
+	 * OperationWindowが持つButtonUIクラスの制御関数
+	 */
+	void ButtonUIControl();
+
+	/**
+	 * OperationWindowが持つWindowUIクラスの描画関数
+	 */
+	void WindowUIDraw();
+
+	/**
+	 * OperationWindowが持つButtonUIクラスの描画関数
+	 */
+	void ButtonUIDraw();
+
+	static const D3DXVECTOR2		m_DefaultPos;
+	static const D3DXVECTOR2		m_DefaultSize;
+	std::vector<ButtonUI*>			m_pButtonUI;
+	std::vector<WindowUI*>			m_pWindowUI;
+	int								m_TextureIndex;
+	OperationWindowEventListener*	m_pEventListener;
+	bool							m_IsButtonActive;
 
 };
 
