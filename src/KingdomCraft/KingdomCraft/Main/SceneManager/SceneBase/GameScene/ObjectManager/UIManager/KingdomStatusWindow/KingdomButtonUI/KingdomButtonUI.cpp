@@ -6,6 +6,8 @@
 #include "KingdomButtonUI.h"
 #include "DX11Manager\DX11Manager.h"
 #include "TextureManager\TextureManager.h"
+#include "EventManager.h"
+#include "Event\KingdomWindowEvent\KingdomWindowEvent.h"
 
 const D3DXVECTOR2 KingdomButtonUI::m_DefaultPos = D3DXVECTOR2(195, -20);
 const D3DXVECTOR2 KingdomButtonUI::m_DefaultSize = D3DXVECTOR2(64, 64);
@@ -55,7 +57,14 @@ bool KingdomButtonUI::Control()
 		return false;
 	}
 
-	return IsClicked();
+	bool IsClick = IsClicked();
+	if (IsClick == true)
+	{
+		KingdomWindowEvent::GetInstance()->SetEventType(KingdomWindowEvent::PUSH_BUTTON);
+		EventManager::GetInstance()->SendEventMessage(KingdomWindowEvent::GetInstance());
+	}
+
+	return IsClick;
 }
 
 void KingdomButtonUI::Draw()

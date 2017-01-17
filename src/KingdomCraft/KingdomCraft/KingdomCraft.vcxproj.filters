@@ -253,6 +253,15 @@
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.cpp">
       <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\KingdomWindowEventListener\KingdomWindowEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\KingdomWindowEventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\KingdomWindowEvent\KingdomWindowEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\KingdomWindowEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -504,6 +513,15 @@
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.h">
       <Filter>Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton</Filter>
     </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\KingdomWindowEventListener\KingdomWindowEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\KingdomWindowEventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\KingdomWindowEvent\KingdomWindowEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\KingdomWindowEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -659,9 +677,6 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomDemandUI">
       <UniqueIdentifier>{bb811fad-c28a-49a9-b2da-4e380f460569}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI">
-      <UniqueIdentifier>{895c08c0-a77e-4171-bbc3-4e1fe50e6c8d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager">
       <UniqueIdentifier>{d076b898-f6f7-42e0-88c0-54427e9f2db7}</UniqueIdentifier>
     </Filter>
@@ -775,6 +790,15 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton">
       <UniqueIdentifier>{d2d826aa-7a3b-4a92-acc7-7de2181488d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\KingdomWindowEventListener">
+      <UniqueIdentifier>{7a683acd-aca7-4faa-b34a-8577cd271fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\KingdomWindowEvent">
+      <UniqueIdentifier>{02e64dfc-b3c3-4e98-b0a3-e4d470578832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow">
+      <UniqueIdentifier>{342742e8-402f-4e5b-ae43-bb4c35eb725c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
