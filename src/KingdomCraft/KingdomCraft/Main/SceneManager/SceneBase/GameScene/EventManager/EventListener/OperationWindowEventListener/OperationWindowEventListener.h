@@ -42,7 +42,7 @@ public:
 	void ClearEventType();
 
 private:
-	std::vector<int> m_EventTypeContainer;
+	std::vector<int>	m_EventTypeContainer;
 
 };
 

@@ -43,6 +43,7 @@ public:
 
 private:
 	std::vector<int> m_EventTypeContainer;
+
 };
 
 

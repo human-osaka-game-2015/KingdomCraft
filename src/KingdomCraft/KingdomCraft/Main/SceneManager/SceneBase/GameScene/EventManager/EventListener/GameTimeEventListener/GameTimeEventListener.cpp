@@ -19,6 +19,11 @@ void GameTimeEventListener::EventMessage(Event* _pEvent)
 {
 	if (_pEvent->GetEventID() == GameTimeEvent::GetInstance()->GetEventID())
 	{
+		if (m_EventTypeContainer.size() >= m_EventMessageMax)
+		{
+			m_EventTypeContainer.clear();	/// @todo 古い順から削除したいけどとりあえずこれでやる
+		}
+
 		GameTimeEvent::EVENT_TYPE EventType = reinterpret_cast<GameTimeEvent*>(_pEvent)->GetEventType();
 		m_EventTypeContainer.push_back(EventType);
 	}

@@ -35,6 +35,7 @@ m_pEventListener(new GameTimeEventListener())
 
 GameTimeManager::~GameTimeManager()
 {
+	EventManager::GetInstance()->RemoveEventListener(m_pEventListener);
 	delete m_pEventListener;
 }
 
