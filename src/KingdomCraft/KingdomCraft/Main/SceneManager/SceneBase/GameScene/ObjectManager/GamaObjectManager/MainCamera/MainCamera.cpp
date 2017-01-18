@@ -4,17 +4,18 @@
  * @author kotani
  */
 #include "MainCamera.h"
-#include "Camera\Camera.h"
 #include "DX11Manager\DX11Manager.h"
 #include "InputDeviceManager\InputDeviceManager.h"
 
+MainCamera* MainCamera::m_pMainCamera = NULL;
+
 const float MainCamera::m_NearPoint = 1.f;
-const float MainCamera::m_FarPoint = 300000.f;
+const float MainCamera::m_FarPoint = 5000.f;
 const float MainCamera::m_ViewAngle = static_cast<float>(D3DXToRadian(50));
 const float MainCamera::m_MaxAngle = 70.f;
-const float MainCamera::m_MinAngle = 20.f;
-const float MainCamera::m_MaxLength = 20000.f;
-const float MainCamera::m_MinLength = 10.f;
+const float MainCamera::m_MinAngle = 10.f;
+const float MainCamera::m_MaxLength = 3000.f;
+const float MainCamera::m_MinLength = 500.f;
 const float MainCamera::m_MoveSpeedWeight = 0.001f;
 const float MainCamera::m_ZoomSpeedWeight = 0.1f;
 const float MainCamera::m_RotateSpeedWeight = 0.22f;
@@ -25,7 +26,7 @@ m_LookPoint(D3DXVECTOR3(0.f, 0.f, 0.f)),
 m_MoveSpeed(0.f),
 m_ZoomSpeed(0.f),
 m_CameraAngle(0.f, 50.f),
-m_CameraLength(10000.f),
+m_CameraLength(1000.f),
 m_isCameraControl(false)
 {
 	RECT ClientRect;

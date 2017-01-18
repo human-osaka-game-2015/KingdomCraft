@@ -262,6 +262,9 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -521,6 +524,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow\KingdomWindow.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -799,6 +805,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomWindow">
       <UniqueIdentifier>{342742e8-402f-4e5b-ae43-bb4c35eb725c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter">
+      <UniqueIdentifier>{6448ec0d-26f6-4a85-93a9-2dbde6afdf2e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

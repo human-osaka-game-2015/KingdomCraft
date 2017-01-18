@@ -6,7 +6,6 @@
 #ifndef GAMEOBJECTMANAGER_H
 #define GAMEOBJECTMANAGER_H
 
-class MainCamera;
 class EnemyManager;
 class FieldManager;
 class HouseManager;
@@ -44,13 +43,13 @@ private:
 	GameObjectManager(const GameObjectManager&);
 	void operator=(const GameObjectManager&);
 
-	MainCamera*			m_pMainCamera;
 	EnemyManager*		m_pEnemyManager;
 	FieldManager*		m_pFieldManager;
 	HouseManager*		m_pHouseManager;
 	HumanManager*		m_pHumanManager;
 	RoadManager*		m_pRoadManager;
 	GameTimeManager*	m_pGameTimeManager;
+
 
 };
 

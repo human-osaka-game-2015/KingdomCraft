@@ -11,7 +11,8 @@
 
 Ground::Ground()
 {
-	FbxFileManager::GetInstance()->LoadFbxModel(TEXT("Resource\\Fbx\\GameScene\\map.fbx"), &m_ModelIndex);
+	FbxFileManager::GetInstance()->LoadFbxModel(TEXT("Resource\\Fbx\\GameScene\\map.fbx"), &m_GroundModelIndex);
+	FbxFileManager::GetInstance()->LoadFbxModel(TEXT("Resource\\Fbx\\GameScene\\mountain.fbx"), &m_MountainModelIndex);
 	ShaderManager::GetInstance()->LoadVertexShader(TEXT("Resource\\Effect\\GameScene\\Ground.fx"), "VS", &m_VertexShaderIndex);
 	ShaderManager::GetInstance()->LoadPixelShader(TEXT("Resource\\Effect\\GameScene\\Ground.fx"), "PS", &m_PixelShaderIndex);
 	InitVertexLayout();
@@ -27,7 +28,8 @@ Ground::~Ground()
 	ReleaseVertexLayout();
 	ShaderManager::GetInstance()->ReleasePixelShader(m_PixelShaderIndex);
 	ShaderManager::GetInstance()->ReleaseVertexShader(m_VertexShaderIndex);
-	FbxFileManager::GetInstance()->ReleaseFbxModel(m_ModelIndex);
+	FbxFileManager::GetInstance()->ReleaseFbxModel(m_MountainModelIndex);
+	FbxFileManager::GetInstance()->ReleaseFbxModel(m_GroundModelIndex);
 }
 
 void Ground::Control()
@@ -43,7 +45,8 @@ void Ground::Draw()
 	DX11Manager::GetInstance()->GetDeviceContext()->VSSetShader(ShaderManager::GetInstance()->GetVertexShader(m_VertexShaderIndex), NULL, 0);
 	DX11Manager::GetInstance()->GetDeviceContext()->PSSetShader(ShaderManager::GetInstance()->GetPixelShader(m_PixelShaderIndex), NULL, 0);
 	DX11Manager::GetInstance()->GetDeviceContext()->OMSetDepthStencilState(m_pDepthStencilState, 0);
-	FbxFileManager::GetInstance()->GetFbxModel(m_ModelIndex)->Draw();
+	FbxFileManager::GetInstance()->GetFbxModel(m_GroundModelIndex)->Draw();
+	FbxFileManager::GetInstance()->GetFbxModel(m_MountainModelIndex)->Draw();
 }
 
 void Ground::WriteConstantBuffer()

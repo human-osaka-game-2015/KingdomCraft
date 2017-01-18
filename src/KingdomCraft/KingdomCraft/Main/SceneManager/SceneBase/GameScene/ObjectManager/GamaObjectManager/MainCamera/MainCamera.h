@@ -8,8 +8,7 @@
 #include <D3DX11.h>
 #include <D3DX10.h>
 #include "InputDeviceManager\InputDeviceManager.h"
-
-class Camera;
+#include "Camera\Camera.h"
 
 /**
  * カメラを操作するクラス
@@ -18,24 +17,60 @@ class MainCamera
 {
 public:
 	/**
-	 * MainCameraクラスのコンストラクタ
+	 * インスタンスを生成する関数
 	 */
-	MainCamera();
+	inline static void Create()
+	{
+		if (m_pMainCamera == NULL)
+		{
+			m_pMainCamera = new MainCamera();
+		}
+	}
 	
 	/**
-	 * MainCameraクラスのデストラクタ
+	 * インスタンスを取得する関数
+	 * @return MainCameraのインスタンス
 	 */
-	~MainCamera();
+	inline static MainCamera* GetInstance()
+	{
+		return m_pMainCamera;
+	}
+
+	/**
+	 * インスタンスを破棄する
+	 */
+	inline static void Delete()
+	{
+		delete m_pMainCamera;
+		m_pMainCamera = NULL;
+	}
 
 	/**
 	 * MainCameraクラスの制御関数
 	 */
 	void Control();
 
-private:
-	MainCamera(const MainCamera&);
-	void operator=(const MainCamera&);
+	/**
+	 * ビュー行列を取得する
+	 */
+	inline D3DXMATRIX GetViewMatrix()
+	{
+		return m_pCamera->GetViewMatrix();
+	}
 
+	/**
+	 * 射影行列を取得する
+	 */
+	inline D3DXMATRIX GetProjectionMatrix()
+	{
+		return m_pCamera->GetProjectionMatrix();
+	}
+
+	static const float		   m_NearPoint;   //!< 最近点
+	static const float		   m_FarPoint;    //!< 最遠点
+	static const float		   m_ViewAngle;   //!< 視野角
+
+private:
 	/**
 	 * カメラのコンスタントバッファ
 	 */
@@ -44,6 +79,16 @@ private:
 		D3DXMATRIX View;
 		D3DXMATRIX Proj;
 	};
+
+	/**
+	 * MainCameraクラスのコンストラクタ
+	 */
+	MainCamera();
+
+	/**
+	 * MainCameraクラスのデストラクタ
+	 */
+	~MainCamera();
 
 	/**
 	 * 移動処理
@@ -105,9 +150,7 @@ private:
 	 */
 	void WriteConstantBuffer();
 
-	static const float		   m_NearPoint;   //!< 最近点
-	static const float		   m_FarPoint;    //!< 最遠点
-	static const float		   m_ViewAngle;   //!< 視野角
+	static MainCamera*		   m_pMainCamera;
 	static const float		   m_MaxAngle;	  //!< カメラの最大傾き
 	static const float		   m_MinAngle;	  //!< カメラの最小傾き
 	static const float		   m_MaxLength;	  //!< カメラと注視点の最大距離
