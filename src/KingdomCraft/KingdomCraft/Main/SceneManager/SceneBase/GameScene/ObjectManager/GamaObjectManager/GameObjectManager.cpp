@@ -11,10 +11,10 @@
 #include "HumanManager\HumanManager.h"
 #include "RoadManager\RoadManager.h"
 #include "GameTimeManager\GameTimeManager.h"
+#include "MousePosConverter\MousePosConverter.h"
 
 
 GameObjectManager::GameObjectManager() :
-m_pMainCamera(new MainCamera()),
 m_pEnemyManager(new EnemyManager()),
 m_pFieldManager(new FieldManager()),
 m_pHouseManager(new HouseManager()),
@@ -22,22 +22,26 @@ m_pHumanManager(new HumanManager()),
 m_pRoadManager(new RoadManager()),
 m_pGameTimeManager(new GameTimeManager())
 {
+	MainCamera::Create();
+	MousePosConverter::Create();
 }
 
 GameObjectManager::~GameObjectManager()
 {
+	MousePosConverter::Delete();
+	MainCamera::Delete();
 	delete m_pGameTimeManager;
 	delete m_pRoadManager;
 	delete m_pHumanManager;
 	delete m_pHouseManager;
 	delete m_pFieldManager;
 	delete m_pEnemyManager;
-	delete m_pMainCamera;
 }
 
 void GameObjectManager::Control()
 {
-	m_pMainCamera->Control();
+	MainCamera::GetInstance()->Control();
+	MousePosConverter::GetInstance()->Control();
 	m_pEnemyManager->Control();
 	m_pFieldManager->Control();
 	m_pHouseManager->Control();

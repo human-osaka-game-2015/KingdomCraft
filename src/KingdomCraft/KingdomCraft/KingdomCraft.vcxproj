@@ -97,6 +97,7 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton\TitleContinueButton.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleContinueButton\TitleContinueButton.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DX11Manager\DX11Manager.h" />

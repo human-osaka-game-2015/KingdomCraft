@@ -82,7 +82,8 @@ private:
  	 */
 	void ReleaseConstantBuffer();
 
-	int m_ModelIndex;
+	int m_GroundModelIndex;
+	int m_MountainModelIndex;
 	int m_VertexShaderIndex;
 	int m_PixelShaderIndex;
 	int m_TextureIndex;
