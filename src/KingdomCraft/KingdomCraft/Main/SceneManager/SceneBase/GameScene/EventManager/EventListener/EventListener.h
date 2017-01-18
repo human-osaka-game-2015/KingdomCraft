@@ -40,7 +40,7 @@ public:
 	}
 
 protected:
-	static const int	m_EventMessageMax;		//!< イベントの最大数
+	static const unsigned int	m_EventMessageMax;		//!< イベントの最大数
 
 private:
 	static int			m_EventListenerNum;
