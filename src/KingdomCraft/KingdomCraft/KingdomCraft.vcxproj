@@ -11,6 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent\GameEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow\GameEventLogWindow.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent\HouseBuildWindowEvent.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent\BuildWindowEvent.cpp" />
@@ -100,6 +103,9 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent\GameEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow\GameEventLogWindow.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent\HouseBuildWindowEvent.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent\BuildWindowEvent.h" />

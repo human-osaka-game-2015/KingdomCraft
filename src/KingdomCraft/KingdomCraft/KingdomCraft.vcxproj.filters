@@ -265,6 +265,15 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow\GameEventLogWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent\GameEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -528,6 +537,15 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter</Filter>
     </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow\GameEventLogWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent\GameEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -692,6 +710,9 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener">
       <UniqueIdentifier>{64d141d7-906e-42c2-8017-f860aeadb0d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\KingdomStatusWindow\KingdomParameterUI">
+      <UniqueIdentifier>{895c08c0-a77e-4171-bbc3-4e1fe50e6c8d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\TitleScene">
       <UniqueIdentifier>{f592d59e-a32a-4e66-ab4d-3086b2773ee9}</UniqueIdentifier>
     </Filter>
@@ -719,9 +740,6 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\GameTimeManager">
       <UniqueIdentifier>{777602b2-f46e-4cb4-9054-ae407b047315}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent">
-      <UniqueIdentifier>{4b46438c-bbdc-4581-a050-6c99d728a622}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI">
       <UniqueIdentifier>{c3e1ce6e-0ed9-47e8-8aed-170dcf190811}</UniqueIdentifier>
     </Filter>
@@ -736,9 +754,6 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameTimeWindow\GameTimeOperationUI\DecelerateOfTimeButtonUI">
       <UniqueIdentifier>{79a2a95d-bc9d-43e5-9f00-37e5adc38b91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener">
-      <UniqueIdentifier>{867a0f0f-0e36-49c3-8558-2ee49012f521}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\KingdomDataManager">
       <UniqueIdentifier>{2a39886f-3377-4c6c-afb9-97a197f22aee}</UniqueIdentifier>
@@ -758,12 +773,6 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow">
       <UniqueIdentifier>{53d70229-ace4-4c77-b933-7747c3f99ed9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent">
-      <UniqueIdentifier>{46823a04-c6b4-4e26-8f63-e1fd9d1d9186}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener">
-      <UniqueIdentifier>{f46fa8f3-2651-4088-9e02-7f4dab796ad1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseDestroyButtonUI">
       <UniqueIdentifier>{42ae9f21-2449-4e97-a9a6-b756a8d49d0d}</UniqueIdentifier>
     </Filter>
@@ -773,20 +782,47 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow">
       <UniqueIdentifier>{3228cc4a-29b8-4a94-94eb-4b9f85f73e77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent">
-      <UniqueIdentifier>{1df23ae1-ddc8-4183-9ed9-ccf555641188}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener">
-      <UniqueIdentifier>{4d9b2090-fbfb-4a75-88ef-601542b29aa8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\RoadLayingButtonUI">
       <UniqueIdentifier>{3974f724-3c19-492f-a2f1-da08f0fb1b64}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow\HouseBuildWindow\NormalHouseBuildButtonUI">
       <UniqueIdentifier>{dbc6659b-10f4-4403-b9ee-db6b0157e127}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow">
+      <UniqueIdentifier>{b275014c-1a39-46d2-bebe-e15a2d617b9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager">
+      <UniqueIdentifier>{d076b898-f6f7-42e0-88c0-54427e9f2db7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event">
+      <UniqueIdentifier>{7c457e5a-1015-46cc-aa49-449432990501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent">
+      <UniqueIdentifier>{4b46438c-bbdc-4581-a050-6c99d728a622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\OperationWindowEvent">
+      <UniqueIdentifier>{46823a04-c6b4-4e26-8f63-e1fd9d1d9186}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\BuildWindowEvent">
+      <UniqueIdentifier>{1df23ae1-ddc8-4183-9ed9-ccf555641188}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\HouseBuildWindowEvent">
       <UniqueIdentifier>{9c08b60a-6bfd-4552-871b-e4852213309c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent">
+      <UniqueIdentifier>{e567aaaa-c9ab-4856-bc67-3827f032bc92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener">
+      <UniqueIdentifier>{64d141d7-906e-42c2-8017-f860aeadb0d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener">
+      <UniqueIdentifier>{867a0f0f-0e36-49c3-8558-2ee49012f521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\OperationWindowEventListener">
+      <UniqueIdentifier>{f46fa8f3-2651-4088-9e02-7f4dab796ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\BuildWindowEventListener">
+      <UniqueIdentifier>{4d9b2090-fbfb-4a75-88ef-601542b29aa8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\HouseBuildWindowEventListener">
       <UniqueIdentifier>{33062fb8-fd74-4ac0-a6e5-5e158c14bd5c}</UniqueIdentifier>
@@ -808,6 +844,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter">
       <UniqueIdentifier>{6448ec0d-26f6-4a85-93a9-2dbde6afdf2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener">
+      <UniqueIdentifier>{b35d68fd-f0e1-495b-93f8-a4027cc68a4e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
