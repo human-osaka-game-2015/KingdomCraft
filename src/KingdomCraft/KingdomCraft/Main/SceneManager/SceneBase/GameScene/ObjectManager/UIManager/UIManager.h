@@ -10,6 +10,7 @@ class GameTimeWindow;
 class KingdomStatusWindow;
 class OperationWindow;
 class KingdomWindow;
+class GameEventLogWindow;
 
 /**
  * UIを管理するクラス
@@ -45,6 +46,7 @@ private:
 	KingdomStatusWindow*	m_pKingdomStatusWindow;
 	OperationWindow*		m_pOperationWindow;
 	KingdomWindow*			m_pKingdomWindow;
+	GameEventLogWindow*		m_pGameEventLogWindow;
 
 };
 
