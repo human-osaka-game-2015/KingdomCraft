@@ -45,7 +45,8 @@ private:
 	 */
 	void KeyUpdate();
 
-	ObjectManager* m_pObjectManager;
+	ObjectManager*	m_pObjectManager;
+	int				m_GameSceneBGMIndex;
 
 };
 

@@ -25,6 +25,8 @@ m_pTitleMenu(NULL)
 
 	DSoundManager::Create();
 	DSoundManager::GetInstance()->Init(DX11Manager::GetInstance()->GetWindowHandle());
+	DSoundManager::GetInstance()->LoadSound("Resource\\Sounds\\TitleScene\\TitleSceneBGM.wav", &m_TitleBGMIndex);
+	DSoundManager::GetInstance()->SoundOperation(m_TitleBGMIndex, DSoundManager::SOUND_LOOP);
 
 	m_pTitleBackground = new TitleBackground();
 	m_pTitleLogo = new TitleLogo();
@@ -37,6 +39,9 @@ TitleScene::~TitleScene()
 	delete m_pTitleLogo;
 	delete m_pTitleBackground;
 
+	DSoundManager::GetInstance()->SoundOperation(m_TitleBGMIndex, DSoundManager::SOUND_STOP);
+	DSoundManager::GetInstance()->ReleaseSound(m_TitleBGMIndex);
+	DSoundManager::GetInstance()->Release();
 	DSoundManager::Delete();
 
 	TextureManager::Delete();

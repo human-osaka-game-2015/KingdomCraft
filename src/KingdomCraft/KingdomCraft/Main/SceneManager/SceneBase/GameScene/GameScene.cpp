@@ -25,6 +25,9 @@ m_pObjectManager(NULL)
 
 	DSoundManager::Create();
 	DSoundManager::GetInstance()->Init(DX11Manager::GetInstance()->GetWindowHandle());
+	DSoundManager::GetInstance()->LoadSound("Resource\\Sounds\\TitleScene\\TitleSceneBGM.wav", &m_GameSceneBGMIndex);
+	DSoundManager::GetInstance()->SoundOperation(m_GameSceneBGMIndex, DSoundManager::SOUND_LOOP);
+
 
 	FbxFileManager::Create(DX11Manager::GetInstance()->GetDevice(), DX11Manager::GetInstance()->GetDeviceContext());
 	FbxFileManager::GetInstance()->Init();
@@ -43,6 +46,8 @@ GameScene::~GameScene()
 	FbxFileManager::GetInstance()->Release();
 	FbxFileManager::Delete();
 
+	DSoundManager::GetInstance()->SoundOperation(m_GameSceneBGMIndex, DSoundManager::SOUND_STOP);
+	DSoundManager::GetInstance()->ReleaseSound(m_GameSceneBGMIndex);
 	DSoundManager::GetInstance()->Release();
 	DSoundManager::Delete();
 
