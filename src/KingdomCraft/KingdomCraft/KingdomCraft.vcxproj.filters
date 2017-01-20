@@ -265,6 +265,12 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\BasePoint\BasePoint.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\BasePoint</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Castle\Castle.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Castle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -527,6 +533,12 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\BasePoint\BasePoint.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\BasePoint</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\FieldManager\Castle\Castle.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Castle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -808,6 +820,12 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\MousePosConverter">
       <UniqueIdentifier>{6448ec0d-26f6-4a85-93a9-2dbde6afdf2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\BasePoint">
+      <UniqueIdentifier>{13d82364-aba5-42d1-9fc5-5748945e7489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Castle">
+      <UniqueIdentifier>{72b5435c-0502-4f3a-9169-e232ec261c0d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
