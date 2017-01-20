@@ -8,7 +8,10 @@
 #include "TextureManager\TextureManager.h"
 #include "EventManager.h"
 #include "Event\BuildWindowEvent\BuildWindowEvent.h"
+#include "Event\HouseBuildWindowEvent\HouseBuildWindowEvent.h"
 #include "NormalHouseBuildButtonUI\NormalHouseBuildButtonUI.h"
+#include "EventListener\BuildWindowEventListener\BuildWindowEventListener.h"
+#include "EventListener\HouseBuildWindowEventListener\HouseBuildWindowEventListener.h"
 
 const D3DXVECTOR2 HouseBuildWindow::m_DefaultPos = D3DXVECTOR2(-30, 0);
 const D3DXVECTOR2 HouseBuildWindow::m_DefaultSize = D3DXVECTOR2(500, 500);
@@ -18,10 +21,12 @@ const float HouseBuildWindow::m_MoveSpeed = 4.0f;
 
 HouseBuildWindow::HouseBuildWindow(const D3DXVECTOR2* _pParentUIPos) :
 WindowUI(&D3DXVECTOR2(m_DefaultPos + *_pParentUIPos), &m_DefaultSize),
-m_pEventListener(new BuildWindowEventListener()),
+m_pParentEventListener(new BuildWindowEventListener()),
+m_pEventListener(new HouseBuildWindowEventListener()),
 m_State(NONE),
 m_ParentUIPos(*_pParentUIPos)
 {
+	EventManager::GetInstance()->AddEventListener(m_pParentEventListener);
 	EventManager::GetInstance()->AddEventListener(m_pEventListener);
 
 	TextureManager::GetInstance()->LoadTexture(
@@ -40,6 +45,9 @@ HouseBuildWindow::~HouseBuildWindow()
 
 	EventManager::GetInstance()->RemoveEventListener(m_pEventListener);
 	delete m_pEventListener;
+
+	EventManager::GetInstance()->RemoveEventListener(m_pParentEventListener);
+	delete m_pParentEventListener;
 }
 
 void HouseBuildWindow::Control()
@@ -82,15 +90,32 @@ void HouseBuildWindow::StateControl()
 	switch (m_State)
 	{
 	case NONE:
-		switch (m_pEventListener->GetEventType())
+		switch (m_pParentEventListener->GetEventType())
 		{
 		case BuildWindowEvent::HOUSE_BUILD_BUTTON_CLICK:
 			m_State = START_STATE;
 			break;
 		}
 		break;
+	case WAIT_STATE:
+		switch (m_pEventListener->GetEventType())
+		{
+		case HouseBuildWindowEvent::HOUSE_BUILD_WINDOW_EVENT_BACK:
+			m_State = PROC_STATE;
+			break;
+		}
+		break;
+	case PROC_STATE:
+		switch (m_pEventListener->GetEventType())
+		{
+		case HouseBuildWindowEvent::NORMAL_HOUSE_BUILD_BUTTON_CLICK:
+			m_State = WAIT_STATE;
+			break;
+		}
+		break;
 	}
 
+	m_pParentEventListener->ClearEventType(); 
 	m_pEventListener->ClearEventType();
 }
 
