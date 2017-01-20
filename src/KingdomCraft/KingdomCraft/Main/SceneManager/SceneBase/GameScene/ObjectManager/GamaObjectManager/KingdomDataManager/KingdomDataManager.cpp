@@ -4,6 +4,7 @@
  * @author morimoto
  */
 #include "KingdomDataManager.h"
+#include "..\GameDataManager\GameDataManager.h"
 
 
 KingdomDataManager::KingdomDataManager() : 
@@ -18,6 +19,8 @@ KingdomDataManager::~KingdomDataManager()
 void KingdomDataManager::Control()
 {
 	MoneyControl();
+
+	GameDataManager::GetInstance();
 }
 
 void KingdomDataManager::Draw()
