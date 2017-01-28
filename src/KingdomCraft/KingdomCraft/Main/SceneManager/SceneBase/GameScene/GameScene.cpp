@@ -76,4 +76,5 @@ void GameScene::KeyUpdate()
 	InputDeviceManager::GetInstance()->KeyCheck(DIK_A);
 	InputDeviceManager::GetInstance()->KeyCheck(DIK_S);
 	InputDeviceManager::GetInstance()->KeyCheck(DIK_D);
+	InputDeviceManager::GetInstance()->KeyCheck(DIK_F);
 }

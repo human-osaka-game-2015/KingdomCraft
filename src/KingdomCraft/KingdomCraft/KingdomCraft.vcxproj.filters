@@ -274,6 +274,12 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\BuildAreaManager\BuildAreaManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\BuildAreaManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -545,6 +551,12 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\BuildAreaManager\BuildAreaManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\BuildAreaManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -848,6 +860,15 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener">
       <UniqueIdentifier>{b35d68fd-f0e1-495b-93f8-a4027cc68a4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\BuildAreaManager">
+      <UniqueIdentifier>{0c07bf6d-0da1-4f8d-b4cc-933852e8a24c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road">
+      <UniqueIdentifier>{a4136718-77e4-480b-87f7-2e438e97995a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road\Effect">
+      <UniqueIdentifier>{b2ec52fc-b412-43e0-a5f2-38bda3f4e549}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
@@ -864,6 +885,9 @@
     </FxCompile>
     <FxCompile Include="Resource\Effect\GameScene\Sky.fx">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="Resource\Effect\GameScene\Road.fx">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road\Effect</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
