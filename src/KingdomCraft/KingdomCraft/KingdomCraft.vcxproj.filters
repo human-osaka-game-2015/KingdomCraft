@@ -827,6 +827,9 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Castle">
       <UniqueIdentifier>{72b5435c-0502-4f3a-9169-e232ec261c0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\BasePoint\Effect">
+      <UniqueIdentifier>{e0cf3c8a-01f5-4abe-bb98-30e0b33c7df5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Library\DebugFont\Effect\DebugFont.fx">
@@ -843,6 +846,9 @@
     </FxCompile>
     <FxCompile Include="Resource\Effect\GameScene\Sky.fx">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\Sky\Effect</Filter>
+    </FxCompile>
+    <FxCompile Include="Resource\Effect\GameScene\BasePoint.fx">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\FieldManager\BasePoint\Effect</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

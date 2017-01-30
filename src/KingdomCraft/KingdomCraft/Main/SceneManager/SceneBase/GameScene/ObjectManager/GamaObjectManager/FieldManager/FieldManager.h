@@ -5,9 +5,11 @@
  */
 #ifndef FIELDMANAGER_H
 #define FIELDMANAGER_H
+#include <vector>
 
 class Ground;
 class Sky;
+class BasePoint;
 
 /**
  * ゲームシーンの始まりのフィールドを管理するクラス
@@ -39,8 +41,9 @@ private:
 	FieldManager(const FieldManager&);
 	void operator=(const FieldManager&);
 
-	Ground* m_pGround;
-	Sky*	m_pSky;
+	Ground*					m_pGround;
+	Sky*					m_pSky;
+	std::vector<BasePoint*>	m_pBasePoint;
 
 };
 
