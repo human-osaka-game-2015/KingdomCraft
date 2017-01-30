@@ -8,8 +8,10 @@
 #include <vector>
 #include "..\..\..\WindowUI\WindowUI.h"
 #include "..\..\..\ButtonUI\ButtonUI.h"
-#include "EventListener\BuildWindowEventListener\BuildWindowEventListener.h"
 #include "InputDeviceManager\InputDeviceManager.h"
+
+class BuildWindowEventListener;
+class HouseBuildWindowEventListener;
 
 /**
  * 建物建設ウィンドウ
@@ -45,6 +47,7 @@ private:
 	enum STATE
 	{
 		NONE,			//!< 何もしない状態
+		WAIT_STATE,		//!< イベントからのメッセージを待つ状態
 		START_STATE,	//!< 開始処理を行う状態
 		PROC_STATE,		//!< 通常処理を行う状態
 		END_STATE		//!< 終了処理を行う状態
@@ -88,17 +91,18 @@ private:
 	 */
 	void ButtonUIControl();
 
-	static const D3DXVECTOR2	m_DefaultPos;
-	static const D3DXVECTOR2	m_DefaultSize;
-	static const D3DXVECTOR2	m_MovePos;
-	static const float			m_MoveSpeed;
+	static const D3DXVECTOR2		m_DefaultPos;
+	static const D3DXVECTOR2		m_DefaultSize;
+	static const D3DXVECTOR2		m_MovePos;
+	static const float				m_MoveSpeed;
 
-	std::vector<ButtonUI*>		m_pButtonUI;
-	BuildWindowEventListener*	m_pEventListener;
-	STATE						m_State;
-	MouseDevice::MOUSESTATE		m_MouseState;
-	D3DXVECTOR2					m_ParentUIPos;
-	int							m_TextureIndex;
+	std::vector<ButtonUI*>			m_pButtonUI;
+	BuildWindowEventListener*		m_pParentEventListener;
+	HouseBuildWindowEventListener*	m_pEventListener;
+	STATE							m_State;
+	MouseDevice::MOUSESTATE			m_MouseState;
+	D3DXVECTOR2						m_ParentUIPos;
+	int								m_TextureIndex;
 
 };
 

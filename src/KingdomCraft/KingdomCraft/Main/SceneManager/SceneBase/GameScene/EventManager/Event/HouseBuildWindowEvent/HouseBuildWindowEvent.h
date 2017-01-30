@@ -16,7 +16,8 @@ public:
 	enum EVENT_TYPE
 	{
 		NONE,
-		NORMAL_HOUSE_BUILD_BUTTON_CLICK,
+		HOUSE_BUILD_WINDOW_EVENT_BACK,	//!< HouseBuildWindowに処理を戻すイベント
+		NORMAL_HOUSE_BUILD_BUTTON_CLICK,//!< 通常の家建設イベント
 		EVENT_TYPE_MAX
 	};
 
