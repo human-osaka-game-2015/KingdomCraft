@@ -45,6 +45,7 @@ private:
 	TitleBackground*	m_pTitleBackground;
 	TitleLogo*			m_pTitleLogo;
 	TitleMenu*			m_pTitleMenu;
+	int					m_TitleBGMIndex;
 
 };
 
