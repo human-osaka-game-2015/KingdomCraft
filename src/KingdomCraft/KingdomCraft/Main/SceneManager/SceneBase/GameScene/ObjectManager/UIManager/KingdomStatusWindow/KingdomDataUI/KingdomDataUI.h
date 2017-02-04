@@ -38,6 +38,16 @@ private:
 	KingdomDataUI(const KingdomDataUI&);
 	void operator=(const KingdomDataUI&);
 
+	/**
+	 * お金のテキスト描画関数
+	 */
+	void MoneyTextDraw();
+
+	/**
+	 * 人口のテキスト描画関数
+	 */
+	void PopulationTextDraw();
+
 	static const D3DXVECTOR2	m_MoneyTextPos;		//!< お金のテキストの初期座標
 	static const D3DXVECTOR2	m_PopulationTextPos;//!< 人口のテキスト位置
 	static const D3DXVECTOR2	m_DefaultFontSize;	//!< 表示するテキストのフォント初期サイズ

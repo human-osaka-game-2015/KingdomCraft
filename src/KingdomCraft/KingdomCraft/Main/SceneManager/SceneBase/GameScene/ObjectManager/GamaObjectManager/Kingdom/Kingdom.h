@@ -1,15 +1,17 @@
 ﻿/**
- * @file   KingdomDataManager.h
- * @brief  KingdomDataManagerクラスのヘッダファイル
+ * @file   Kingdom.h
+ * @brief  Kingdomクラスのヘッダファイル
  * @author morimoto
  */
-#ifndef KINGDOMDATAMANAGER_H
-#define KINGDOMDATAMANAGER_H
+#ifndef KINGDOM_H
+#define KINGDOM_H
+
+class SoldierManager;
 
 /**
  * 王国のデータ管理クラス
  */
-class KingdomDataManager
+class Kingdom
 {
 public:
 	/**
@@ -52,22 +54,22 @@ public:
 	};
 
 	/**
-	 * KingdomDataManagerクラスのコンストラクタ
+	 * Kingdomクラスのコンストラクタ
 	 */
-	KingdomDataManager();
+	Kingdom();
 
 	/**
-	 * KingdomDataManagerクラスのデストラクタ
+	 * Kingdomクラスのデストラクタ
 	 */
-	~KingdomDataManager();
+	~Kingdom();
 
 	/**
-	 * KingdomDataManagerクラスの制御関数
+	 * Kingdomクラスの制御関数
 	 */
 	void Control();
 
 	/**
-	 * KingdomDataManagerクラスの描画関数
+	 * Kingdomクラスの描画関数
 	 */
 	void Draw();
 
@@ -78,10 +80,11 @@ private:
 	 */
 	void MoneyControl();
 
-	KingdomDataManager(const KingdomDataManager&);
-	void operator=(const KingdomDataManager&);
+	Kingdom(const Kingdom&);
+	void operator=(const Kingdom&);
 
-	KINGDOMDATA m_KingdomData;
+	KINGDOMDATA		m_KingdomData;
+	SoldierManager*	m_pSoldierManager;
 
 };
 

@@ -28,7 +28,7 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.cpp" />
-    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\Kingdom.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\KingdomWindowEvent\KingdomWindowEvent.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\KingdomWindowEventListener\KingdomWindowEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.cpp" />
@@ -103,6 +103,26 @@
     <ClCompile Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierManager.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\Soldier.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\SwordSoldier\SwordSoldier.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierManageWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageButtonUI\SoldierManageButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierManageWindowEvent\SoldierManageWindowEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierManageWindowEventListener\SoldierManageWindowEventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\PoliticsWindowEvent\PoliticsWindowEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\PoliticsWindowEventListener\PoliticsWindowEventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierCreateButtonUI\SoldierCreateButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDestroyButtonUI\SoldierDestroyButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDispatchButtonUI\SoldierDispatchButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierCreater\SoldierCreater.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierCreateWindow.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierCreateWindowEventListener\SoldierCreateWindowEventListener.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierCreateWindowEvent\SoldierCreateWindowEvent.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SoldierTypeSelect.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectLeftButtonUI\SelectLeftButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectRightButtonUI\SelectRightButtonUI.cpp" />
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierNumSelect\SoldierNumSelect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent\GameEvent.h" />
@@ -122,7 +142,7 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameTimeEvent\GameTimeEvent.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.h" />
-    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\Kingdom.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\KingdomWindowEvent\KingdomWindowEvent.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\KingdomWindowEventListener\KingdomWindowEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MainCamera\MainCamera.h" />
@@ -195,6 +215,26 @@
     <ClInclude Include="Main\SceneManager\SceneBase\TitleScene\TitleMenu\TitleStartButton\TitleStartButton.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\MousePosConverter\MousePosConverter.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierManager.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\Soldier.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\SwordSoldier\SwordSoldier.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierManageWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageButtonUI\SoldierManageButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierManageWindowEvent\SoldierManageWindowEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierManageWindowEventListener\SoldierManageWindowEventListener.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\PoliticsWindowEvent\PoliticsWindowEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\PoliticsWindowEventListener\PoliticsWindowEventListener.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierCreateButtonUI\SoldierCreateButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDestroyButtonUI\SoldierDestroyButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDispatchButtonUI\SoldierDispatchButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierCreater\SoldierCreater.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierCreateWindow.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierCreateWindowEventListener\SoldierCreateWindowEventListener.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierCreateWindowEvent\SoldierCreateWindowEvent.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SoldierTypeSelect.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectLeftButtonUI\SelectLeftButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectRightButtonUI\SelectRightButtonUI.h" />
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierNumSelect\SoldierNumSelect.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\DX11Manager\DX11Manager.h" />

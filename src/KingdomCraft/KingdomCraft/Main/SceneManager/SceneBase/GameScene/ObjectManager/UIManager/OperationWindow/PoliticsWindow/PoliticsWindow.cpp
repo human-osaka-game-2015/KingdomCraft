@@ -6,26 +6,57 @@
 #include "PoliticsWindow.h"
 #include "EventManager.h"
 #include "Event\OperationWindowEvent\OperationWindowEvent.h"
+#include "EventListener\OperationWindowEventListener\OperationWindowEventListener.h"
+#include "Event\PoliticsWindowEvent\PoliticsWindowEvent.h"
+#include "EventListener\PoliticsWindowEventListener\PoliticsWindowEventListener.h"
+#include "SoldierManageButtonUI\SoldierManageButtonUI.h"
+#include "SoldierManageWindow\SoldierManageWindow.h"
+#include "SoldierCreateWindow\SoldierCreateWindow.h"
+#include "TextureManager\TextureManager.h"
 
-const D3DXVECTOR2 PoliticsWindow::m_DefaultPos = D3DXVECTOR2(-375, 300);
-const D3DXVECTOR2 PoliticsWindow::m_DefaultSize = D3DXVECTOR2(600, 500);
-const D3DXVECTOR2 PoliticsWindow::m_MovePos = D3DXVECTOR2(-375, 400);
-const float PoliticsWindow::m_MoveSpeed = 8.0f;
+const D3DXVECTOR2 PoliticsWindow::m_DefaultPos = D3DXVECTOR2(-70, 300);
+const D3DXVECTOR2 PoliticsWindow::m_DefaultSize = D3DXVECTOR2(500, 500);
+const D3DXVECTOR2 PoliticsWindow::m_MovePos = D3DXVECTOR2(-70, 820);
+const float PoliticsWindow::m_MoveSpeed = 4.0f;
 
 
 PoliticsWindow::PoliticsWindow(const D3DXVECTOR2* _pParentUIPos) :
 WindowUI(&D3DXVECTOR2(m_DefaultPos + *_pParentUIPos), &m_DefaultSize),
-m_pEventListener(new OperationWindowEventListener()),
+m_pParentEventListener(new OperationWindowEventListener()),
+m_pEventListener(new PoliticsWindowEventListener()),
 m_State(NONE),
 m_ParentUIPos(*_pParentUIPos)
 {
+	EventManager::GetInstance()->AddEventListener(m_pParentEventListener);
 	EventManager::GetInstance()->AddEventListener(m_pEventListener);
+
+	TextureManager::GetInstance()->LoadTexture("Resource\\Texture\\GameScene\\UI\\PoliticsWindow.png", &m_TextureIndex);
+
+	m_pWindowUI.push_back(new SoldierManageWindow(&m_WindowPos));
+	m_pWindowUI.push_back(new SoldierCreateWindow());
+
+	m_pButtonUI.push_back(new SoldierManageButtonUI(&m_WindowPos, m_TextureIndex));
 }
 
 PoliticsWindow::~PoliticsWindow()
 {
+	for (unsigned int i = 0; i < m_pButtonUI.size(); i++)
+	{
+		delete m_pButtonUI[i];
+	}
+
+	for (unsigned int i = 0; i < m_pWindowUI.size(); i++)
+	{
+		delete m_pWindowUI[i];
+	}
+
+	TextureManager::GetInstance()->ReleaseTexture(m_TextureIndex);
+
 	EventManager::GetInstance()->RemoveEventListener(m_pEventListener);
 	delete m_pEventListener;
+
+	EventManager::GetInstance()->RemoveEventListener(m_pParentEventListener);
+	delete m_pParentEventListener;
 }
 
 void PoliticsWindow::Control()
@@ -35,6 +66,9 @@ void PoliticsWindow::Control()
 
 	switch (m_State)
 	{
+	case WAIT_STATE:
+		WaitControl();
+		break;
 	case START_STATE:
 		StartControl();
 		break;
@@ -55,6 +89,9 @@ void PoliticsWindow::Draw()
 	}
 
 	WindowDraw();
+	
+	ButtonUIDraw();
+	WindowUIDraw();
 }
 
 void PoliticsWindow::MouseCheckControl()
@@ -67,18 +104,39 @@ void PoliticsWindow::StateControl()
 	switch (m_State)
 	{
 	case NONE:
-		switch (m_pEventListener->GetEventType())
+		switch (m_pParentEventListener->GetEventType())
 		{
 		case OperationWindowEvent::POLITICS_BUTTON_CLICK:
 			m_State = START_STATE;
-			m_pEventListener->ClearEventType();		// イベントの処理を行ったので履歴を消去
 			break;
 		}
 		break;
-	default:
-		m_pEventListener->ClearEventType();
+	case WAIT_STATE:
+		switch (m_pEventListener->GetEventType())
+		{
+		case PoliticsWindowEvent::POLITICS_WINDOW_BACK:
+			m_State = PROC_STATE;
+			break;
+		}
+		break;
+	case PROC_STATE:
+		switch (m_pEventListener->GetEventType())
+		{
+		case PoliticsWindowEvent::SOLDIER_MANAGE_BUTTON_CLICK:
+			m_State = WAIT_STATE;
+			break;
+		}
 		break;
 	}
+
+	m_pParentEventListener->ClearEventType();
+	m_pEventListener->ClearEventType();
+}
+
+void PoliticsWindow::WaitControl()
+{
+	ButtonUIControl();
+	WindowUIControl();
 }
 
 void PoliticsWindow::StartControl()
@@ -103,6 +161,9 @@ void PoliticsWindow::ProcControl()
 	{
 		m_State = END_STATE;
 	}
+
+	ButtonUIControl();
+	WindowUIControl();
 }
 
 void PoliticsWindow::EndControl()
@@ -116,6 +177,38 @@ void PoliticsWindow::EndControl()
 
 		OperationWindowEvent::GetInstance()->SetEventType(OperationWindowEvent::OPERATION_WINDOW_BACK);	// 操作ウィンドウに処理を戻す
 		EventManager::GetInstance()->SendEventMessage(OperationWindowEvent::GetInstance());
+	}
+}
+
+void PoliticsWindow::ButtonUIControl()
+{
+	for (unsigned int i = 0; i < m_pButtonUI.size(); i++)
+	{
+		m_pButtonUI[i]->Control();
+	}
+}
+
+void PoliticsWindow::ButtonUIDraw()
+{
+	for (unsigned int i = 0; i < m_pButtonUI.size(); i++)
+	{
+		m_pButtonUI[i]->Draw();
+	}
+}
+
+void PoliticsWindow::WindowUIControl()
+{
+	for (unsigned int i = 0; i < m_pWindowUI.size(); i++)
+	{
+		m_pWindowUI[i]->Control();
+	}
+}
+
+void PoliticsWindow::WindowUIDraw()
+{
+	for (unsigned int i = 0; i < m_pWindowUI.size(); i++)
+	{
+		m_pWindowUI[i]->Draw();
 	}
 }
 

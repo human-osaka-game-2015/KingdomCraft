@@ -4,6 +4,8 @@
  * @author morimoto
  */
 #include "KingdomDataUI.h"
+#include "..\GameDataManager\GameDataManager.h"
+#include <stdio.h>
 
 const D3DXVECTOR2 KingdomDataUI::m_MoneyTextPos = D3DXVECTOR2(-240, -45);
 const D3DXVECTOR2 KingdomDataUI::m_PopulationTextPos = D3DXVECTOR2(-240, 0);
@@ -35,9 +37,27 @@ void KingdomDataUI::Draw()
 		return;
 	}
 
+	MoneyTextDraw();
+	PopulationTextDraw();
+}
+
+void KingdomDataUI::MoneyTextDraw()
+{
+	Kingdom::KINGDOMDATA KingdomData = GameDataManager::GetInstance()->GetKingdomData();
+	TCHAR MoneyText[64];
+	sprintf_s(MoneyText, "Money %d G", KingdomData.Money);
+
 	m_TextPos = m_ParentUIPos + m_MoneyTextPos;
-	TextDraw("Money");
+	TextDraw(MoneyText);
+}
+
+void KingdomDataUI::PopulationTextDraw()
+{
+	Kingdom::KINGDOMDATA KingdomData = GameDataManager::GetInstance()->GetKingdomData();
+	TCHAR PopulationText[64];
+	sprintf_s(PopulationText, "Population %d", KingdomData.Population);
 
 	m_TextPos = m_ParentUIPos + m_PopulationTextPos;
-	TextDraw("Population");
+	TextDraw(PopulationText);
 }
+

@@ -10,7 +10,8 @@ GameDataManager* GameDataManager::m_pGameDataManager = NULL;
 
 GameDataManager::GameDataManager() :
 m_GameTime(0, 0, 0, 0),
-m_SpeedState(GameTimeManager::NORMAL_SPEED)
+m_SpeedState(GameTimeManager::NORMAL_SPEED),
+m_KingdomData(0, 0, 0, 0, 0, 0, 0, 0.f)
 {
 }
 

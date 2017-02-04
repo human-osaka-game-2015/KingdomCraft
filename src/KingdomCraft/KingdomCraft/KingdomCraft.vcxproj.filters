@@ -190,9 +190,6 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener</Filter>
     </ClCompile>
-    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.cpp">
-      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\KingdomDataManager</Filter>
-    </ClCompile>
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow</Filter>
     </ClCompile>
@@ -279,6 +276,69 @@
     </ClCompile>
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\Kingdom.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierManager.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\Soldier.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\SwordSoldier\SwordSoldier.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\Soldier\SwordSoldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierManageWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageButtonUI\SoldierManageButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\PoliticsWindowEvent\PoliticsWindowEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\PoliticsWindowEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\PoliticsWindowEventListener\PoliticsWindowEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\PoliticsWindowEventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierManageWindowEventListener\SoldierManageWindowEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierManageWindowEventListener</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierManageWindowEvent\SoldierManageWindowEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierManageWindowEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierCreateButtonUI\SoldierCreateButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierCreateButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDestroyButtonUI\SoldierDestroyButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDestroyButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDispatchButtonUI\SoldierDispatchButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDispatchButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierCreater\SoldierCreater.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\SoldierCreater</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierCreateWindow.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SoldierTypeSelect.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierNumSelect\SoldierNumSelect.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierNumSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectLeftButtonUI\SelectLeftButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectLeftButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectRightButtonUI\SelectRightButtonUI.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectRightButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierCreateWindowEvent\SoldierCreateWindowEvent.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierCreateWindowEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierCreateWindowEventListener\SoldierCreateWindowEventListener.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierCreateWindowEventListener</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -468,9 +528,6 @@
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener\GameTimeEventListener.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener</Filter>
     </ClInclude>
-    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.h">
-      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\KingdomDataManager</Filter>
-    </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow\BackToTitleWindow.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BackToTitleWindow</Filter>
     </ClInclude>
@@ -557,6 +614,69 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\Kingdom.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierManager.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\Soldier.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\Soldier\SwordSoldier\SwordSoldier.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\Soldier\SwordSoldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierManageWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageButtonUI\SoldierManageButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\PoliticsWindowEvent\PoliticsWindowEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\PoliticsWindowEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\PoliticsWindowEventListener\PoliticsWindowEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\PoliticsWindowEventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierManageWindowEventListener\SoldierManageWindowEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierManageWindowEventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierManageWindowEvent\SoldierManageWindowEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierManageWindowEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierCreateButtonUI\SoldierCreateButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierCreateButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDestroyButtonUI\SoldierDestroyButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDestroyButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDispatchButtonUI\SoldierDispatchButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDispatchButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\Kingdom\SoldierManager\SoldierCreater\SoldierCreater.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\SoldierCreater</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierCreateWindow.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SoldierTypeSelect.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierNumSelect\SoldierNumSelect.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierNumSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectLeftButtonUI\SelectLeftButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectLeftButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectRightButtonUI\SelectRightButtonUI.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectRightButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierCreateWindowEvent\SoldierCreateWindowEvent.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierCreateWindowEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierCreateWindowEventListener\SoldierCreateWindowEventListener.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierCreateWindowEventListener</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -770,6 +890,9 @@
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\KingdomDataManager">
       <UniqueIdentifier>{2a39886f-3377-4c6c-afb9-97a197f22aee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameTimeEventListener">
+      <UniqueIdentifier>{867a0f0f-0e36-49c3-8558-2ee49012f521}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\BuildWindow">
       <UniqueIdentifier>{5e36bc21-22b9-466c-b440-483a0633fb4e}</UniqueIdentifier>
     </Filter>
@@ -868,6 +991,69 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road\Effect">
       <UniqueIdentifier>{b2ec52fc-b412-43e0-a5f2-38bda3f4e549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom">
+      <UniqueIdentifier>{2a39886f-3377-4c6c-afb9-97a197f22aee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager">
+      <UniqueIdentifier>{d0d5a38a-6356-4e00-bc14-8bd18bf6a175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\Soldier">
+      <UniqueIdentifier>{e108e2ba-fd2c-4b38-91c2-f9211fabe763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\Soldier\SwordSoldier">
+      <UniqueIdentifier>{98a9a806-837b-4588-aea0-9f70cf2b70fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow">
+      <UniqueIdentifier>{7c073440-3e99-4bae-9fbc-6d179e3efec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageButtonUI">
+      <UniqueIdentifier>{27cdb060-55e4-49b9-8ba0-c1865c44a52a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\PoliticsWindowEvent">
+      <UniqueIdentifier>{aa546678-5984-4550-a952-bc706509e33e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\PoliticsWindowEventListener">
+      <UniqueIdentifier>{18bce763-c41b-485c-b9ef-96cdc639edc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierManageWindowEventListener">
+      <UniqueIdentifier>{16f3ddfc-3bb8-4c45-b28d-78a7476a69d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierManageWindowEvent">
+      <UniqueIdentifier>{bcd3411c-f1e1-4a8d-ad00-1da0e3601baa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierCreateButtonUI">
+      <UniqueIdentifier>{d9111e8d-f644-4c74-ae23-c07e45f4a711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDispatchButtonUI">
+      <UniqueIdentifier>{435f6973-5731-4f49-be37-762346f38c38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierManageWindow\SoldierDestroyButtonUI">
+      <UniqueIdentifier>{f2e92b15-52db-4e7a-90c8-5353b4e165c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\Kingdom\SoldierManager\SoldierCreater">
+      <UniqueIdentifier>{3b6fdc9a-0194-469e-9f8e-ccdd8bf39451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow">
+      <UniqueIdentifier>{37225d4c-6eef-471b-b478-d67bb764c86f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect">
+      <UniqueIdentifier>{c6ee410f-9d6b-4e86-abb6-1c2ccc5044d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierNumSelect">
+      <UniqueIdentifier>{c61c2167-240d-4cd4-b76a-bbf3e7d9bb9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectLeftButtonUI">
+      <UniqueIdentifier>{1a97108b-c5d2-4b73-89f0-82d625ef13b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\OperationWindow\PoliticsWindow\SoldierCreateWindow\SoldierTypeSelect\SelectRightButtonUI">
+      <UniqueIdentifier>{4c0e208b-c1f0-4b85-9027-a73ce1c3880b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\SoldierCreateWindowEvent">
+      <UniqueIdentifier>{5ab07d78-796f-40b1-a499-57dbda4fda2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\SoldierCreateWindowEventListener">
+      <UniqueIdentifier>{e2937f81-6dc4-4742-b4b4-288fd8251fa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
