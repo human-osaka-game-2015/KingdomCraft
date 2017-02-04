@@ -43,7 +43,7 @@ void KingdomDataUI::Draw()
 
 void KingdomDataUI::MoneyTextDraw()
 {
-	KingdomDataManager::KINGDOMDATA KingdomData = GameDataManager::GetInstance()->GetKingdomData();
+	Kingdom::KINGDOMDATA KingdomData = GameDataManager::GetInstance()->GetKingdomData();
 	TCHAR MoneyText[64];
 	sprintf_s(MoneyText, "Money %d G", KingdomData.Money);
 
@@ -53,7 +53,7 @@ void KingdomDataUI::MoneyTextDraw()
 
 void KingdomDataUI::PopulationTextDraw()
 {
-	KingdomDataManager::KINGDOMDATA KingdomData = GameDataManager::GetInstance()->GetKingdomData();
+	Kingdom::KINGDOMDATA KingdomData = GameDataManager::GetInstance()->GetKingdomData();
 	TCHAR PopulationText[64];
 	sprintf_s(PopulationText, "Population %d", KingdomData.Population);
 

@@ -5,9 +5,13 @@
  */
 #ifndef POLITICSWINDOW_H
 #define POLITICSWINDOW_H
+#include <vector>
 #include "..\..\WindowUI\WindowUI.h"
-#include "EventListener\OperationWindowEventListener\OperationWindowEventListener.h"
 #include "InputDeviceManager\InputDeviceManager.h"
+
+class OperationWindowEventListener;
+class PoliticsWindowEventListener;
+class ButtonUI;
 
 /**
  * 政治を管理するWindowクラス
@@ -43,6 +47,7 @@ private:
 	enum STATE
 	{
 		NONE,			//!< 何もしない状態
+		WAIT_STATE,		//!< 子からの処理を待つ状態
 		START_STATE,	//!< 開始処理を行う状態
 		PROC_STATE,		//!< 通常処理を行う状態
 		END_STATE		//!< 終了処理を行う状態
@@ -62,6 +67,11 @@ private:
 	void StateControl();
 
 	/**
+	 * 待機時の処理を行う関数
+	 */
+	void WaitControl();
+
+	/**
 	 * 開始処理を行う関数
 	 */
 	void StartControl();
@@ -76,16 +86,39 @@ private:
 	 */
 	void EndControl();
 
+	/**
+	 * ボタンの制御関数
+	 */
+	void ButtonUIControl();
+
+	/**
+	 * ボタンの描画関数
+	 */
+	void ButtonUIDraw();
+
+	/**
+	 * ウィンドウの制御関数
+	 */
+	void WindowUIControl();
+
+	/**
+	 * ウィンドウの描画関数
+	 */
+	void WindowUIDraw();
 
 	static const D3DXVECTOR2	m_DefaultPos;
 	static const D3DXVECTOR2	m_DefaultSize;
 	static const D3DXVECTOR2	m_MovePos;
 	static const float			m_MoveSpeed;
 
-	OperationWindowEventListener*	m_pEventListener;
+	OperationWindowEventListener*	m_pParentEventListener;
+	PoliticsWindowEventListener*	m_pEventListener;
+	std::vector<WindowUI*>			m_pWindowUI;
+	std::vector<ButtonUI*>			m_pButtonUI;
 	STATE							m_State;
 	MouseDevice::MOUSESTATE			m_MouseState;
 	D3DXVECTOR2						m_ParentUIPos;
+	int								m_TextureIndex;
 
 };
 

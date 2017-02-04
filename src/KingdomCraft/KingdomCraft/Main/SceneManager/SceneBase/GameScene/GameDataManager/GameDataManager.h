@@ -7,7 +7,7 @@
 #define GAMEDATAMANAGER_H
 #include <Windows.h>
 #include "..\ObjectManager\GamaObjectManager\GameTimeManager\GameTimeManager.h"
-#include "..\ObjectManager\GamaObjectManager\KingdomDataManager\KingdomDataManager.h"
+#include "..\ObjectManager\GamaObjectManager\Kingdom\Kingdom.h"
 
 /**
  * GameScene内のデータを管理するクラス
@@ -84,7 +84,7 @@ public:
 	 * 王国のデータを取得する関数
 	 * @return 王国のデータ
 	 */
-	inline KingdomDataManager::KINGDOMDATA GetKingdomData()
+	inline Kingdom::KINGDOMDATA GetKingdomData()
 	{
 		return m_KingdomData;
 	}
@@ -93,7 +93,7 @@ public:
 	 * 王国のデータをセットする関数
 	 * @param[in] _kingdomData 王国のデータ
 	 */
-	inline void SetKingdomData(KingdomDataManager::KINGDOMDATA _kingdomData)
+	inline void SetKingdomData(Kingdom::KINGDOMDATA _kingdomData)
 	{
 		m_KingdomData = _kingdomData;
 	}
@@ -113,7 +113,7 @@ private:
 
 	GameTimeManager::GAMETIME		m_GameTime;		//!< ゲーム内時間を格納する変数
 	GameTimeManager::SPEED_STATE	m_SpeedState;	//!< ゲーム内時間の速度
-	KingdomDataManager::KINGDOMDATA	m_KingdomData;	//!< 王国のデータ
+	Kingdom::KINGDOMDATA			m_KingdomData;	//!< 王国のデータ
 
 };
 
