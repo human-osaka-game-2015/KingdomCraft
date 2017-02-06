@@ -5,6 +5,9 @@
  */
 #ifndef BUILDAREAMANAGER_H
 #define BUILDAREAMANAGER_H
+#include <vector>
+
+class BuildArea;
 
 /**
  * 建物等を建てる事が出来るエリアを管理するクラス
@@ -35,6 +38,7 @@ public:
 private:
 	BuildAreaManager(const BuildAreaManager&);
 	void operator=(const BuildAreaManager&);
+	std::vector<BuildArea*> m_pBuildArea;
 
 };
 

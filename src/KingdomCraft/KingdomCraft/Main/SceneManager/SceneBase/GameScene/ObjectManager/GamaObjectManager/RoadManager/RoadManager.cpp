@@ -32,6 +32,7 @@ RoadManager::~RoadManager()
 void RoadManager::Control()
 {
 	BuildControl();
+	m_pBuildAreaManager->Control();
 	for (unsigned int i = 0; i < m_pRoad.size(); i++)
 	{
 		m_pRoad[i]->Control();
@@ -136,6 +137,7 @@ void RoadManager::CreateStep()
 
 void RoadManager::Draw()
 {
+	m_pBuildAreaManager->Draw();
 	for (unsigned int i = 0; i < m_pRoad.size(); i++)
 	{
 		m_pRoad[i]->Draw();
