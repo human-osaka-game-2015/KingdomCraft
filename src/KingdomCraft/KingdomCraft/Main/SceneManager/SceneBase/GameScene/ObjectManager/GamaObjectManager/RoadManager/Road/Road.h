@@ -57,6 +57,15 @@ public:
 		return m_CenterLinePos[m_CenterLinePos.size() - 1];
 	}
 
+	/**
+	 * 道の中線を取得する関数
+	 * @return 道の中線
+	 */
+	inline std::vector<D3DXVECTOR3> GetCenterLine()
+	{
+		return m_CenterLinePos;
+	}
+
 private:
 	Road(const Road&);
 	void operator=(const Road&);

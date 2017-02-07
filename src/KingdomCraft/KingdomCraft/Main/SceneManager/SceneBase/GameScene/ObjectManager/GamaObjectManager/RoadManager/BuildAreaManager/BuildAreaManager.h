@@ -35,6 +35,11 @@ public:
 	 */
 	void Draw();
 
+	/**
+	 * BuildAreaを生成する
+	 */
+	void BuildAreaCreate(std::vector<D3DXVECTOR3>* _pRoadCenterLine);
+
 private:
 	BuildAreaManager(const BuildAreaManager&);
 	void operator=(const BuildAreaManager&);
