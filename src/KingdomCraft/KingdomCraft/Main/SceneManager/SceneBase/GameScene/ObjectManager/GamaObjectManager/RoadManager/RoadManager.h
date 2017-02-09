@@ -49,23 +49,23 @@ private:
 	void operator=(const RoadManager&);
 	
 	/**
-	* 始点をセットする時の処理
-	*/
+	 * 始点をセットする時の処理
+	 */
 	void StartSetStep();
 
 	/**
-	* 終点をセットする時の処理
-	*/
+	 * 終点をセットする時の処理
+	 */
 	void EndSetStep();
 
 	/**
-	* 曲線を敷く際の中点をセットする時の処理
-	*/
+	 * 曲線を敷く際の中点をセットする時の処理
+	 */
 	void MiddleSetStep();
 
 	/**
-	* 道の生成をするの処理
-	*/
+	 * 道の生成をするの処理
+	 */
 	void CreateStep();
 
 	enum STEP

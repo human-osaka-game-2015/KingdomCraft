@@ -44,6 +44,8 @@ private:
 	BuildAreaManager(const BuildAreaManager&);
 	void operator=(const BuildAreaManager&);
 	std::vector<BuildArea*> m_pBuildArea;
+	int						m_VertexShaderIndex;
+	int						m_PixelShaderIndex;
 
 };
 

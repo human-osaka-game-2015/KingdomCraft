@@ -18,7 +18,7 @@ public:
 	/**
 	 * BuildAreaのコンストラクタ
 	 */
-	BuildArea(bool _isLeft, D3DXVECTOR3 _roadStartPos, D3DXVECTOR3 _roadEndPos);
+	BuildArea(bool _isLeft, std::vector<D3DXVECTOR3>* _pRoadCenterLine);
 
 	/**
 	 * BuildAreaのデストラクタ
@@ -55,8 +55,14 @@ private:
 		D3DXMATRIX World;
 	};
 
+	/**
+	 * 左のビルドエリアを作る
+	 */
 	void LeftCreate();
 
+	/**
+	 * 右のビルドエリアを作る
+	 */
 	void RightCreate();
 
 	ID3D11Buffer*			 m_pConstantBuffer;

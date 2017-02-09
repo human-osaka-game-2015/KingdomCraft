@@ -6,10 +6,8 @@
 #include "BuildArea.h"
 
 
-BuildArea::BuildArea(bool _isLeft, D3DXVECTOR3 _roadStartPos, D3DXVECTOR3 _roadEndPos) :
+BuildArea::BuildArea(bool _isLeft, std::vector<D3DXVECTOR3>* _pRoadCenterLine) :
 m_isLeft(_isLeft),
-m_StartPos(_roadStartPos),
-m_EndPos(_roadEndPos),
 m_BuildAreaNum(4)
 {
 }
