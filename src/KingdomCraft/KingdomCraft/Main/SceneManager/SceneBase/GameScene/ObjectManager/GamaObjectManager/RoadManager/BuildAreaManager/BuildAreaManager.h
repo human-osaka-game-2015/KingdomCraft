@@ -5,6 +5,9 @@
  */
 #ifndef BUILDAREAMANAGER_H
 #define BUILDAREAMANAGER_H
+#include <vector>
+
+class BuildArea;
 
 /**
  * 建物等を建てる事が出来るエリアを管理するクラス
@@ -32,9 +35,17 @@ public:
 	 */
 	void Draw();
 
+	/**
+	 * BuildAreaを生成する
+	 */
+	void BuildAreaCreate(std::vector<D3DXVECTOR3>* _pRoadCenterLine);
+
 private:
 	BuildAreaManager(const BuildAreaManager&);
 	void operator=(const BuildAreaManager&);
+	std::vector<BuildArea*> m_pBuildArea;
+	int						m_VertexShaderIndex;
+	int						m_PixelShaderIndex;
 
 };
 

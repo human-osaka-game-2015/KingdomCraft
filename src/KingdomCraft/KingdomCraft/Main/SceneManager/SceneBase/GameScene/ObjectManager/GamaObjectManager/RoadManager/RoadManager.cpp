@@ -37,7 +37,7 @@ void RoadManager::Control()
 		m_pRoad[i]->Control();
 		m_pRoad[i]->GetEndPos();
 	}
-
+	m_pBuildAreaManager->Control();
 }
 
 void RoadManager::BuildControl()
@@ -129,6 +129,7 @@ void RoadManager::EndSetStep()
 void RoadManager::CreateStep()
 {
 	m_pRoad.push_back(new Road(m_VertexShaderIndex, m_PixelShaderIndex, &m_StartPos, &m_EndPos));
+	m_pBuildAreaManager->BuildAreaCreate(&m_pRoad[m_pRoad.size() - 1]->GetCenterLine());
 	m_StartPos = D3DXVECTOR3(0.f, 0.f, 0.f);
 	m_EndPos = D3DXVECTOR3(0.f, 0.f, 0.f);
 	m_Step = NONE;
@@ -140,4 +141,5 @@ void RoadManager::Draw()
 	{
 		m_pRoad[i]->Draw();
 	}
+	m_pBuildAreaManager->Draw();
 }

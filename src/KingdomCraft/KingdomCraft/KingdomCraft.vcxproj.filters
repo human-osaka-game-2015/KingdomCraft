@@ -280,6 +280,9 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.cpp">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road</Filter>
     </ClCompile>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\BuildAreaManager\BuildArea\BuildArea.cpp">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\BuildAreaManager\BuildArea</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main\SceneManager\SceneManager.h">
@@ -557,6 +560,9 @@
     </ClInclude>
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.h">
       <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\BuildAreaManager\BuildArea\BuildArea.h">
+      <Filter>Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\BuildAreaManager\BuildArea</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -868,6 +874,9 @@
     </Filter>
     <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\Road\Effect">
       <UniqueIdentifier>{b2ec52fc-b412-43e0-a5f2-38bda3f4e549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GameObjectManager\RoadManager\BuildAreaManager\BuildArea">
+      <UniqueIdentifier>{6e54db08-d1bb-45b8-84df-ab008bb42ac6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

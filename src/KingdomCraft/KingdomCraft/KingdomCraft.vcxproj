@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\BuildAreaManager\BuildArea\BuildArea.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent\GameEvent.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.cpp" />
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow\GameEventLogWindow.cpp" />
@@ -105,6 +106,7 @@
     <ClCompile Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\Road\Road.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\GamaObjectManager\RoadManager\BuildAreaManager\BuildArea\BuildArea.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\Event\GameEvent\GameEvent.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\EventManager\EventListener\GameEventListener\GameEventListener.h" />
     <ClInclude Include="Main\SceneManager\SceneBase\GameScene\ObjectManager\UIManager\GameEventLogWindow\GameEventLogWindow.h" />
